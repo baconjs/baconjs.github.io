@@ -21,14 +21,14 @@
       <div class="logo">
         <img src="logo.png">
       </div>
-      
+
       <div class="download">
       <a class="download" href="http://cdnjs.cloudflare.com/ajax/libs/bacon.js/0.6.8/Bacon.js">
         <p> Download Bacon.js </p>
         <p class="small"> v0.68 </p>
       </a>
       </div>
-      
+
       <div class="menu">
         <div class="row">
           <div class="large-12 small-6 columns">
@@ -42,15 +42,15 @@
             <p> FAQ </p>
           </div>
         </div>
-      </div>      
-    
-    
+      </div>
+
+
     </div>
-    
+
     <div class="large-8 columns">
       <div class="main">
         <h1> What is Bacon.js? </h1>
-        
+
         <p>
         A small functional reactive programming lib for JavaScript.
 
@@ -68,9 +68,9 @@
         It's the <code>_</code> of Events. Too bad the
         symbol <code>~</code> is not allowed in Javascript.
         </p>
-      
+
         <h1> Getting started </h1>
-        
+
         <p>
           Check out
             the <a href="http://raimohanska.github.io/bacon.js-slides/index.html">
@@ -85,37 +85,37 @@
             in <a href="http://philipnilsson.github.io/badness/"> Game
             programming </a>.
         </p>
-        
+
         <h1> Examples </h1>
-        
+
         <pre>var up = $('#up').asEventStream('click');
 var down = $('#down').asEventStream('click');
 
-var counter =   
+var counter =
   up.map(1).merge(down.map(-1))
     .scan(0, function(x,y) { return x + y });
 
 counter.assign($('#counter'), 'text');</pre>
-        
+
         <div class="example">
-          
+
           <p> <i> Behold!</i> It counts up and down as you click the buttons </p>
-          
+
           <button id="up"> Up </button>
           <button id="down"> Down </button>
           <span id="counter"> 0 </span>
-          
+
         </div>
-        
+
       </div>
     </div>
   </div>
-  
+
   <script>
 var up = $('#up').asEventStream('click');
 var down = $('#down').asEventStream('click');
 
-var counter =   
+var counter =
   up.map(1).merge(down.map(-1))
     .scan(0, function(x,y) { return x + y });
 
@@ -125,7 +125,7 @@ counter.assign($('#counter'), 'text');
   <div>
     <a href="https://github.com/baconjs/bacon.js"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
   </div>
-  
+
 
 </body>
 
