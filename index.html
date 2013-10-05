@@ -88,12 +88,14 @@
         
         <h1> Examples </h1>
         
-        <pre>var counter = 
-  $('#up').asEventStream('click').map(1).merge(
-  $('#down').asEventStream('click').map(-1));
+        <pre>var up = $('#up').asEventStream('click');
+var down = $('#down').asEventStream('click');
 
-counter.scan(0, function(x,y) { return x + y })
-       .assign($('#counter'), 'text');</pre>
+var counter =   
+  up.map(1).merge(down.map(-1))
+    .scan(0, function(x,y) { return x + y });
+
+counter.assign($('#counter'), 'text');</pre>
         
         <div class="example">
           
@@ -110,11 +112,14 @@ counter.scan(0, function(x,y) { return x + y })
   </div>
   
   <script>
-    var counter = 
-      $('#up').asEventStream('click').map(1).merge(
-      $('#down').asEventStream('click').map(-1));
-    
-    counter.scan(0, function(x,y) { return x + y }).assign($('#counter'), 'text');
+var up = $('#up').asEventStream('click');
+var down = $('#down').asEventStream('click');
+
+var counter =   
+  up.map(1).merge(down.map(-1))
+    .scan(0, function(x,y) { return x + y });
+
+counter.assign($('#counter'), 'text');
   </script>
 </body>
 
