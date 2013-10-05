@@ -1,0 +1,78 @@
+body {
+    margin-top: 2em;
+    margin-bottom: 5em;
+}
+
+p {
+    color: rgb(50, 52, 50);
+}
+
+h1 {
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    color: rgb(50, 52, 50);
+}
+
+.logo {
+    text-align: center;
+}
+
+
+@media only screen and (min-width: 768px) {
+}
+
+.menu {
+    margin-bottom: 1.2em;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-size: 200%;
+}
+
+.menu p {
+    margin-bottom: 0;
+    margin-left: 1em;
+    line-height: 1.2em;
+}
+
+a {
+    color: darkred;
+}
+
+div.download {
+    margin: 2.0em;
+    text-align: center;
+}
+
+a.download {
+    display: inline-block;
+    width: 100%;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-size: 200%;
+    background-color: rgb(50, 52, 50);
+    color: white;
+    padding: 0.5em;
+    border-radius: 10px;
+}
+
+.download p {
+    margin: 0;
+    line-height: 1.1em;
+    color: white;
+}
+
+p.small {
+    font-size: 60%;
+}
+
+pre {
+    background-color: rgb(215, 218, 214);
+    padding: 1em;
+    font-family: consolas, lucida console, ubuntu mono, monospace;
+    margin-bottom: 1em;
+    border-radius: 5px;
+}
+
+.example {
+    padding: 1em;
+    border: 1px solid rgb(215, 218, 214);
+    border-radius: 5px;
+    margin-bottom: 1em;
+}
