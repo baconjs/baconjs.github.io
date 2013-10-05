@@ -1,0 +1,31 @@
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  color: #232523;
+  line-height: 1.4em;
+  background: #bdccb6;
+  margin: 0;
+}
+h2 {
+  font-family: Georgia, serif;
+  text-transform: uppercase;
+  color: #636b60;
+  letter-spacing: 1px;
+  font-size: 1em;
+}
+a {
+  color: #567a38;
+}
+a:visited {
+  color: #232523;
+}
+h1 {
+  text-align: center;
+  margin-bottom: 1.75em;
+}
+
+#main {
+  max-width: 500px;
+  margin: 0 auto;
+  background: white;
+  padding: 1px 2em 2em 2em;
+}
