@@ -1,6 +1,9 @@
 body {
-    margin-top: 2em;
     margin-bottom: 5em;
+}
+
+.grid {
+    padding-top: 2em;
 }
 
 p {
