@@ -1,0 +1,62 @@
+.bacon-marble {
+    padding: 1em;
+    width: 80%;
+}
+.bacon-input, .bacon-output {
+    position: relative;
+    padding: 0.5em;
+    margin: 0.8em;
+}
+.bacon-output:before, .bacon-input:before {
+    content: ' ';
+    height: 2px;
+    position: absolute;
+    top: 100%;
+    width: calc(100% + 20px);
+    background-color: lightgray;
+    z-index: 5;
+}
+.bacon-output:after, .bacon-input:after {
+    content: '\25B6';
+    color: lightgray;
+    width: 20px;
+    font-size: 20px;
+    height: 20px;
+    position: absolute;
+    right: -40px;
+    top: 22px;
+}
+.bacon-input span {
+    z-index: 10;
+}
+.bacon-output span, .bacon-input span {
+    font-weight: bold;
+    background-color: rgb(50, 52, 50);
+    color: white;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    padding: 0.4em 0.9em;
+    border-radius: 5px;
+    margin: 0.5em;
+}
+.bacon-output span {
+    background-color: rgb(115, 127, 113);
+    z-index: 10;
+}
+.bacon-input:nth-child(2) span {
+    background-color: #2ba6cb;
+}
+.bacon-label {
+    color: #222;
+    text-align: center;
+    margin-bottom: 1em;
+}
+.bacon-label code {
+    color: #222;
+}
+.bacon-output label, .bacon-input label {
+    position: absolute;
+    width: 4.5em;
+    text-align: right;
+    left: -5em;
+    top: 60%;
+}

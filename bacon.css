@@ -7,9 +7,8 @@ body {
     padding-top: 2em;
 }
 
-h1 {
+h1, h2, h3, h4, h5, h6 {
     font-family: 'Yanone Kaffeesatz', sans-serif;
-    color: rgb(50, 52, 50);
 }
 
 .logo {
@@ -88,4 +87,8 @@ pre {
 #counter {
     font-size: 120%;
     padding: 1em;
+}
+
+.menu p {
+    color: lightgray;
 }

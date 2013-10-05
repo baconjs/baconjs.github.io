@@ -1,0 +1,182 @@
+<html>
+
+<head>
+
+<link href="marble.css" rel="stylesheet" type="text/css">
+<link href="normalize.css" rel="stylesheet" type="text/css">
+<link href="foundation.min.css" rel="stylesheet" type="text/css">
+<link href="bacon.css" rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
+
+<script src="http://codeorigin.jquery.com/jquery-2.0.3.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/bacon.js/0.6.8/Bacon.min.js"></script>
+<script type="text/javascript" src="tickscheduler-modified.js"></script>
+<script type="text/javascript"> 
+  window.sc = new TickScheduler()
+  window.oldTimer = Bacon.scheduler
+  Bacon.scheduler = window.sc
+</script>
+  
+</head>
+
+<body>
+
+  <div class="grid row">
+    <div class="large-4 columns sidebar">
+      <div class="logo">
+        <img src="logo.png">
+      </div>
+
+      <div class="download">
+        <a class="button big-button" href="http://cdnjs.cloudflare.com/ajax/libs/bacon.js/0.6.8/Bacon.js" download>
+          Download Bacon.js
+          <small>v0.68</small>
+        </a>
+        <a class="github" href="https://github.com/baconjs/bacon.js">Or get it on GitHub</a>
+      </div>
+
+      <div class="menu">
+        <div class="row">
+          <div class="large-12 small-6 columns">
+            <p> <a href="api.html"> Api Reference </a> </p>
+            <p> Tutorials </p>
+            <p> Install/Download </p>
+          </div>
+          <div class="large-12 small-6 columns">
+            <p> Develop </p>
+            <p> Bacon cookbook </p>
+            <p> FAQ </p>
+          </div>
+        </div>
+      </div>      
+
+    </div>
+
+    <div class="large-8 columns">
+      <div class="main">
+        <h1> API Reference </h1>
+
+        <p> This reference is incomplete and being ported from
+        https://github.com/baconjs/bacon.js.
+        </p>
+        
+        <h2> Subscribing </h2>
+        
+        <h3> Subscribe </h3>
+        
+        <p>
+          <code>stream.subscribe(f)</code> subscribes given handler
+          function to event stream. Function will receive Event objects
+          (see below). The subscribe() call returns a unsubscribe
+          function that you can call to unsubscribe. You can also
+          unsubscribe by returning <code>Bacon.noMore</code> from the
+          handler function as a reply to an Event.
+        </p>
+        
+        <h3> onValue </h3>
+        <p>
+          <code>stream.onValue(f)</code> subscribes a given handler
+          function to event stream. Function will be called for each
+          new value in the stream. This is the simplest way to assign
+          a side-effect to a stream. The difference to
+          the <code>subscribe</code> method is that the actual stream
+          values are received, instead of Event objects. Function
+          Construction rules below apply here.
+        </p>
+        
+        <h3> onValues </h3>
+        <p> <code> stream.onValues(f)</code> like onValue, but splits
+          the value (assuming its an array) as function arguments
+          to <code>f</code>
+        </p>
+        
+        <h3> onEnd </h3>
+        <p>
+          subscribes a callback to stream end. The function will be
+          called when the stream ends.
+        </p>
+        <h2> Combinators </h2>
+        
+        <h3> Merge </h3>  
+        
+        <p> Merges two event-streams together, delivering events from
+        both into the resulting stream,
+        so <code>stream1.merge(stream2)</code> contains the events
+        from both streams. </p>
+        
+        <div class="bacon-marble">
+          <div class="bacon-input"  x-bacon-input="Bacon.sequentially(200, [9,0,2,0,0,3]).filter(function(x) { return x })"> </div>
+          <div class="bacon-input"  x-bacon-input="Bacon.sequentially(200, [0,1,0,12,8,0]).filter(function(x) { return x })"> </div>
+          <div class="bacon-output" x-bacon-output="function(a,b) { return a.merge(b) }"></div>
+        </div>
+
+        <h3> Concat </h3>  
+        
+        <p> <code>stream1.concat(stream2)</code> concatenates two
+        streams into one stream so that it will deliver events from
+          <code>stream1</code> until it ends and then deliver events from
+          <code>stream2</code>. This means too that events
+        from <code>stream2</code>, occurring before the end
+        of <code>stream1</code> will not be included in the result
+        stream. </p>
+        
+        <div class="bacon-marble">
+          <div class="bacon-input"  x-bacon-input="Bacon.sequentially(200, [9,0,2]).filter(function(x) { return x })"> </div>
+          <div class="bacon-input"  x-bacon-input="Bacon.sequentially(200, [0,1,0,12,8,0]).filter(function(x) { return x })"> </div>
+          <div class="bacon-output" x-bacon-output="function(a,b) { return a.concat(b) }"></div>
+        </div>
+      
+      </div>
+
+      </div>
+    </div>
+  </div>
+
+
+<script>
+Bacon.logMarble = function(elem, stream) {
+  stream.onValue(function(x) {
+    var time = window.sc.now()
+    var parent = $(elem).parent()
+    var mn = parent.attr('x-time-min')
+    var min = Math.min(time, typeof mn === 'undefined' ? 9007199254740992 : parseInt(mn))
+    var max = Math.max(time, parseInt(parent.attr('x-time-max')) || 0)
+    parent.attr('x-time-min', min);
+    parent.attr('x-time-max', max);
+    var content = typeof x.describe === 'undefined' ? x : x.describe;
+    $(elem).append(
+      $('<span style="position: absolute" x-time="'+time+'"/>').html(content))
+  })
+}
+
+$('.bacon-marble').each(function() {
+ var inputs = $(this).find('.bacon-input').map(function() {
+   var stream = eval(this.attributes['x-bacon-input'].value)
+   $(this).append('<div style="display: inline">&nbsp;</div>')
+   Bacon.logMarble(this, stream)
+   return stream
+ }).toArray()
+ $(this).find('.bacon-output').each(function() {
+   var stream = eval('(' + this.attributes['x-bacon-output'].value + ')').apply(null, inputs)
+   var elem = this;
+   $(this).append('<div style="display: inline">&nbsp;</div>')
+   Bacon.logMarble(this, stream)
+   stream.onEnd(function() {
+     var parent = elem.parentNode;
+     var elems = $(parent).children('div').children('span').toArray()
+     var max = parent.attributes['x-time-max'].value
+     var min = parent.attributes['x-time-min'].value
+     var delta = max - min
+     for (var i in elems) {
+       $(elems[i]).css('left', Math.floor(100 * (elems[i].attributes['x-time'].value - min) / delta / 1.1)*1 + 2 + '%')
+    }
+   })
+ })
+ 
+})
+</script>
+
+</body>
+
+</html>
+
