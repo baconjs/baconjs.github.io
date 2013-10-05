@@ -3,6 +3,13 @@ body {
     color: rgb(50, 52, 50);
 }
 
+.github {
+    background-color: white;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-size: 140%;
+    padding: 0.1em 0.1em
+}
+
 .grid {
     padding-top: 2em;
 }
