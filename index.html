@@ -7,12 +7,16 @@
 <link rel="stylesheet" type="text/css" href="normalize.css" >
 <link rel="stylesheet" type="text/css" href="foundation.min.css" >
 <link rel="stylesheet" type="text/css" href="bacon.css" >
+<link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/styles/shCore.min.css" >
+<link rel="stylesheet" type="text/css" href="shThemeDefault.min.css" >
+
 <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
 
 <script src="http://codeorigin.jquery.com/jquery-2.0.3.min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/bacon.js/0.6.19/Bacon.min.js"></script>
 
-  <meta charset="utf-8" />
+
+<meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
   <meta name="keywords" content="bacon.js, FPR, functional reactive programming, javascript, reactive programming" />
   <meta name="description" content="Bacon.js is a functional reactive programming library for javascript." />
@@ -88,15 +92,8 @@
 
         <h1> Examples </h1>
 
-        <pre>var up   = $('#up').asEventStream('click');
-var down = $('#down').asEventStream('click');
-
-var counter =
-  up.map(1).merge(down.map(-1))
-    .scan(0, function(x,y) { return x + y });
-
-counter.assign($('#counter'), 'text');</pre>
-
+        <h3> Simple counter </h3>
+        
         <div class="example">
 
           <p> <i> Behold!</i> It counts up and down as you click the buttons </p>
@@ -107,9 +104,21 @@ counter.assign($('#counter'), 'text');</pre>
 
         </div>
 
+        <pre class="brush: js;">var up   = $('#up').asEventStream('click');
+var down = $('#down').asEventStream('click');
+
+
+var counter =
+  // map up to 1, down to -1
+  up.map(1).merge(down.map(-1)) 
+  // accumulate sum  
+    .scan(0, function(x,y) { return x + y });
+
+// assign observable value to jQuery property text 
+counter.assign($('#counter'), 'text');</pre>
+
+
       </div>
-    </div>
-  </div>
 
   <script>
 var up = $('#up').asEventStream('click');
@@ -122,6 +131,93 @@ var counter =
 counter.assign($('#counter'), 'text');
   </script>
 
+<p>&nbsp;</p>
+<h3> Movie Search </h3>
+
+Type a word with at least three characters into the box.
+
+<script>
+    function queryMovie(query) {
+      return jQuery.get(
+          'http://api.themoviedb.org/3/search/movie?api_key=9eae05e667b4d5d9fbb75d27622347fe&query=' + query
+      ).then(function(r) { return r.results; });
+    }
+    
+    function showMovie(result) {
+      var link = $('<a/>')
+        .attr('href', 'https://www.themoviedb.org/movie/' + result.id)
+        .text(result.title);
+      return $('<div/>').append(link).css('padding', '0.1em 0');
+    }
+</script>
+
+<div style="padding: 1em 0">
+<input type="text" id="input"/>
+<div id="results" style="position: absolute; z-index:1000;background-color: white; padding: 0.5em"></div>
+</div>
+
+<script id="movie-example-code">
+function movieSearch(query) {
+      if (query.length < 3)
+        // show no results for queries of length < 3
+        return Bacon.once([]);
+      return Bacon.fromPromise(queryMovie(query));
+}
+
+var text = $('#input')
+  // steam of keydown events from text-field
+  .asEventStream('keydown') 
+  // limit the rate of queries 
+  .debounce(300)                    
+  // get input text value from each event
+  .map(function(event) {            
+    return event.target.value;
+  })
+  // Ignore duplicate events with same text
+  .skipDuplicates();                
+
+
+// React to text changes by doing a lookup with
+// api function movieSearch, creating a new observable
+// with the results.
+//
+// Make sure to always react to the latest, value even 
+// if responses from the server arrives out of order
+
+var suggestions = 
+  text.flatMapLatest(movieSearch); 
+
+// Display "Searching..." when waiting for the results
+
+text.awaiting(suggestions).onValue(function(x) {
+  if (x) $('#results').html('Searching...');
+});
+
+// Render suggestion results to DOM
+
+suggestions.onValue(function(results) {
+  $('#results').html($.map(results, showMovie));
+});
+
+</script>
+
+<pre id="movie-example" class="brush: js;">// create an observable from a promise
+// render query to a dom element
+function showMovie(query) { ... }
+</pre>
+
+<script>
+$('#movie-example').append($('#movie-example-code').html());
+</script>
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/scripts/shCore.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/scripts/shBrushJScript.min.js"></script>
+<script>
+SyntaxHighlighter.defaults['gutter'] = false;
+SyntaxHighlighter.all();
+</script>
+    </div>
+  </div>
 
 </body>
 

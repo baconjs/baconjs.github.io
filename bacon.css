@@ -1,3 +1,6 @@
+div:empty {
+  display: none;
+}
 body {
     margin-bottom: 5em;
     color: rgb(50, 52, 50);
@@ -76,7 +79,7 @@ div.download {
 }
 
 pre {
-    background-color: rgb(215, 218, 214);
+    background-color: rgb(240, 240, 240);
     padding: 1em;
     font-family: consolas, lucida console, ubuntu mono, monospace;
     margin-bottom: 1em;
