@@ -158,10 +158,10 @@ Type a word with at least three characters into the box.
 
 <script id="movie-example-code">
 function movieSearch(query) {
-      if (query.length < 3)
-        // show no results for queries of length < 3
-        return Bacon.once([]);
-      return Bacon.fromPromise(queryMovie(query));
+  if (query.length < 3)
+    // show no results for queries of length < 3
+    return Bacon.once([]);
+  return Bacon.fromPromise(queryMovie(query));
 }
 
 var text = $('#input')
