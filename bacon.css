@@ -86,6 +86,26 @@ pre {
     border-radius: 5px;
 }
 
+textarea, .CodeMirror {
+    width: 100%;
+    background-color: rgb(240, 240, 240);
+    padding: 1em;
+    font-family: consolas, lucida console, ubuntu mono, monospace;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    border-radius: 5px;
+}
+
+/* resize http://codemirror.net/demo/resize.html */
+.CodeMirror {
+  border: 1px solid #eee;
+  height: auto;
+}
+.CodeMirror-scroll {
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+
 .example {
     padding: 1em;
     border: 1px solid rgb(215, 218, 214);
