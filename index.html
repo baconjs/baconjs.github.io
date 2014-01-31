@@ -22,21 +22,37 @@
 $(function () {
   $(".example").each(function (idx, el) {
     var textarea = $("textarea", el)[0];
+    var htmlElement = $($(".example-html", el).get(0));
+    var runButton = $($("button.run", el).get(-1));
+    var htmlContent = htmlElement.html();
 
-    if (textarea) {
-      var cm = CodeMirror.fromTextArea(textarea, {
-        mode: "javascript",
-        styleSelectedText: true,
-        // lineNumbers: true,
-      });
-
-      function run() {
-        var content = cm.getValue();
-        eval(content);
-      }
-
-      run();
+    if (!textarea || !htmlElement) {
+      return;
     }
+
+    var cm = CodeMirror.fromTextArea(textarea, {
+      mode: "javascript",
+      styleSelectedText: true,
+      // lineNumbers: true,
+    });
+
+    function run() {
+      var content = cm.getValue();
+      try {
+        // reload content of html-element
+        htmlElement.html(htmlContent);
+
+        // eval script
+        eval(content);
+        runButton.removeClass("error");
+      } catch (e) {
+        console.error(e);
+        runButton.addClass("error");
+      }
+    }
+
+    run();
+    runButton.click(run);
   });
 });
 </script>
@@ -120,7 +136,7 @@ $(function () {
         <h3> Simple counter </h3>
 
         <div class="example">
-          <div>
+          <div class="example-html">
             <p> <i> Behold!</i> It counts up and down as you click the buttons </p>
 
             <button id="up"> Up </button>
@@ -139,6 +155,7 @@ var counter =
 
 // assign observable value to jQuery property text
 counter.assign($('#counter'), 'text');</textarea>
+          <button class="run">Reload</button>
         </div>
 
       </div>
@@ -164,7 +181,7 @@ Type a word with at least three characters into the box.
     }
 </script>
 
-<div style="padding: 1em 0">
+<div class="example-html" style="padding: 1em 0">
 <input type="text" id="input"/>
 <div id="results" style="position: absolute; z-index:1000;background-color: white; padding: 0.5em"></div>
 </div>
@@ -210,6 +227,7 @@ text.awaiting(suggestions).onValue(function(x) {
 suggestions.onValue(function(results) {
   $('#results').html($.map(results, showMovie));
 });</textarea>
+<button class="run">Reload</button>
 </div>
 
         <br>

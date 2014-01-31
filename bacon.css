@@ -60,6 +60,10 @@ div.download {
     -webkit-appearance: none;
 }
 
+button.run.error {
+    background-color: darkred;
+}
+
 .big-button {
     display: inline-block;
     font-family: 'Yanone Kaffeesatz', sans-serif;
