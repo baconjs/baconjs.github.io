@@ -1,0 +1,25 @@
+{
+  "name": "baconjs.github.io",
+  "version": "0.0.0",
+  "description": "bacon.js website",
+  "dependencies": {
+    "mustache": "~0.8.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/baconjs/baconjs.github.io.git"
+  },
+  "author": {
+    "name": "Juha Paananen",
+    "email": "juha.paananen@gmail.com",
+    "url": "https://twitter.com/raimohanska"
+  },
+  "bugs": {
+    "url": "https://github.com/baconjs/baconjs.github.io/issues"
+  },
+  "homepage": "https://github.com/baconjs/baconjs.github.io"
+}
