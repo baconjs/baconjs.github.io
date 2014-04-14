@@ -35,4 +35,13 @@ $(function () {
     run();
     runButton.click(run);
   });
+
+  $("textarea.code").each(function (idx, el) {
+    console.log(el);
+    var cm = CodeMirror.fromTextArea(el, {
+      mode: "javascript",
+      styleSelectedText: true,
+      // lineNumbers: true,
+    });
+  });
 });

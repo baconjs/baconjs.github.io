@@ -2,10 +2,11 @@
   "name": "baconjs.github.io",
   "version": "0.0.0",
   "description": "bacon.js website",
-  "dependencies": {
-    "mustache": "~0.8.1"
+  "devDependencies": {
+    "mustache": "~0.8.1",
+    "lodash": "~2.4.1",
+    "marked": "~0.3.2"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
