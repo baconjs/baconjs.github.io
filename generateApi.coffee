@@ -62,9 +62,9 @@ renderElement = (element) ->
     when "section"
       '<h1>' + element.name + '</h1>\n'
     when "subsection"
-      '<h2>' + element.name + '</h2>\n'
+      '<h2><a name="' + common.anchorName(element.name) + '"></a>' + element.name + '</h2>\n'
     when "subsubsection"
-      '<h3>' + element.name + '</h3>\n'
+      '<h3><a name="' + common.anchorName(element.name) + '"></a>' + element.name + '</h3>\n'
     when "fn"
       anchor = '<a name="' + element.anchorName + '"></a>'
       md = anchor + "\n[`" + renderSignature(element.parsedSignature) + '`](#' + element.anchorName + ' "' +  element.signature + '") ' + element.content
