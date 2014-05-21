@@ -17,8 +17,8 @@ env = if process.argv[2] == "dev"
 else
   fonts: "//fonts.googleapis.com/css?family=Yanone+Kaffeesatz"
   jquery: "//codeorigin.jquery.com/jquery-2.1.1.min.js"
-  baconjs: "//cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.10/bacon.min.js"
-  version: "0.7.10"
+  baconjs: "//cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.12/bacon.min.js"
+  version: "0.7.12"
 
 console.dir env
 

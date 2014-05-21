@@ -13,11 +13,10 @@
 <link rel="stylesheet" type="text/css" href="marble.css">
 <link rel="stylesheet" type="text/css" href="bacon.css" >
 
-
 <link href='//fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
 
-<script src="//codeorigin.jquery.com/jquery-2.0.3.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.10/bacon.min.js"></script>
+<script src="//codeorigin.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.12/bacon.min.js"></script>
 
 
 <script src="codemirror/codemirror.js"></script>
@@ -38,9 +37,9 @@
       </div>
 
       <div class="download">
-        <a class="button big-button" href="http://cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.10/bacon.js" download>
+        <a class="button big-button" href="http://cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.12/bacon.js" download>
           Download Bacon.js
-          <small>v0.7.10</small>
+          <small>v0.7.12</small>
         </a>
         <a class="github" href="https://github.com/baconjs/bacon.js">Or get it on GitHub</a>
       </div>
@@ -96,7 +95,7 @@
 
 
 
-<h2>Creating streams</h2>
+<h2><a name="creating-streams"></a>Creating streams</h2>
 
 
 <p><a name="$-aseventstream"></a>
@@ -225,7 +224,7 @@ value.</p>
 
 
 
-<h2>Bacon.fromBinder for custom streams</h2>
+<h2><a name="baconfrombinder-for-custom-streams"></a>Bacon.fromBinder for custom streams</h2>
 
 
 <p>If none of the factory methods above apply, you may of course roll your own EventStream by using <a href="#bacon-frombinder"><code>Bacon.fromBinder</code></a>.</p>
@@ -268,7 +267,7 @@ The subscribe-unsubscribe cycle may of course be repeated indefinitely,
 so prepare for multiple calls to the subscribe function.</p>
 <p>A note about the <code>new Bacon.Next(..)</code> constructor: You can use it like</p>
 <textarea class="code">new Bacon.Next("value")</textarea><p>But the canonical way would be</p>
-<textarea class="code">new Bacon.Next(function() { return "value") })</textarea><p>The former version is safe only when you know that the actual value in
+<textarea class="code">new Bacon.Next(function() { return "value"; })</textarea><p>The former version is safe only when you know that the actual value in
 the stream is not a function.</p>
 <p>The idea in using a function instead of a plain value is that the internals on Bacon.js take
 advantage of lazy evaluation by deferring the evaluations of values
@@ -283,7 +282,7 @@ created by <a href="#observable-map"><code>map</code></a>, <a href="#combining-m
 <a href="#bacon-more" title="Bacon.more"><code>Bacon.more</code></a> The opaque value <code>sink</code> function may return. See <a href="#bacon-frombinder"><code>Bacon.fromBinder</code></a>.</p>
 
 
-<h2>Common methods in EventStreams and Properties</h2>
+<h2><a name="common-methods-in-eventstreams-and-properties"></a>Common methods in EventStreams and Properties</h2>
 
 
 <p>Both EventStream and Property share the Observable interface, and hence
@@ -450,7 +449,7 @@ stream/property too. Also, the return value of function <code>f</code> can be ei
 })</textarea>
 
 <p><a name="observable-flatmaplatest"></a>
-<a href="#observable-flatmaplatest" title="observable.flatMapLatest(f)"><code>observable.flatMapLatest(f)</code></a> like flatMap, but instead of including events from
+<a href="#observable-flatmaplatest" title="observable.flatMapLatest(f)"><code>observable.flatMapLatest(f)</code></a> like <a href="#observable-flatmap"><code>flatMap</code></a>, but instead of including events from
 all spawned streams, only includes them from the latest spawned stream.
 You can think this as switching from stream to stream.
 Note that instead of a function, you can provide a stream/property too.</p>
@@ -460,6 +459,23 @@ Note that instead of a function, you can provide a stream/property too.</p>
 <p><a name="observable-flatmapfirst"></a>
 <a href="#observable-flatmapfirst" title="observable.flatMapFirst(f)"><code>observable.flatMapFirst(f)</code></a> like flatMap, but doesn&#39;t spawns a new
 stream only if the previously spawned stream has ended.</p>
+<p>The <a href="#function-construction-rules">Function Construction rules</a> below apply here.</p>
+
+
+<p><a name="observable-flatmapwithconcurrencylimit"></a>
+<a href="#observable-flatmapwithconcurrencylimit" title="observable.flatMapWithConcurrencyLimit(@ : Observable[A], limit : Number, f : A -&gt; Observable[B] | Event[B] | B) : EventStream[B]"><code>observable.flatMapWithConcurrencyLimit(limit, f)</code></a> a super method of <em>flatMap</em> family. It limits the number of open spawned streams and buffers incoming events.
+<a href="#observable-flatmapconcat"><code>flatMapConcat</code></a> is <code>flatMapWithConcurrencyLimit(1)</code> (only one input active),
+and <a href="#observable-flatmap"><code>flatMap</code></a> is <code>flatMapWithConcurrencyLimit ∞</code> (all inputs are piped to output).</p>
+<p>The <a href="#function-construction-rules">Function Construction rules</a> below apply here.</p>
+
+
+<p><a name="observable-flatmapconcat"></a>
+<a href="#observable-flatmapconcat" title="observable.flatMapConcat(@ : Observable[A], f : A -&gt; Observable[B] | Event[B] | B) : EventStream[B]"><code>observable.flatMapConcat(f)</code></a> a <a href="#observable-flatmapwithconcurrencylimit"><code>flatMapWithConcurrencyLimit</code></a> with limit of 1.</p>
+<p>The <a href="#function-construction-rules">Function Construction rules</a> below apply here.</p>
+
+
+<p><a name="observable-ratelimit"></a>
+<a href="#observable-ratelimit" title="observable.rateLimit(@ : Observable[A], minimumInterval) : EventStream[A]"><code>observable.rateLimit(minimumInterval)</code></a> rate limits and buffers changes in the observable, so at most one event in minimumInteval is issued.</p>
 
 
 <p><a name="observable-scan"></a>
@@ -636,7 +652,7 @@ obs.withDescription(src, "times", -1)
 console.log(obs.toString())
 --> Bacon.once(1).times(-1)</textarea>
 
-<h2>EventStream</h2>
+<h2><a name="eventstream"></a>EventStream</h2>
 
 
 <p><a name="bacon-eventstream"></a>
@@ -701,6 +717,11 @@ stream.</p>
 </div>
 
 
+<p><a name="stream-holdwhen"></a>
+<a href="#stream-holdwhen" title="stream.holdWhen(@ : EventStream[A], valve : Observable[B]) : EventStream[A]"><code>stream.holdWhen(valve)</code></a> pauses and buffers the event stream if last event in valve is truthy.
+All buffered events are released when valve becomes falsy.</p>
+
+
 <p><a name="stream-startwith"></a>
 <a href="#stream-startwith" title="stream.startWith(value)"><code>stream.startWith(value)</code></a> adds a starting value to the stream, i.e. concats a
 single-element stream contains <a href="#event-value"><code>value</code></a> with this stream.</p>
@@ -760,7 +781,7 @@ EventStream with the given initial value that will be used as the current value 
 the first value comes from the stream.</p>
 
 
-<h2>Property</h2>
+<h2><a name="property"></a>Property</h2>
 
 
 <p><a name="bacon-property"></a>
@@ -860,7 +881,7 @@ given value will be used as the initial value. If the property has an
 initial value of its own, the given value will be ignored.</p>
 
 
-<h2>Combining multiple streams and properties</h2>
+<h2><a name="combining-multiple-streams-and-properties"></a>Combining multiple streams and properties</h2>
 
 
 <p><a name="bacon-combineasarray"></a>
@@ -955,7 +976,7 @@ the number 3.</p>
 <textarea class="code">function f(a, b) { console.log(a + b) }
 Bacon.onValues(Bacon.constant(1), Bacon.constant(2), f)</textarea>
 
-<h2>Function Construction rules</h2>
+<h2><a name="function-construction-rules"></a>Function Construction rules</h2>
 
 
 <p>Many methods in Bacon have a single function as their argument. Many of these
@@ -1003,7 +1024,7 @@ at least <a href="#observable-onvalue"><code>onValue</code></a>, <a href="#obser
 
 
 
-<h2>Latest value of Property or EventStream</h2>
+<h2><a name="latest-value-of-property-or-eventstream"></a>Latest value of Property or EventStream</h2>
 
 
 <p>One of the common first questions people ask is &quot;how do I get the
@@ -1015,7 +1036,7 @@ combine methods.</p>
 
 
 
-<h2>Bus</h2>
+<h2><a name="bus"></a>Bus</h2>
 
 
 <p><a href="#bus"><code>Bus</code></a> is an <a href="#eventstream"><code>EventStream</code></a> that allows you to <a href="#bus-push"><code>push</code></a> values into the stream.
@@ -1053,7 +1074,7 @@ mechanism in the
 <a href="https://github.com/raimohanska/worzone">Worzone</a> game, for instance.</p>
 
 
-<h2>Event</h2>
+<h2><a name="event"></a>Event</h2>
 
 
 <p><a name="bacon-event"></a>
@@ -1082,7 +1103,7 @@ distinguish from other events. Only sent immediately after subscription
 to a Property.</p>
 
 
-<h3>Event properties and methods</h3>
+<h3><a name="event-properties-and-methods"></a>Event properties and methods</h3>
 
 
 <p><a name="event-value"></a>
@@ -1105,7 +1126,7 @@ to a Property.</p>
 <a href="#event-isend" title="event.isEnd()"><code>event.isEnd()</code></a> true for End events</p>
 
 
-<h2>Errors</h2>
+<h2><a name="errors"></a>Errors</h2>
 
 
 <p><a href="#bacon-error"><code>Bacon.Error</code></a> events are always passed through all stream combinators. So, even
@@ -1139,7 +1160,7 @@ such as AJAX calls.</p>
 
 
 
-<h2>Join Patterns</h2>
+<h2><a name="join-patterns"></a>Join Patterns</h2>
 
 
 <p>Join patterns are a generalization of the <a href="#observable-zip"><code>zip</code></a> function. While zip
@@ -1186,7 +1207,7 @@ var score = Bacon.update(
 )</textarea><p>In the example, the <code>score</code> property is updated when either <code>hitUfo</code> or <code>hitMotherShip</code> occur. The <code>scoreMultiplier</code> Property is sampled to take multiplier into account when <code>hitUfo</code> occurs.</p>
 
 
-<h3>Join patterns as a "chemical machine"</h3>
+<h3><a name="join-patterns-as-a-chemical-machine"></a>Join patterns as a "chemical machine"</h3>
 
 
 <p>A quick way to get some intuition for join patterns is to understand
@@ -1210,7 +1231,7 @@ monoxide. The rules are tried at each point from top to bottom.</p>
 
 
 
-<h3>Join patterns and properties</h3>
+<h3><a name="join-patterns-and-properties"></a>Join patterns and properties</h3>
 
 
 <p>Properties are not part of the synchronization pattern, but are
@@ -1239,7 +1260,7 @@ and <code>total</code> such that</p>
    .toProperty(0)</textarea>
 
 
-<h3>Join patterns and Bacon.bus</h3>
+<h3><a name="join-patterns-and-baconbus"></a>Join patterns and Bacon.bus</h3>
 
 
 <p>The result functions of join patterns are allowed to push values onto
@@ -1284,7 +1305,7 @@ for (var i = 0; i < 3; i++) {
 }</textarea>
 
 
-<h2>Cleaning up</h2>
+<h2><a name="cleaning-up"></a>Cleaning up</h2>
 
 
 <p>As described above, a subscriber can signal the loss of interest in new events
@@ -1302,7 +1323,7 @@ welcome you to contribute your stuff to bacon.js.</p>
 
 
 
-<h2>EventStream and Property semantics</h2>
+<h2><a name="eventstream-and-property-semantics"></a>EventStream and Property semantics</h2>
 
 
 <p>The state of an EventStream can be defined as (t, os) where <code>t</code> is time
@@ -1346,7 +1367,7 @@ on how the Property was created.</li>
 
 
 
-<h2>Atomic updates</h2>
+<h2><a name="atomic-updates"></a>Atomic updates</h2>
 
 
 <p>From version 0.4.0, Bacon.js supports atomic updates to properties, with
@@ -1366,7 +1387,7 @@ just combining Properties, you&#39;ll updates will be atomic.</p>
 
 
 
-<h2>For RxJs Users</h2>
+<h2><a name="for-rxjs-users"></a>For RxJs Users</h2>
 
 
 <p>Bacon.js is quite similar to RxJs, so it should be pretty easy to pick up. The
