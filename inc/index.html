@@ -90,7 +90,7 @@ Type a word with at least three characters into the box.
 }
 
 var text = $('#input')
-  // steam of keydown events from text-field
+  // stream of keydown events from text-field
   .asEventStream('keydown')
   // limit the rate of queries
   .debounce(300)
