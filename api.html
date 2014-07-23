@@ -466,8 +466,8 @@ Note that instead of a function, you can provide a stream/property too.</p>
 
 
 <p><a name="observable-flatmapfirst"></a>
-<a href="#observable-flatmapfirst" title="observable.flatMapFirst(f)"><code>observable.flatMapFirst(f)</code></a> like flatMap, but doesn&#39;t spawns a new
-stream only if the previously spawned stream has ended.</p>
+<a href="#observable-flatmapfirst" title="observable.flatMapFirst(f)"><code>observable.flatMapFirst(f)</code></a> like flatMap, but only spawns a new
+stream if the previously spawned stream has ended.</p>
 <p>The <a href="#function-construction-rules">Function Construction rules</a> below apply here.</p>
 
 
@@ -1228,8 +1228,8 @@ Bacon.when(
   [oxygen, hydrogen, hydrogen], make_water,
   [oxygen, carbon],             make_carbon_monoxide,
 )</textarea><p>Now, every time a new &#39;atom&#39; is spawned from one of the observables,
-this atom is added to the mixture. If at any time there are two oxygen
-atoms, and a hydrogen atom, the corresponding atoms are <em>consumed</em>,
+this atom is added to the mixture. If at any time there are two hydrogen
+atoms, and an oxygen atom, the corresponding atoms are <em>consumed</em>,
 and output is produced via <code>make_water</code>.</p>
 <p>The same semantics apply for the second rule to create carbon
 monoxide. The rules are tried at each point from top to bottom.</p>
