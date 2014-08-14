@@ -18,7 +18,7 @@ else
   fonts: "//fonts.googleapis.com/css?family=Yanone+Kaffeesatz"
   jquery: "//codeorigin.jquery.com/jquery-2.1.1.min.js"
   baconjs: "//cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.18/Bacon.min.js"
-  version: "0.7.18"
+  version: "0.7.21"
 
 console.dir env
 
