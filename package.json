@@ -3,9 +3,11 @@
   "version": "0.0.0",
   "description": "bacon.js website",
   "devDependencies": {
-    "mustache": "~0.8.1",
+    "bluebird": "^2.3.6",
     "lodash": "~2.4.1",
-    "marked": "~0.3.2"
+    "marked": "~0.3.2",
+    "mustache": "~0.8.1",
+    "request": "^2.45.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
