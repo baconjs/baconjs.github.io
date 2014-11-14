@@ -17,7 +17,7 @@
 <link href='//fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
 
 <script src="//codeorigin.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.30/Bacon.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.33/Bacon.min.js"></script>
 
 
 <script src="codemirror/codemirror.js"></script>
@@ -38,9 +38,9 @@
       </div>
 
       <div class="download">
-        <a class="button big-button" href="http://cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.30/Bacon.js" download>
+        <a class="button big-button" href="http://cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.33/Bacon.js" download>
           Download Bacon.js
-          <small>v0.7.30</small>
+          <small>v0.7.33</small>
         </a>
         <a class="github" href="https://github.com/baconjs/bacon.js">Or get it on GitHub</a>
       </div>
@@ -75,6 +75,7 @@
 <li><a href="#property">Property</a></li>
 <li><a href="#combining-multiple-streams-and-properties">Combining multiple streams and properties</a></li>
 <li><a href="#function-construction-rules">Function Construction rules</a></li>
+<li><a href="#lazy-evaluation">Lazy evaluation</a></li>
 <li><a href="#latest-value-of-property-or-eventstream">Latest value of Property or EventStream</a></li>
 <li><a href="#bus">Bus</a></li>
 <li><a href="#event">Event</a><ul>
@@ -116,7 +117,8 @@ Check out this <a href="https://github.com/raimohanska/baconjs-examples/blob/mas
 
 <p><a name="bacon-fromeventtarget"></a>
 <a href="#bacon-fromeventtarget" title="Bacon.fromEventTarget(target : EventTarget | EventEmitter, eventName : String [, eventTransformer]) : EventStream"><code>Bacon.fromEventTarget(target, eventName [, eventTransformer])</code></a> creates an EventStream from events
-on a DOM EventTarget or Node.JS EventEmitter object. You can also pass an optional function that transforms the emitted
+on a DOM EventTarget or Node.JS EventEmitter object, or an object that supports event listeners using <code>on</code>/<code>off</code> methods.
+You can also pass an optional function that transforms the emitted
 events&#39; parameters.</p>
 <textarea class="code">Bacon.fromEventTarget(document.body, "click").onValue(function() { alert("Bacon!") })</textarea>
 
@@ -271,7 +273,7 @@ so prepare for multiple calls to the subscribe function.</p>
 <textarea class="code">new Bacon.Next(function() { return "value"; })</textarea><p>The former version is safe only when you know that the actual value in
 the stream is not a function.</p>
 <p>The idea in using a function instead of a plain value is that the internals on Bacon.js take
-advantage of lazy evaluation by deferring the evaluations of values
+advantage of <a href="#lazy-evaluation">lazy evaluation</a> by deferring the evaluations of values
 created by <a href="#observable-map"><code>map</code></a>, <a href="#combining-multiple-streams-and-properties"><code>combine</code></a>.</p>
 
 
@@ -319,7 +321,8 @@ dot, the elements will be mapped to the corresponding field/function in the even
 value. For instance map(&quot;.keyCode&quot;) will pluck the keyCode field from
 the input values. If keyCode was a function, the result stream would
 contain the values returned by the function.
-The <a href="#function-construction-rules">Function Construction rules</a> below apply here.</p>
+The <a href="#function-construction-rules">Function Construction rules</a> below apply here.
+The <a href="#observable-map"><code>map</code></a> method, among many others, uses <a href="#lazy-evaluation">lazy evaluation</a>.</p>
 
 
 <p><a name="stream-map"></a>
@@ -445,8 +448,7 @@ also use a property-extractor string instead of a function, as in
 <p><a name="observable-flatmap"></a>
 <a href="#observable-flatmap" title="observable.flatMap(@ : Observable[A], f : A -&gt; Observable[B] | Event[B] | B) : EventStream[B]"><code>observable.flatMap(f)</code></a> for each element in the source stream, spawn a new
 stream using the function <code>f</code>. Collect events from each of the spawned
-streams into the result <a href="#eventstream"><code>EventStream</code></a>. This is very similar to selectMany in
-RxJs. Note that instead of a function, you can provide a
+streams into the result <a href="#eventstream"><code>EventStream</code></a>. Note that instead of a function, you can provide a
 stream/property too. Also, the return value of function <code>f</code> can be either an
 <code>Observable</code> (stream/property) or a constant value. The result of
 <a href="#observable-flatmap"><code>flatMap</code></a> is always an <a href="#eventstream"><code>EventStream</code></a>.</p>
@@ -1029,6 +1031,29 @@ at least <a href="#observable-onvalue"><code>onValue</code></a>, <a href="#obser
 
 
 
+<h2><a name="lazy-evaluation"></a>Lazy evaluation</h2>
+
+
+<p>Methods such as <a href="#observable-map"><code>map</code></a> and the <a href="#observable-combine"><code>combine</code></a> use lazy evaluation to avoid evaluating
+values that aren&#39;t actually needed. This can be generally considered a Good Thing,
+but it has it&#39;s pitfalls. </p>
+<p>If you pass a function that referentially transparent, you&#39;ll
+be fine. This means that your function should return the same value regardless of
+when it&#39;s called.</p>
+<p>On the other hand, if you pass a function that returns a value depending on time,
+you may have problems. Consider a property <code>contents</code> that&#39;s derived from events
+like below.</p>
+<textarea class="code">var items = clicks.map(getCurrentValueFromUI).toProperty()
+var submittedItems = items.sampledBy(submitClick)</textarea><p>Now the <code>submittedItems</code> stream will produce the current value of the <code>items</code> property
+when an event occurs in the <code>submitClick</code> stream. Or so you&#39;d think. In fact, the value
+of <code>submittedItems</code> is evaluated at the time of the event in the <code>submitClick</code> stream,
+which means that it will actually produce the value of <code>getCurrentValueFromUI</code> at that time,
+instead of at the time of the original <code>click</code> event.</p>
+<p>To force evaluation at the time of original event, you can just use <a href="#observable-flatmap"><code>flatMap</code></a> instead of <a href="#observable-map"><code>map</code></a>.
+As in here.</p>
+<textarea class="code">var items = clicks.flatMap(getCurrentValueFromUI).toProperty()</textarea>
+
+
 <h2><a name="latest-value-of-property-or-eventstream"></a>Latest value of Property or EventStream</h2>
 
 
@@ -1166,7 +1191,7 @@ such as AJAX calls.</p>
 
 
 <p><a name="bacon-retry"></a>
-<a href="#bacon-retry" title="Bacon.retry(options)"><code>Bacon.retry(options)</code></a> 
+<a href="#bacon-retry" title="Bacon.retry(options)"><code>Bacon.retry(options)</code></a>
 is used to retry the call when there is an <a href="#bacon-error"><code>Error</code></a> event in the source stream.</p>
 <textarea class="code">var source, ajaxCall // <- ajaxCall gives Errors on network or server errors
 ajaxResult = source.flatMap(function(url) {
@@ -1212,7 +1237,7 @@ The inputs are defined similarly to <a href="#bacon-when"><code>Bacon.when</code
   [x,y,z], function(previous,x,y,z) { ... },
   [x,y],   function(previous,x,y) { ... })</textarea><p>As input, each function above will get the previous value of the <code>result</code> Property, along with values from the listed Observables.
 The value returned by the function will be used as the next value of <code>result</code>.</p>
-<p>Just like in <a href="#bacon-when"><code>Bacon.when</code></a>, only EventStreams will trigger an update, while Properties will be just sampled. 
+<p>Just like in <a href="#bacon-when"><code>Bacon.when</code></a>, only EventStreams will trigger an update, while Properties will be just sampled.
 So, if you list a single EventStream and several Properties, the value will be updated only when an event occurs in the EventStream.</p>
 <p>Here&#39;s a simple gaming example:</p>
 <textarea class="code">var scoreMultiplier = Bacon.constant(1)
