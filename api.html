@@ -17,7 +17,7 @@
 <link href='//fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
 
 <script src="//codeorigin.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.33/Bacon.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.36/Bacon.min.js"></script>
 
 
 <script src="codemirror/codemirror.js"></script>
@@ -38,9 +38,9 @@
       </div>
 
       <div class="download">
-        <a class="button big-button" href="http://cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.33/Bacon.js" download>
+        <a class="button big-button" href="http://cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.36/Bacon.js" download>
           Download Bacon.js
-          <small>v0.7.33</small>
+          <small>v0.7.36</small>
         </a>
         <a class="github" href="https://github.com/baconjs/bacon.js">Or get it on GitHub</a>
       </div>
@@ -1036,7 +1036,7 @@ at least <a href="#observable-onvalue"><code>onValue</code></a>, <a href="#obser
 
 <p>Methods such as <a href="#observable-map"><code>map</code></a> and the <a href="#observable-combine"><code>combine</code></a> use lazy evaluation to avoid evaluating
 values that aren&#39;t actually needed. This can be generally considered a Good Thing,
-but it has it&#39;s pitfalls. </p>
+but it has it&#39;s pitfalls.</p>
 <p>If you pass a function that referentially transparent, you&#39;ll
 be fine. This means that your function should return the same value regardless of
 when it&#39;s called.</p>
@@ -1191,7 +1191,7 @@ such as AJAX calls.</p>
 
 
 <p><a name="bacon-retry"></a>
-<a href="#bacon-retry" title="Bacon.retry(options)"><code>Bacon.retry(options)</code></a>
+<a href="#bacon-retry" title="Bacon.retry(options)"><code>Bacon.retry(options)</code></a> 
 is used to retry the call when there is an <a href="#bacon-error"><code>Error</code></a> event in the source stream.</p>
 <textarea class="code">var source, ajaxCall // <- ajaxCall gives Errors on network or server errors
 ajaxResult = source.flatMap(function(url) {

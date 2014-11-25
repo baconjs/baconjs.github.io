@@ -41,11 +41,11 @@ lastVersionInCDN = request(tagsRequest).spread (response, body) ->
     tags[idx]
 
 envPromise = if process.argv[2] == "dev"
-  promise.resolve
+  lastVersionInCDN.then (tag) ->
     fonts: "http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz"
     jquery: "http://codeorigin.jquery.com/jquery-2.1.1.min.js"
-    baconjs: "../bacon.js/dist/bacon.js"
-    version: "DEV"
+    baconjs: "http://cdnjs.cloudflare.com/ajax/libs/bacon.js/" + tag + "/Bacon.min.js"
+    version: tag
 else
   lastVersionInCDN.then (tag) ->
     fonts: "//fonts.googleapis.com/css?family=Yanone+Kaffeesatz"
