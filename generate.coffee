@@ -3,8 +3,8 @@
 fs = require "fs"
 mustache = require "mustache"
 _ = require "lodash"
-bluebird = require "bluebird";
-request = bluebird.promisify require "request" ;
+bluebird = require "bluebird"
+request = bluebird.promisify require "request"
 
 readmeSrc = require "../bacon.js/readme-src"
 generateApi = require "./generateApi"
