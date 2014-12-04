@@ -13,5 +13,4 @@ to regenerate the site do
 ```sh
 npm install -g coffee-script
 npm install
-./generate.coffee
 ```
