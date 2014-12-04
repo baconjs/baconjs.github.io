@@ -6,6 +6,7 @@ generateApi = require "./generateApi"
 
 pages = [
   output: "index.html"
+  input: "content/index.html"
   title: "Bacon.js - Functional Reactive Programming library for JavaScript"
 ,
   output: "api.html"
