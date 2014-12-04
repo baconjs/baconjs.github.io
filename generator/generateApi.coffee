@@ -1,13 +1,6 @@
 common = require "../../bacon.js/readme/common.coffee"
-marked = require "marked"
+marked = require "./renderMarkdown.coffee"
 _ = require "lodash"
-
-renderer = new marked.Renderer
-renderer.code = (code, lang) ->
-  '<textarea class="code">' + code + '</textarea>'
-
-marked.setOptions
-  renderer: renderer
 
 renderToc = (elements) ->
   toc = ""
