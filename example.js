@@ -37,7 +37,8 @@ $(function () {
   });
 
   $("textarea.code").each(function (idx, el) {
-    console.log(el);
+    var $el = $(el);
+    $el.html($el.html().trim());
     var cm = CodeMirror.fromTextArea(el, {
       mode: "javascript",
       styleSelectedText: true,

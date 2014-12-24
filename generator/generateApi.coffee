@@ -51,7 +51,7 @@ renderSignature = (parsedSignature) ->
 renderElement = (element) ->
   switch element.type
     when "text"
-      marked(element.content) + "\n"
+      marked.render(element.content) + "\n"
     when "section"
       '<h1>' + element.name + '</h1>\n'
     when "subsection"
@@ -61,7 +61,7 @@ renderElement = (element) ->
     when "fn"
       anchor = '<a name="' + element.anchorName + '"></a>'
       md = anchor + "\n[`" + renderSignature(element.parsedSignature) + '`](#' + element.anchorName + ' "' +  element.signature + '") ' + element.content
-      marked(md)
+      marked.render(md)
     when "logo"
       undefined
     when "marble"

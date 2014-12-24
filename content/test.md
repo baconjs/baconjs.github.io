@@ -1,3 +1,5 @@
+# Structuring Real-Life Applications
+
 The Internet is full of smart peanut-size examples of how to solve X with "FRP" and Bacon.js. But how to organize a real-world size application? That's been [asked](https://github.com/baconjs/bacon.js/issues/478) once in a while and indeed I have an answer up in my sleeve. Don't take though that I'm saying this is the The Definitive Answer. I'm sure your own way is as good or better. Tell me about it!
 
 I think there are some principles that you should apply to the design of any application though, like [Single Reponsibility Principle](http://en.wikipedia.org/wiki/Single_responsibility_principle) and [Separation of Concerns](http://en.wikipedia.org/wiki/Separation_of_concerns). Given that, your application should consist of components that are fairly independent of each others implementation details. I'd also like the components to communicate using some explicit signals instead of shared mutable state (nudge nudge Angular). For this purpose, I find the Bacon.js `EventStreams` and `Properties` quite handy. 

@@ -5,7 +5,7 @@
   "devDependencies": {
     "bluebird": "^2.3.6",
     "lodash": "~2.4.1",
-    "marked": "~0.3.2",
+    "remarkable": "^1.6.0",
     "mustache": "~0.8.1",
     "request": "^2.45.0"
   },

@@ -1,10 +1,7 @@
-marked = require "marked"
+Remarkable = require('remarkable');
+md = new Remarkable
+  html: true
+  highlight: (code, lang) ->
+    '<textarea class="code">' + code + '</textarea>'
 
-renderer = new marked.Renderer
-renderer.code = (code, lang) ->
-  '<textarea class="code">' + code + '</textarea>'
-
-marked.setOptions
-  renderer: renderer
-
-module.exports = marked
+module.exports = md

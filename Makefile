@@ -3,7 +3,7 @@
 COFFEE ?= coffee
 
 all : 
-	$(COFFEE) generate.coffee
+	$(COFFEE) generator/generate.coffee
 
 dev : 
-	$(COFFEE) generate.coffee dev
+	$(COFFEE) generator/generate.coffee dev
