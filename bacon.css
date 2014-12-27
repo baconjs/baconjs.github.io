@@ -82,18 +82,14 @@ button.run.error {
     width: 100%;
 }
 
-pre {
-    background-color: rgb(240, 240, 240);
-    padding: 1em;
-    font-family: consolas, lucida console, ubuntu mono, monospace;
-    margin-bottom: 1em;
-    border-radius: 5px;
+code {
+    font-weight: normal;
 }
 
 textarea, .CodeMirror {
     width: 100%;
     background-color: rgb(240, 240, 240);
-    padding: 1em;
+    padding: 0.5em 1em;
     font-family: consolas, lucida console, ubuntu mono, monospace;
     margin-top: 1em;
     margin-bottom: 1em;

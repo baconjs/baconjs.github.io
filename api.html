@@ -14,10 +14,10 @@
 <link rel="stylesheet" type="text/css" href="marble.css">
 <link rel="stylesheet" type="text/css" href="bacon.css" >
 
-<link href='//fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
 
-<script src="//codeorigin.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.37/Bacon.min.js"></script>
+<script src="http://codeorigin.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.41/Bacon.min.js"></script>
 
 
 <script src="codemirror/codemirror.js"></script>
@@ -38,9 +38,9 @@
       </div>
 
       <div class="download">
-        <a class="button big-button" href="http://cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.37/Bacon.js" download>
+        <a class="button big-button" href="http://cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.41/Bacon.js" download>
           Download Bacon.js
-          <small>v0.7.37</small>
+          <small>v0.7.41</small>
         </a>
         <a class="github" href="https://github.com/baconjs/bacon.js">Or get it on GitHub</a>
       </div>
@@ -78,17 +78,17 @@
 <li><a href="#lazy-evaluation">Lazy evaluation</a></li>
 <li><a href="#latest-value-of-property-or-eventstream">Latest value of Property or EventStream</a></li>
 <li><a href="#bus">Bus</a></li>
-<li><a href="#event">Event</a><ul>
+<li><a href="#event">Event</a>
+<ul>
 <li><a href="#event-properties-and-methods">Event properties and methods</a></li>
-</ul>
-</li>
+</ul></li>
 <li><a href="#errors">Errors</a></li>
-<li><a href="#join-patterns">Join Patterns</a><ul>
+<li><a href="#join-patterns">Join Patterns</a>
+<ul>
 <li><a href="#join-patterns-as-a-chemical-machine">Join patterns as a &quot;chemical machine&quot;</a></li>
 <li><a href="#join-patterns-and-properties">Join patterns and properties</a></li>
 <li><a href="#join-patterns-and-baconbus">Join patterns and Bacon.bus</a></li>
-</ul>
-</li>
+</ul></li>
 <li><a href="#cleaning-up">Cleaning up</a></li>
 <li><a href="#eventstream-and-property-semantics">EventStream and Property semantics</a></li>
 <li><a href="#atomic-updates">Atomic updates</a></li>
@@ -105,9 +105,11 @@
 jQuery or Zepto.js object. You can pass optional arguments to add a
 jQuery live selector and/or a function that processes the jQuery
 event and its parameters, if given, like this:</p>
-<textarea class="code">$("#my-div").asEventStream("click", ".more-specific-selector")
+<pre><code class="language-js"><textarea class="code">$("#my-div").asEventStream("click", ".more-specific-selector")
 $("#my-div").asEventStream("click", ".more-specific-selector", function(event, args) { return args[0] })
-$("#my-div").asEventStream("click", function(event, args) { return args[0] })</textarea>
+$("#my-div").asEventStream("click", function(event, args) { return args[0] })
+</textarea></code></pre>
+
 
 <p><a name="bacon-frompromise"></a>
 <a href="#bacon-frompromise" title="Bacon.fromPromise(promise : Promise[A] [, abort : boolean]) : EventStream[A]"><code>Bacon.fromPromise(promise [, abort])</code></a> creates an EventStream from a Promise object such as JQuery Ajax.
@@ -119,27 +121,33 @@ Check out this <a href="https://github.com/raimohanska/baconjs-examples/blob/mas
 <a href="#bacon-fromeventtarget" title="Bacon.fromEventTarget(target : EventTarget | EventEmitter, eventName : String [, eventTransformer]) : EventStream"><code>Bacon.fromEventTarget(target, eventName [, eventTransformer])</code></a> creates an EventStream from events
 on a DOM EventTarget or Node.JS EventEmitter object, or an object that supports event listeners using <code>on</code>/<code>off</code> methods.
 You can also pass an optional function that transforms the emitted
-events&#39; parameters.</p>
-<textarea class="code">Bacon.fromEventTarget(document.body, "click").onValue(function() { alert("Bacon!") })</textarea>
+events' parameters.</p>
+<pre><code class="language-js"><textarea class="code">Bacon.fromEventTarget(document.body, "click").onValue(function() { alert("Bacon!") })
+</textarea></code></pre>
+
 
 <p><a name="bacon-fromcallback"></a>
 <a href="#bacon-fromcallback" title="Bacon.fromCallback(f : (A -&gt; void) -&gt; void [, args...]) : EventStream[A]"><code>Bacon.fromCallback(f [, args...])</code></a> creates an EventStream from a function that
 accepts a callback. The function is supposed to call its callback just
 once. For example:</p>
-<textarea class="code">Bacon.fromCallback(function(callback) {
+<pre><code class="language-js"><textarea class="code">Bacon.fromCallback(function(callback) {
   setTimeout(function() {
     callback("Bacon!")
   }, 1000)
-})</textarea><p>This would create a stream that outputs a single value &quot;Bacon!&quot; and ends
+})
+</textarea></code></pre>
+<p>This would create a stream that outputs a single value &quot;Bacon!&quot; and ends
 after that. The use of setTimeout causes the value to be delayed by 1
 second.</p>
 <p>You can also give any number of arguments to <a href="#bacon-fromcallback"><code>fromCallback</code></a>, which will be
 passed to the function. These arguments can be simple variables, Bacon
 EventStreams or Properties. For example the following will output &quot;Bacon rules&quot;:</p>
-<textarea class="code">bacon = Bacon.constant('bacon')
+<pre><code class="language-js"><textarea class="code">bacon = Bacon.constant('bacon')
 Bacon.fromCallback(function(a, b, callback) {
   callback(a + ' ' + b);
-}, bacon, 'rules').log();</textarea>
+}, bacon, 'rules').log();
+</textarea></code></pre>
+
 
 <p><a name="bacon-fromcallback-object"></a>
 <a href="#bacon-fromcallback-object" title="Bacon.fromCallback(object, methodName [, args...]) : EventStream[A]"><code>Bacon.fromCallback(object, methodName [, args...])</code></a> a variant of fromCallback which calls the named method of a given object.</p>
@@ -149,11 +157,13 @@ Bacon.fromCallback(function(a, b, callback) {
 <a href="#bacon-fromnodecallback" title="Bacon.fromNodeCallback(f : (E -&gt; A -&gt; void) -&gt; void [, args...]) : EventStream[A]"><code>Bacon.fromNodeCallback(f [, args...])</code></a> behaves the same way as <a href="#bacon-fromcallback"><code>Bacon.fromCallback</code></a>,
 except that it expects the callback to be called in the Node.js convention:
 <code>callback(error, data)</code>, where error is null if everything is fine. For example:</p>
-<textarea class="code">var Bacon = require('baconjs').Bacon,
+<pre><code class="language-js"><textarea class="code">var Bacon = require('baconjs').Bacon,
     fs = require('fs');
 var read = Bacon.fromNodeCallback(fs.readFile, 'input.txt');
 read.onError(function(error) { console.log("Reading failed: " + error); });
-read.onValue(function(value) { console.log("Read contents: " + value); });</textarea>
+read.onValue(function(value) { console.log("Read contents: " + value); });
+</textarea></code></pre>
+
 
 <p><a name="bacon-fromnodecallback-object"></a>
 <a href="#bacon-fromnodecallback-object" title="Bacon.fromNodeCallback(object, methodName [, args...])"><code>Bacon.fromNodeCallback(object, methodName [, args...])</code></a> a variant of fromNodeCallback which calls the named method of a given object.</p>
@@ -237,7 +247,7 @@ value.</p>
 <p><a name="bacon-frombinder"></a>
 <a href="#bacon-frombinder" title="Bacon.fromBinder(subscribe)"><code>Bacon.fromBinder(subscribe)</code></a> The parameter <code>subscribe</code> is a function that accepts a <code>sink</code> which is a function that your <code>subscribe</code> funtion can &quot;push&quot; events to.</p>
 <p>For example:</p>
-<textarea class="code">var stream = Bacon.fromBinder(function(sink) {
+<pre><code class="language-js"><textarea class="code">var stream = Bacon.fromBinder(function(sink) {
   sink("first value")
   sink([new Bacon.Next("2nd"), new Bacon.Next("3rd")])
   sink(new Bacon.Next(function() {
@@ -249,28 +259,37 @@ value.</p>
      // unsub functionality here, this one's a no-op
   }
 })
-stream.log()</textarea><p>As shown in the example, you can push</p>
+stream.log()
+</textarea></code></pre>
+<p>As shown in the example, you can push</p>
 <ul>
 <li>A plain value, like <code>&quot;first value&quot;</code></li>
 <li>An <a href="#event"><code>Event</code></a> object including <a href="#bacon-error"><code>Bacon.Error</code></a> (wraps an error) and <a href="#bacon-end"><code>Bacon.End</code></a> (indicates
 stream end).</li>
 <li>An array of event objects at once</li>
 </ul>
-<p>See another <a href="http://jsfiddle.net/PG4c4/">example</a>.</p>
-<p>The subscribe function must return a function. Let&#39;s call that function
-<code>unsubscribe</code>. The returned function can be used by the subscriber to
-unsubscribe and it should release all resources that the subscribe function reserved.</p>
-<p>The <code>sink</code> function may return <a href="#bacon-more"><code>Bacon.more</code></a> or <a href="#bacon-nomore"><code>Bacon.noMore</code></a>. It may also
-return undefined or anything else. Iff it returns <a href="#bacon-nomore"><code>Bacon.noMore</code></a>, the subscriber
-must be cleaned up just like in case of calling the <code>unsubscribe</code> function.</p>
+<p>Other examples can be found on <a href="http://jsfiddle.net/PG4c4/">JSFiddle</a> and the
+<a href="http://baconjs.blogspot.fi/2013/12/wrapping-things-in-bacon.html">Bacon.js blog</a>.</p>
+<p>The <code>subscribe</code> function must return a function. Let's call that function
+<code>unsubscribe</code>. The returned function can be used by the subscriber (directly or indirectly) to
+unsubscribe from the EventStream. It should release all resources that the subscribe function reserved.</p>
+<p>The <code>sink</code> function may return <a href="#bacon-nomore"><code>Bacon.noMore</code></a> (as well as <a href="#bacon-more"><code>Bacon.more</code></a>
+or any other value). If it returns <a href="#bacon-nomore"><code>Bacon.noMore</code></a>, no further events will be consumed
+by the subscriber. The <code>subscribe</code> function may choose to clean up all resources at this point (e.g.,
+by calling <code>unsubscribe</code>). This is usually not necessary, because further calls to <code>sink</code> are ignored,
+but doing so can increase performance in <a href="https://github.com/baconjs/bacon.js/issues/484">rare cases</a>.</p>
 <p>The EventStream will wrap your <code>subscribe</code> function so that it will
 only be called when the first stream listener is added, and the <code>unsubscribe</code>
 function is called only after the last listener has been removed.
 The subscribe-unsubscribe cycle may of course be repeated indefinitely,
 so prepare for multiple calls to the subscribe function.</p>
 <p>A note about the <code>new Bacon.Next(..)</code> constructor: You can use it like</p>
-<textarea class="code">new Bacon.Next("value")</textarea><p>But the canonical way would be</p>
-<textarea class="code">new Bacon.Next(function() { return "value"; })</textarea><p>The former version is safe only when you know that the actual value in
+<pre><code class="language-js"><textarea class="code">new Bacon.Next("value")
+</textarea></code></pre>
+<p>But the canonical way would be</p>
+<pre><code class="language-js"><textarea class="code">new Bacon.Next(function() { return "value"; })
+</textarea></code></pre>
+<p>The former version is safe only when you know that the actual value in
 the stream is not a function.</p>
 <p>The idea in using a function instead of a plain value is that the internals on Bacon.js take
 advantage of <a href="#lazy-evaluation">lazy evaluation</a> by deferring the evaluations of values
@@ -394,8 +413,12 @@ ignored</p>
 
 <p><a name="observable-delay"></a>
 <a href="#observable-delay" title="observable.delay(delay)"><code>observable.delay(delay)</code></a> delays the stream/property by given amount of milliseconds. Does not delay the initial value of a <a href="#property"><code>Property</code></a>.</p>
-<textarea class="code">var delayed = source.delay(2)</textarea><textarea class="code">source:    asdf----asdf----
-delayed:   --asdf----asdf--</textarea>
+<pre><code class="language-js"><textarea class="code">var delayed = source.delay(2)
+</textarea></code></pre>
+<pre><code><textarea class="code">source:    asdf----asdf----
+delayed:   --asdf----asdf--
+</textarea></code></pre>
+
 
 <p><a name="observable-throttle"></a>
 <a href="#observable-throttle" title="observable.throttle(delay)"><code>observable.throttle(delay)</code></a> throttles stream/property by given amount
@@ -403,8 +426,12 @@ of milliseconds. Events are emitted with the minimum interval of
 <a href="#observable-delay"><code>delay</code></a>. The implementation is based on <a href="#stream-bufferwithtime"><code>stream.bufferWithTime</code></a>.
 Does not affect emitting the initial value of a <a href="#property"><code>Property</code></a>.</p>
 <p>Example:</p>
-<textarea class="code">var throttled = source.throttle(2)</textarea><textarea class="code">source:    asdf----asdf----
-throttled: --s--f----s--f--</textarea>
+<pre><code class="language-js"><textarea class="code">var throttled = source.throttle(2)
+</textarea></code></pre>
+<pre><code><textarea class="code">source:    asdf----asdf----
+throttled: --s--f----s--f--
+</textarea></code></pre>
+
 
 <p><a name="observable-debounce"></a>
 <a href="#observable-debounce" title="observable.debounce(delay)"><code>observable.debounce(delay)</code></a> throttles stream/property by given amount
@@ -413,24 +440,32 @@ of milliseconds, but so that event is only emitted after the given
 The difference of <a href="#observable-throttle"><code>throttle</code></a> and <a href="#observable-debounce"><code>debounce</code></a> is the same as it is in the
 same methods in jQuery.</p>
 <p>Example:</p>
-<textarea class="code">source:             asdf----asdf----
-source.debounce(2): -----f-------f--</textarea>
+<pre><code><textarea class="code">source:             asdf----asdf----
+source.debounce(2): -----f-------f--
+</textarea></code></pre>
+
 
 <p><a name="observable-debounceimmediate"></a>
 <a href="#observable-debounceimmediate" title="observable.debounceImmediate(delay)"><code>observable.debounceImmediate(delay)</code></a> passes the first event in the
 stream through, but after that, only passes events after a given number
 of milliseconds have passed since previous output.</p>
 <p>Example:</p>
-<textarea class="code">source:                      asdf----asdf----
-source.debounceImmediate(2): a-d-----a-d-----</textarea>
+<pre><code><textarea class="code">source:                      asdf----asdf----
+source.debounceImmediate(2): a-d-----a-d-----
+</textarea></code></pre>
+
 
 <p><a name="observable-bufferingthrottle"></a>
 <a href="#observable-bufferingthrottle" title="observable.bufferingThrottle(@ : Observable[A], minimumInterval) : EventStream[A]"><code>observable.bufferingThrottle(minimumInterval)</code></a> throttles the observable using a buffer so that at most one value event in minimumInteval is issued.
-Unlike <a href="#observable-throttle"><code>throttle</code></a>, it doesn&#39;t discard the excessive events but buffers them instead, outputing
+Unlike <a href="#observable-throttle"><code>throttle</code></a>, it doesn't discard the excessive events but buffers them instead, outputing
 them with a rate of at most one value per minimumInterval.</p>
 <p>Example:</p>
-<textarea class="code">var throttled = source.bufferingThrottle(2)</textarea><textarea class="code">source:    asdf----asdf----
-throttled: a-s-d-f-a-s-d-f-</textarea>
+<pre><code class="language-js"><textarea class="code">var throttled = source.bufferingThrottle(2)
+</textarea></code></pre>
+<pre><code><textarea class="code">source:    asdf----asdf----
+throttled: a-s-d-f-a-s-d-f-
+</textarea></code></pre>
+
 
 <p><a name="observable-doaction"></a>
 <a href="#observable-doaction" title="observable.doAction(f)"><code>observable.doAction(f)</code></a> returns a stream/property where the function f
@@ -455,9 +490,11 @@ stream/property too. Also, the return value of function <code>f</code> can be ei
 <p>The <a href="#function-construction-rules">Function Construction rules</a> below apply here.</p>
 <p><code>stream.flatMap()</code> can be used conveniently with <a href="#bacon-once"><code>Bacon.once()</code></a> and <a href="#bacon-never"><code>Bacon.never()</code></a> for converting and filtering at the same time, including only some of the results.</p>
 <p>Example - converting strings to integers, skipping empty values:</p>
-<textarea class="code">stream.flatMap(function(text) {
+<pre><code class="language-js"><textarea class="code">stream.flatMap(function(text) {
     return (text != "") ? parseInt(text) : Bacon.never()
-})</textarea>
+})
+</textarea></code></pre>
+
 
 <p><a name="observable-flatmaplatest"></a>
 <a href="#observable-flatmaplatest" title="observable.flatMapLatest(f)"><code>observable.flatMapLatest(f)</code></a> like <a href="#observable-flatmap"><code>flatMap</code></a>, but instead of including events from
@@ -493,17 +530,21 @@ an &quot;integral&quot; property. Instead of a function, you can also supply a
 method name such as &quot;.concat&quot;, in which case this method is called on
 the accumulator value and the new stream value is used as argument.</p>
 <p>Example:</p>
-<textarea class="code">var plus = function (a,b) { return a + b }
-Bacon.sequentially(1, [1,2,3]).scan(0, plus)</textarea><p>This would result to following elements in the result stream:</p>
-<textarea class="code">seed value = 0
+<pre><code class="language-js"><textarea class="code">var plus = function (a,b) { return a + b }
+Bacon.sequentially(1, [1,2,3]).scan(0, plus)
+</textarea></code></pre>
+<p>This would result to following elements in the result stream:</p>
+<pre><code>seed value = 0
 0 + 1 = 1
 1 + 2 = 3
-3 + 3 = 6</textarea><p>When applied to a Property as in <code>r = p.scan(seed, f)</code>, there&#39;s a (hopefully insignificant) catch:
+3 + 3 = 6
+</code></pre>
+<p>When applied to a Property as in <code>r = p.scan(seed, f)</code>, there's a (hopefully insignificant) catch:
 The starting value for <code>r</code> depends on whether <code>p</code> has an
-initial value when scan is applied. If there&#39;s no initial value, this works
+initial value when scan is applied. If there's no initial value, this works
 identically to EventStream.scan: the <code>seed</code> will be the initial value of
 <code>r</code>. However, if <code>r</code> already has a current/initial value <code>x</code>, the
-seed won&#39;t be output as is. Instead, the initial value of <code>r</code> will be <code>f(seed, x)</code>. This makes sense,
+seed won't be output as is. Instead, the initial value of <code>r</code> will be <code>f(seed, x)</code>. This makes sense,
 because there can only be 1 initial value for a Property at a time.</p>
 
 
@@ -522,11 +563,14 @@ value, i.e. the value just before the observable ends. Returns a
 between the previous and current value of the Observable. For the initial value of the Observable,
 the previous value will be the given start.</p>
 <p>Example:</p>
-<textarea class="code">var distance = function (a,b) { return Math.abs(b - a) }
-Bacon.sequentially(1, [1,2,3]).diff(0, distance)</textarea><p>This would result to following elements in the result stream:</p>
-<textarea class="code">1 - 0 = 1
+<pre><code class="language-js"><textarea class="code">var distance = function (a,b) { return Math.abs(b - a) }
+Bacon.sequentially(1, [1,2,3]).diff(0, distance)
+</textarea></code></pre>
+<p>This would result to following elements in the result stream:</p>
+<pre><code>1 - 0 = 1
 2 - 1 = 1
-3 - 2 = 1</textarea>
+3 - 2 = 1</code></pre>
+
 
 <p><a name="observable-zip"></a>
 <a href="#observable-zip" title="observable.zip(other, f)"><code>observable.zip(other, f)</code></a> return an EventStream with elements
@@ -537,17 +581,21 @@ stream and will only produce values up to when any single stream ends.</p>
 produces many more values than some other excessive buffering will
 occur inside the zipped observable.</p>
 <p>Example 1:</p>
-<textarea class="code">var x = Bacon.fromArray([1, 2])
+<pre><code class="language-js"><textarea class="code">var x = Bacon.fromArray([1, 2])
 var y = Bacon.fromArray([3, 4])
 x.zip(y, function(x, y) { return x + y })
 
-# produces values 4, 6</textarea><p>Example 2:</p>
+# produces values 4, 6
+</textarea></code></pre>
+<p>Example 2:</p>
 <p>You can use zip to combine observables that are pairwise synchronized
 from e.g. projections or sampling by the same property, while avoiding
 the double-processing that would happen recombining with <a href="#observable-combine"><code>combine</code></a>.</p>
-<textarea class="code">var x = obs.map('.x')
+<pre><code class="language-js"><textarea class="code">var x = obs.map('.x')
 var y = obs.map('.y')
-x.zip(y, makeComplex)</textarea>
+x.zip(y, makeComplex)
+</textarea></code></pre>
+
 
 <p><a name="observable-slidingwindow"></a>
 <a href="#observable-slidingwindow" title="observable.slidingWindow(max[, min])"><code>observable.slidingWindow(max [, min])</code></a> returns a Property that represents a
@@ -555,7 +603,7 @@ x.zip(y, makeComplex)</textarea>
 result Property will have a value that is an array containing the last <code>n</code>
 values of the original observable, where <code>n</code> is at most the value of the
 <code>max</code> argument, and at least the value of the <code>min</code> argument. If the
-<code>min</code> argument is omitted, there&#39;s no lower limit of values.</p>
+<code>min</code> argument is omitted, there's no lower limit of values.</p>
 <p>For example, if you have a stream <code>s</code> with value a sequence 1 - 2 - 3 - 4 - 5, the
 respective values in <code>s.slidingWindow(2)</code> would be [] - [1] - [1,2] -
 [2,3] - [3,4] - [4,5]. The values of <code>s.slidingWindow(2,2)</code>would be
@@ -569,8 +617,12 @@ value. To assist with chaining, it returns the original Observable. Note
 that as a side-effect, the observable will have a constant listener and
 will not be garbage-collected. So, use this for debugging only and
 remove from production code. For example:</p>
-<textarea class="code">myStream.log("New event in myStream")</textarea><p>or just</p>
-<textarea class="code">myStream.log()</textarea>
+<pre><code class="language-js"><textarea class="code">myStream.log("New event in myStream")
+</textarea></code></pre>
+<p>or just</p>
+<pre><code class="language-js"><textarea class="code">myStream.log()
+</textarea></code></pre>
+
 
 <p><a name="observable-combine"></a>
 <a href="#observable-combine" title="observable.combine(property2, f)"><code>observable.combine(property2, f)</code></a> combines the latest values of the two
@@ -584,9 +636,9 @@ properties with array value. The result is a Property.</p>
 on an observable. Give it an initial state object and a state
 transformation function that processes each incoming event and
 returns and array containing the next state and an array of output
-events. Here&#39;s an an example, where we calculate the total sum of all
+events. Here's an an example, where we calculate the total sum of all
 numbers in the stream and output the value on stream end:</p>
-<textarea class="code">Bacon.fromArray([1,2,3])
+<pre><code class="language-js"><textarea class="code">Bacon.fromArray([1,2,3])
   .withStateMachine(0, function(sum, event) {
     if (event.hasValue())
       return [sum + event.value(), []]
@@ -594,16 +646,22 @@ numbers in the stream and output the value on stream end:</p>
       return [undefined, [new Bacon.Next(sum), event]]
     else
       return [sum, [event]]
-  })</textarea>
+  })
+</textarea></code></pre>
+
 
 <p><a name="observable-decode"></a>
 <a href="#observable-decode" title="observable.decode(mapping)"><code>observable.decode(mapping)</code></a> decodes input using the given mapping. Is a
 bit like a switch-case or the decode function in Oracle SQL. For
-example, the following would map the value 1 into the the string &quot;mike&quot;
+example, the following would map the value 1 into the string &quot;mike&quot;
 and the value 2 into the value of the <code>who</code> property.</p>
-<textarea class="code">property.decode({1 : "mike", 2 : who})</textarea><p>This is actually based on <a href="#bacon-combinetemplate"><code>combineTemplate</code></a> so you can compose static
+<pre><code class="language-js"><textarea class="code">property.decode({1 : "mike", 2 : who})
+</textarea></code></pre>
+<p>This is actually based on <a href="#bacon-combinetemplate"><code>combineTemplate</code></a> so you can compose static
 and dynamic data quite freely, as in</p>
-<textarea class="code">property.decode({1 : { type: "mike" }, 2 : { type: "other", whoThen : who }})</textarea><p>The return value of <a href="#observable-decode"><code>decode</code></a> is always a <a href="#property"><code>Property</code></a>.</p>
+<pre><code class="language-js"><textarea class="code">property.decode({1 : { type: "mike" }, 2 : { type: "other", whoThen : who }})
+</textarea></code></pre>
+<p>The return value of <a href="#observable-decode"><code>decode</code></a> is always a <a href="#property"><code>Property</code></a>.</p>
 
 
 <p><a name="observable-awaiting"></a>
@@ -611,7 +669,9 @@ and dynamic data quite freely, as in</p>
 <code>observable</code> is awaiting <code>otherObservable</code>, i.e. has produced a value after the latest
 value from <code>otherObservable</code>. This is handy for keeping track whether we are
 currently awaiting an AJAX response:</p>
-<textarea class="code">var showAjaxIndicator = ajaxRequest.awaiting(ajaxResponse)</textarea>
+<pre><code class="language-js"><textarea class="code">var showAjaxIndicator = ajaxRequest.awaiting(ajaxResponse)
+</textarea></code></pre>
+
 
 <p><a name="observable-endonerror"></a>
 <a href="#observable-endonerror" title="observable.endOnError()"><code>observable.endOnError()</code></a> ends the <code>Observable</code> on first <a href="#bacon-error"><code>Error</code></a> event. The
@@ -630,12 +690,14 @@ you can do for example <code>.endOnError(&quot;.serious&quot;)</code>.</p>
 get all events to your function and you can output any number of events
 and end the stream if you choose. For example, to send an error and end
 the stream in case a value is below zero:</p>
-<textarea class="code">if (event.hasValue() && event.value() < 0) {
+<pre><code class="language-js"><textarea class="code">if (event.hasValue() && event.value() < 0) {
   this.push(new Bacon.Error("Value below zero"));
   return this.push(end());
 } else {
   return this.push(event);
-}</textarea><p>Note that it&#39;s important to return the value from <code>this.push</code> so that
+}
+</textarea></code></pre>
+<p>Note that it's important to return the value from <code>this.push</code> so that
 the connection to the underlying stream will be closed when no more
 events are needed.</p>
 
@@ -651,13 +713,14 @@ Returns itself.</p>
 use this data recursively to create a string representation for the observable. This method
 is probably useful for Bacon core / library / plugin development only.</p>
 <p>For example:</p>
-<textarea class="code">var src = Bacon.once(1)
+<pre><code>var src = Bacon.once(1)
 var obs = src.map(function(x) { return -x })
 console.log(obs.toString())
---> Bacon.once(1).map(function)
-obs.withDescription(src, "times", -1)
+--&gt; Bacon.once(1).map(function)
+obs.withDescription(src, &quot;times&quot;, -1)
 console.log(obs.toString())
---> Bacon.once(1).times(-1)</textarea>
+--&gt; Bacon.once(1).times(-1)</code></pre>
+
 
 <h2><a name="eventstream"></a>EventStream</h2>
 
@@ -691,7 +754,7 @@ array) as function arguments to <code>f</code>.</p>
 
 <p><a name="stream-skipduplicates"></a>
 <a href="#stream-skipduplicates" title="stream.skipDuplicates([isEqual])"><code>stream.skipDuplicates(isEqual)</code></a> drops consecutive equal elements. So,
-from <code>[1, 2, 2, 1]</code> you&#39;d get <code>[1, 2, 1]</code>. Uses the <code>===</code> operator for equality
+from <code>[1, 2, 2, 1]</code> you'd get <code>[1, 2, 1]</code>. Uses the <code>===</code> operator for equality
 checking by default. If the isEqual argument is supplied, checks by calling
 isEqual(oldValue, newValue). For instance, to do a deep comparison,you can
 use the isEqual function from <a href="http://underscorejs.org/">underscore.js</a>
@@ -758,14 +821,16 @@ and [5,6,7] respectively, given that the flush occurs between numbers 4 and 5.</
 
 <p><a name="stream-bufferwithtime-f"></a>
 <a href="#stream-bufferwithtime-f" title="stream.bufferWithTime(f)"><code>stream.bufferWithTime(f)</code></a> works with a given &quot;defer-function&quot; instead
-of a delay. Here&#39;s a simple example, which is equivalent to
+of a delay. Here's a simple example, which is equivalent to
 stream.bufferWithTime(10):</p>
-<textarea class="code">stream.bufferWithTime(function(f) { setTimeout(f, 10) })</textarea>
+<pre><code class="language-js"><textarea class="code">stream.bufferWithTime(function(f) { setTimeout(f, 10) })
+</textarea></code></pre>
+
 
 <p><a name="stream-bufferwithcount"></a>
 <a href="#stream-bufferwithcount" title="stream.bufferWithCount(count)"><code>stream.bufferWithCount(count)</code></a> buffers stream events with given count.
 The buffer is flushed when it contains the given number of elements. So, if
-you buffer a stream of <code>[1, 2, 3, 4, 5]</code> with count <code>2</code>, you&#39;ll get output
+you buffer a stream of <code>[1, 2, 3, 4, 5]</code> with count <code>2</code>, you'll get output
 events with values <code>[1, 2]</code>, <code>[3, 4]</code> and <code>[5]</code>.</p>
 
 
@@ -777,8 +842,8 @@ given amount of milliseconds has passed since last buffered event.</p>
 
 <p><a name="stream-toproperty"></a>
 <a href="#stream-toproperty" title="stream.toProperty(@ : EventStream[A]) : Property[A]"><code>stream.toProperty()</code></a> creates a Property based on the
-EventStream. Without arguments, you&#39;ll get a Property without an initial value.
-The Property will get its first actual value from the stream, and after that it&#39;ll
+EventStream. Without arguments, you'll get a Property without an initial value.
+The Property will get its first actual value from the stream, and after that it'll
 always have a current value.</p>
 
 
@@ -803,7 +868,7 @@ have an initial value.</p>
 
 
 <p><a name="property-subscribe"></a>
-<a href="#property-subscribe" title="property.subscribe(f)"><code>property.subscribe(f)</code></a> subscribes a handler function to property. If there&#39;s
+<a href="#property-subscribe" title="property.subscribe(f)"><code>property.subscribe(f)</code></a> subscribes a handler function to property. If there's
 a current value, an <a href="#bacon-initial"><code>Initial</code></a> event will be pushed immediately. <a href="#bacon-next"><code>Next</code></a>
 event will be pushed on updates and an <a href="#bacon-end"><code>Bacon.End</code></a> event in case the source
 EventStream ends. Returns a function that you call to unsubscribe.</p>
@@ -827,9 +892,13 @@ object with each value of this Property. You can optionally supply
 arguments which will be used as the first arguments of the method call.
 For instance, if you want to assign your Property to the &quot;disabled&quot;
 attribute of a JQuery object, you can do this:</p>
-<textarea class="code">myProperty.assign($("#my-button"), "attr", "disabled")</textarea><p>A simpler example would be to toggle the visibility of an element based
+<pre><code class="language-js"><textarea class="code">myProperty.assign($("#my-button"), "attr", "disabled")
+</textarea></code></pre>
+<p>A simpler example would be to toggle the visibility of an element based
 on a Property:</p>
-<textarea class="code">myProperty.assign($("#my-button"), "toggle")</textarea><p>Note that the <a href="#property-assign"><code>assign</code></a> method is actually just a synonym for <a href="#property-onvalue"><code>onValue</code></a> and
+<pre><code class="language-js"><textarea class="code">myProperty.assign($("#my-button"), "toggle")
+</textarea></code></pre>
+<p>Note that the <a href="#property-assign"><code>assign</code></a> method is actually just a synonym for <a href="#property-onvalue"><code>onValue</code></a> and
 the <a href="#function-construction-rules">function construction rules</a> below apply to both.</p>
 
 
@@ -861,7 +930,7 @@ events. The result values will be formed using the given function
 
 <p><a name="property-skipduplicates"></a>
 <a href="#property-skipduplicates" title="property.skipDuplicates([isEqual])"><code>property.skipDuplicates(isEqual)</code></a> drops consecutive equal elements. So,
-from <code>[1, 2, 2, 1]</code> you&#39;d get <code>[1, 2, 1]</code>. Uses the <code>===</code> operator for equality
+from <code>[1, 2, 2, 1]</code> you'd get <code>[1, 2, 1]</code>. Uses the <code>===</code> operator for equality
 checking by default. If the <code>isEqual</code> argument is supplied, checks by calling
 <code>isEqual(oldValue, newValue)</code>. The old name for this method was
 <code>distinctUntilChanged</code>.</p>
@@ -883,7 +952,7 @@ events. Note that <a href="#property-changes"><code>property.changes()</code></a
 
 <p><a name="property-startwith"></a>
 <a href="#property-startwith" title="property.startWith(value)"><code>property.startWith(value)</code></a> adds an initial &quot;default&quot; value for the
-Property. If the Property doesn&#39;t have an initial value of it&#39;s own, the
+Property. If the Property doesn't have an initial value of it's own, the
 given value will be used as the initial value. If the property has an
 initial value of its own, the given value will be ignored.</p>
 
@@ -902,40 +971,50 @@ a Property and then combined with the other properties.</p>
 <p><a name="bacon-combineasarray-multiple-streams"></a>
 <a href="#bacon-combineasarray-multiple-streams" title="Bacon.combineAsArray(s1, s2...)"><code>Bacon.combineAsArray(s1, s2...)</code></a> just like above, but with streams
 provided as a list of arguments as opposed to a single array.</p>
-<textarea class="code">property = Bacon.constant(1)
+<pre><code class="language-js"><textarea class="code">property = Bacon.constant(1)
 stream = Bacon.once(2)
 constant = 3
 Bacon.combineAsArray(property, stream, constant)
-# produces the value [1,2,3]</textarea>
+# produces the value [1,2,3]
+</textarea></code></pre>
+
 
 <p><a name="bacon-combinewith"></a>
 <a href="#bacon-combinewith" title="Bacon.combineWith(f, stream1, stream2 ...)"><code>Bacon.combineWith(f, stream1, stream2...)</code></a> combines given <em>n</em> Properties,
 EventStreams and constant values using the given n-ary function <code>f(v1, v2 ...)</code>.
 To calculate the current sum of three numeric Properties, you can do</p>
-<textarea class="code">function sum3(x,y,z) { return x + y + z }
-Bacon.combineWith(sum3, p1, p2, p3)</textarea>
+<pre><code class="language-js"><textarea class="code">function sum3(x,y,z) { return x + y + z }
+Bacon.combineWith(sum3, p1, p2, p3)
+</textarea></code></pre>
+
 
 <p><a name="bacon-combinetemplate"></a>
 <a href="#bacon-combinetemplate" title="Bacon.combineTemplate(template)"><code>Bacon.combineTemplate(template)</code></a> combines Properties, EventStreams and
 constant values using a template
-object. For instance, assuming you&#39;ve got streams or properties named
+object. For instance, assuming you've got streams or properties named
 <code>password</code>, <code>username</code>, <code>firstname</code> and <code>lastname</code>, you can do</p>
-<textarea class="code">var password, username, firstname, lastname; // <- properties or streams
+<pre><code class="language-js"><textarea class="code">var password, username, firstname, lastname; // <- properties or streams
 var loginInfo = Bacon.combineTemplate({
     magicNumber: 3,
     userid: username,
     passwd: password,
-    name: { first: firstname, last: lastname }})</textarea><p>.. and your new loginInfo property will combine values from all these
+    name: { first: firstname, last: lastname }})
+</textarea></code></pre>
+<p>.. and your new loginInfo property will combine values from all these
 streams using that template, whenever any of the streams/properties
 get a new value. For instance, it could yield a value such as</p>
-<textarea class="code">{ magicNumber: 3,
+<pre><code class="language-js"><textarea class="code">{ magicNumber: 3,
   userid: "juha",
   passwd: "easy",
-  name : { first: "juha", last: "paananen" }}</textarea><p>In addition to combining data from streams, you can include constant
+  name : { first: "juha", last: "paananen" }}
+</textarea></code></pre>
+<p>In addition to combining data from streams, you can include constant
 values in your templates.</p>
 <p>Note that all Bacon.combine* methods produce a Property instead of an EventStream.
 If you need the result as an <a href="#eventstream"><code>EventStream</code></a> you might want to use <a href="#property-changes"><code>property.changes()</code></a></p>
-<textarea class="code">Bacon.combineWith(function(v1,v2) { .. }, stream1, stream2).changes()</textarea>
+<pre><code class="language-js"><textarea class="code">Bacon.combineWith(function(v1,v2) { .. }, stream1, stream2).changes()
+</textarea></code></pre>
+
 
 <p><a name="bacon-mergeall"></a>
 <a href="#bacon-mergeall" title="Bacon.mergeAll(streams)"><code>Bacon.mergeAll(streams)</code></a> merges given array of EventStreams.
@@ -953,12 +1032,14 @@ is a value from each source stream.</p>
 produces many more values than some other excessive buffering will
 occur inside the zipped observable.</p>
 <p>Example:</p>
-<textarea class="code">x = Bacon.fromArray([1,2,3])
+<pre><code class="language-js"><textarea class="code">x = Bacon.fromArray([1,2,3])
 y = Bacon.fromArray([10, 20, 30])
 z = Bacon.fromArray([100, 200, 300])
 Bacon.zipAsArray(x, y, z)
 
-# produces values [1, 10, 100], [2, 20, 200] and [3, 30, 300]</textarea>
+# produces values [1, 10, 100], [2, 20, 200] and [3, 30, 300]
+</textarea></code></pre>
+
 
 <p><a name="bacon-zipasarray-multiple-streams"></a>
 <a href="#bacon-zipasarray-multiple-streams" title="Bacon.zipAsArray(stream1, stream2...)"><code>Bacon.zipAsArray(stream1, stream2...)</code></a> just like above, but with streams
@@ -980,8 +1061,10 @@ provided as a list of arguments as opposed to a single array.</p>
 sources (streams, properties, constants) as array and assigning the
 side-effect function f for the values. The following example would log
 the number 3.</p>
-<textarea class="code">function f(a, b) { console.log(a + b) }
-Bacon.onValues(Bacon.constant(1), Bacon.constant(2), f)</textarea>
+<pre><code class="language-js"><textarea class="code">function f(a, b) { console.log(a + b) }
+Bacon.onValues(Bacon.constant(1), Bacon.constant(2), f)
+</textarea></code></pre>
+
 
 <h2><a name="function-construction-rules"></a>Function Construction rules</h2>
 
@@ -1007,16 +1090,15 @@ the attr method of the #send element, with &quot;disabled&quot; as the first
 argument. So if your property has the value <code>true</code>, it would call
 $(&quot;#send&quot;).attr(&quot;disabled&quot;, true)</p>
 <p>You can call methods or return field values using a &quot;property extractor&quot;
-syntax. With this syntax, Bacon checks the type of the field and if it&#39;s indeed a method, it calls it. Otherwise it just returns field value. For example:</p>
+syntax. With this syntax, Bacon checks the type of the field and if it's indeed a method, it calls it. Otherwise it just returns field value. For example:</p>
 <p><code>stream.map(&quot;.length&quot;)</code> would return the value of the &quot;length&quot; field of
-stream values. Would make sense for a stream of arrays. So, you&#39;d get 2
+stream values. Would make sense for a stream of arrays. So, you'd get 2
 for <code>[&quot;cat&quot;, &quot;dog&quot;]</code></p>
 <p><code>stream.map(&quot;.stuffs.length&quot;)</code> would pick the length of the &quot;stuffs&quot;
-array that is a field in the stream value. For example, you&#39;d get 2 for
+array that is a field in the stream value. For example, you'd get 2 for
 <code>{ stuffs : [&quot;thing&quot;, &quot;object&quot;] }</code></p>
 <p><code>stream.map(&quot;.dudes.1&quot;)</code> would pick the second object from the nested
-&quot;dudes&quot; array. For example, you&#39;d get &quot;jack&quot; for <code>{ dudes : [&quot;john&quot;,
-&quot;jack&quot;] }</code>.</p>
+&quot;dudes&quot; array. For example, you'd get &quot;jack&quot; for <code>{ dudes : [&quot;john&quot;, &quot;jack&quot;] }</code>.</p>
 <p><code>stream.doAction(&quot;.preventDefault&quot;)</code> would call the &quot;preventDefault&quot; method of
 stream values.</p>
 <p><code>stream.filter(&quot;.attr&quot;, &quot;disabled&quot;).not()</code> would call <code>.attr(&quot;disabled&quot;)</code> on
@@ -1035,23 +1117,27 @@ at least <a href="#observable-onvalue"><code>onValue</code></a>, <a href="#obser
 
 
 <p>Methods such as <a href="#observable-map"><code>map</code></a> and the <a href="#observable-combine"><code>combine</code></a> use lazy evaluation to avoid evaluating
-values that aren&#39;t actually needed. This can be generally considered a Good Thing,
-but it has it&#39;s pitfalls.</p>
-<p>If you pass a function that referentially transparent, you&#39;ll
+values that aren't actually needed. This can be generally considered a Good Thing,
+but it has it's pitfalls.</p>
+<p>If you pass a function that referentially transparent, you'll
 be fine. This means that your function should return the same value regardless of
-when it&#39;s called.</p>
+when it's called.</p>
 <p>On the other hand, if you pass a function that returns a value depending on time,
-you may have problems. Consider a property <code>contents</code> that&#39;s derived from events
+you may have problems. Consider a property <code>contents</code> that's derived from events
 like below.</p>
-<textarea class="code">var items = clicks.map(getCurrentValueFromUI).toProperty()
-var submittedItems = items.sampledBy(submitClick)</textarea><p>Now the <code>submittedItems</code> stream will produce the current value of the <code>items</code> property
-when an event occurs in the <code>submitClick</code> stream. Or so you&#39;d think. In fact, the value
+<pre><code class="language-javascript"><textarea class="code">var items = clicks.map(getCurrentValueFromUI).toProperty()
+var submittedItems = items.sampledBy(submitClick)
+</textarea></code></pre>
+<p>Now the <code>submittedItems</code> stream will produce the current value of the <code>items</code> property
+when an event occurs in the <code>submitClick</code> stream. Or so you'd think. In fact, the value
 of <code>submittedItems</code> is evaluated at the time of the event in the <code>submitClick</code> stream,
 which means that it will actually produce the value of <code>getCurrentValueFromUI</code> at that time,
 instead of at the time of the original <code>click</code> event.</p>
 <p>To force evaluation at the time of original event, you can just use <a href="#observable-flatmap"><code>flatMap</code></a> instead of <a href="#observable-map"><code>map</code></a>.
 As in here.</p>
-<textarea class="code">var items = clicks.flatMap(getCurrentValueFromUI).toProperty()</textarea>
+<pre><code class="language-javascript"><textarea class="code">var items = clicks.flatMap(getCurrentValueFromUI).toProperty()
+</textarea></code></pre>
+
 
 
 <h2><a name="latest-value-of-property-or-eventstream"></a>Latest value of Property or EventStream</h2>
@@ -1086,7 +1172,7 @@ method.</p>
 
 <p><a name="bus-end"></a>
 <a href="#bus-end" title="bus.end(@ : Bus[A])"><code>bus.end()</code></a> ends the stream. Sends an End event to all subscribers.
-After this call, there&#39;ll be no more events to the subscribers.
+After this call, there'll be no more events to the subscribers.
 Also, the <a href="#bus-push"><code>bus.push</code></a> and <a href="#bus-plug"><code>bus.plug</code></a> methods have no effect.</p>
 
 
@@ -1099,7 +1185,7 @@ Also, the <a href="#bus-push"><code>bus.push</code></a> and <a href="#bus-plug">
 the given stream will be delivered to the subscribers of the Bus.
 Returns a function that can be used to unplug the same stream.</p>
 <p>The plug method practically allows you to merge in other streams after
-the creation of the Bus. I&#39;ve found Bus quite useful as an event broadcast
+the creation of the Bus. I've found Bus quite useful as an event broadcast
 mechanism in the
 <a href="https://github.com/raimohanska/worzone">Worzone</a> game, for instance.</p>
 
@@ -1167,23 +1253,27 @@ as well as all the spawned stream.</p>
 callback.</p>
 <p>See documentation on <a href="#observable-onerror"><code>onError</code></a>, <a href="#observable-maperror"><code>mapError</code></a>, <a href="#errors"><code>errors</code></a>, <a href="#observable-skiperrors"><code>skipErrors</code></a>, <a href="#bacon-retry"><code>Bacon.retry</code></a> and <code>flatMapError</code> above.</p>
 <p>In case you want to convert (some) value events into <a href="#bacon-error"><code>Error</code></a> events, you may use <a href="#observable-flatmap"><code>flatMap</code></a> like this:</p>
-<textarea class="code">stream = Bacon.fromArray([1,2,3,4]).flatMap(function(x) {
+<pre><code class="language-js"><textarea class="code">stream = Bacon.fromArray([1,2,3,4]).flatMap(function(x) {
   if (x > 2)
     return new Bacon.Error("too big")
   else
     return x
-})</textarea><p>Note also that Bacon.js combinators do not catch errors that are thrown.
-Especially <a href="#observable-map"><code>map</code></a> doesn&#39;t do so. If you want to map things
+})
+</textarea></code></pre>
+<p>Note also that Bacon.js combinators do not catch errors that are thrown.
+Especially <a href="#observable-map"><code>map</code></a> doesn't do so. If you want to map things
 and wrap caught errors into Error events, you can do the following:</p>
-<textarea class="code">var source, dangerousFunction // <- your stuff
+<pre><code class="language-js"><textarea class="code">var source, dangerousFunction // <- your stuff
 wrapped = source.flatMap(function(x) {
   try
     return dangerousFunction(x)
   catch (e)
     return new Bacon.Error(e)
-})</textarea><p>An Error does not terminate the stream. The method <a href="#observable-endonerror"><code>observable.endOnError()</code></a>
+})
+</textarea></code></pre>
+<p>An Error does not terminate the stream. The method <a href="#observable-endonerror"><code>observable.endOnError()</code></a>
 returns a stream/property that ends immediately after first error.</p>
-<p>Bacon.js doesn&#39;t currently generate any <a href="#bacon-error"><code>Error</code></a> events itself (except when
+<p>Bacon.js doesn't currently generate any <a href="#bacon-error"><code>Error</code></a> events itself (except when
 converting errors using Bacon.fromPromise). Error
 events definitely would be generated by streams derived from IO sources
 such as AJAX calls.</p>
@@ -1191,9 +1281,9 @@ such as AJAX calls.</p>
 
 
 <p><a name="bacon-retry"></a>
-<a href="#bacon-retry" title="Bacon.retry(options)"><code>Bacon.retry(options)</code></a> 
+<a href="#bacon-retry" title="Bacon.retry(options)"><code>Bacon.retry(options)</code></a>
 is used to retry the call when there is an <a href="#bacon-error"><code>Error</code></a> event in the source stream.</p>
-<textarea class="code">var source, ajaxCall // <- ajaxCall gives Errors on network or server errors
+<pre><code class="language-js"><textarea class="code">var source, ajaxCall // <- ajaxCall gives Errors on network or server errors
 ajaxResult = source.flatMap(function(url) {
     return Bacon.retry({
         // function to call when trying, should return an EventStream
@@ -1201,7 +1291,9 @@ ajaxResult = source.flatMap(function(url) {
         retries: 5, // nr of times to retry before giving up
         delay: 100 // delay in ms between retries
     })
-})</textarea>
+})
+</textarea></code></pre>
+
 
 <h2><a name="join-patterns"></a>Join Patterns</h2>
 
@@ -1219,35 +1311,43 @@ patterns into a resulting eventstream.</p>
 handle key-events synchronized on tick-events, with at most one key
 event handled per tick. If there are no key events, we want to just
 process a tick.</p>
-<textarea class="code">  Bacon.when(
-    [tick, keyEvent], function(_, k) { handleKeyEvent(k); handleTick },
-    [tick], handleTick)</textarea><p>Order is important here. If the [tick] patterns had been written
+<pre><code class="language-js"><textarea class="code">  Bacon.when(
+    [tick, keyEvent], function(_, k) { handleKeyEvent(k); return handleTick(); },
+    [tick], handleTick)
+</textarea></code></pre>
+<p>Order is important here. If the [tick] patterns had been written
 first, this would have been tried first, and preferred at each tick.</p>
 <p>Join patterns are indeed a generalization of zip, and zip is
 equivalent to a single-rule join pattern. The following observables
 have the same output.</p>
-<textarea class="code">Bacon.zipWith(a,b,c, combine)
-Bacon.when([a,b,c], combine)</textarea>
+<pre><code class="language-js"><textarea class="code">Bacon.zipWith(a,b,c, combine)
+Bacon.when([a,b,c], combine)
+</textarea></code></pre>
+
 
 <p><a name="bacon-update"></a>
 <a href="#bacon-update" title="Bacon.update"><code>Bacon.update</code></a> creates a Property from an initial value and updates the value based on multiple inputs.
 The inputs are defined similarly to <a href="#bacon-when"><code>Bacon.when</code></a>, like this:</p>
-<textarea class="code">var result = Bacon.update(
+<pre><code class="language-js"><textarea class="code">var result = Bacon.update(
   initial,
   [x,y,z], function(previous,x,y,z) { ... },
-  [x,y],   function(previous,x,y) { ... })</textarea><p>As input, each function above will get the previous value of the <code>result</code> Property, along with values from the listed Observables.
+  [x,y],   function(previous,x,y) { ... })
+</textarea></code></pre>
+<p>As input, each function above will get the previous value of the <code>result</code> Property, along with values from the listed Observables.
 The value returned by the function will be used as the next value of <code>result</code>.</p>
 <p>Just like in <a href="#bacon-when"><code>Bacon.when</code></a>, only EventStreams will trigger an update, while Properties will be just sampled.
 So, if you list a single EventStream and several Properties, the value will be updated only when an event occurs in the EventStream.</p>
-<p>Here&#39;s a simple gaming example:</p>
-<textarea class="code">var scoreMultiplier = Bacon.constant(1)
+<p>Here's a simple gaming example:</p>
+<pre><code class="language-js"><textarea class="code">var scoreMultiplier = Bacon.constant(1)
 var hitUfo = new Bacon.Bus()
 var hitMotherShip = new Bacon.Bus()
 var score = Bacon.update(
   0,
   [hitUfo, scoreMultiplier], function(score, _, multiplier) { return score + 100 * multiplier },
   [hitMotherShip], function(score, _) { return score + 2000 }
-)</textarea><p>In the example, the <code>score</code> property is updated when either <code>hitUfo</code> or <code>hitMotherShip</code> occur. The <code>scoreMultiplier</code> Property is sampled to take multiplier into account when <code>hitUfo</code> occurs.</p>
+)
+</textarea></code></pre>
+<p>In the example, the <code>score</code> property is updated when either <code>hitUfo</code> or <code>hitMotherShip</code> occur. The <code>scoreMultiplier</code> Property is sampled to take multiplier into account when <code>hitUfo</code> occurs.</p>
 
 
 <h3><a name="join-patterns-as-a-chemical-machine"></a>Join patterns as a "chemical machine"</h3>
@@ -1257,15 +1357,17 @@ var score = Bacon.update(
 them through an analogy in terms of atoms and molecules. A join
 pattern can here be regarded as a recipe for a chemical reaction. Lets
 say we have observables <code>oxygen</code>, <code>carbon</code> and <code>hydrogen</code>, where an
-event in these spawns an &#39;atom&#39; of that type into a mixture.</p>
+event in these spawns an 'atom' of that type into a mixture.</p>
 <p>We can state reactions</p>
-<textarea class="code">make_water              = function(oxygen, hydrogen, hydrogen)  { /* ... consume oxygen and hydrogen ... */ }
+<pre><code class="language-js"><textarea class="code">make_water              = function(oxygen, hydrogen, hydrogen)  { /* ... consume oxygen and hydrogen ... */ }
 make_carbon_monoxide    = function(oxygen, carbon)              { /* ... consume oxygen and carbon ... */ }
 
 Bacon.when(
   [oxygen, hydrogen, hydrogen], make_water,
   [oxygen, carbon],             make_carbon_monoxide,
-)</textarea><p>Now, every time a new &#39;atom&#39; is spawned from one of the observables,
+)
+</textarea></code></pre>
+<p>Now, every time a new 'atom' is spawned from one of the observables,
 this atom is added to the mixture. If at any time there are two hydrogen
 atoms, and an oxygen atom, the corresponding atoms are <em>consumed</em>,
 and output is produced via <code>make_water</code>.</p>
@@ -1287,7 +1389,7 @@ and <code>total</code> such that</p>
 <li>updating quantity sets total to price * quantity</li>
 <li>updating total sets price to total / quantity</li>
 </ul>
-<textarea class="code">  var $price, $total, $quantity = ...
+<pre><code class="language-js"><textarea class="code">  var $price, $total, $quantity = ...
 
   var quantity = $quantity.toProperty(1)
 
@@ -1300,7 +1402,10 @@ and <code>total</code> such that</p>
     [$total], id,
     [$price, quantity], function(x,y) { return x*y },
     [price, $quantity], function(x,y) { return x*y })
-   .toProperty(0)</textarea>
+   .toProperty(0)
+
+</textarea></code></pre>
+
 
 
 <h3><a name="join-patterns-and-baconbus"></a>Join patterns and Bacon.bus</h3>
@@ -1309,9 +1414,9 @@ and <code>total</code> such that</p>
 <p>The result functions of join patterns are allowed to push values onto
 a <a href="#bus"><code>Bus</code></a> that may in turn be in one of its patterns. For instance, an
 implementation of the dining philosphers problem can be written as
-follows.  (<a href="http://en.wikipedia.org/wiki/Dining_philosophers_problem">http://en.wikipedia.org/wiki/Dining_philosophers_problem</a>)</p>
+follows.  (http://en.wikipedia.org/wiki/Dining_philosophers_problem)</p>
 <p>Example:</p>
-<textarea class="code">// availability of chopsticks are implemented using Bus
+<pre><code class="language-js"><textarea class="code">// availability of chopsticks are implemented using Bus
 var chopsticks = [new Bacon.Bus(), new Bacon.Bus(), new Bacon.Bus()]
 
 // hungry could be any type of observable, but we'll use bus here
@@ -1345,7 +1450,9 @@ chopsticks[0].push({}); chopsticks[1].push({}); chopsticks[2].push({})
 // make philosophers hungry in some way, in this case we just push to their bus
 for (var i = 0; i < 3; i++) {
   hungry[0].push({}); hungry[1].push({}); hungry[2].push({})
-}</textarea>
+}
+</textarea></code></pre>
+
 
 
 <h2><a name="cleaning-up"></a>Cleaning up</h2>
@@ -1360,7 +1467,7 @@ call.</li>
 </ol>
 <p>Based on my experience on RxJs coding, an actual side-effect subscriber
 in application-code never does this. So the business of unsubscribing is
-mostly internal business and you can ignore it unless you&#39;re working on
+mostly internal business and you can ignore it unless you're working on
 a custom stream implementation or a stream combinator. In that case, I
 welcome you to contribute your stuff to bacon.js.</p>
 
@@ -1418,15 +1525,14 @@ known limitations.</p>
 <p>Assume you have properties A and B and property C = A + B. Assume that
 both A and B depend on D, so that when D changes, both A and B will
 change too.</p>
-<p>When D changes <code>d1 -&gt; d2</code>, the value of A <code>a1 -&gt; a2</code> and B changes <code>b1
--&gt; b2</code> simultaneously, you&#39;d like C to update atomically so that it
+<p>When D changes <code>d1 -&gt; d2</code>, the value of A <code>a1 -&gt; a2</code> and B changes <code>b1 -&gt; b2</code> simultaneously, you'd like C to update atomically so that it
 would go directly <code>a1+b1 -&gt; a2+b2</code>. And, in fact, it does exactly that.
 Prior to version 0.4.0, C would have an additional transitional
 state like <code>a1+b1 -&gt; a2+b1 -&gt; a2+b2</code></p>
 <p>Atomic updates are limited to Properties only, meaning that simultaneous
 events in EventStreams will not be recognized as simultaneous and may
-cause extra transitional states to Properties. But as long as you&#39;re
-just combining Properties, you&#39;ll updates will be atomic.</p>
+cause extra transitional states to Properties. But as long as you're
+just combining Properties, you'll updates will be atomic.</p>
 
 
 
@@ -1439,8 +1545,8 @@ the EventStream and the Property. The former is for discrete events while the
 latter is for observable properties that have the concept of &quot;current value&quot;.</p>
 <p>Also, there are no &quot;cold observables&quot;, which
 means also that all EventStreams and Properties are consistent among subscribers:
-when as event occurs, all subscribers will observe the same event. If you&#39;re
-experienced with RxJs, you&#39;ve probably bumped into some wtf&#39;s related to cold
+when as event occurs, all subscribers will observe the same event. If you're
+experienced with RxJs, you've probably bumped into some wtf's related to cold
 observables and inconsistent output from streams constructed using scan and startWith.
 None of that will happen with bacon.js.</p>
 <p>Error handling is also a bit different: the Error event does not

@@ -60,7 +60,7 @@ module.exports = (page) ->
   envPromise.then (env) ->
     content = page.content || fs.readFileSync(page.input).toString()
     if page.input?.slice(-3) == ".md"
-      content = renderMarkdown(content)
+      content = renderMarkdown.render(content)
     data = _.extend {}, env,
       AUTOGENDISCLAIMER: "<!-- This file is generated. See package.json -->"
       title: page.title

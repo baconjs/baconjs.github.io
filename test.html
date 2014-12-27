@@ -14,10 +14,10 @@
 <link rel="stylesheet" type="text/css" href="marble.css">
 <link rel="stylesheet" type="text/css" href="bacon.css" >
 
-<link href='//fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
 
-<script src="//codeorigin.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.37/Bacon.min.js"></script>
+<script src="http://codeorigin.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.41/Bacon.min.js"></script>
 
 
 <script src="codemirror/codemirror.js"></script>
@@ -38,9 +38,9 @@
       </div>
 
       <div class="download">
-        <a class="button big-button" href="http://cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.37/Bacon.js" download>
+        <a class="button big-button" href="http://cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.41/Bacon.js" download>
           Download Bacon.js
-          <small>v0.7.37</small>
+          <small>v0.7.41</small>
         </a>
         <a class="github" href="https://github.com/baconjs/bacon.js">Or get it on GitHub</a>
       </div>
@@ -64,12 +64,13 @@
 
     <div class="large-8 columns">
       <div class="main">
-<p>The Internet is full of smart peanut-size examples of how to solve X with &quot;FRP&quot; and Bacon.js. But how to organize a real-world size application? That&#39;s been <a href="https://github.com/baconjs/bacon.js/issues/478">asked</a> once in a while and indeed I have an answer up in my sleeve. Don&#39;t take though that I&#39;m saying this is the The Definitive Answer. I&#39;m sure your own way is as good or better. Tell me about it!</p>
-<p>I think there are some principles that you should apply to the design of any application though, like <a href="http://en.wikipedia.org/wiki/Single_responsibility_principle">Single Reponsibility Principle</a> and <a href="http://en.wikipedia.org/wiki/Separation_of_concerns">Separation of Concerns</a>. Given that, your application should consist of components that are fairly independent of each others implementation details. I&#39;d also like the components to communicate using some explicit signals instead of shared mutable state (nudge nudge Angular). For this purpose, I find the Bacon.js <code>EventStreams</code> and <code>Properties</code> quite handy. </p>
+<h1>Structuring Real-Life Applications</h1>
+<p>The Internet is full of smart peanut-size examples of how to solve X with &quot;FRP&quot; and Bacon.js. But how to organize a real-world size application? That's been <a href="https://github.com/baconjs/bacon.js/issues/478">asked</a> once in a while and indeed I have an answer up in my sleeve. Don't take though that I'm saying this is the The Definitive Answer. I'm sure your own way is as good or better. Tell me about it!</p>
+<p>I think there are some principles that you should apply to the design of any application though, like <a href="http://en.wikipedia.org/wiki/Single_responsibility_principle">Single Reponsibility Principle</a> and <a href="http://en.wikipedia.org/wiki/Separation_of_concerns">Separation of Concerns</a>. Given that, your application should consist of components that are fairly independent of each others implementation details. I'd also like the components to communicate using some explicit signals instead of shared mutable state (nudge nudge Angular). For this purpose, I find the Bacon.js <code>EventStreams</code> and <code>Properties</code> quite handy.</p>
 <p>So if a component needs to act when a triggering event occurs, why not give it an <code>EventStream</code> representing that event in its constructor.  The <code>EventStream</code> is an abstraction for the event source, so the implementation of your component is does not depend on where the event originates from, meaning you can use a WebSocket message as well as a mouse click as the actual event source. Similarly, if you component needs to display or act on the <em>state</em> of something, why not give it a <code>Property</code> in its constructor.</p>
-<p>When it comes to the outputs of a component, those can exposed as <code>EventStreams</code> and <code>Properties</code> in the component&#39;s public interface. In some cases it also makes sense to publish a <code>Bus</code> to allow plugging in event sources after component creation.</p>
+<p>When it comes to the outputs of a component, those can exposed as <code>EventStreams</code> and <code>Properties</code> in the component's public interface. In some cases it also makes sense to publish a <code>Bus</code> to allow plugging in event sources after component creation.</p>
 <p>For example, a ShoppingCart model component might look like this.</p>
-<textarea class="code">function ShoppingCart(initialContents) {
+<pre><code class="language-javascript"><textarea class="code">function ShoppingCart(initialContents) {
   var addBus = new Bacon.Bus()
   var removeBus = new Bacon.Bus()
   var contentsProperty = Bacon.update(initialContents,
@@ -81,14 +82,18 @@
     removeBus: removeBus,
     contentsProperty: contentsProperty
   }    
-}</textarea><p>Internally, the ShoppingCart contents are composed from an initial status and <code>addBus</code> and <code>removeBus</code> streams using <code>Bacon.update</code>.</p>
+}
+</textarea></code></pre>
+<p>Internally, the ShoppingCart contents are composed from an initial status and <code>addBus</code> and <code>removeBus</code> streams using <code>Bacon.update</code>.</p>
 <p>The external interface of this component exposes the <code>addBus</code> and <code>removeBus</code> buses where you can plug external streams for adding and removing items. It also exposes the current contents of the cart as a <code>Property</code>.</p>
 <p>Now you may define a view component that shows cart contents, using your favorite DOM manipulation technology, like <a href="https://github.com/Matt-Esch/virtual-dom">virtual-dom</a>:</p>
-<textarea class="code">function ShoppingCartView(contentsProperty) {
+<pre><code class="language-javascript"><textarea class="code">function ShoppingCartView(contentsProperty) {
   function updateContentView(newContents) { /* omitted */ }
   contentsProperty.onValue(updateContentView)
-}</textarea><p>And a component that can be used for adding stuff to your cart:</p>
-<textarea class="code">function NewItemView() {
+}
+</textarea></code></pre>
+<p>And a component that can be used for adding stuff to your cart:</p>
+<pre><code class="language-javascript"><textarea class="code">function NewItemView() {
   var $button, $nameField // JQuery objects
   var newItemProperty = Bacon.$.textFieldValue($nameField) // property containing the item being added
   var newItemClick = $button.asEventStream("click") // clicks on the "add to cart" button
@@ -96,11 +101,15 @@
   return {
     newItemStream: newItemStream
   }
-}</textarea><p>And you can plug these guys together as follows.</p>
-<textarea class="code">var cart = ShoppingCart([])
+}
+</textarea></code></pre>
+<p>And you can plug these guys together as follows.</p>
+<pre><code class="language-javascript"><textarea class="code">var cart = ShoppingCart([])
 var cartView = ShoppingCartView(cart.contentsProperty)
 var newItemView = NewItemView()
-cart.addBus.plug(newItemView.newItemStream)</textarea><p>So there you go!</p>
+cart.addBus.plug(newItemView.newItemStream)
+</textarea></code></pre>
+<p>So there you go!</p>
 
       </div>
     </div>
