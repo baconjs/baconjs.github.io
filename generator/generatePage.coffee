@@ -5,8 +5,10 @@ bluebird = require "bluebird"
 request = bluebird.promisify require "request"
 generateApi = require "./generateApi"
 renderMarkdown = require "./renderMarkdown"
+cheerio = require "cheerio"
 
 pageTemplate = fs.readFileSync("templates/page.html").toString()
+tocTemplate = fs.readFileSync("templates/toc.html").toString()
 
 tagsRequest =
   url: "https://api.github.com/repos/baconjs/bacon.js/tags"
@@ -56,11 +58,34 @@ lastVersionInCDN.then (tag) ->
 envPromise.then (env) ->
   console.log "Using environment", env
 
+readFile = (fn) ->
+  content = fs.readFileSync(fn).toString()
+  if fn.slice(-3) == ".md"
+    '<a id="' + fn + '">\n' + renderMarkdown.render(content)
+  else
+    content
+
+toc = (data) ->
+  data.files = data.files.map (filename) ->
+    content = readFile filename
+    title = cheerio(content).find("h2").text()
+    { link: "#" + filename, title }
+  html = mustache.render tocTemplate, data
+
+readFiles = (page) ->
+  fn = page.input
+  files = if fs.lstatSync(fn).isDirectory()
+    fs.readdirSync(fn).map (f) -> fn + "/" + f
+  else
+    [].concat(fn)
+  contents = files.map(readFile).join("\n")
+  if files.length > 1
+    contents = toc({title: page.title, files}) + contents
+  contents
+
 module.exports = (page) ->
   envPromise.then (env) ->
-    content = page.content || fs.readFileSync(page.input).toString()
-    if page.input?.slice(-3) == ".md"
-      content = renderMarkdown.render(content)
+    content = page.content || readFiles(page)
     data = _.extend {}, env,
       AUTOGENDISCLAIMER: "<!-- This file is generated. See package.json -->"
       title: page.title

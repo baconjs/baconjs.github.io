@@ -7,7 +7,8 @@
     "lodash": "~2.4.1",
     "remarkable": "^1.6.0",
     "mustache": "~0.8.1",
-    "request": "^2.45.0"
+    "request": "^2.45.0",
+    "cheerio": "^0.18"
   },
   "scripts": {
     "postinstall": "generator/generate.coffee"

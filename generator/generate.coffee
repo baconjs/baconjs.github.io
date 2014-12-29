@@ -13,9 +13,9 @@ pages = [
   title: "Bacon.js - API reference"
   content: generateApi readmeSrc
 ,
-  output: "test.html"
-  input: "content/test.md"
-  title: "Test markdown"
+  output: "tutorials.html"
+  input: "content/tutorials"
+  title: "Tutorials"
 ]
 
 # Render pages

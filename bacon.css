@@ -9,7 +9,6 @@ body {
 .github {
     background-color: white;
     font-family: 'Yanone Kaffeesatz', sans-serif;
-    font-size: 140%;
     padding: 0.1em 0.1em
 }
 
@@ -19,6 +18,10 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+
+ol {
+  margin-left: 2em;
 }
 
 .logo {
@@ -69,7 +72,7 @@ button.run.error {
     font-family: 'Yanone Kaffeesatz', sans-serif;
     font-size: 200%;
     border-radius: 10px;
-    margin: 0 0 0.5em 0;
+    margin: 0 0 0.1em 0;
 }
 
 .big-button small {
@@ -120,4 +123,8 @@ textarea, .CodeMirror {
 
 .menu p {
     color: lightgray;
+}
+
+ul.toc {
+  list-style: none;
 }

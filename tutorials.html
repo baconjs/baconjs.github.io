@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<!-- This file is generated. See package.json -->
+<html>
+<head>
+<title>Tutorials</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width" />
+<meta name="keywords" content="bacon.js, FPR, functional reactive programming, javascript, reactive programming" />
+<meta name="description" content="Bacon.js is a functional reactive programming library for javascript." />
+
+<link rel="stylesheet" type="text/css" href="normalize.css" >
+<link rel="stylesheet" type="text/css" href="foundation.min.css" >
+<link rel="stylesheet" type="text/css" href="codemirror/codemirror.css" >
+<link rel="stylesheet" type="text/css" href="marble.css">
+<link rel="stylesheet" type="text/css" href="bacon.css" >
+
+<link href='//fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
+
+<script src="//codeorigin.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.41/Bacon.min.js"></script>
+
+
+<script src="codemirror/codemirror.js"></script>
+<script src="codemirror/javascript.js"></script>
+
+<script src="marble.js"></script>
+<script src="example.js"></script>
+
+</script>
+</head>
+
+<body>
+
+  <div class="grid row">
+    <div class="large-4 columns sidebar">
+      <div class="logo">
+        <a href="index.html"><img alt="bacon.js logo" src="logo.png" /></a>
+      </div>
+
+      <div class="download">
+        <a class="button big-button" href="http://cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.41/Bacon.js" download>
+          Download Bacon.js
+          <small>v0.7.41</small>
+          <a class="github" href="https://github.com/baconjs/bacon.js#install">[More install options]</a>
+        </a>
+      </div>
+
+      <div class="menu">
+        <div class="row">
+          <div class="large-12 small-6 columns">
+            <p> <a href="api.html"> API Reference </a> </p>
+            <p> <a href="tutorials.html"> Tutorials </a> </p>
+            <p> <a href="https://github.com/baconjs/bacon.js#install">Install/Download</a> </p>
+          </div>
+          <div class="large-12 small-6 columns">
+            <p> <a href="https://github.com/baconjs/bacon.js/wiki/FAQ">FAQ</a> </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="large-8 columns">
+      <div class="main">
+<h1>Tutorials</h1>
+<ul class="toc">
+<li>
+  <a href="#content/tutorials/2012_11_04_Bacon_Tutorial_I.md">Tutorial Part I - Hacking With jQuery</a>
+</li>
+<li>
+  <a href="#content/tutorials/2012_11_05_Bacon_Tutorial_II.md">Tutorial Part II: Get Started</a>
+</li>
+<li>
+  <a href="#content/tutorials/2012_11_18_Bacon_Tutorial_III.md">Tutorial Part III : AJAX and Stuff</a>
+</li>
+<li>
+  <a href="#content/tutorials/2013_12_04_Wrapping_Things_In_Bacon.md">Wrapping Things in Bacon</a>
+</li>
+<li>
+  <a href="#content/tutorials/2014_12_Building_Applications_Out_Of_Bacon.md">Structuring Real-Life Applications</a>
+</li>
+<li>
+  <a href="#content/tutorials/2014_12_Bus_Of_Doom.md">Bus of Doom</a>
+</li>
+</ul>
+<a id="content/tutorials/2012_11_04_Bacon_Tutorial_I.md">
+<h2>Tutorial Part I - Hacking With jQuery</h2>
+<p>This is the first part of a hopefully upcoming series of postings
+intended as a <a href="https://github.com/raimohanska/bacon.js">Bacon.js</a>
+tutorial. I'll be building a fully functional, however simplified, AJAX
+registration form for an imaginary web site.</p>
+<p>This material is based on my presentation/hands-on session at <a href="http://reaktordevday.fi/2012/">Reaktor Dev Day 2012</a>
+where I had to squeeze a Bacon.js intro and a coding session into less than an hour. I didn't have much time
+to discuss the problem and jumped into the solution a bit too fast. This time I'll first try to explain the problem
+I'm trying to solve with Bacon. So bear with me. Or have a look at the <a href="https://github.com/raimohanska/bacon-devday-code/blob/full-solution/index.html">Full Solution</a>
+first if you like.</p>
+<p>Anyway, the registration form could look something like this:</p>
+<p><img src="https://raw.github.com/raimohanska/nulzzzblog/master/images/registration-form-ui.png" alt="ui-sketch"></p>
+<p>This seems ridiculously simple, right? Enter username, fullname, click and you're done. As in</p>
+<pre><code class="language-javascript"><textarea class="code">registerButton.click(function(event) {
+  event.preventDefault()
+  var data = { username: usernameField.val(), fullname: fullnameField.val()}
+  $.ajax({
+    type: "post",
+    url: "/register",
+    data: JSON.stringify(data)
+  })
+})
+</textarea></code></pre>
+<p>At first it might seem so,
+but if you're planning on implementing a top-notch form, you'll want
+to consider including</p>
+<ol>
+<li>Username availability checking while the user is still typing the username</li>
+<li>Showing feedback on unavailable username</li>
+<li>Showing an AJAX indicator while this check is being performed</li>
+<li>Disabling the Register button until both username and fullname have been entered</li>
+<li>Disabling the Register button in case the username is unavailable</li>
+<li>Disabling the Register button while the check is being performed</li>
+<li>Disabling the Register button immediately when pressed to prevent double-submit</li>
+<li>Showing an AJAX indicator while registration is being processed</li>
+<li>Showing feedback after registration</li>
+</ol>
+<p>Some requirements, huh? Still, all of these sound quite reasonable, at least to me.
+I'd even say that this is quite standard stuff nowadays. You might now model the UI like this:</p>
+<p><img src="https://raw.github.com/raimohanska/bacon-devday-slides/master/images/registration-form-thorough.png" alt="dependencies"></p>
+<p>Now you see that, for instance, enabling/disabling the Register button depends on quite a many different things, some
+of them asynchronous. But hey, fuck the shit. Let's just hack it together now, right? Some jQuery and we're done in a while.</p>
+<p>[hack hack hack] ... k, done.</p>
+<pre><code class="language-javascript"><textarea class="code">var usernameAvailable, checkingAvailability, clicked
+
+usernameField.keyup(function(event) {
+  showUsernameAjaxIndicator(true)
+  updateButtonState()
+  $.ajax({ url : "/usernameavailable/" + usernameField.val()}).done(function(available) {
+    usernameAvailable = available
+    setVisibility(unavailabilityLabel, !available)
+    showUsernameAjaxIndicator(false)
+    updateButtonState()
+  })
+})
+
+fullnameField.keyup(updateButtonState)
+
+registerButton.click(function(event) {
+  event.preventDefault()
+  clicked = true
+  setVisibility(registerAjaxIndicator, true)
+  updateButtonState()
+  var data = { username: usernameField.val(), fullname: fullnameField.val()}
+  $.ajax({
+    type: "post",
+    url: "/register",
+    data: JSON.stringify(data)
+  }).done(function() {
+    setVisibility(registerAjaxIndicator, false)
+    resultSpan.text("Thanks!")
+  })
+})
+
+updateButtonState()
+
+function showUsernameAjaxIndicator(show) {
+  checkingAvailability = show
+  setVisibility(usernameAjaxIndicator, show)
+}
+
+function updateButtonState() {
+  setEnabled(registerButton, usernameAvailable 
+                              && nonEmpty(usernameField.val()) 
+                              && nonEmpty(fullnameField.val())
+                              && !checkingAvailability
+                              && !clicked)
+}
+</textarea></code></pre>
+<p>Beautiful? Nope, could be even uglier though. Works? Seems to. Number of variables? 3.</p>
+<p>Unfortunately, there's still a major bug in the code: the username availability responses may return in a different order than they were requested,
+in which case the code may end up showing an incorrect result. Easy to fix? Well, kinda.. Just add a counter and .. Oh, it's sending
+tons of requests even if you just move the cursor with the arrow keys in the username field. Hmm.. One more variable and.. Still too
+many requests... Throttling needed... It's starting to get a bit complicated now... Oh, setTimeout, clearTimeout... DONE.</p>
+<p>Here's the code now:</p>
+<pre><code class="language-javascript"><textarea class="code">var usernameAvailable, checkingAvailability, clicked, previousUsername, timeout
+var counter = 0
+
+usernameField.keyup(function(event) {
+  var username = usernameField.val()
+  if (username != previousUsername) {
+    if (timeout) {
+      clearTimeout(timeout)
+    }
+    previousUsername = username
+    timeout = setTimeout(function() {
+      showUsernameAjaxIndicator(true)
+      updateButtonState()
+      var id = ++counter
+      $.ajax({ url : "/usernameavailable/" + username}).done(function(available) {
+        if (id == counter) {
+          usernameAvailable = available
+          setVisibility(unavailabilityLabel, !available)
+          showUsernameAjaxIndicator(false)
+          updateButtonState()
+        }
+      })
+    }, 300)
+  }
+})
+
+fullnameField.keyup(updateButtonState)
+
+registerButton.click(function(event) {
+  event.preventDefault()
+  clicked = true
+  setVisibility(registerAjaxIndicator, true)
+  updateButtonState()
+  var data = { username: usernameField.val(), fullname: fullnameField.val()}
+  $.ajax({
+    type: "post",
+    url: "/register",
+    data: JSON.stringify(data)
+  }).done(function() {
+    setVisibility(registerAjaxIndicator, false)
+    resultSpan.text("Thanks!")
+  })
+})
+
+updateButtonState()
+
+function showUsernameAjaxIndicator(show) {
+  checkingAvailability = show
+  setVisibility(usernameAjaxIndicator, show)
+}
+
+function updateButtonState() {
+  setEnabled(registerButton, usernameAvailable 
+                              && nonEmpty(usernameField.val()) 
+                              && nonEmpty(fullnameField.val())
+                              && !checkingAvailability
+                              && !clicked)
+}
+</textarea></code></pre>
+<p>Number of variables: 6
+Max. level of nesting: 5</p>
+<p>Are your eyes burning already?</p>
+<p>Writing this kind of code is like changing diapers. Except kids grow up and change your diapers in the end.
+This kind of code just grows uglier and more disgusting and harder to maintain. It's like if your kids gradually started to...
+Well, let's not go there.</p>
+<p>How to improve this code? With MVC frameworks. Nope. Object-oriented design? Maybe. You'll end up with more code
+and better structure, but iIt will still be hard to separate concerns cleanly...</p>
+<p>No matter what, you'll need to store the UI state, like whether or not an AJAX request is pending, somewhere.
+And you need to trigger things like enabling/disabling the button somewhere, and usually in many places, as in the code
+above. This introduces dependencies in all the wrong places. Now many different parts of code need to know about updating
+the status of the button, while it should be the other way around.</p>
+<p>With the well-known Observer pattern (say, jQuery custom events) you can do some decoupling, so that you'll have an Observer
+that observes many events and then updates the button state. But, this does not solve the problem of providing the
+updateButtonState function with all the relevant data. So you'll end up using one mechanism for triggering state update and
+another one for maintaining required mutable state. No good.</p>
+<p>Wouldn't it be great if you had some abstraction for a signal that you can observe and compose, so that
+the &quot;button enabled&quot; state would be a composite signal constructed from all the required input signals?</p>
+<p>Say yes.</p>
+<p>Good. The Property class in Bacon.js is just that: a composable signal representing the state of something. The EventStream
+class is a composable signal representing distinct events. Define the following signals:</p>
+<pre><code>var username = ..
+var fullname = ..
+var buttonClick = ..
+</code></pre>
+<p>The rest is just composition.</p>
+<p>But hey, I'll get to that in the next posting.</p>
+
+<a id="content/tutorials/2012_11_05_Bacon_Tutorial_II.md">
+<h2>Tutorial Part II: Get Started</h2>
+<p>In my <a href="http://nullzzz.blogspot.fi/2012/11/baconjs-tutorial-part-i-hacking-with.html">previous blog posting posting</a>, I introduced a Registration Form application case study, and then hacked it
+together with just jQuery, with appalling results. Now we shall try again, using <a href="https://github.com/raimohanska/bacon.js">Bacon.js</a>.
+It'll take a while, of course, but the result will be quite pleasing, so please be patient. We'll start from the very basics.</p>
+<p>This is how you implement an app with Bacon.js.</p>
+<ol>
+<li>Capture input into EventStreams and Properties</li>
+<li>Transform and compose signals into ones that describe your domain.</li>
+<li>Assign side-effects to signals</li>
+</ol>
+<p>In practise, you'll probably pick a single feature and do steps 1..3 for
+that. Then pick the next feature and so on until you're done. Hopefully
+you'll do some refactoring on the way to keep your code clean.</p>
+<p>Sometimes it may help to draw the thing on paper. For our case study,
+I've done that for you:</p>
+<p><img src="https://raw.github.com/raimohanska/bacon-devday-slides/master/images/registration-form-bacon.png" alt="signals"></p>
+<p>In this diagram, the greenish boxes are EventStreams and the gray boxes
+are Properties. The top three boxes represent the raw input signals:</p>
+<ul>
+<li>Key-up events on the two text fields</li>
+<li>Clicks on the register button</li>
+</ul>
+<p>In this posting we'll capture the input signals, then define the <code>username</code>
+and <code>fullname</code> properties. In the end, we'll be able to print the values to the
+console. Not much, but you gotta start somewhere.</p>
+<h3>Setup</h3>
+<p>You can just read the tutorial, or you can try things yourself too. In case you prefer the latter,
+here are the instructions.</p>
+<p>First, you should get the code skeleton on your machine.</p>
+<pre><code><textarea class="code">git clone git@github.com:raimohanska/bacon-devday-code.git
+cd bacon-devday-code
+git co -t origin/clean-slate
+</textarea></code></pre>
+<p>So now you've cloned the source code and switched to the <a href="https://github.com/raimohanska/bacon-devday-code/tree/clean-slate">clean-slate</a> branch.
+Alternatively you may consider forking the repo first and creating a new branch
+if you will.</p>
+<p>Anyway, you can now open the <code>index.html</code> in your browser to see the registration form.
+You may also open the file in your favorite editor and have a brief look. You'll find some
+helper variables and functions for easy access to the DOM elements.</p>
+<h3>Capturing Input from DOM Events</h3>
+<p>Bacon.js is not a jQuery plugin or dependent on jQuery in any way. However, if it finds
+jQuery, it adds a method to the jQuery object prototype. This method is called <code>asEventStream</code>,
+and it is used to capture events into an EventStream. It's quite easy to use.</p>
+<p>To capture the <code>keyup</code> events on the username field, you can do</p>
+<pre><code class="language-javascript"><textarea class="code">$("#username input").asEventStream("keyup")
+</textarea></code></pre>
+<p>And you'll get an <code>EventStream</code> of the jQuery keyup events. Try this in your browser Javascript console:</p>
+<pre><code class="language-javascript"><textarea class="code">$("#username input").asEventStream("keyup").log()
+</textarea></code></pre>
+<p>Now the events will be logged into the console, whenever you type something to the username field (try!).
+To define the <code>username</code> property, we'll transform this stream into a stream of textfield values (strings)
+and then convert it into a Property:</p>
+<pre><code class="language-javascript"><textarea class="code">$("#username input").asEventStream("keyup").map(function(event) { return $(event.target).val() }).toProperty("")
+</textarea></code></pre>
+<p>To see how this works in practise, just add the <code>.log()</code> call to the end and you'll see the results in your console.</p>
+<p>What did we just do?</p>
+<p>We used the <code>map</code> method to transform each event into the current value of the username field. The <code>map</code> method
+returns another stream that contains mapped values. Actually it's just like the map function
+in <a href="http://underscorejs.org/">underscore.js</a>, but for EventStreams and Properties.</p>
+<p>After mapping stream values, we converted the stream into a Property by calling <code>toProperty(&quot;&quot;)</code>. The empty string is the initial value
+for the Property, that will be the current value until the first event in the stream. Again, the toProperty method returns a
+new Property, and doesn't change the source stream at all. In fact, all methods in Bacon.js
+return something, and most have no side-effects. That's what you'd expect from a functional programming library, wouldn't you?</p>
+<p>The <code>username</code> property is in fact ready for use. Just name it and copy it to the source code:</p>
+<pre><code class="language-javascript"><textarea class="code">username = $("#username input").asEventStream("keyup").map(function(event) { return $(event.target).val() }).toProperty("")
+</textarea></code></pre>
+<p>I intentionally omitted &quot;var&quot; at this point to make it easier to play with the property in the browser developer console.</p>
+<p>Next we could define <code>fullname</code> similarly just by copying and pasting. Shall we?</p>
+<p>Nope. We'll refactor to avoid duplication:</p>
+<pre><code class="language-javascript"><textarea class="code">function textFieldValue(textField) {
+    function value() { return textField.val() }
+    return textField.asEventStream("keyup").map(value).toProperty(value())
+}
+
+username = textFieldValue($("#username input"))
+fullname = textFieldValue($("#fullname input"))
+</textarea></code></pre>
+<p>Better! In fact, there's already a <code>textFieldValue</code> function available in <a href="https://github.com/raimohanska/Bacon.UI.js/blob/master/Bacon.UI.js">Bacon.UI</a>,
+and it happens to be incluced in the code already so you can just go with</p>
+<pre><code class="language-javascript"><textarea class="code">username = Bacon.UI.textFieldValue($("#username input"))
+fullname = Bacon.UI.textFieldValue($("#fullname input"))
+</textarea></code></pre>
+<p>So, there's a helper library out there where I've shoveled some of the things that seems to repeat in different projects.
+Feel free to contribute!</p>
+<p>Anyway, if you put the code above into your source code file, reload the page in the browser and type</p>
+<pre><code class="language-javascript"><textarea class="code">username.log()
+</textarea></code></pre>
+<p>to the developer console, you'll see username changes in the console log.</p>
+<h3>Mapping Properties and Adding Side-Effects</h3>
+<p>To get our app to actually do something visible besides writing to the console, we'll define a couple of new
+<code>Properties</code>, and assign our first side-effect. Which is enabling/disabling the Register button based on whether
+the user has entered something to both the username and fullname fields.</p>
+<p>I'll start by defining the <code>buttonEnabled</code> Property:</p>
+<pre><code class="language-javascript"><textarea class="code">function and(a,b) { return a && b }
+buttonEnabled = usernameEntered.combine(fullnameEntered, and)
+</textarea></code></pre>
+<p>So I defined the Property by combining to props together, with the <code>and</code> function.
+The <code>combine</code> method works so that when either <code>usernameEntered</code> and <code>fullnameEntered</code>
+changes, the result Property will get a new value. The new value is constructed by applying
+the <code>and</code> function to the values of both props. Easy! And can be even easier:</p>
+<pre><code class="language-javascript"><textarea class="code">buttonEnabled = usernameEntered.and(fullnameEntered)
+</textarea></code></pre>
+<p>This does the exact same thing as the previous one, but relies on the boolean-logic methods
+(<code>and</code>, <code>or</code>, <code>not</code>) included in Bacon.js.</p>
+<p>But something's still missing. We haven't defined <code>usernameEntered</code> and <code>fullnameEntered</code>. Let's do.</p>
+<pre><code class="language-javascript"><textarea class="code">function nonEmpty(x) { return x.length > 0 }
+usernameEntered = username.map(nonEmpty)
+fullnameEntered = fullname.map(nonEmpty)
+buttonEnabled = usernameEntered.and(fullnameEntered)
+</textarea></code></pre>
+<p>So, we used the <code>map</code> method again. It's good to know that it's applicable to both <code>EventStreams</code> and <code>Properties</code>.
+And the <code>nonEmpty</code> function is actually already defined in the source code, so you don't actually have to redefine it.</p>
+<p>The side-effect part is simple:</p>
+<pre><code class="language-javascript"><textarea class="code">buttonEnabled.onValue(function(enabled) {
+    $("#register button").attr("disabled", !enabled)
+})
+</textarea></code></pre>
+<p>Try it! Now the button gets immediately disabled and will enabled once you type something to both the text fields.
+Mission accomplished!</p>
+<p>But we can do better.</p>
+<p>For example,</p>
+<pre><code class="language-javascript"><textarea class="code">buttonEnabled.not().onValue($("#register button"), "attr", "disabled")
+</textarea></code></pre>
+<p>This relies on te fact that the <code>onValue</code> method, like many other Bacon.js methods, supports different sets of
+parameters. On of them is the above form, which can be translated as &quot;call the <code>attr</code> method of the register
+button and use <code>disabled</code> as the first argument&quot;. The second argument for the <code>attr</code> method will be taken from the
+current property value.</p>
+<p>You could also do the same by</p>
+<pre><code class="language-javascript"><textarea class="code">buttonEnabled.not().assign(setEnabled, registerButton)
+</textarea></code></pre>
+<p>Now we rely on the <code>setEnabled</code> function that's defined in our source code, as well as <code>registerButton</code>. The above
+can be translated to &quot;call the <code>setEnabled</code> function and use <code>registerButton</code> as the first argument&quot;.</p>
+<p>So, with some Bacon magic, we eliminated the extra anonymous function and improved readability. Om nom nom.</p>
+<p>And that's it for now. We'll do AJAX soon.</p>
+
+<a id="content/tutorials/2012_11_18_Bacon_Tutorial_III.md">
+<h2>Tutorial Part III : AJAX and Stuff</h2>
+<p>This is the next step in the Bacon.js tutorial series. I hope you've read
+<a href="http://nullzzz.blogspot.fi/2012/11/baconjs-tutorial-part-ii-get-started.html">Part II</a> already! This time we're
+going to implement an &quot;as you type&quot; username availability check with
+AJAX. The steps are</p>
+<ol>
+<li>Create an <code>EventStream</code> of AJAX requests for use with
+<code>jQuery.ajax()</code></li>
+<li>Create a stream of responses by issuing an AJAX request for each
+request event and capturing AJAX responses into the new stream.</li>
+<li>Define the <code>usernameAvailable</code> Property based on the results</li>
+<li>Some side-effects: disable the Register button if username is
+unavailable. Also, show a message.</li>
+</ol>
+<p>I suggest you checkout the <a href="https://github.com/raimohanska/bacon-devday-code">example code</a> and switch to the
+<a href="https://github.com/raimohanska/bacon-devday-code/tree/tutorial-2">tutorial-2 branch</a>
+which will be the starting point for the coding part of this posting.
+If you just want to have a look at what we'ge got so far, have a <a href="https://github.com/raimohanska/bacon-devday-code/blob/tutorial-2/index.html">peek</a>.</p>
+<p>So, at this point we've got a Property called <code>username</code> which
+represents the current value entered to the username text input field.
+We want to query for username availability each time this property
+changes. First, to get the stream of changes to the property we'll do
+this:</p>
+<pre><code class="language-javascript"><textarea class="code">username.changes()
+</textarea></code></pre>
+<p>This will return an <code>EventStream</code>. The difference to the <code>username</code>
+Property itself is that there's no initial value (the empty string).
+Next, we'll transform this to a stream that provides jQuery compatible
+AJAX requests:</p>
+<pre><code class="language-javascript"><textarea class="code">availabilityRequest = username.changes().map(function(user) { return { url: "/usernameavailable/" + user }})
+</textarea></code></pre>
+<p>The next step is extremely easy, using Bacon.UI.js:</p>
+<pre><code class="language-javascript"><textarea class="code">availabilityResponse = availabilityRequest.ajax()
+</textarea></code></pre>
+<p>This maps the requests into AJAX responses. Looks very simple, but
+behind the scene it takes care of request/response ordering so that
+you'll only ever get the response of the latest issued request in that
+stream. This is where, with pure jQuery, we had to resort to keeping a
+counter variable for making sure we don't get the wrong result because
+of network delays.</p>
+<p>So, what does the <code>ajax()</code> method in Bacon.UI look like? Does it do
+stuff with variables? Lets see.</p>
+<pre><code class="language-javascript"><textarea class="code">Bacon.EventStream.prototype.ajax = function() {
+  return this["switch"](function(params) { return Bacon.fromPromise($.ajax(params)) })
+}
+</textarea></code></pre>
+<p>Not so complicated after all. But let's talk about <code>flatMap</code> now, for a
+while, so that you can build this kind of helpers yourself, too.</p>
+<h3>AJAX as a Promise</h3>
+<p>AJAX is asynchronous, hence the name. This is why we can't use <code>map</code> to
+convert requests into responses. Instead, each AJAX request/response
+should be modeled as a separate stream. And it can be done too. So, if
+you do</p>
+<pre><code class="language-javascript"><textarea class="code">$.ajax({ url : "/usernameavailable/jack"})
+</textarea></code></pre>
+<p>you'll get a jQuery
+<a href="http://api.jquery.com/category/deferred-object/">Deferred</a> object. This
+object can be thought of as a
+<a href="http://wiki.commonjs.org/wiki/Promises/A">Promise</a> of a result. Using
+the Promise API, you can handle the asynchronous results by assigning a
+callback with the <code>done(callback)</code> function, as in</p>
+<pre><code class="language-javascript"><textarea class="code">$.ajax({ url : "/usernameavailable/jack"}).done(function(result) { console.log(result)})
+</textarea></code></pre>
+<p>If you try this in you browser, you should see <code>true</code> printed to the
+console shortly. You can wrap any Promise into an EventStream using
+<code>Bacon.fromPromise(promise)</code>. Hence, the following will have the same
+result:</p>
+<pre><code class="language-javascript"><textarea class="code">Bacon.fromPromise($.ajax({ url : "/usernameavailable/jack"})).log()
+</textarea></code></pre>
+<p>This is how you make an EventStream of an AJAX request.</p>
+<h3>AJAX with <code>flatMap</code></h3>
+<p>So now we have a stream of AJAX requests and the knowhow to create
+a new stream from a jQuery AJAX. Now we need to</p>
+<ol>
+<li>Create a response stream for each request in the request stream</li>
+<li>Collect the results of all the created streams into a single response
+stream</li>
+</ol>
+<p>This is where <code>flatMap</code> comes in:</p>
+<pre><code class="language-javascript"><textarea class="code">function toResultStream(request) {
+  return Bacon.fromPromise($.ajax(request))
+}
+availabilityResponse = availabilityRequest.flatMap(toResultStream)
+</textarea></code></pre>
+<p>Now you'll have a new EventStream called <code>availabilityResponse</code>. What
+<code>flatMap</code> does is</p>
+<ol>
+<li>It calls your function for each value in the source stream</li>
+<li>It expects your function to return a new EventStream</li>
+<li>It collects the values of all created streams into the result stream</li>
+</ol>
+<p>Like in this diagram.</p>
+<p><img src="https://raw.github.com/wiki/baconjs/bacon.js/baconjs-flatmap.png" alt="flatMap"></p>
+<p>So here we go. The only issue left is that <code>flatMap</code> doesn't care about
+response ordering. It spits out the results in the same order as they
+arrive. So, it may (and will) happen that</p>
+<ol>
+<li>Request A is sent</li>
+<li>Request B is sent</li>
+<li>Result of request B comes</li>
+<li>Result of request A comes</li>
+</ol>
+<p>.. and your <code>availabilityResponse</code> stream will end with the wrong
+answer, because the latest response is not for the latest request.
+Fortunately there's a method for fixing this exact problem: Just replace
+<code>flatMap</code> with <code>flatMapLatest</code> (previously called &quot;switch&quot;) and you're done.</p>
+<p><img src="https://raw.github.com/wiki/baconjs/bacon.js/baconjs-switch.png" alt="switch"></p>
+<p>Now that you know how it works, you may as well use the <code>ajax()</code> method
+that Bacon.UI provides:</p>
+<pre><code class="language-javascript"><textarea class="code">availabilityResponse = availabilityRequest.ajax()
+</textarea></code></pre>
+<p>POW!</p>
+<h3>The easy part : side-effects</h3>
+<p>Let's show the &quot;username not available&quot; message. It's actually a stateful thing, so we'll convert
+the <code>availabilityResponse</code> stream into a new Property:</p>
+<pre><code class="language-javascript"><textarea class="code">usernameAvailable = availabilityResponse.toProperty(true)
+</textarea></code></pre>
+<p>The boolean value is used to give the property a starting value. So now this property starts with the value <code>true</code>
+and after that reflects that value from the <code>availabilityRequest</code> stream. The visibility of the message element
+should actually equal to the negation of this property. So why not something like</p>
+<pre><code class="language-javascript"><textarea class="code">usernameAvailable.not().onValue(setVisibility, unavailabilityLabel)
+</textarea></code></pre>
+<p>Once again, this is equivalent to</p>
+<pre><code class="language-javascript"><textarea class="code">usernameAvailable.not().onValue(function(show) { setVisibility(unavailabilityLabel, show) })
+</textarea></code></pre>
+<p>... the idea in the former being that we <a href="http://en.wikipedia.org/wiki/Partial_application">partially-apply</a>
+the <code>setVisibility</code> function: Bacon will call the function with <code>unavailabilityLabel</code> fixed as the first argument.
+The second argument to the function will be the value from the <code>usernameAvailable.not()</code> Property.</p>
+<p>Finally, we'll also disable the Register button when the username is unavailable. This is done by changing</p>
+<pre><code class="language-javascript"><textarea class="code">buttonEnabled = usernameEntered.and(fullnameEntered)
+</textarea></code></pre>
+<p>to</p>
+<pre><code class="language-javascript"><textarea class="code">buttonEnabled = usernameEntered.and(fullnameEntered).and(usernameAvailable)
+</textarea></code></pre>
+<p>The result code can be found in the <a href="https://github.com/raimohanska/bacon-devday-code/tree/tutorial-3">tutorial-3 branch</a>.</p>
+
+<a id="content/tutorials/2013_12_04_Wrapping_Things_In_Bacon.md">
+<h2>Wrapping Things in Bacon</h2>
+<p>I've got a lot of question along the lines of &quot;can I integrate Bacon with X&quot;. And the answer is, of course, Yes You Can. Assuming X is something with a Javascript API that is. In fact, for many values of X, there are ready-made solutions.</p>
+<ul>
+<li>JQuery events is supported out-of-the box</li>
+<li>With <a href="https://github.com/baconjs/bacon.jquery">Bacon.JQuery</a>, you get more, including AJAX, two-way bindings</li>
+<li>Node.js style callbacks, with (err, result) parameters, are supported with Bacon.fromNodeCallback</li>
+<li>General unary callbacks are supported with Bacon.fromCallback</li>
+<li>There's probably a plenty of wrappers I haven't listed here. Let's put them on the <a href="https://github.com/baconjs/bacon.js/wiki/Related-projects">Wiki</a>, shall we?</li>
+</ul>
+<p>In case X doesn't fall into any of these categories, you may have to roll your own. And that's not hard either. Using <code>Bacon.fromBinder</code>, you should be able to plug into any data source quite easily. In this blog posting, I'll show some examples of just that.</p>
+<p>You might want to take a look at Bacon.js <a href="https://github.com/baconjs/bacon.js?utm_source=javascriptweekly&amp;utm_medium=email">readme</a> for documentation and reference.</p>
+<h3>Example 1: Timer</h3>
+<p>Let's start with a simple example. Suppose you want to create a stream that produces timestamp events each second. Easy!</p>
+<p>Using <code>Bacon.interval</code>, you'll get a stream that constantly produces a value. Then you can use <code>map</code> to convert the values into timestamps.</p>
+<pre><code class="language-javascript"><textarea class="code">Bacon.interval(1000).map(function() { return new Date().getTime() })
+</textarea></code></pre>
+<p>Using <code>Bacon.fromPoll</code>, you can have Bacon call your function each 1000 milliseconds, and produce the current timestamp on each call.</p>
+<pre><code class="language-javascript"><textarea class="code">Bacon.fromPoll(1000, function() { return new Date().getTime() })
+</textarea></code></pre>
+<p>So, clearly Using <code>Bacon.fromBinder</code> is an overkill here, but if you want to learn to roll your own streams, this might be a nice example:</p>
+<pre><code class="language-javascript"><textarea class="code">var timer = Bacon.fromBinder(function(sink) {
+    var id = setInterval(function() {
+        sink(new Date().getTime())
+    }, 1000)
+    return function() {
+        clearInterval(id)
+    }
+})
+timer.take(5).onValue(function(value) {
+    $("#events").append($("<li>").text(value))
+})
+</textarea></code></pre>
+<p>Try it out: http://jsfiddle.net/PG4c4/</p>
+<p>So,</p>
+<ul>
+<li>you call <code>Bacon.fromBinder</code> and you provide your own &quot;subscribe&quot; function</li>
+<li>there there you register to your underlying data source. In the example, <code>setTimeout</code>.</li>
+<li>when you get data from your data source, you push it to the provided &quot;sink&quot; function. In the example, you push the current timestamp</li>
+<li>from your &quot;subscribe&quot; function you return another function that cleans up. In this example, you'll call <code>setTimeout</code></li>
+</ul>
+<h3>Example 2: Hammer.js</h3>
+<p><a href="http://eightmedia.github.io/hammer.js/">Hammer.js</a> is a library for handling multi-touch gesture events. Just to prove my point, I created a fiddle where I introduce a &quot;hammerStream&quot; function that wraps any Hammer.js event into an EventStream:</p>
+<pre><code class="language-javascript"><textarea class="code">function hammerStream(element, event) {
+    return Bacon.fromBinder(function(sink) {
+        function push() {
+            sink("hammer time!")
+        }
+        Hammer(element).on(event, push)
+        return function() {
+            Hammer(element).off(event, push)
+        }
+    })
+}
+</textarea></code></pre>
+<p>Try it out: http://jsfiddle.net/axDJy/3/</p>
+<p>It's exactly the same thing as with the above example. In my &quot;subscribe&quot; function, I register an event handler to Hammer.js. In this event handler I push a value &quot;hammer time!&quot; to the stream. I return a function that will de-register the hammer event handler.</p>
+<h3>More examples</h3>
+<p>You're not probably surprised at the fact that all the included wrappers and generators (including <code>$.asEventStream</code>, <code>Bacon.fromNodeCallback</code>, <code>Bacon.interval</code>, <code>Bacon.fromPoll</code> etc) are implemented on top of Bacon.fromBinder. So, for more examples, just dive into the Bacon.js codebase itself.</p>
+
+<a id="content/tutorials/2014_12_Building_Applications_Out_Of_Bacon.md">
+<h2>Structuring Real-Life Applications</h2>
+<p>The Internet is full of smart peanut-size examples of how to solve X with &quot;FRP&quot; and Bacon.js. But how to organize a real-world size application? That's been <a href="https://github.com/baconjs/bacon.js/issues/478">asked</a> once in a while and indeed I have an answer up in my sleeve. Don't take though that I'm saying this is the The Definitive Answer. I'm sure your own way is as good or better. Tell me about it!</p>
+<p>I think there are some principles that you should apply to the design of any application though, like <a href="http://en.wikipedia.org/wiki/Single_responsibility_principle">Single Reponsibility Principle</a> and <a href="http://en.wikipedia.org/wiki/Separation_of_concerns">Separation of Concerns</a>. Given that, your application should consist of components that are fairly independent of each others implementation details. I'd also like the components to communicate using some explicit signals instead of shared mutable state (nudge nudge Angular). For this purpose, I find the Bacon.js <code>EventStreams</code> and <code>Properties</code> quite handy.</p>
+<p>So if a component needs to act when a triggering event occurs, why not give it an <code>EventStream</code> representing that event in its constructor.  The <code>EventStream</code> is an abstraction for the event source, so the implementation of your component is does not depend on where the event originates from, meaning you can use a WebSocket message as well as a mouse click as the actual event source. Similarly, if you component needs to display or act on the <em>state</em> of something, why not give it a <code>Property</code> in its constructor.</p>
+<p>When it comes to the outputs of a component, those can exposed as <code>EventStreams</code> and <code>Properties</code> in the component's public interface. In some cases it also makes sense to publish a <code>Bus</code> to allow plugging in event sources after component creation.</p>
+<p>For example, a ShoppingCart model component might look like this.</p>
+<pre><code class="language-javascript"><textarea class="code">function ShoppingCart(initialContents) {
+  var addBus = new Bacon.Bus()
+  var removeBus = new Bacon.Bus()
+  var contentsProperty = Bacon.update(initialContents,
+    addBus, function(contents, newItem) { return contents.concat(newItem) },
+    removeBus, function(contents, removedItem) { return _.remove(contents, removedItem) }
+  )
+  return {
+    addBus: addBus,
+    removeBus: removeBus,
+    contentsProperty: contentsProperty
+  }    
+}
+</textarea></code></pre>
+<p>Internally, the ShoppingCart contents are composed from an initial status and <code>addBus</code> and <code>removeBus</code> streams using <code>Bacon.update</code>.</p>
+<p>The external interface of this component exposes the <code>addBus</code> and <code>removeBus</code> buses where you can plug external streams for adding and removing items. It also exposes the current contents of the cart as a <code>Property</code>.</p>
+<p>Now you may define a view component that shows cart contents, using your favorite DOM manipulation technology, like <a href="https://github.com/Matt-Esch/virtual-dom">virtual-dom</a>:</p>
+<pre><code class="language-javascript"><textarea class="code">function ShoppingCartView(contentsProperty) {
+  function updateContentView(newContents) { /* omitted */ }
+  contentsProperty.onValue(updateContentView)
+}
+</textarea></code></pre>
+<p>And a component that can be used for adding stuff to your cart:</p>
+<pre><code class="language-javascript"><textarea class="code">function NewItemView() {
+  var $button, $nameField // JQuery objects
+  var newItemProperty = Bacon.$.textFieldValue($nameField) // property containing the item being added
+  var newItemClick = $button.asEventStream("click") // clicks on the "add to cart" button
+  var newItemStream = newItemProperty.sampledBy(newItemClick)
+  return {
+    newItemStream: newItemStream
+  }
+}
+</textarea></code></pre>
+<p>And you can plug these guys together as follows.</p>
+<pre><code class="language-javascript"><textarea class="code">var cart = ShoppingCart([])
+var cartView = ShoppingCartView(cart.contentsProperty)
+var newItemView = NewItemView()
+cart.addBus.plug(newItemView.newItemStream)
+</textarea></code></pre>
+<p>So there you go!</p>
+
+<a id="content/tutorials/2014_12_Bus_Of_Doom.md">
+<h2>Bus of Doom</h2>
+<p>In a previous <a href="http://baconjs.blogspot.fi/2014/12/structuring-real-life-applications.html">Bacon blog post</a> a way to structure Bacon application was outlined. It introduces Buses as a central way to glue components with each other. I'm in a very strong disagreement with the proposed style. Why?</p>
+<p><a href="https://social.msdn.microsoft.com/Forums/en-US/bbf87eea-6a17-4920-96d7-2131e397a234/why-does-emeijer-not-like-subjects">Quoting Erik Meijer</a></p>
+<blockquote>
+<p>Subjects are the &quot;mutable variables&quot; of the Rx world and in most cases you do not need them.</p>
+</blockquote>
+<p>In Bacon parlance that would be</p>
+<blockquote>
+<p>Buses are the &quot;mutable variables&quot; of the Bacon world and in most cases you do not need them.</p>
+</blockquote>
+<p>Now, that needs an explanation. We can split the statement to two parts and treat each individually. &quot;Why Buses (and mutable variables) are bad&quot;, then &quot;why you don't usually need them&quot;.</p>
+<h3>Problems with Bus</h3>
+<p>There was a time when data structures in our programs were built by mutating those data structures. In case you have entered this field only recently you may be a lucky one and haven't seen that madness in full glory (== spaghetti).</p>
+<pre><code class="language-javascript"><textarea class="code">var cart = ShoppingCart()
+var view = ShoppingCartView()
+view.cart = cart
+</textarea></code></pre>
+<p>This was a bad idea as it creates temporal dependencies all over the program, making it difficult to locally understand how a piece of code works. Instead, a global view on a program is required. Who mutates what and when. It also created many bugs as components of a system are from time to time in an invalid state. Most common invalid state being at a construction phase where fields are initialized to nulls. A whole slew of bugs were eliminated and sanity regained by moving to immutable data.</p>
+<pre><code class="language-javascript"><textarea class="code">var cart = ShoppingCart()
+var view = ShoppingCartView(cart)
+</textarea></code></pre>
+<p>Ok, what does all that have to do with Buses? Well, Buses introduce similar temporal dependencies to your program. Is that component ready to be used? I don't know, did you plug its Buses already with this and that?</p>
+<pre><code class="language-javascript"><textarea class="code">var shoppingCartBus = new Bacon.Bus()
+$.ajax('/api/cart').done(cart => shoppingCartBus.push(cart))
+...
+shoppingCartBus.onValue(cart => renderCart(cart))
+</textarea></code></pre>
+<p>Here's a recent bug (simplified from a real world app) found in our company's internal chat. Can you spot it?</p>
+<p>There's a chance that the ajax call on line 2 returns before line 4 is executed, thus the event is completely missed. It is temporal dependencies like that which are nearly impossible to understand in a bigger context. And what's worse, these bugs are difficult to reproduce as we are programming in a setting where stuff is nondeterministic (timers, delays, network calls etc.). I'm sure that many Bus fetished programs contain subtle bugs like above.</p>
+<h3>How to avoid Buses</h3>
+<p>I'll give examples of techniques avoiding Buses by refactoring the example in the previous blog post.</p>
+<p>The first one is simple and obvious. Turn inputs of a component to be input arguments of the component.</p>
+<p>Before:</p>
+<pre><code class="language-javascript"><textarea class="code">function ShoppingCart(initialContents) {
+  var addBus = new Bacon.Bus()
+  var removeBus = new Bacon.Bus()
+  var contentsProperty = Bacon.update(initialContents,
+    addBus, function(contents, newItem) { return contents.concat(newItem) },
+    removeBus, function(contents, removedItem) { return _.remove(contents, removedItem) }
+  )
+  return {
+    addBus: addBus,
+    removeBus: removeBus,
+    contentsProperty: contentsProperty
+  }
+}
+</textarea></code></pre>
+<p>After:</p>
+<pre><code class="language-javascript"><textarea class="code">function ShoppingCart(initialContents, addItem, removeItem) {
+  return Bacon.update(initialContents,
+    addItem, function(contents, newItem) { return contents.concat(newItem) },
+    removeItem, function(contents, removedItem) { return _.remove(contents, removedItem) }
+  )
+}
+</textarea></code></pre>
+<p>I'm pretty sure everyone agrees that the refactored version is simpler.</p>
+<p>The next refactoring has to do with remove links. Each shopping cart item will have a link and clicking a link will remove the item from a cart. The refactored version of the ShoppingCart needs <code>removeItem</code> click stream as a function argument, but the individual items are created dynamically as the user selects items. This can be solved by event delegation.</p>
+<pre><code class="language-javascript"><textarea class="code">$('#shopping-cart').asEventStream('click', '.remove-item')
+</textarea></code></pre>
+<p>You can state just once and for all: here's a stream of <code>clicks</code> of every <code>.remove-item</code> link in the shopping cart, and <strong>of all the future</strong> <code>.remove-item</code> links that will appear in the shopping cart. That is fantastic. It's like, you put it there and there it is. Event delegation is such a god sent tool and my heart fills with joy every time I have a chance to use it. After that the click events must be associated with items. A canonical way to do it is with data attributes.</p>
+<p>Now the sample program is Bus-free.</p>
+<pre><code class="language-javascript"><textarea class="code">function ShoppingCart(initialContents, addItem, removeItem) {
+  return Bacon.update(initialContents,
+    addItem, function(contents, newItem) { return contents.concat(newItem) },
+    removeItem, function(contents, removedItem) { return _.remove(contents, removedItem) }
+  )
+}
+
+var removeItemStream = $('#shopping-cart').asEventStream('click', '.remove-item')
+  .map(function(e) { return $(e.currentTarget).data('id') })
+var newItemView = NewItemView()
+var cart = ShoppingCart([], newItemView.newItemStream, removeItemStream)
+var cartView = ShoppingCartView(cart)
+</textarea></code></pre>
+<p>All done? Not yet. <code>removeItemStream</code> is hanging there while it probably should be part of <code>ShoppingCartView</code>.</p>
+<pre><code class="language-javascript"><textarea class="code">function ShoppingCartView(cart) {
+  return {
+    cartView: ...
+    removeItemStream: $('#shopping-cart').asEventStream('click', '.remove-item')
+      .map(function(e) { return $(e.currentTarget).data('id') })
+}
+</textarea></code></pre>
+<p>Whoops, now we introduced a cyclic dependency between <code>ShoppingCart</code> and <code>ShoppingCartView</code>.</p>
+<pre><code class="language-javascript"><textarea class="code">var cart = ShoppingCart(initialContents, addItem, removeItemStream)
+var {removeItemStream} = ShoppingCartView(cart)
+</textarea></code></pre>
+<p>Cyclic dependency is often given as an example where Buses are needed. After all the hard work should we now reintroduce Buses?</p>
+<p>Here a Bus can be used to break the cyclic dependency, just as a mutable variable would do if you will. But we have other options too. Why don't we factor the components so that the cyclic dependency completely disappears.</p>
+<pre><code class="language-javascript"><textarea class="code">function RemoveItems(container) {
+  return {
+    view: ...
+    removeItemStream: container.asEventStream('click', '.remove-item')
+      .map(function(e) { return $(e.currentTarget).data('id') })
+}
+
+var viewContainer = $('#shopping-cart')
+var removeItems = RemoveItems(viewContainer)
+var cart = ShoppingCart(initialContents, addItem, removeItems.removeItemStream)
+ShoppingCartView(viewContainer, cart, removeItems)
+</textarea></code></pre>
+<p>Similar factorings can be almost always used to break cyclic dependencies.</p>
+<h3>Conclusion</h3>
+<p>Avoid Buses. View those as mutable variables and you will understand the kinds of problems they create. By relating Buses to mutable variables gives you an intuition on how to avoid those in a first place.</p>
+
+      </div>
+    </div>
+  </div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-58079902-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>
