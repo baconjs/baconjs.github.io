@@ -14,10 +14,10 @@
 <link rel="stylesheet" type="text/css" href="marble.css">
 <link rel="stylesheet" type="text/css" href="bacon.css" >
 
-<link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
 
-<script src="http://codeorigin.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.41/Bacon.min.js"></script>
+<script src="//codeorigin.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.41/Bacon.min.js"></script>
 
 
 <script src="codemirror/codemirror.js"></script>
@@ -245,7 +245,7 @@ value.</p>
 
 
 <p><a name="bacon-frombinder"></a>
-<a href="#bacon-frombinder" title="Bacon.fromBinder(subscribe)"><code>Bacon.fromBinder(subscribe)</code></a> The parameter <code>subscribe</code> is a function that accepts a <code>sink</code> which is a function that your <code>subscribe</code> funtion can &quot;push&quot; events to.</p>
+<a href="#bacon-frombinder" title="Bacon.fromBinder(subscribe)"><code>Bacon.fromBinder(subscribe)</code></a> The parameter <code>subscribe</code> is a function that accepts a <code>sink</code> which is a function that your <code>subscribe</code> function can &quot;push&quot; events to.</p>
 <p>For example:</p>
 <pre><code class="language-js"><textarea class="code">var stream = Bacon.fromBinder(function(sink) {
   sink("first value")
@@ -1289,7 +1289,7 @@ ajaxResult = source.flatMap(function(url) {
         // function to call when trying, should return an EventStream
         source: function() { return ajaxCall(url) },
         retries: 5, // nr of times to retry before giving up
-        delay: 100 // delay in ms between retries
+        delay: function() { return 100; } // delay in ms between retries
     })
 })
 </textarea></code></pre>
