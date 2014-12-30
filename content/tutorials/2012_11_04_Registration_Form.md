@@ -1,10 +1,56 @@
-## Tutorial Part II: Get Started
+## Registration Form
 
-In my [previous blog posting posting](http://nullzzz.blogspot.fi/2012/11/baconjs-tutorial-part-i-hacking-with.html), I introduced a Registration Form application case study, and then hacked it 
-together with just jQuery, with appalling results. Now we shall try again, using [Bacon.js](https://github.com/raimohanska/bacon.js). 
-It'll take a while, of course, but the result will be quite pleasing, so please be patient. We'll start from the very basics.
+In this tutorial I'll be building a fully functional, however simplified, AJAX
+registration form for an imaginary web site.
 
-This is how you implement an app with Bacon.js.
+The registration form could look something like this:
+
+![ui-sketch](https://raw.github.com/raimohanska/nulzzzblog/master/images/registration-form-ui.png)
+
+### Starting with the Naive Approach
+
+This seems ridiculously simple, right? Enter username, fullname, click and you're done. As in
+
+```javascript
+registerButton.click(function(event) {
+  event.preventDefault()
+  var data = { username: usernameField.val(), fullname: fullnameField.val()}
+  $.ajax({
+    type: "post",
+    url: "/register",
+    data: JSON.stringify(data)
+  })
+})
+```
+
+At first it might seem so, 
+but if you're planning on implementing a top-notch form, you'll want 
+to consider
+
+1. Username availability checking while the user is still typing the username
+2. Showing feedback on unavailable username
+3. Showing an AJAX indicator while this check is being performed
+4. Disabling the Register button until both username and fullname have been entered
+5. Disabling the Register button in case the username is unavailable
+6. Disabling the Register button while the check is being performed
+7. Disabling the Register button immediately when pressed to prevent double-submit
+8. Showing an AJAX indicator while registration is being processed
+9. Showing feedback after registration
+
+Some requirements, huh? Still, all of these sound quite reasonable, at least to me.
+I'd even say that this is quite standard stuff nowadays. You might now model the UI like this:
+
+![dependencies](https://raw.github.com/raimohanska/bacon-devday-slides/master/images/registration-form-thorough.png)
+
+Now you see that, for instance, enabling/disabling the Register button depends on quite a many different things, some
+of them asynchronous. 
+
+In my original [blog posting](http://nullzzz.blogspot.fi/2012/11/baconjs-tutorial-part-i-hacking-with.html) I actually
+implemented these features using jQuery, with appalling results. Believe me, or have a look...
+
+### Back to Drawing Board
+
+Generally, this is how you implement an app with Bacon.js.
 
 1. Capture input into EventStreams and Properties
 2. Transform and compose signals into ones that describe your domain.
@@ -19,8 +65,8 @@ I've done that for you:
 
 ![signals](https://raw.github.com/raimohanska/bacon-devday-slides/master/images/registration-form-bacon.png)
 
-In this diagram, the greenish boxes are EventStreams and the gray boxes
-are Properties. The top three boxes represent the raw input signals:
+In this diagram, the greenish boxes represent EventStreams (distinct events) and the gray boxes
+are Properties (values that change over time). The top three boxes represent the raw input signals:
 
 * Key-up events on the two text fields
 * Clicks on the register button
