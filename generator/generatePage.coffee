@@ -61,27 +61,28 @@ envPromise.then (env) ->
 readFile = (fn) ->
   content = fs.readFileSync(fn).toString()
   if fn.slice(-3) == ".md"
-    '<a id="' + fn + '">\n' + renderMarkdown.render(content)
+    renderMarkdown.render(content)
   else
     content
 
+readFileWithAnchor = (fn) ->
+  '<a id="' + fn + '"></a>\n' + readFile(fn)
+
 toc = (data) ->
   data.files = data.files.map (filename) ->
-    content = readFile filename
+    content = '<div>' + readFile(filename) + '</div>'
     title = cheerio(content).find("h2").text()
     { link: "#" + filename, title }
   html = mustache.render tocTemplate, data
 
 readFiles = (page) ->
   fn = page.input
-  files = if fs.lstatSync(fn).isDirectory()
-    fs.readdirSync(fn).map (f) -> fn + "/" + f
+  if fs.lstatSync(fn).isDirectory()
+    files = fs.readdirSync(fn).map (f) -> fn + "/" + f
+    contents = files.map(readFileWithAnchor).join("\n")
+    toc({title: page.title, files}) + contents
   else
-    [].concat(fn)
-  contents = files.map(readFile).join("\n")
-  if files.length > 1
-    contents = toc({title: page.title, files}) + contents
-  contents
+    readFile(fn)
 
 module.exports = (page) ->
   envPromise.then (env) ->

@@ -80,7 +80,7 @@
   <a href="#content/tutorials/2014_12_Bus_Of_Doom.md">Bus of Doom</a>
 </li>
 </ul>
-<a id="content/tutorials/2012_11_04_Registration_Form.md">
+<a id="content/tutorials/2012_11_04_Registration_Form.md"></a>
 <h2>Registration Form</h2>
 <p>In this tutorial I'll be building a fully functional, however simplified, AJAX
 registration form for an imaginary web site.</p>
@@ -251,7 +251,7 @@ can be translated to &quot;call the <code>setEnabled</code> function and use <co
 <p>So, with some Bacon magic, we eliminated the extra anonymous function and improved readability. Om nom nom.</p>
 <p>And that's it for now. We'll do AJAX soon.</p>
 
-<a id="content/tutorials/2012_11_18_Ajax.md">
+<a id="content/tutorials/2012_11_18_Ajax.md"></a>
 <h2>Ajax and Stuff</h2>
 <p>This is the next step in the Bacon.js tutorial series. I hope you've read
 <a href="http://nullzzz.blogspot.fi/2012/11/baconjs-tutorial-part-ii-get-started.html">Part II</a> already! This time we're
@@ -388,7 +388,7 @@ The second argument to the function will be the value from the <code>usernameAva
 </textarea></code></pre>
 <p>The result code can be found in the <a href="https://github.com/raimohanska/bacon-devday-code/tree/tutorial-3">tutorial-3 branch</a>.</p>
 
-<a id="content/tutorials/2013_12_04_Wrapping_Things_In_Bacon.md">
+<a id="content/tutorials/2013_12_04_Wrapping_Things_In_Bacon.md"></a>
 <h2>Wrapping Things in Bacon</h2>
 <p>I've got a lot of question along the lines of &quot;can I integrate Bacon with X&quot;. And the answer is, of course, Yes You Can. Assuming X is something with a Javascript API that is. In fact, for many values of X, there are ready-made solutions.</p>
 <ul>
@@ -448,7 +448,7 @@ timer.take(5).onValue(function(value) {
 <h3>More examples</h3>
 <p>You're not probably surprised at the fact that all the included wrappers and generators (including <code>$.asEventStream</code>, <code>Bacon.fromNodeCallback</code>, <code>Bacon.interval</code>, <code>Bacon.fromPoll</code> etc) are implemented on top of Bacon.fromBinder. So, for more examples, just dive into the Bacon.js codebase itself.</p>
 
-<a id="content/tutorials/2014_12_Building_Applications_Out_Of_Bacon.md">
+<a id="content/tutorials/2014_12_Building_Applications_Out_Of_Bacon.md"></a>
 <h2>Structuring Real-Life Applications</h2>
 <p>The Internet is full of smart peanut-size examples of how to solve X with &quot;FRP&quot; and Bacon.js. But how to organize a real-world size application? That's been <a href="https://github.com/baconjs/bacon.js/issues/478">asked</a> once in a while and indeed I have an answer up in my sleeve. Don't take though that I'm saying this is the The Definitive Answer. I'm sure your own way is as good or better. Tell me about it!</p>
 <p>I think there are some principles that you should apply to the design of any application though, like <a href="http://en.wikipedia.org/wiki/Single_responsibility_principle">Single Reponsibility Principle</a> and <a href="http://en.wikipedia.org/wiki/Separation_of_concerns">Separation of Concerns</a>. Given that, your application should consist of components that are fairly independent of each others implementation details. I'd also like the components to communicate using some explicit signals instead of shared mutable state (nudge nudge Angular). For this purpose, I find the Bacon.js <code>EventStreams</code> and <code>Properties</code> quite handy.</p>
@@ -496,7 +496,7 @@ cart.addBus.plug(newItemView.newItemStream)
 </textarea></code></pre>
 <p>So there you go!</p>
 
-<a id="content/tutorials/2014_12_Bus_Of_Doom.md">
+<a id="content/tutorials/2014_12_Bus_Of_Doom.md"></a>
 <h2>Bus of Doom</h2>
 <p>In a previous <a href="http://baconjs.blogspot.fi/2014/12/structuring-real-life-applications.html">Bacon blog post</a> a way to structure Bacon application was outlined. It introduces Buses as a central way to glue components with each other. I'm in a very strong disagreement with the proposed style. Why?</p>
 <p><a href="https://social.msdn.microsoft.com/Forums/en-US/bbf87eea-6a17-4920-96d7-2131e397a234/why-does-emeijer-not-like-subjects">Quoting Erik Meijer</a></p>
