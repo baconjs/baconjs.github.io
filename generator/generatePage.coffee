@@ -66,14 +66,16 @@ readFile = (fn) ->
     content
 
 readFileWithAnchor = (fn) ->
-  '<a id="' + fn + '"></a>\n' + readFile(fn)
+  '<a id="' + fileLink(fn) + '"></a>\n' + readFile(fn)
 
 toc = (data) ->
   data.files = data.files.map (filename) ->
     content = '<div>' + readFile(filename) + '</div>'
     title = cheerio(content).find("h2").text()
-    { link: "#" + filename, title }
+    { link: "#" + fileLink(filename), title }
   html = mustache.render tocTemplate, data
+
+fileLink = (fn) -> fn.split(".")[0]
 
 readFiles = (page) ->
   fn = page.input
