@@ -118,14 +118,9 @@ Object.keys = Object.keys || (function () {
     };
   }
 
-  var scheduler = new TickScheduler();
-
-  window.oldTimer = Bacon.scheduler
-  Bacon.scheduler = scheduler;
-
   function logMarble(elem, stream) {
     stream.onValue(function(x) {
-      var time = scheduler.now()
+      var time = Bacon.scheduler.now()
       var parent = $(elem).parent()
       var mn = parent.attr('x-time-min')
       var min = Math.min(time, typeof mn === 'undefined' ? 9007199254740992 : parseInt(mn))
@@ -141,7 +136,7 @@ Object.keys = Object.keys || (function () {
   $(function () {
     // mock scheduler
     var originalScheduler = Bacon.scheduler;
-    Bacon.scheduler = originalScheduler;
+    Bacon.scheduler = new TickScheduler();
 
     var outputs = $('.bacon-marble').map(function() {
       var inputs = $(this).find('.bacon-input').map(function() {
