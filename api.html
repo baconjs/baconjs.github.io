@@ -17,7 +17,7 @@
 <link href='//fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
 
 <script src="//codeorigin.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.42/Bacon.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.50/Bacon.min.js"></script>
 
 
 <script src="codemirror/codemirror.js"></script>
@@ -38,9 +38,9 @@
       </div>
 
       <div class="download">
-        <a class="button big-button" href="http://cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.42/Bacon.js" download>
+        <a class="button big-button" href="http://cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.50/Bacon.js" download>
           Download Bacon.js
-          <small>v0.7.42</small>
+          <small>v0.7.50</small>
           <a class="github" href="https://github.com/baconjs/bacon.js#install">[More install options]</a>
         </a>
       </div>
@@ -115,12 +115,12 @@ This stream will contain a single value or an error, followed immediately by str
 Check out this <a href="https://github.com/raimohanska/baconjs-examples/blob/master/resources/public/index.html">example</a>.</p>
 
 
-<p><a name="bacon-fromeventtarget"></a>
-<a href="#bacon-fromeventtarget" title="Bacon.fromEventTarget(target : EventTarget | EventEmitter, eventName : String [, eventTransformer]) : EventStream"><code>Bacon.fromEventTarget(target, eventName [, eventTransformer])</code></a> creates an EventStream from events
+<p><a name="bacon-fromevent"></a>
+<a href="#bacon-fromevent" title="Bacon.fromEvent(target : EventTarget | EventEmitter, eventName : String [, eventTransformer]) : EventStream"><code>Bacon.fromEvent(target, eventName [, eventTransformer])</code></a> creates an EventStream from events
 on a DOM EventTarget or Node.JS EventEmitter object, or an object that supports event listeners using <code>on</code>/<code>off</code> methods.
 You can also pass an optional function that transforms the emitted
 events' parameters.</p>
-<pre><code class="language-js"><textarea class="code">Bacon.fromEventTarget(document.body, "click").onValue(function() { alert("Bacon!") })
+<pre><code class="language-js"><textarea class="code">Bacon.fromEvent(document.body, "click").onValue(function() { alert("Bacon!") })
 </textarea></code></pre>
 
 
@@ -203,6 +203,25 @@ values (given as array). Delivered with given interval in milliseconds.</p>
 <a href="#bacon-repeatedly" title="Bacon.repeatedly(interval : Number, values : Array[A]) : EventStream[A]"><code>Bacon.repeatedly(interval, values)</code></a> repeats given elements indefinitely
 with given interval in milliseconds. For example, <code>repeatedly(10, [1,2,3])</code>
 would lead to <code>1,2,3,1,2,3...</code> to be repeated indefinitely.</p>
+
+
+<p><a name="bacon-repeat"></a>
+<a href="#bacon-repeat" title="Bacon.repeat(fn: Number -&gt; Observable[A]): EventStream[A]"><code>Bacon.repeat(fn)</code></a> Calls generator function which is expected to return an observable. The returned EventStream contains
+values and errors from the spawned observable. When the spawned observable ends, the generator is called
+again to spawn a new observable.</p>
+<p>This is repeated until the generator returns a falsy value
+(such as <code>undefined</code> or <code>false</code>).</p>
+<p>The generator function is called with one argument — iteration number starting from <code>0</code>.</p>
+<p>Here's an example:</p>
+<pre><code class="language-js"><textarea class="code">Bacon.repeat(function(i) {
+  if (i < 3) {
+    return Bacon.once(i);
+  } else {
+    return false;
+  }
+}).log()
+</textarea></code></pre>
+<p>The example will produce values 0, 1 and 2.</p>
 
 
 <p><a name="bacon-never"></a>
@@ -503,9 +522,15 @@ Note that instead of a function, you can provide a stream/property too.</p>
 
 
 <p><a name="observable-flatmapfirst"></a>
-<a href="#observable-flatmapfirst" title="observable.flatMapFirst(f)"><code>observable.flatMapFirst(f)</code></a> like flatMap, but only spawns a new
+<a href="#observable-flatmapfirst" title="observable.flatMapFirst(f)"><code>observable.flatMapFirst(f)</code></a> like <a href="#observable-flatmap"><code>flatMap</code></a>, but only spawns a new
 stream if the previously spawned stream has ended.</p>
 <p>The <a href="#function-construction-rules">Function Construction rules</a> below apply here.</p>
+
+
+<p><a name="observable-flatmaperror"></a>
+<a href="#observable-flatmaperror" title="observable.flatMapError(f)"><code>observable.flatMapError(f)</code></a> like <a href="#observable-flatmap"><code>flatMap</code></a>, but is applied only on <a href="#bacon-error"><code>Error</code></a> events. Returned values go into the
+value stream, unless an error event is returned. As an example, one type of error could result in a retry and another just
+passed through, which can be implemented using flatMapError.</p>
 
 
 <p><a name="observable-flatmapwithconcurrencylimit"></a>
@@ -856,9 +881,9 @@ the first value comes from the stream.</p>
 
 <p><a name="bacon-property"></a>
 <a href="#bacon-property" title="Bacon.Property"><code>Bacon.Property</code></a> a reactive property. Has the concept of &quot;current value&quot;.
-You can create a Property from an EventStream by using either toProperty
-or scan method. Note depending on how a Property is created, it may or may not
-have an initial value.</p>
+You can create a Property from an EventStream by using either <a href="#stream-toproperty"><code>toProperty</code></a>
+or <a href="#observable-scan"><code>scan</code></a> method. Note: depending on how a Property is created, it may or may not
+have an initial value. The current value stays as its last value after the stream has ended.</p>
 
 
 <p><a name="bacon-constant"></a>
@@ -1249,13 +1274,18 @@ use flatMap, the result stream will contain Error events from the source
 as well as all the spawned stream.</p>
 <p>You can take action on errors by using the <a href="#observable-onerror"><code>observable.onError(f)</code></a>
 callback.</p>
-<p>See documentation on <a href="#observable-onerror"><code>onError</code></a>, <a href="#observable-maperror"><code>mapError</code></a>, <a href="#errors"><code>errors</code></a>, <a href="#observable-skiperrors"><code>skipErrors</code></a>, <a href="#bacon-retry"><code>Bacon.retry</code></a> and <code>flatMapError</code> above.</p>
+<p>See documentation on <a href="#observable-onerror"><code>onError</code></a>, <a href="#observable-maperror"><code>mapError</code></a>, <a href="#errors"><code>errors</code></a>, <a href="#observable-skiperrors"><code>skipErrors</code></a>, <a href="#bacon-retry"><code>Bacon.retry</code></a> and <a href="#observable-flatmaperror"><code>flatMapError</code></a> above.</p>
 <p>In case you want to convert (some) value events into <a href="#bacon-error"><code>Error</code></a> events, you may use <a href="#observable-flatmap"><code>flatMap</code></a> like this:</p>
 <pre><code class="language-js"><textarea class="code">stream = Bacon.fromArray([1,2,3,4]).flatMap(function(x) {
   if (x > 2)
     return new Bacon.Error("too big")
   else
     return x
+})
+</textarea></code></pre>
+<p>Conversely, if you want to convert some <a href="#bacon-error"><code>Error</code></a> events into value events, you may use <a href="#observable-flatmaperror"><code>flatMapError</code></a>:</p>
+<pre><code class="language-js"><textarea class="code">myStream.flatMapError(function(error) {
+  return isNonCriticalError(error) ? handleNonCriticalError(error) : new Bacon.Error(error)
 })
 </textarea></code></pre>
 <p>Note also that Bacon.js combinators do not catch errors that are thrown.
@@ -1279,15 +1309,24 @@ such as AJAX calls.</p>
 
 
 <p><a name="bacon-retry"></a>
-<a href="#bacon-retry" title="Bacon.retry(options)"><code>Bacon.retry(options)</code></a>
-is used to retry the call when there is an <a href="#bacon-error"><code>Error</code></a> event in the source stream.</p>
-<pre><code class="language-js"><textarea class="code">var source, ajaxCall // <- ajaxCall gives Errors on network or server errors
-ajaxResult = source.flatMap(function(url) {
+<a href="#bacon-retry" title="Bacon.retry(options)"><code>Bacon.retry(options)</code></a> is used to retry the call when there is an <a href="#bacon-error"><code>Error</code></a> event in the stream produced by the <code>source</code> function.</p>
+<p>The two required option parameters are:</p>
+<ul>
+<li><code>source</code>, a function that produces an Observable.</li>
+<li><code>retries</code>, the number of times to retry the <code>source</code> function <em>in addition to the initial attempt</em>.</li>
+</ul>
+<p>Additionally, one may pass in one or both of the following callbacks:</p>
+<ul>
+<li><code>isRetryable</code>, a function returning <code>true</code> to continue retrying, <code>false</code> to stop. Defaults to <code>true</code>. The error that occurred is given as a parameter. For example, there is usually no reason to retry a 404 HTTP error, whereas a 500 or a timeout might work on the next attempt.</li>
+<li><code>delay</code>, a function that returns the time in milliseconds to wait before retrying. Defaults to <code>0</code>. The function is given a context object with the keys <code>error</code> (the error that occurred) and <code>retriesDone</code> (the number of retries already performed) to help determine the appropriate delay e.g. for an incremental backoff.</li>
+</ul>
+<pre><code class="language-js"><textarea class="code">var triggeringStream, ajaxCall // <- ajaxCall gives Errors on network or server errors
+ajaxResult = triggeringStream.flatMap(function(url) {
     return Bacon.retry({
-        // function to call when trying, should return an EventStream
         source: function() { return ajaxCall(url) },
-        retries: 5, // nr of times to retry before giving up
-        delay: function() { return 100; } // delay in ms between retries
+        retries: 5,
+        isRetryable: function (error) { return error.httpStatusCode !== 404; },
+        delay: function(context) { return 100; } // Just use the same delay always
     })
 })
 </textarea></code></pre>
