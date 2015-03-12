@@ -17,7 +17,7 @@
 <link href='//fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
 
 <script src="//codeorigin.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.50/Bacon.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.53/Bacon.min.js"></script>
 
 
 <script src="codemirror/codemirror.js"></script>
@@ -38,9 +38,9 @@
       </div>
 
       <div class="download">
-        <a class="button big-button" href="http://cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.50/Bacon.js" download>
+        <a class="button big-button" href="http://cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.53/Bacon.js" download>
           Download Bacon.js
-          <small>v0.7.50</small>
+          <small>v0.7.53</small>
           <a class="github" href="https://github.com/baconjs/bacon.js#install">[More install options]</a>
         </a>
       </div>
@@ -348,9 +348,16 @@ will be called for each error in the stream.</p>
 be called when the stream ends. Just like <code>subscribe</code>, this method returns a function for unsubscribing.</p>
 
 
+<p><a name="observable-topromise"></a>
+<a href="#observable-topromise" title="observable.toPromise(@ : Observable[A]) : Promise[A]"><code>observable.toPromise()</code></a> returns a Promise which will be resolved with the first event coming from an Observable.
+The global ES6 promise implementation will be used.
+Use shim if you need to support legacy browsers or platforms.
+<a href="http://caniuse.com/#feat=promises">caniuse promises</a>.</p>
+
+
 <p><a name="observable-map"></a>
 <a href="#observable-map" title="observable.map(@ : Observable[A], f : A -&gt; B) : Observable[B]"><code>observable.map(f)</code></a> maps values using given function, returning a new
-EventStream. Instead of a function, you can also provide a constant
+stream/property. Instead of a function, you can also provide a constant
 value. Further, you can use a property extractor string like
 &quot;.keyCode&quot;. So, if f is a string starting with a
 dot, the elements will be mapped to the corresponding field/function in the event
@@ -422,6 +429,15 @@ Equal to <a href="#bacon-never"><code>Bacon.never()</code></a> if <code>n &lt;= 
 <a href="#observable-takeuntil" title="observable.takeUntil(@ : Observable[A], stream : EventStream[B]) : Observable[A]"><code>observable.takeUntil(stream)</code></a> takes elements from source until a Next event
 appears in the other stream. If other stream ends without value, it is
 ignored</p>
+
+
+<p><a name="observable-first"></a>
+<a href="#observable-first" title="observable.first(@ : Observable[A]) : Observable[A]"><code>observable.first()</code></a> takes the first element from the stream. Essentially <code>observable.take(1)</code>.</p>
+
+
+<p><a name="observable-last"></a>
+<a href="#observable-last" title="observable.last(@ : Observable[A]) : Observable[A]"><code>observable.last()</code></a> takes the last element from the stream. None, if stream is empty.</p>
+<p><em>Note:</em> <code>neverEndingStream.last()</code> creates the stream which doesn't produce any events and never ends.</p>
 
 
 <p><a name="observable-skip"></a>
