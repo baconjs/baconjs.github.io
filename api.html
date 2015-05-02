@@ -349,15 +349,21 @@ be called when the stream ends. Just like <code>subscribe</code>, this method re
 
 
 <p><a name="observable-topromise"></a>
-<a href="#observable-topromise" title="observable.toPromise(@ : Observable[A]) : Promise[A]"><code>observable.toPromise()</code></a> returns a Promise which will be resolved with the first event coming from an Observable.
-The global ES6 promise implementation will be used.
-Use shim if you need to support legacy browsers or platforms.
+<a href="#observable-topromise" title="observable.toPromise(@ : Observable[A] [, PromiseCtr]) : Promise[A]"><code>observable.toPromise([PromiseCtr])</code></a> returns a Promise which will be resolved with the last event coming from an Observable.
+The global ES6 promise implementation will be used unless a promise constructor is given.
+Use a shim if you need to support legacy browsers or platforms.
 <a href="http://caniuse.com/#feat=promises">caniuse promises</a>.</p>
+
+
+<p><a name="observable-firsttopromise"></a>
+<a href="#observable-firsttopromise" title="observable.firstToPromise(@ : Observable[A] [, PromiseCtr]) : Promise[A]"><code>observable.firstToPromise([PromiseCtr])</code></a> returns a Promise which will be resolved with the first event coming from an Observable.
+Like <a href="#observable-topromise"><code>toPromise</code></a>, the global ES6 promise implementation will be used unless a promise
+constructor is given.</p>
 
 
 <p><a name="observable-map"></a>
 <a href="#observable-map" title="observable.map(@ : Observable[A], f : A -&gt; B) : Observable[B]"><code>observable.map(f)</code></a> maps values using given function, returning a new
-EventStream. Instead of a function, you can also provide a constant
+stream/property. Instead of a function, you can also provide a constant
 value. Further, you can use a property extractor string like
 &quot;.keyCode&quot;. So, if f is a string starting with a
 dot, the elements will be mapped to the corresponding field/function in the event
@@ -411,13 +417,12 @@ at the time of the event.</p>
 
 
 <p><a name="observable-takewhile"></a>
-<a href="#observable-takewhile" title="observable.takeWhile(@ : Observable[A], f : A -&gt; Bool) : Observable[A]"><code>observable.takeWhile(f)</code></a> takes while given predicate function holds
-true. <a href="#function-construction-rules">Function Construction rules</a> apply.</p>
+<a href="#observable-takewhile" title="observable.takeWhile(@ : Observable[A], f : A -&gt; Bool) : Observable[A]"><code>observable.takeWhile(f)</code></a> takes while given predicate function holds true, and then ends.
+<a href="#function-construction-rules">Function Construction rules</a> apply.</p>
 
 
 <p><a name="observable-takewhile-property"></a>
-<a href="#observable-takewhile-property" title="observable.takeWhile(property)"><code>observable.takeWhile(property)</code></a> takes values while the value of a
-property holds <code>true</code>.</p>
+<a href="#observable-takewhile-property" title="observable.takeWhile(property)"><code>observable.takeWhile(property)</code></a> takes values while the value of a property holds true, and then ends.</p>
 
 
 <p><a name="observable-take"></a>
@@ -837,12 +842,14 @@ single-element stream contains <a href="#event-value"><code>value</code></a> wit
 
 
 <p><a name="stream-skipwhile"></a>
-<a href="#stream-skipwhile" title="stream.skipWhile(f)"><code>stream.skipWhile(f)</code></a> skips elements while given predicate function holds true.
+<a href="#stream-skipwhile" title="stream.skipWhile(f)"><code>stream.skipWhile(f)</code></a> skips elements until the given predicate function returns falsy once, and then
+lets all events pass through.
 The <a href="#function-construction-rules">Function Construction rules</a> below apply here.</p>
 
 
 <p><a name="stream-skipwhile-property"></a>
-<a href="#stream-skipwhile-property" title="stream.skipWhile(property)"><code>stream.skipWhile(property)</code></a> skips elements while the value of the given Property is <code>true</code>.</p>
+<a href="#stream-skipwhile-property" title="stream.skipWhile(property)"><code>stream.skipWhile(property)</code></a> skips elements until the value of the given Property is falsy once, and then
+lets all events pass through.</p>
 
 
 <p><a name="stream-skipuntil"></a>
