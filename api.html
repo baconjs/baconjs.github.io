@@ -17,7 +17,7 @@
 <link href='//fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
 
 <script src="//codeorigin.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.53/Bacon.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.58/Bacon.min.js"></script>
 
 
 <script src="codemirror/codemirror.js"></script>
@@ -38,9 +38,9 @@
       </div>
 
       <div class="download">
-        <a class="button big-button" href="http://cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.53/Bacon.js" download>
+        <a class="button big-button" href="http://cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.58/Bacon.js" download>
           Download Bacon.js
-          <small>v0.7.53</small>
+          <small>v0.7.58</small>
           <a class="github" href="https://github.com/baconjs/bacon.js#install">[More install options]</a>
         </a>
       </div>
@@ -512,6 +512,12 @@ useful for debugging, but also for stuff like calling the
 <code>preventDefault()</code> method for events. In fact, you can
 also use a property-extractor string instead of a function, as in
 <code>&quot;.preventDefault&quot;</code>.</p>
+
+
+<p><a name="observable-doerror"></a>
+<a href="#observable-doerror" title="observable.doError(f)"><code>observable.doError(f)</code></a> returns a stream/property where the function f
+is executed for each error, before dispatching to subscribers.
+That is, same as <a href="#observable-doaction"><code>doAction</code></a> but for errors.</p>
 
 
 <p><a name="observable-not"></a>
