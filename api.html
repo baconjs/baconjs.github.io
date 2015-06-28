@@ -17,7 +17,7 @@
 <link href='//fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
 
 <script src="//codeorigin.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.58/Bacon.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.65/Bacon.min.js"></script>
 
 
 <script src="codemirror/codemirror.js"></script>
@@ -38,9 +38,9 @@
       </div>
 
       <div class="download">
-        <a class="button big-button" href="http://cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.58/Bacon.js" download>
+        <a class="button big-button" href="http://cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.65/Bacon.js" download>
           Download Bacon.js
-          <small>v0.7.58</small>
+          <small>v0.7.65</small>
           <a class="github" href="https://github.com/baconjs/bacon.js#install">[More install options]</a>
         </a>
       </div>
@@ -110,8 +110,10 @@ $("#my-div").asEventStream("click", function(event, args) { return args[0] })
 
 
 <p><a name="bacon-frompromise"></a>
-<a href="#bacon-frompromise" title="Bacon.fromPromise(promise : Promise[A] [, abort : boolean]) : EventStream[A]"><code>Bacon.fromPromise(promise [, abort])</code></a> creates an EventStream from a Promise object such as JQuery Ajax.
-This stream will contain a single value or an error, followed immediately by stream end.  You can use the optional abort flag (i.e. ´fromPromise(p, true)´ to have the <code>abort</code> method of the given promise be called when all subscribers have been removed from the created stream.
+<a href="#bacon-frompromise" title="Bacon.fromPromise(promise : Promise[A] [, abort : boolean][, eventTransformer]) : EventStream[A]"><code>Bacon.fromPromise(promise [, abort] [, eventTransformer])</code></a> creates an EventStream from a Promise object such as JQuery Ajax.
+This stream will contain a single value or an error, followed immediately by stream end.<br>
+You can use the optional abort flag (i.e. ´fromPromise(p, true)´ to have the <code>abort</code> method of the given promise be called when all subscribers have been removed from the created stream.
+You can also pass an optional function that transforms the promise value into Events. The default is to transform the value into <code>[new Bacon.Next(value), new Bacon.End()]</code>.
 Check out this <a href="https://github.com/raimohanska/baconjs-examples/blob/master/resources/public/index.html">example</a>.</p>
 
 
@@ -674,6 +676,14 @@ remove from production code. For example:</p>
 </textarea></code></pre>
 
 
+<p><a name="observable-dolog"></a>
+<a href="#observable-dolog" title="observable.doLog()"><code>observable.doLog()</code></a> logs each value of the Observable to the console. doLog() behaves like <a href="#observable-log"><code>log</code></a>
+but does not subscribe to the event stream. You can think of doLog() as a
+logger function that – unlike log() – is safe to use in production. doLog() is
+safe, because it does not cause the same surprising side-effects as log()
+does.</p>
+
+
 <p><a name="observable-combine"></a>
 <a href="#observable-combine" title="observable.combine(property2, f)"><code>observable.combine(property2, f)</code></a> combines the latest values of the two
 streams or properties using a two-arg function. Similarly to <a href="#observable-scan"><code>scan</code></a>, you can use a
@@ -770,6 +780,44 @@ console.log(obs.toString())
 obs.withDescription(src, &quot;times&quot;, -1)
 console.log(obs.toString())
 --&gt; Bacon.once(1).times(-1)</code></pre>
+
+
+<p><a name="observable-groupby"></a>
+<a href="#observable-groupby" title="observable.groupBy(@ : Observable[A], keyF[, limitF]) : Observable[Observable[A]]"><code>observable.groupBy(keyF [, limitF])</code></a> Groups stream events to new streams by <code>keyF</code>. Optional <code>limitF</code> can be provided to limit grouped
+stream life. Stream transformed by <code>limitF</code> is passed on if provided. <code>limitF</code> gets grouped stream
+and the original event causing the stream to start as parameters.</p>
+<p>Calculator for grouped consecutive values until group is cancelled:</p>
+<pre><code>var events = [
+  {id: 1, type: &quot;add&quot;, val: 3 },
+  {id: 2, type: &quot;add&quot;, val: -1 },
+  {id: 1, type: &quot;add&quot;, val: 2 },
+  {id: 2, type: &quot;cancel&quot;},
+  {id: 3, type: &quot;add&quot;, val: 2 },
+  {id: 3, type: &quot;cancel&quot;},
+  {id: 1, type: &quot;add&quot;, val: 1 },
+  {id: 1, type: &quot;add&quot;, val: 2 },
+  {id: 1, type: &quot;cancel&quot;}
+]
+
+function keyF(event) {
+  return event.id
+}
+
+function limitF(groupedStream, groupStartingEvent) {
+  var cancel = groupedStream.filter(function(x) { return x.type === &quot;cancel&quot;}).take(1)
+  var adds = groupedStream.filter(function(x) { return x.type === &quot;add&quot; })
+  adds.takeUntil(cancel).map(&quot;.val&quot;)
+}
+
+Bacon.sequentially(2, events)
+  .groupBy(keyF, limitF)
+  .flatMap(function(groupedStream) {
+    return groupedStream.fold(0, function(acc, x) { return acc + x })
+  })
+  .onValue(function(sum) {
+    console.log(sum)
+    // returns [-1, 2, 8] in an order
+  })</code></pre>
 
 
 <h2><a name="eventstream"></a>EventStream</h2>
