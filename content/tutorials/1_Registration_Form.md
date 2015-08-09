@@ -83,9 +83,9 @@ here are the instructions.
 First, you should get the code skeleton on your machine.
 
 ```
-git clone git@github.com:raimohanska/bacon-devday-code.git
+git clone https://github.com/raimohanska/bacon-devday-code.git
 cd bacon-devday-code
-git co -t origin/clean-slate
+git checkout -t origin/clean-slate
 ```
 
 So now you've cloned the source code and switched to the [clean-slate](https://github.com/raimohanska/bacon-devday-code/tree/clean-slate) branch. 
