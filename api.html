@@ -17,7 +17,7 @@
 <link href='//fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
 
 <script src="//codeorigin.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.70/Bacon.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.71/Bacon.min.js"></script>
 
 
 <script src="codemirror/codemirror.js"></script>
@@ -38,9 +38,9 @@
       </div>
 
       <div class="download">
-        <a class="button big-button" href="http://cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.70/Bacon.js" download>
+        <a class="button big-button" href="http://cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.71/Bacon.js" download>
           Download Bacon.js
-          <small>v0.7.70</small>
+          <small>v0.7.71</small>
           <a class="github" href="https://github.com/baconjs/bacon.js#install">[More install options]</a>
         </a>
       </div>
@@ -326,9 +326,19 @@ created by <a href="#observable-map"><code>map</code></a>, <a href="#combining-m
 <h2><a name="common-methods-in-eventstreams-and-properties"></a>Common methods in EventStreams and Properties</h2>
 
 
-<p>Both EventStream and Property share the Observable interface, and hence
-share a lot of methods. Common methods are listed below.</p>
+<p>Both EventStream and Property share the Observable interface, and hence share a lot of methods.
+Methods typically return observables so that methods can be chained; exceptions are noted.
+Common methods are listed below.</p>
 
+
+
+<p><a name="observable-subscribe"></a>
+<a href="#observable-subscribe" title="observable.subscribe(f)"><code>observable.subscribe(f)</code></a> subscribes given handler function to event stream. Function will receive Event objects (see below).
+The subscribe() call returns a <code>unsubscribe</code> function that you can call to unsubscribe.
+You can also unsubscribe by returning <a href="#bacon-nomore"><code>Bacon.noMore</code></a> from the handler function as a reply
+to an Event.
+<code>stream.subscribe</code> and <code>property.subscribe</code> behave similarly, except that the latter also
+pushes the initial value of the property, in case there is one.</p>
 
 
 <p><a name="observable-onvalue"></a>
@@ -336,18 +346,25 @@ share a lot of methods. Common methods are listed below.</p>
 This is the simplest way to assign a side-effect to an observable. The difference
 to the <code>subscribe</code> method is that the actual stream values are
 received, instead of <a href="#event"><code>Event</code></a> objects.
-<a href="#stream-onvalue"><code>stream.onValue</code></a> and <a href="#property-onvalue"><code>property.onValue</code></a> behave similarly, except that the latter also
+The <a href="#function-construction-rules">Function Construction rules</a> below apply here.
+Just like <code>subscribe</code>, this method returns a function for unsubscribing.
+<code>stream.onValue</code> and <code>property.onValue</code> behave similarly, except that the latter also
 pushes the initial value of the property, in case there is one.</p>
 
 
+<p><a name="observable-onvalues"></a>
+<a href="#observable-onvalues" title="observable.onValues(f)"><code>observable.onValues(f)</code></a> like <a href="#stream-onvalue"><code>onValue</code></a>, but splits the value (assuming its an
+array) as function arguments to <code>f</code>.</p>
+
+
 <p><a name="observable-onerror"></a>
-<a href="#observable-onerror" title="observable.onError(@ : Observable[A], f : Error -&gt; void) : Unsubscriber"><code>observable.onError(f)</code></a> subscribes a callback to error events. The function
-will be called for each error in the stream.</p>
+<a href="#observable-onerror" title="observable.onError(@ : Observable[A], f : Error -&gt; void) : Unsubscriber"><code>observable.onError(f)</code></a> subscribes a callback to error events. The function will be called for each error in the stream.
+Just like <code>subscribe</code>, this method returns a function for unsubscribing.</p>
 
 
 <p><a name="observable-onend"></a>
-<a href="#observable-onend" title="observable.onEnd(f : -&gt; void) : Unsubscriber"><code>observable.onEnd(f)</code></a> subscribes a callback to stream end. The function will
-be called when the stream ends. Just like <code>subscribe</code>, this method returns a function for unsubscribing.</p>
+<a href="#observable-onend" title="observable.onEnd(f : -&gt; void) : Unsubscriber"><code>observable.onEnd(f)</code></a> subscribes a callback to stream end. The function will be called when the stream ends.
+Just like <code>subscribe</code>, this method returns a function for unsubscribing.</p>
 
 
 <p><a name="observable-topromise"></a>
@@ -418,6 +435,26 @@ property. Event will be included in output <a href="http://en.wikipedia.org/wiki
 at the time of the event.</p>
 
 
+<p><a name="observable-skipduplicates"></a>
+<a href="#observable-skipduplicates" title="observable.skipDuplicates([isEqual])"><code>observable.skipDuplicates(isEqual)</code></a> drops consecutive equal elements. So,
+from <code>[1, 2, 2, 1]</code> you'd get <code>[1, 2, 1]</code>. Uses the <code>===</code> operator for equality
+checking by default. If the isEqual argument is supplied, checks by calling
+isEqual(oldValue, newValue). For instance, to do a deep comparison,you can
+use the isEqual function from <a href="http://underscorejs.org/">underscore.js</a>
+like <code>stream.skipDuplicates(_.isEqual)</code>.</p>
+
+
+<p><a name="observable-take"></a>
+<a href="#observable-take" title="observable.take(@ : Observable[A], n : Number) : Observable[A]"><code>observable.take(n)</code></a> takes at most n values from the stream and then ends the stream. If the stream has
+fewer than n values then it is unaffected.
+Equal to <a href="#bacon-never"><code>Bacon.never()</code></a> if <code>n &lt;= 0</code>.</p>
+
+
+<p><a name="observable-takeuntil"></a>
+<a href="#observable-takeuntil" title="observable.takeUntil(@ : Observable[A], stream : EventStream[B]) : Observable[A]"><code>observable.takeUntil(stream)</code></a> takes elements from source until a Next event appears in the other stream.
+If other stream ends without value, it is ignored.</p>
+
+
 <p><a name="observable-takewhile"></a>
 <a href="#observable-takewhile" title="observable.takeWhile(@ : Observable[A], f : A -&gt; Bool) : Observable[A]"><code>observable.takeWhile(f)</code></a> takes while given predicate function holds true, and then ends.
 <a href="#function-construction-rules">Function Construction rules</a> apply.</p>
@@ -425,17 +462,6 @@ at the time of the event.</p>
 
 <p><a name="observable-takewhile-property"></a>
 <a href="#observable-takewhile-property" title="observable.takeWhile(property)"><code>observable.takeWhile(property)</code></a> takes values while the value of a property holds true, and then ends.</p>
-
-
-<p><a name="observable-take"></a>
-<a href="#observable-take" title="observable.take(@ : Observable[A], n : Number) : Observable[A]"><code>observable.take(n)</code></a> takes at most n elements from the stream.
-Equal to <a href="#bacon-never"><code>Bacon.never()</code></a> if <code>n &lt;= 0</code>.</p>
-
-
-<p><a name="observable-takeuntil"></a>
-<a href="#observable-takeuntil" title="observable.takeUntil(@ : Observable[A], stream : EventStream[B]) : Observable[A]"><code>observable.takeUntil(stream)</code></a> takes elements from source until a Next event
-appears in the other stream. If other stream ends without value, it is
-ignored</p>
 
 
 <p><a name="observable-first"></a>
@@ -625,10 +651,12 @@ Bacon.sequentially(1, [1,2,3]).diff(0, distance)
 
 
 <p><a name="observable-zip"></a>
-<a href="#observable-zip" title="observable.zip(other, f)"><code>observable.zip(other, f)</code></a> return an EventStream with elements
+<a href="#observable-zip" title="observable.zip(other [, f])"><code>observable.zip(other [, f])</code></a> return an EventStream with elements
 pair-wise lined up with events from this and the other stream.
 A zipped stream will publish only when it has a value from each
 stream and will only produce values up to when any single stream ends.</p>
+<p>The given function <code>f</code> is used to create the result value from value in the two
+source streams. If no function is given, the values are zipped into an array.</p>
 <p>Be careful not to have too much &quot;drift&quot; between streams. If one stream
 produces many more values than some other excessive buffering will
 occur inside the zipped observable.</p>
@@ -806,7 +834,7 @@ function keyF(event) {
 function limitF(groupedStream, groupStartingEvent) {
   var cancel = groupedStream.filter(function(x) { return x.type === &quot;cancel&quot;}).take(1)
   var adds = groupedStream.filter(function(x) { return x.type === &quot;add&quot; })
-  adds.takeUntil(cancel).map(&quot;.val&quot;)
+  return adds.takeUntil(cancel).map(&quot;.val&quot;)
 }
 
 Bacon.sequentially(2, events)
@@ -825,38 +853,6 @@ Bacon.sequentially(2, events)
 
 <p><a name="bacon-eventstream"></a>
 <a href="#bacon-eventstream" title="Bacon.EventStream"><code>Bacon.EventStream</code></a> a stream of events. See methods below.</p>
-
-
-<p><a name="stream-subscribe"></a>
-<a href="#stream-subscribe" title="stream.subscribe(f)"><code>stream.subscribe(f)</code></a> subscribes given handler function to
-event stream. Function will receive Event objects (see below).
-The subscribe() call returns a <code>unsubscribe</code> function that you can
-call to unsubscribe. You can also unsubscribe by returning
-<a href="#bacon-nomore"><code>Bacon.noMore</code></a> from the handler function as a reply to an Event.</p>
-
-
-<p><a name="stream-onvalue"></a>
-<a href="#stream-onvalue" title="stream.onValue(f)"><code>stream.onValue(f)</code></a> subscribes a given handler function to event
-stream. Function will be called for each new value in the stream. This
-is the simplest way to assign a side-effect to a stream. The difference
-to the <code>subscribe</code> method is that the actual stream values are
-received, instead of <a href="#event"><code>Event</code></a> objects.
-The <a href="#function-construction-rules">Function Construction rules</a> below apply here.
-Just like <code>subscribe</code>, this method returns a function for unsubscribing.</p>
-
-
-<p><a name="stream-onvalues"></a>
-<a href="#stream-onvalues" title="stream.onValues(f)"><code>stream.onValues(f)</code></a> like <a href="#stream-onvalue"><code>onValue</code></a>, but splits the value (assuming its an
-array) as function arguments to <code>f</code>.</p>
-
-
-<p><a name="stream-skipduplicates"></a>
-<a href="#stream-skipduplicates" title="stream.skipDuplicates([isEqual])"><code>stream.skipDuplicates(isEqual)</code></a> drops consecutive equal elements. So,
-from <code>[1, 2, 2, 1]</code> you'd get <code>[1, 2, 1]</code>. Uses the <code>===</code> operator for equality
-checking by default. If the isEqual argument is supplied, checks by calling
-isEqual(oldValue, newValue). For instance, to do a deep comparison,you can
-use the isEqual function from <a href="http://underscorejs.org/">underscore.js</a>
-like <code>stream.skipDuplicates(_.isEqual)</code>.</p>
 
 
 <p><a name="stream-concat"></a>
@@ -967,25 +963,6 @@ have an initial value. The current value stays as its last value after the strea
 <a href="#bacon-constant" title="Bacon.constant(x)"><code>Bacon.constant(x)</code></a> creates a constant property with value x.</p>
 
 
-<p><a name="property-subscribe"></a>
-<a href="#property-subscribe" title="property.subscribe(f)"><code>property.subscribe(f)</code></a> subscribes a handler function to property. If there's
-a current value, an <a href="#bacon-initial"><code>Initial</code></a> event will be pushed immediately. <a href="#bacon-next"><code>Next</code></a>
-event will be pushed on updates and an <a href="#bacon-end"><code>Bacon.End</code></a> event in case the source
-EventStream ends. Returns a function that you call to unsubscribe.</p>
-
-
-<p><a name="property-onvalue"></a>
-<a href="#property-onvalue" title="property.onValue(f)"><code>property.onValue(f)</code></a> similar to <a href="#stream-onvalue"><code>stream.onValue</code></a>, except that also
-pushes the initial value of the property, in case there is one.
-See <a href="#function-construction-rules">Function Construction rules</a> below for different forms of calling this method.
-Just like <code>subscribe</code>, this method returns a function for unsubscribing.</p>
-
-
-<p><a name="property-onvalues"></a>
-<a href="#property-onvalues" title="property.onValues(f)"><code>property.onValues(f)</code></a> like onValue, but splits the value (assuming its an
-array) as function arguments to <code>f</code></p>
-
-
 <p><a name="property-assign"></a>
 <a href="#property-assign" title="property.assign(obj, method [, param...])"><code>property.assign(obj, method [, param...])</code></a> calls the method of the given
 object with each value of this Property. You can optionally supply
@@ -1026,14 +1003,6 @@ property.</p>
 events. The result values will be formed using the given function
 <code>f(propertyValue, samplerValue)</code>. You can use a method name (such as
 &quot;.concat&quot;) instead of a function too.</p>
-
-
-<p><a name="property-skipduplicates"></a>
-<a href="#property-skipduplicates" title="property.skipDuplicates([isEqual])"><code>property.skipDuplicates(isEqual)</code></a> drops consecutive equal elements. So,
-from <code>[1, 2, 2, 1]</code> you'd get <code>[1, 2, 1]</code>. Uses the <code>===</code> operator for equality
-checking by default. If the <code>isEqual</code> argument is supplied, checks by calling
-<code>isEqual(oldValue, newValue)</code>. The old name for this method was
-<code>distinctUntilChanged</code>.</p>
 
 
 <p><a name="property-changes"></a>
@@ -1086,6 +1055,22 @@ To calculate the current sum of three numeric Properties, you can do</p>
 <pre><code class="language-js"><textarea class="code">function sum3(x,y,z) { return x + y + z }
 Bacon.combineWith(sum3, p1, p2, p3)
 </textarea></code></pre>
+
+
+<p><a name="bacon-combinewith-streams-array"></a>
+<a href="#bacon-combinewith-streams-array" title="Bacon.combineWith(f, streams)"><code>Bacon.combineWith(f, streams)</code></a> like above, but with streams provided as a single array as opposed to a list
+of arguments.</p>
+<pre><code class="language-js"><textarea class="code">streams = [Bacon.constant(1), Bacon.constant(2)]
+Bacon.combineWith(Math.max, streams)
+</textarea></code></pre>
+
+
+<p><a name="bacon-combinewith-streams-array-f-last"></a>
+<a href="#bacon-combinewith-streams-array-f-last" title="Bacon.combineWith(streams, f)"><code>Bacon.combineWith(streams, f)</code></a> like above</p>
+
+
+<p><a name="bacon-combinewith-f-last"></a>
+<a href="#bacon-combinewith-f-last" title="Bacon.combineWith(stream1, stream2 ..., f)"><code>Bacon.combineWith(stream1, stream2..., f)</code></a> like above</p>
 
 
 <p><a name="bacon-combinetemplate"></a>
@@ -1151,9 +1136,17 @@ provided as a list of arguments as opposed to a single array.</p>
 function to combine the n values from n streams, instead of returning them in an Array.</p>
 
 
-<p><a name="bacon-zipwith-f"></a>
-<a href="#bacon-zipwith-f" title="Bacon.zipWith(f, stream1, stream1 ...)"><code>Bacon.zipWith(f, stream1, stream1...)</code></a> just like above, but with streams
-provided as a list of arguments as opposed to a single array.</p>
+<p><a name="bacon-zipwith-f-first"></a>
+<a href="#bacon-zipwith-f-first" title="Bacon.zipWith(f, streams)"><code>Bacon.zipWith(f, streams)</code></a> like <a href="#bacon-zipasarray"><code>zipAsArray</code></a> but uses the given n-ary
+function to combine the n values from n streams, instead of returning them in an Array.</p>
+
+
+<p><a name="bacon-zipwith-f-first-varargs"></a>
+<a href="#bacon-zipwith-f-first-varargs" title="Bacon.zipWith(f, stream1, stream1 ...)"><code>Bacon.zipWith(f, stream1, stream1...)</code></a> like above</p>
+
+
+<p><a name="bacon-zipwith-varargs-f-last"></a>
+<a href="#bacon-zipwith-varargs-f-last" title="Bacon.zipWith(stream1, stream1 ..., f)"><code>Bacon.zipWith(stream1, stream1..., f)</code></a> like above</p>
 
 
 <p><a name="bacon-onvalues"></a>
