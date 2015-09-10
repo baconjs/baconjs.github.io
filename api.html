@@ -652,11 +652,11 @@ Bacon.sequentially(1, [1,2,3]).diff(0, distance)
 
 <p><a name="observable-zip"></a>
 <a href="#observable-zip" title="observable.zip(other [, f])"><code>observable.zip(other [, f])</code></a> return an EventStream with elements
-pair-wise lined up with events from this and the other stream.
+pair-wise lined up with events from this and the other EventStream or Property.
 A zipped stream will publish only when it has a value from each
-stream and will only produce values up to when any single stream ends.</p>
+source and will only produce values up to when any single source ends.</p>
 <p>The given function <code>f</code> is used to create the result value from value in the two
-source streams. If no function is given, the values are zipped into an array.</p>
+sources. If no function is given, the values are zipped into an array.</p>
 <p>Be careful not to have too much &quot;drift&quot; between streams. If one stream
 produces many more values than some other excessive buffering will
 occur inside the zipped observable.</p>
@@ -667,14 +667,7 @@ x.zip(y, function(x, y) { return x + y })
 
 # produces values 4, 6
 </textarea></code></pre>
-<p>Example 2:</p>
-<p>You can use zip to combine observables that are pairwise synchronized
-from e.g. projections or sampling by the same property, while avoiding
-the double-processing that would happen recombining with <a href="#observable-combine"><code>combine</code></a>.</p>
-<pre><code class="language-js"><textarea class="code">var x = obs.map('.x')
-var y = obs.map('.y')
-x.zip(y, makeComplex)
-</textarea></code></pre>
+<p>See also <a href="#bacon-zipwith"><code>zipWith</code></a> and <a href="#bacon-zipasarray"><code>zipAsArray</code></a> for zipping more than 2 sources.</p>
 
 
 <p><a name="observable-slidingwindow"></a>
@@ -1107,12 +1100,12 @@ If you need the result as an <a href="#eventstream"><code>EventStream</code></a>
 
 
 <p><a name="bacon-zipasarray"></a>
-<a href="#bacon-zipasarray" title="Bacon.zipAsArray(streams)"><code>Bacon.zipAsArray(streams)</code></a> zips the array of stream in to a new
-EventStream that will have an array of values from each source stream as
-its value. Zipping means that events from each stream are combine
-pairwise so that the 1st event from each stream is published first, then
+<a href="#bacon-zipasarray" title="Bacon.zipAsArray(streams)"><code>Bacon.zipAsArray(streams)</code></a> zips the array of EventStreams / Properties in to a new
+EventStream that will have an array of values from each source as
+its value. Zipping means that events from each source are combined
+pairwise so that the 1st event from each source is published first, then
 the 2nd event from each. The results will be published as soon as there
-is a value from each source stream.</p>
+is a value from each source.</p>
 <p>Be careful not to have too much &quot;drift&quot; between streams. If one stream
 produces many more values than some other excessive buffering will
 occur inside the zipped observable.</p>
@@ -1127,18 +1120,18 @@ Bacon.zipAsArray(x, y, z)
 
 
 <p><a name="bacon-zipasarray-multiple-streams"></a>
-<a href="#bacon-zipasarray-multiple-streams" title="Bacon.zipAsArray(stream1, stream2...)"><code>Bacon.zipAsArray(stream1, stream2...)</code></a> just like above, but with streams
+<a href="#bacon-zipasarray-multiple-streams" title="Bacon.zipAsArray(stream1, stream2...)"><code>Bacon.zipAsArray(stream1, stream2...)</code></a> just like above, but with sources
 provided as a list of arguments as opposed to a single array.</p>
 
 
 <p><a name="bacon-zipwith"></a>
 <a href="#bacon-zipwith" title="Bacon.zipWith(streams, f)"><code>Bacon.zipWith(streams, f)</code></a> like <a href="#bacon-zipasarray"><code>zipAsArray</code></a> but uses the given n-ary
-function to combine the n values from n streams, instead of returning them in an Array.</p>
+function to combine the n values from n sources, instead of returning them in an Array.</p>
 
 
 <p><a name="bacon-zipwith-f-first"></a>
 <a href="#bacon-zipwith-f-first" title="Bacon.zipWith(f, streams)"><code>Bacon.zipWith(f, streams)</code></a> like <a href="#bacon-zipasarray"><code>zipAsArray</code></a> but uses the given n-ary
-function to combine the n values from n streams, instead of returning them in an Array.</p>
+function to combine the n values from n sources, instead of returning them in an Array.</p>
 
 
 <p><a name="bacon-zipwith-f-first-varargs"></a>
@@ -1424,12 +1417,17 @@ process a tick.</p>
 </textarea></code></pre>
 <p>Order is important here. If the [tick] patterns had been written
 first, this would have been tried first, and preferred at each tick.</p>
-<p>Join patterns are indeed a generalization of zip, and zip is
+<p>Join patterns are indeed a generalization of zip, and for EventStreams, zip is
 equivalent to a single-rule join pattern. The following observables
-have the same output.</p>
+have the same output, assuming that all sources are EventStreams.</p>
 <pre><code class="language-js"><textarea class="code">Bacon.zipWith(a,b,c, combine)
 Bacon.when([a,b,c], combine)
 </textarea></code></pre>
+<p>Note that <a href="#bacon-when"><code>Bacon.when</code></a> does not trigger updates for events from Properties though;
+if you use a Property in your pattern, its value will be just sampled when all the
+other sources (EventStreams) have a value. This is useful when you need a value of a Property
+in your calculations. If you want your pattern to fire for a Property too, you can
+convert it into an EventStream using <a href="#property-changes"><code>property.changes()</code></a> or <a href="#property-toeventstream"><code>property.toEventStream()</code></a></p>
 
 
 <p><a name="bacon-update"></a>
