@@ -49,9 +49,9 @@ Try it out: http://jsfiddle.net/PG4c4/
 So,
 
 - you call `Bacon.fromBinder` and you provide your own "subscribe" function
-- there there you register to your underlying data source. In the example, `setTimeout`. 
+- there you register to your underlying data source. In the example, `setInterval`.
 - when you get data from your data source, you push it to the provided "sink" function. In the example, you push the current timestamp
-- from your "subscribe" function you return another function that cleans up. In this example, you'll call `setTimeout`
+- from your "subscribe" function you return another function that cleans up. In this example, you'll call `clearInterval`
 
 ### Example 2: Hammer.js
 
