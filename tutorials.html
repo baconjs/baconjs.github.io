@@ -17,7 +17,7 @@
 <link href='//fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
 
 <script src="//codeorigin.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.71/Bacon.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.73/Bacon.min.js"></script>
 
 
 <script src="codemirror/codemirror.js"></script>
@@ -38,9 +38,9 @@
       </div>
 
       <div class="download">
-        <a class="button big-button" href="http://cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.71/Bacon.js" download>
+        <a class="button big-button" href="http://cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.73/Bacon.js" download>
           Download Bacon.js
-          <small>v0.7.71</small>
+          <small>v0.7.73</small>
           <a class="github" href="https://github.com/baconjs/bacon.js#install">[More install options]</a>
         </a>
       </div>
@@ -194,7 +194,7 @@ username = textFieldValue($("#username input"))
 fullname = textFieldValue($("#fullname input"))
 </textarea></code></pre>
 <p>Better! In fact, there's already a <code>textFieldValue</code> function available in <a href="https://github.com/raimohanska/Bacon.UI.js/blob/master/Bacon.UI.js">Bacon.UI</a>,
-and it happens to be incluced in the code already so you can just go with</p>
+and it happens to be included in the code already so you can just go with</p>
 <pre><code class="language-javascript"><textarea class="code">username = Bacon.UI.textFieldValue($("#username input"))
 fullname = Bacon.UI.textFieldValue($("#fullname input"))
 </textarea></code></pre>
@@ -240,7 +240,7 @@ Mission accomplished!</p>
 <pre><code class="language-javascript"><textarea class="code">buttonEnabled.not().onValue($("#register button"), "attr", "disabled")
 </textarea></code></pre>
 <p>This relies on te fact that the <code>onValue</code> method, like many other Bacon.js methods, supports different sets of
-parameters. On of them is the above form, which can be translated as &quot;call the <code>attr</code> method of the register
+parameters. One of them is the above form, which can be translated as &quot;call the <code>attr</code> method of the register
 button and use <code>disabled</code> as the first argument&quot;. The second argument for the <code>attr</code> method will be taken from the
 current property value.</p>
 <p>You could also do the same by</p>
