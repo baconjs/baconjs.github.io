@@ -158,7 +158,7 @@ fullname = textFieldValue($("#fullname input"))
 ```
 
 Better! In fact, there's already a `textFieldValue` function available in [Bacon.UI](https://github.com/raimohanska/Bacon.UI.js/blob/master/Bacon.UI.js),
-and it happens to be incluced in the code already so you can just go with
+and it happens to be included in the code already so you can just go with
 
 ```javascript
 username = Bacon.UI.textFieldValue($("#username input"))
@@ -233,7 +233,7 @@ buttonEnabled.not().onValue($("#register button"), "attr", "disabled")
 ```
 
 This relies on te fact that the `onValue` method, like many other Bacon.js methods, supports different sets of
-parameters. On of them is the above form, which can be translated as "call the `attr` method of the register 
+parameters. One of them is the above form, which can be translated as "call the `attr` method of the register 
 button and use `disabled` as the first argument". The second argument for the `attr` method will be taken from the
 current property value.
 
