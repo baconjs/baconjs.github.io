@@ -239,7 +239,7 @@ Mission accomplished!</p>
 <p>For example,</p>
 <pre><code class="language-javascript"><textarea class="code">buttonEnabled.not().onValue($("#register button"), "attr", "disabled")
 </textarea></code></pre>
-<p>This relies on te fact that the <code>onValue</code> method, like many other Bacon.js methods, supports different sets of
+<p>This relies on the fact that the <code>onValue</code> method, like many other Bacon.js methods, supports different sets of
 parameters. One of them is the above form, which can be translated as &quot;call the <code>attr</code> method of the register
 button and use <code>disabled</code> as the first argument&quot;. The second argument for the <code>attr</code> method will be taken from the
 current property value.</p>
@@ -293,7 +293,7 @@ stream. This is where, with pure jQuery, we had to resort to keeping a
 counter variable for making sure we don't get the wrong result because
 of network delays.</p>
 <p>So, what does the <code>ajax()</code> method in Bacon.UI look like? Does it do
-stuff with variables? Lets see.</p>
+stuff with variables? Let's see.</p>
 <pre><code class="language-javascript"><textarea class="code">Bacon.EventStream.prototype.ajax = function() {
   return this["switch"](function(params) { return Bacon.fromPromise($.ajax(params)) })
 }
@@ -421,11 +421,11 @@ timer.take(5).onValue(function(value) {
     $("#events").append($("<li>").text(value))
 })
 </textarea></code></pre>
-<p>Try it out: http://jsfiddle.net/PG4c4/</p>
+<p>Try it out: <a href="http://jsfiddle.net/PG4c4/">http://jsfiddle.net/PG4c4/</a></p>
 <p>So,</p>
 <ul>
 <li>you call <code>Bacon.fromBinder</code> and you provide your own &quot;subscribe&quot; function</li>
-<li>there there you register to your underlying data source. In the example, <code>setTimeout</code>.</li>
+<li>there you register to your underlying data source. In the example, <code>setTimeout</code>.</li>
 <li>when you get data from your data source, you push it to the provided &quot;sink&quot; function. In the example, you push the current timestamp</li>
 <li>from your &quot;subscribe&quot; function you return another function that cleans up. In this example, you'll call <code>setTimeout</code></li>
 </ul>
@@ -443,16 +443,16 @@ timer.take(5).onValue(function(value) {
     })
 }
 </textarea></code></pre>
-<p>Try it out: http://jsfiddle.net/axDJy/3/</p>
+<p>Try it out: <a href="http://jsfiddle.net/axDJy/3/">http://jsfiddle.net/axDJy/3/</a></p>
 <p>It's exactly the same thing as with the above example. In my &quot;subscribe&quot; function, I register an event handler to Hammer.js. In this event handler I push a value &quot;hammer time!&quot; to the stream. I return a function that will de-register the hammer event handler.</p>
 <h3>More examples</h3>
-<p>You're not probably surprised at the fact that all the included wrappers and generators (including <code>$.asEventStream</code>, <code>Bacon.fromNodeCallback</code>, <code>Bacon.interval</code>, <code>Bacon.fromPoll</code> etc) are implemented on top of Bacon.fromBinder. So, for more examples, just dive into the Bacon.js codebase itself.</p>
+<p>You're probably not surprised at the fact that all the included wrappers and generators (including <code>$.asEventStream</code>, <code>Bacon.fromNodeCallback</code>, <code>Bacon.interval</code>, <code>Bacon.fromPoll</code> etc) are implemented on top of Bacon.fromBinder. So, for more examples, just dive into the Bacon.js codebase itself.</p>
 
 <a id="content/tutorials/4_Building_Applications_Out_Of_Bacon"></a>
 <h2>Structuring Real-Life Applications</h2>
 <p>The Internet is full of smart peanut-size examples of how to solve X with &quot;FRP&quot; and Bacon.js. But how to organize a real-world size application? That's been <a href="https://github.com/baconjs/bacon.js/issues/478">asked</a> once in a while and indeed I have an answer up in my sleeve. Don't take though that I'm saying this is the The Definitive Answer. I'm sure your own way is as good or better. Tell me about it!</p>
 <p>I think there are some principles that you should apply to the design of any application though, like <a href="http://en.wikipedia.org/wiki/Single_responsibility_principle">Single Reponsibility Principle</a> and <a href="http://en.wikipedia.org/wiki/Separation_of_concerns">Separation of Concerns</a>. Given that, your application should consist of components that are fairly independent of each others implementation details. I'd also like the components to communicate using some explicit signals instead of shared mutable state (nudge nudge Angular). For this purpose, I find the Bacon.js <code>EventStreams</code> and <code>Properties</code> quite handy.</p>
-<p>So if a component needs to act when a triggering event occurs, why not give it an <code>EventStream</code> representing that event in its constructor.  The <code>EventStream</code> is an abstraction for the event source, so the implementation of your component is does not depend on where the event originates from, meaning you can use a WebSocket message as well as a mouse click as the actual event source. Similarly, if you component needs to display or act on the <em>state</em> of something, why not give it a <code>Property</code> in its constructor.</p>
+<p>So if a component needs to act when a triggering event occurs, why not give it an <code>EventStream</code> representing that event in its constructor.  The <code>EventStream</code> is an abstraction for the event source, so the implementation of your component is does not depend on where the event originates from, meaning you can use a WebSocket message as well as a mouse click as the actual event source. Similarly, if your component needs to display or act on the <em>state</em> of something, why not give it a <code>Property</code> in it's constructor?</p>
 <p>When it comes to the outputs of a component, those can exposed as <code>EventStreams</code> and <code>Properties</code> in the component's public interface. In some cases it also makes sense to publish a <code>Bus</code> to allow plugging in event sources after component creation.</p>
 <p>For example, a ShoppingCart model component might look like this.</p>
 <pre><code class="language-javascript"><textarea class="code">function ShoppingCart(initialContents) {
@@ -584,7 +584,7 @@ var cartView = ShoppingCartView(cart)
 var {removeItemStream} = ShoppingCartView(cart)
 </textarea></code></pre>
 <p>Cyclic dependency is often given as an example where Buses are needed. After all the hard work should we now reintroduce Buses?</p>
-<p>Here a Bus can be used to break the cyclic dependency, just as a mutable variable would do if you will. But we have other options too. Why don't we factor the components so that the cyclic dependency completely disappears.</p>
+<p>Here a Bus can be used to break the cyclic dependency, just as a mutable variable would do if you will. But we have other options too. Why don't we factor the components so that the cyclic dependency completely disappears?</p>
 <pre><code class="language-javascript"><textarea class="code">function RemoveItems(container) {
   return {
     view: ...
