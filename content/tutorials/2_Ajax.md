@@ -16,7 +16,7 @@ AJAX. The steps are
 I suggest you checkout the [example code](https://github.com/raimohanska/bacon-devday-code) and switch to the 
 [tutorial-2 branch](https://github.com/raimohanska/bacon-devday-code/tree/tutorial-2)
 which will be the starting point for the coding part of this posting.
-If you just want to have a look at what we'ge got so far, have a [peek](https://github.com/raimohanska/bacon-devday-code/blob/tutorial-2/index.html).
+If you just want to have a look at what we've got so far, have a [peek](https://github.com/raimohanska/bacon-devday-code/blob/tutorial-2/index.html).
 
 So, at this point we've got a Property called `username` which
 represents the current value entered to the username text input field.
