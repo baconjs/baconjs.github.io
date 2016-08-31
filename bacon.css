@@ -128,3 +128,9 @@ textarea, .CodeMirror {
 ul.toc {
   list-style: none;
 }
+
+.sponsor.reaktor {
+  max-width: 150px;
+  margin-top: 24px;
+  margin-left: -6px;
+}
