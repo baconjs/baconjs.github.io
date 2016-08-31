@@ -17,7 +17,7 @@
 <link href='//fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
 
 <script src="//codeorigin.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.73/Bacon.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.85/Bacon.min.js"></script>
 
 
 <script src="codemirror/codemirror.js"></script>
@@ -38,9 +38,9 @@
       </div>
 
       <div class="download">
-        <a class="button big-button" href="http://cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.73/Bacon.js" download>
+        <a class="button big-button" href="http://cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.85/Bacon.js" download>
           Download Bacon.js
-          <small>v0.7.73</small>
+          <small>v0.7.85</small>
           <a class="github" href="https://github.com/baconjs/bacon.js#install">[More install options]</a>
         </a>
       </div>
@@ -111,7 +111,7 @@ $("#my-div").asEventStream("click", function(event, args) { return args[0] })
 
 <p><a name="bacon-frompromise"></a>
 <a href="#bacon-frompromise" title="Bacon.fromPromise(promise : Promise[A] [, abort : boolean][, eventTransformer]) : EventStream[A]"><code>Bacon.fromPromise(promise [, abort] [, eventTransformer])</code></a> creates an EventStream from a Promise object such as JQuery Ajax.
-This stream will contain a single value or an error, followed immediately by stream end.<br>
+This stream will contain a single value or an error, followed immediately by stream end.
 You can use the optional abort flag (i.e. ´fromPromise(p, true)´ to have the <code>abort</code> method of the given promise be called when all subscribers have been removed from the created stream.
 You can also pass an optional function that transforms the promise value into Events. The default is to transform the value into <code>[new Bacon.Next(value), new Bacon.End()]</code>.
 Check out this <a href="https://github.com/raimohanska/baconjs-examples/blob/master/resources/public/index.html">example</a>.</p>
@@ -1354,12 +1354,15 @@ callback.</p>
 <p>Note also that Bacon.js combinators do not catch errors that are thrown.
 Especially <a href="#observable-map"><code>map</code></a> doesn't do so. If you want to map things
 and wrap caught errors into Error events, you can do the following:</p>
-<pre><code class="language-js"><textarea class="code">var source, dangerousFunction // <- your stuff
-wrapped = source.flatMap(function(x) {
-  try
-    return dangerousFunction(x)
-  catch (e)
-    return new Bacon.Error(e)
+<pre><code class="language-js"><textarea class="code">wrapped = source.flatMap(Bacon.try(dangerousOperation))
+</textarea></code></pre>
+<p>For example, you can use <code>Bacon.try</code> to handle JSON parse errors:</p>
+<pre><code class="language-js"><textarea class="code">var jsonStream = Bacon
+  .once('{"this is invalid json"')
+  .flatMap(Bacon.try(JSON.parse))
+
+jsonStream.onError(function(err) {
+  console.error("Failed to parse JSON", err)
 })
 </textarea></code></pre>
 <p>An Error does not terminate the stream. The method <a href="#observable-endonerror"><code>observable.endOnError()</code></a>
