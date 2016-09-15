@@ -15,6 +15,12 @@ npm install -g coffee-script
 npm install
 ```
 
+Run site locally:
+
+```sh
+npm run server
+```
+
 Directory layout:
 
 ```

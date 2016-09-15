@@ -11,7 +11,8 @@
     "cheerio": "^0.18"
   },
   "scripts": {
-    "postinstall": "generator/generate.coffee"
+    "postinstall": "generator/generate.coffee",
+		"server": "./server.coffee"
   },
   "repository": {
     "type": "git",
@@ -25,5 +26,8 @@
   "bugs": {
     "url": "https://github.com/baconjs/baconjs.github.io/issues"
   },
-  "homepage": "https://github.com/baconjs/baconjs.github.io"
+  "homepage": "https://github.com/baconjs/baconjs.github.io",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
 }
