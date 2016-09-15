@@ -2,7 +2,8 @@ common = require "../../bacon.js/readme/common.coffee"
 marked = require "./renderMarkdown.coffee"
 _ = require "lodash"
 
-renderToc = (elements) ->
+renderToc = (doc) ->
+  elements = _.cloneDeep doc.elements
   toc = ""
   _.each elements, (element) ->
     switch element.type
@@ -10,14 +11,17 @@ renderToc = (elements) ->
         toc += '- [' + element.name + '](#' + common.anchorName(element.name) + ')' + '\n'
       when "subsubsection"
         toc += '    - [' + element.name + '](#' + common.anchorName(element.name) + ')' + '\n'
+      when "fn"
+        toc += '    - [' + renderApiTocElement(element.parsedSignature) + '](#' + element.anchorName + ')' + '\n'
 
-  _.map elements, (element) ->
-    switch element.type
-      when "toc"
-        type: "text"
-        content: toc
-      else
-        element
+  marked.render toc
+
+renderApiTocElement = (parsedSignature) ->
+  n = if parsedSignature.n then "new " else ""
+  o = parsedSignature.namespace
+  m = parsedSignature.method
+  name = (n + o + "." + m)
+  name
 
 renderSignature = (parsedSignature) ->
   n = if parsedSignature.n then "new " else ""
@@ -91,12 +95,8 @@ render = (doc) ->
   elements = _.cloneDeep doc.elements
 
   elements = pickSection "API", elements
-  elements.splice 1, 0, 
-    type: "toc"
 
   elements = common.preprocess elements
-
-  elements = renderToc elements
 
   _.chain(elements)
     .map(renderElement)
@@ -104,4 +104,4 @@ render = (doc) ->
     .join("\n\n")
     .value() + "\n"
 
-module.exports = render
+module.exports = { render, renderToc }

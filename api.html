@@ -49,6 +49,184 @@
         <div class="row">
           <div class="large-12 small-6 columns">
             <p> <a href="api.html"> API Reference </a> </p>
+<ul>
+<li><a href="#creating-streams">Creating streams</a>
+<ul>
+<li><a href="#$-aseventstream">$.asEventStream</a></li>
+<li><a href="#bacon-frompromise">Bacon.fromPromise</a></li>
+<li><a href="#bacon-fromevent">Bacon.fromEvent</a></li>
+<li><a href="#bacon-fromcallback">Bacon.fromCallback</a></li>
+<li><a href="#bacon-fromcallback-object">Bacon.fromCallback</a></li>
+<li><a href="#bacon-fromnodecallback">Bacon.fromNodeCallback</a></li>
+<li><a href="#bacon-fromnodecallback-object">Bacon.fromNodeCallback</a></li>
+<li><a href="#bacon-frompoll">Bacon.fromPoll</a></li>
+<li><a href="#bacon-once">Bacon.once</a></li>
+<li><a href="#bacon-fromarray">Bacon.fromArray</a></li>
+<li><a href="#bacon-interval">Bacon.interval</a></li>
+<li><a href="#bacon-sequentially">Bacon.sequentially</a></li>
+<li><a href="#bacon-repeatedly">Bacon.repeatedly</a></li>
+<li><a href="#bacon-repeat">Bacon.repeat</a></li>
+<li><a href="#bacon-never">Bacon.never</a></li>
+<li><a href="#bacon-later">Bacon.later</a></li>
+<li><a href="#new-bacon-eventstream">new Bacon.EventStream</a></li>
+<li><a href="#property-toeventstream">property.toEventStream</a></li>
+</ul></li>
+<li><a href="#baconfrombinder-for-custom-streams">Bacon.fromBinder for custom streams</a>
+<ul>
+<li><a href="#bacon-frombinder">Bacon.fromBinder</a></li>
+<li><a href="#bacon-nomore">Bacon.noMore</a></li>
+<li><a href="#bacon-more">Bacon.more</a></li>
+</ul></li>
+<li><a href="#common-methods-in-eventstreams-and-properties">Common methods in EventStreams and Properties</a>
+<ul>
+<li><a href="#observable-subscribe">observable.subscribe</a></li>
+<li><a href="#observable-onvalue">observable.onValue</a></li>
+<li><a href="#observable-onvalues">observable.onValues</a></li>
+<li><a href="#observable-onerror">observable.onError</a></li>
+<li><a href="#observable-onend">observable.onEnd</a></li>
+<li><a href="#observable-topromise">observable.toPromise</a></li>
+<li><a href="#observable-firsttopromise">observable.firstToPromise</a></li>
+<li><a href="#observable-map">observable.map</a></li>
+<li><a href="#stream-map">stream.map</a></li>
+<li><a href="#observable-maperror">observable.mapError</a></li>
+<li><a href="#observable-errors">observable.errors</a></li>
+<li><a href="#observable-skiperrors">observable.skipErrors</a></li>
+<li><a href="#observable-mapend">observable.mapEnd</a></li>
+<li><a href="#observable-filter">observable.filter</a></li>
+<li><a href="#observable-filter-property">observable.filter</a></li>
+<li><a href="#observable-skipduplicates">observable.skipDuplicates</a></li>
+<li><a href="#observable-take">observable.take</a></li>
+<li><a href="#observable-takeuntil">observable.takeUntil</a></li>
+<li><a href="#observable-takewhile">observable.takeWhile</a></li>
+<li><a href="#observable-takewhile-property">observable.takeWhile</a></li>
+<li><a href="#observable-first">observable.first</a></li>
+<li><a href="#observable-last">observable.last</a></li>
+<li><a href="#observable-skip">observable.skip</a></li>
+<li><a href="#observable-delay">observable.delay</a></li>
+<li><a href="#observable-throttle">observable.throttle</a></li>
+<li><a href="#observable-debounce">observable.debounce</a></li>
+<li><a href="#observable-debounceimmediate">observable.debounceImmediate</a></li>
+<li><a href="#observable-bufferingthrottle">observable.bufferingThrottle</a></li>
+<li><a href="#observable-doaction">observable.doAction</a></li>
+<li><a href="#observable-doerror">observable.doError</a></li>
+<li><a href="#observable-not">observable.not</a></li>
+<li><a href="#observable-flatmap">observable.flatMap</a></li>
+<li><a href="#observable-flatmaplatest">observable.flatMapLatest</a></li>
+<li><a href="#observable-flatmapfirst">observable.flatMapFirst</a></li>
+<li><a href="#observable-flatmaperror">observable.flatMapError</a></li>
+<li><a href="#observable-flatmapwithconcurrencylimit">observable.flatMapWithConcurrencyLimit</a></li>
+<li><a href="#observable-flatmapconcat">observable.flatMapConcat</a></li>
+<li><a href="#observable-scan">observable.scan</a></li>
+<li><a href="#observable-fold">observable.fold</a></li>
+<li><a href="#observable-reduce">observable.reduce</a></li>
+<li><a href="#observable-diff">observable.diff</a></li>
+<li><a href="#observable-zip">observable.zip</a></li>
+<li><a href="#observable-slidingwindow">observable.slidingWindow</a></li>
+<li><a href="#observable-log">observable.log</a></li>
+<li><a href="#observable-dolog">observable.doLog</a></li>
+<li><a href="#observable-combine">observable.combine</a></li>
+<li><a href="#observable-withstatemachine">observable.withStateMachine</a></li>
+<li><a href="#observable-decode">observable.decode</a></li>
+<li><a href="#observable-awaiting">observable.awaiting</a></li>
+<li><a href="#observable-endonerror">observable.endOnError</a></li>
+<li><a href="#observable-endonerror-f">observable.endOnError</a></li>
+<li><a href="#observable-withhandler">observable.withHandler</a></li>
+<li><a href="#observable-name">observable.name</a></li>
+<li><a href="#observable-withdescription">observable.withDescription</a></li>
+<li><a href="#observable-groupby">observable.groupBy</a></li>
+</ul></li>
+<li><a href="#eventstream">EventStream</a>
+<ul>
+<li><a href="#bacon-eventstream">Bacon.EventStream</a></li>
+<li><a href="#stream-concat">stream.concat</a></li>
+<li><a href="#stream-merge">stream.merge</a></li>
+<li><a href="#stream-holdwhen">stream.holdWhen</a></li>
+<li><a href="#stream-startwith">stream.startWith</a></li>
+<li><a href="#stream-skipwhile">stream.skipWhile</a></li>
+<li><a href="#stream-skipwhile-property">stream.skipWhile</a></li>
+<li><a href="#stream-skipuntil">stream.skipUntil</a></li>
+<li><a href="#stream-bufferwithtime">stream.bufferWithTime</a></li>
+<li><a href="#stream-bufferwithtime-f">stream.bufferWithTime</a></li>
+<li><a href="#stream-bufferwithcount">stream.bufferWithCount</a></li>
+<li><a href="#stream-bufferwithtimeorcount">stream.bufferWithTimeOrCount</a></li>
+<li><a href="#stream-toproperty">stream.toProperty</a></li>
+<li><a href="#stream-toproperty-initialValue">stream.toProperty</a></li>
+</ul></li>
+<li><a href="#property">Property</a>
+<ul>
+<li><a href="#bacon-property">Bacon.Property</a></li>
+<li><a href="#bacon-constant">Bacon.constant</a></li>
+<li><a href="#property-assign">property.assign</a></li>
+<li><a href="#property-sample">property.sample</a></li>
+<li><a href="#property-sampledby">property.sampledBy</a></li>
+<li><a href="#property-sampledby-property">property.sampledBy</a></li>
+<li><a href="#property-sampledby-f">property.sampledBy</a></li>
+<li><a href="#property-changes">property.changes</a></li>
+<li><a href="#property-and">property.and</a></li>
+<li><a href="#property-or">property.or</a></li>
+<li><a href="#property-startwith">property.startWith</a></li>
+</ul></li>
+<li><a href="#combining-multiple-streams-and-properties">Combining multiple streams and properties</a>
+<ul>
+<li><a href="#bacon-combineasarray">Bacon.combineAsArray</a></li>
+<li><a href="#bacon-combineasarray-multiple-streams">Bacon.combineAsArray</a></li>
+<li><a href="#bacon-combinewith">Bacon.combineWith</a></li>
+<li><a href="#bacon-combinewith-streams-array">Bacon.combineWith</a></li>
+<li><a href="#bacon-combinewith-streams-array-f-last">Bacon.combineWith</a></li>
+<li><a href="#bacon-combinewith-f-last">Bacon.combineWith</a></li>
+<li><a href="#bacon-combinetemplate">Bacon.combineTemplate</a></li>
+<li><a href="#bacon-mergeall">Bacon.mergeAll</a></li>
+<li><a href="#bacon-zipasarray">Bacon.zipAsArray</a></li>
+<li><a href="#bacon-zipasarray-multiple-streams">Bacon.zipAsArray</a></li>
+<li><a href="#bacon-zipwith">Bacon.zipWith</a></li>
+<li><a href="#bacon-zipwith-f-first">Bacon.zipWith</a></li>
+<li><a href="#bacon-zipwith-f-first-varargs">Bacon.zipWith</a></li>
+<li><a href="#bacon-zipwith-varargs-f-last">Bacon.zipWith</a></li>
+<li><a href="#bacon-onvalues">Bacon.onValues</a></li>
+</ul></li>
+<li><a href="#function-construction-rules">Function Construction rules</a></li>
+<li><a href="#lazy-evaluation">Lazy evaluation</a></li>
+<li><a href="#latest-value-of-property-or-eventstream">Latest value of Property or EventStream</a></li>
+<li><a href="#bus">Bus</a>
+<ul>
+<li><a href="#new-bacon-bus">new Bacon.Bus</a></li>
+<li><a href="#bus-push">bus.push</a></li>
+<li><a href="#bus-end">bus.end</a></li>
+<li><a href="#bus-error">bus.error</a></li>
+<li><a href="#bus-plug">bus.plug</a></li>
+</ul></li>
+<li><a href="#event">Event</a>
+<ul>
+<li><a href="#bacon-event">Bacon.Event</a></li>
+<li><a href="#bacon-next">Bacon.Next</a></li>
+<li><a href="#bacon-end">Bacon.End</a></li>
+<li><a href="#bacon-error">Bacon.Error</a></li>
+<li><a href="#bacon-initial">Bacon.Initial</a></li>
+<li><a href="#event-properties-and-methods">Event properties and methods</a></li>
+<li><a href="#event-value">event.value</a></li>
+<li><a href="#event-hasvalue">event.hasValue</a></li>
+<li><a href="#event-isnext">event.isNext</a></li>
+<li><a href="#event-isinitial">event.isInitial</a></li>
+<li><a href="#event-isend">event.isEnd</a></li>
+</ul></li>
+<li><a href="#errors">Errors</a>
+<ul>
+<li><a href="#bacon-retry">Bacon.retry</a></li>
+</ul></li>
+<li><a href="#join-patterns">Join Patterns</a>
+<ul>
+<li><a href="#bacon-when">Bacon.when</a></li>
+<li><a href="#bacon-update">Bacon.update</a></li>
+<li><a href="#join-patterns-as-a-chemical-machine">Join patterns as a &quot;chemical machine&quot;</a></li>
+<li><a href="#join-patterns-and-properties">Join patterns and properties</a></li>
+<li><a href="#join-patterns-and-baconbus">Join patterns and Bacon.bus</a></li>
+</ul></li>
+<li><a href="#cleaning-up">Cleaning up</a></li>
+<li><a href="#eventstream-and-property-semantics">EventStream and Property semantics</a></li>
+<li><a href="#atomic-updates">Atomic updates</a></li>
+<li><a href="#for-rxjs-users">For RxJs Users</a></li>
+</ul>
+
             <p> <a href="tutorials.html"> Tutorials </a> </p>
             <p> <a href="https://github.com/baconjs/bacon.js#install">Install/Download</a> </p>
           </div>
@@ -66,36 +244,6 @@
     <div class="large-8 columns">
       <div class="main">
 <h1>API</h1>
-
-
-<ul>
-<li><a href="#creating-streams">Creating streams</a></li>
-<li><a href="#baconfrombinder-for-custom-streams">Bacon.fromBinder for custom streams</a></li>
-<li><a href="#common-methods-in-eventstreams-and-properties">Common methods in EventStreams and Properties</a></li>
-<li><a href="#eventstream">EventStream</a></li>
-<li><a href="#property">Property</a></li>
-<li><a href="#combining-multiple-streams-and-properties">Combining multiple streams and properties</a></li>
-<li><a href="#function-construction-rules">Function Construction rules</a></li>
-<li><a href="#lazy-evaluation">Lazy evaluation</a></li>
-<li><a href="#latest-value-of-property-or-eventstream">Latest value of Property or EventStream</a></li>
-<li><a href="#bus">Bus</a></li>
-<li><a href="#event">Event</a>
-<ul>
-<li><a href="#event-properties-and-methods">Event properties and methods</a></li>
-</ul></li>
-<li><a href="#errors">Errors</a></li>
-<li><a href="#join-patterns">Join Patterns</a>
-<ul>
-<li><a href="#join-patterns-as-a-chemical-machine">Join patterns as a &quot;chemical machine&quot;</a></li>
-<li><a href="#join-patterns-and-properties">Join patterns and properties</a></li>
-<li><a href="#join-patterns-and-baconbus">Join patterns and Bacon.bus</a></li>
-</ul></li>
-<li><a href="#cleaning-up">Cleaning up</a></li>
-<li><a href="#eventstream-and-property-semantics">EventStream and Property semantics</a></li>
-<li><a href="#atomic-updates">Atomic updates</a></li>
-<li><a href="#for-rxjs-users">For RxJs Users</a></li>
-</ul>
-
 
 
 <h2><a name="creating-streams"></a>Creating streams</h2>

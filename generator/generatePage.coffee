@@ -78,13 +78,14 @@ toc = (data) ->
 fileLink = (fn) -> fn.split(".")[0]
 
 readFiles = (page) ->
-  fn = page.input
-  if fs.lstatSync(fn).isDirectory()
-    files = fs.readdirSync(fn).map (f) -> fn + "/" + f
+  filename = page.input
+  if fs.lstatSync(filename).isDirectory()
+    console.log("dir", filename)
+    files = fs.readdirSync(filename).map (f) -> filename + "/" + f
     contents = files.map(readFileWithAnchor).join("\n")
     toc({title: page.title, files}) + contents
   else
-    readFile(fn)
+    readFile(filename)
 
 module.exports = (page) ->
   envPromise.then (env) ->
@@ -92,6 +93,7 @@ module.exports = (page) ->
     data = _.extend {}, env,
       AUTOGENDISCLAIMER: "<!-- This file is generated. See package.json -->"
       title: page.title
+      apiTocContent: page.apiTocContent
       content: content
     html = mustache.render pageTemplate, data
 
