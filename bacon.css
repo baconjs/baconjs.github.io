@@ -92,13 +92,15 @@ button.run.error {
     line-height: 1.1em;
 }
 
-.sidebar {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
-  max-width: 300px;
+@media only screen and (min-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-width: 300px;
+  }
 }
 
 .sidebar .big-button {
