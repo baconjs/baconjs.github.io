@@ -17,7 +17,7 @@
 <link href='//fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
 
 <script src="//codeorigin.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.89/Bacon.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.91/Bacon.min.js"></script>
 
 
 <script src="codemirror/codemirror.js"></script>
@@ -38,9 +38,9 @@
       </div>
 
       <div class="download">
-        <a class="button big-button" href="http://cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.89/Bacon.js" download>
+        <a class="button big-button" href="http://cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.91/Bacon.js" download>
           Download Bacon.js
-          <small>v0.7.89</small>
+          <small>v0.7.91</small>
           <a class="github" href="https://github.com/baconjs/bacon.js#install">[More install options]</a>
         </a>
       </div>
@@ -58,6 +58,7 @@
 <li><a href="#bacon-fromcallback">Bacon.fromCallback</a></li>
 <li><a href="#bacon-fromcallback-object">Bacon.fromCallback</a></li>
 <li><a href="#bacon-fromnodecallback">Bacon.fromNodeCallback</a></li>
+<li><a href="#bacon-fromesobservable">Bacon.fromESObservable</a></li>
 <li><a href="#bacon-fromnodecallback-object">Bacon.fromNodeCallback</a></li>
 <li><a href="#bacon-frompoll">Bacon.fromPoll</a></li>
 <li><a href="#bacon-once">Bacon.once</a></li>
@@ -86,6 +87,7 @@
 <li><a href="#observable-onend">observable.onEnd</a></li>
 <li><a href="#observable-topromise">observable.toPromise</a></li>
 <li><a href="#observable-firsttopromise">observable.firstToPromise</a></li>
+<li><a href="#observable-toesobservable">observable.toESObservable</a></li>
 <li><a href="#observable-map">observable.map</a></li>
 <li><a href="#stream-map">stream.map</a></li>
 <li><a href="#observable-maperror">observable.mapError</a></li>
@@ -151,6 +153,7 @@
 <li><a href="#stream-bufferwithtimeorcount">stream.bufferWithTimeOrCount</a></li>
 <li><a href="#stream-toproperty">stream.toProperty</a></li>
 <li><a href="#stream-toproperty-initialValue">stream.toProperty</a></li>
+<li><a href="#stream-flatscan">stream.flatScan</a></li>
 </ul></li>
 <li><a href="#property">Property</a>
 <ul>
@@ -207,7 +210,9 @@
 <li><a href="#event-hasvalue">event.hasValue</a></li>
 <li><a href="#event-isnext">event.isNext</a></li>
 <li><a href="#event-isinitial">event.isInitial</a></li>
+<li><a href="#event-iserror">event.isError</a></li>
 <li><a href="#event-isend">event.isEnd</a></li>
+<li><a href="#event-error">event.error</a></li>
 </ul></li>
 <li><a href="#errors">Errors</a>
 <ul>
@@ -322,6 +327,12 @@ var read = Bacon.fromNodeCallback(fs.readFile, 'input.txt');
 read.onError(function(error) { console.log("Reading failed: " + error); });
 read.onValue(function(value) { console.log("Read contents: " + value); });
 </textarea></code></pre>
+
+
+<p><a name="bacon-fromesobservable"></a>
+<a href="#bacon-fromesobservable" title="Bacon.fromESObservable(observable : ESObservable[A]) : EventStream[A]"><code>Bacon.fromESObservable(observable)</code></a> creates an EventStream from an
+<a href="https://github.com/tc39/proposal-observable">ES Observable</a>. Input can be any
+ES Observable implementation including RxJS and Kefir.</p>
 
 
 <p><a name="bacon-fromnodecallback-object"></a>
@@ -537,6 +548,14 @@ Use a shim if you need to support legacy browsers or platforms.
 <a href="#observable-firsttopromise" title="observable.firstToPromise(@ : Observable[A] [, PromiseCtr]) : Promise[A]"><code>observable.firstToPromise([PromiseCtr])</code></a> returns a Promise which will be resolved with the first event coming from an Observable.
 Like <a href="#observable-topromise"><code>toPromise</code></a>, the global ES6 promise implementation will be used unless a promise
 constructor is given.</p>
+
+
+<p><a name="observable-toesobservable"></a>
+<a href="#observable-toesobservable" title="observable.toESObservable() : ESObservable[A]"><code>observable.toESObservable()</code></a> Aliased as <code>observable[Symbol.observable]()</code>. Returns an
+<a href="https://github.com/zenparsing/es-observable">ES Observable</a> containing the
+events from Bacon observable. This allows Bacon observables to be used with
+<code>Observable.from</code> and provides interoperability with other ES observable
+implementations such as RxJS and Kefir.</p>
 
 
 <p><a name="observable-map"></a>
@@ -875,8 +894,8 @@ properties with array value. The result is a Property.</p>
 <a href="#observable-withstatemachine" title="observable.withStateMachine(initState, f)"><code>observable.withStateMachine(initState, f)</code></a> lets you run a state machine
 on an observable. Give it an initial state object and a state
 transformation function that processes each incoming event and
-returns and array containing the next state and an array of output
-events. Here's an an example, where we calculate the total sum of all
+returns an array containing the next state and an array of output
+events. Here's an example where we calculate the total sum of all
 numbers in the stream and output the value on stream end:</p>
 <pre><code class="language-js"><textarea class="code">Bacon.fromArray([1,2,3])
   .withStateMachine(0, function(sum, event) {
@@ -1099,6 +1118,13 @@ always have a current value.</p>
 <a href="#stream-toproperty-initialValue" title="stream.toProperty(initialValue)"><code>stream.toProperty(initialValue)</code></a> creates a Property based on the
 EventStream with the given initial value that will be used as the current value until
 the first value comes from the stream.</p>
+
+
+<p><a name="stream-flatscan"></a>
+<a href="#stream-flatscan" title="stream.flatScan(seed, f) : Property[A]"><code>stream.flatScan(seed, f)</code></a> scans stream with given seed value and accumulator function, resulting to a Property.
+Difference to <a href="#observable-scan"><code>scan</code></a> is that the function <code>f</code> can return an <a href="#eventstream"><code>EventStream</code></a> or a <a href="#property"><code>Property</code></a> instead
+of a pure value, meaning that you can use <a href="#stream-flatscan"><code>flatScan</code></a> for asynchronous updates of state. It serializes
+updates so that that the next update will be queued until the previous one has completed.</p>
 
 
 <h2><a name="property"></a>Property</h2>
@@ -1483,8 +1509,16 @@ to a Property.</p>
 <a href="#event-isinitial" title="event.isInitial(@ : Event[A]) : Bool"><code>event.isInitial()</code></a> true for Initial events</p>
 
 
+<p><a name="event-iserror"></a>
+<a href="#event-iserror" title="event.isError()"><code>event.isError()</code></a> true for Error events</p>
+
+
 <p><a name="event-isend"></a>
 <a href="#event-isend" title="event.isEnd()"><code>event.isEnd()</code></a> true for End events</p>
+
+
+<p><a name="event-error"></a>
+<a href="#event-error" title="event.error"><code>event.error</code></a> the error value of Error events</p>
 
 
 <h2><a name="errors"></a>Errors</h2>
@@ -1537,7 +1571,7 @@ such as AJAX calls.</p>
 <a href="#bacon-retry" title="Bacon.retry(options)"><code>Bacon.retry(options)</code></a> is used to retry the call when there is an <a href="#bacon-error"><code>Error</code></a> event in the stream produced by the <code>source</code> function.</p>
 <p>The two required option parameters are:</p>
 <ul>
-<li><code>source</code>, a function that produces an Observable.</li>
+<li><code>source</code>, a function that produces an Observable. The function gets attempt number (starting from zero) as its argument.</li>
 <li><code>retries</code>, the number of times to retry the <code>source</code> function <em>in addition to the initial attempt</em>. Use the value o (zero) for retrying indefinitely.</li>
 </ul>
 <p>Additionally, one may pass in one or both of the following callbacks:</p>
@@ -1548,7 +1582,7 @@ such as AJAX calls.</p>
 <pre><code class="language-js"><textarea class="code">var triggeringStream, ajaxCall // <- ajaxCall gives Errors on network or server errors
 ajaxResult = triggeringStream.flatMap(function(url) {
     return Bacon.retry({
-        source: function() { return ajaxCall(url) },
+        source: function(attemptNumber) { return ajaxCall(url) },
         retries: 5,
         isRetryable: function (error) { return error.httpStatusCode !== 404; },
         delay: function(context) { return 100; } // Just use the same delay always

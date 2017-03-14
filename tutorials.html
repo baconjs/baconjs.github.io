@@ -17,7 +17,7 @@
 <link href='//fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
 
 <script src="//codeorigin.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.89/Bacon.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.91/Bacon.min.js"></script>
 
 
 <script src="codemirror/codemirror.js"></script>
@@ -38,9 +38,9 @@
       </div>
 
       <div class="download">
-        <a class="button big-button" href="http://cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.89/Bacon.js" download>
+        <a class="button big-button" href="http://cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.91/Bacon.js" download>
           Download Bacon.js
-          <small>v0.7.89</small>
+          <small>v0.7.91</small>
           <a class="github" href="https://github.com/baconjs/bacon.js#install">[More install options]</a>
         </a>
       </div>
@@ -456,7 +456,7 @@ timer.take(5).onValue(function(value) {
 <h2>Structuring Real-Life Applications</h2>
 <p>The Internet is full of smart peanut-size examples of how to solve X with &quot;FRP&quot; and Bacon.js. But how to organize a real-world size application? That's been <a href="https://github.com/baconjs/bacon.js/issues/478">asked</a> once in a while and indeed I have an answer up in my sleeve. Don't take though that I'm saying this is the The Definitive Answer. I'm sure your own way is as good or better. Tell me about it!</p>
 <p>I think there are some principles that you should apply to the design of any application though, like <a href="http://en.wikipedia.org/wiki/Single_responsibility_principle">Single Reponsibility Principle</a> and <a href="http://en.wikipedia.org/wiki/Separation_of_concerns">Separation of Concerns</a>. Given that, your application should consist of components that are fairly independent of each others implementation details. I'd also like the components to communicate using some explicit signals instead of shared mutable state (nudge nudge Angular). For this purpose, I find the Bacon.js <code>EventStreams</code> and <code>Properties</code> quite handy.</p>
-<p>So if a component needs to act when a triggering event occurs, why not give it an <code>EventStream</code> representing that event in its constructor.  The <code>EventStream</code> is an abstraction for the event source, so the implementation of your component is does not depend on where the event originates from, meaning you can use a WebSocket message as well as a mouse click as the actual event source. Similarly, if you component needs to display or act on the <em>state</em> of something, why not give it a <code>Property</code> in its constructor.</p>
+<p>So if a component needs to act when a triggering event occurs, why not give it an <code>EventStream</code> representing that event in its constructor.  The <code>EventStream</code> is an abstraction for the event source, so the implementation of your component is does not depend on where the event originates from, meaning you can use a WebSocket message as well as a mouse click as the actual event source. Similarly, if your component needs to display or act on the <em>state</em> of something, why not give it a <code>Property</code> in its constructor.</p>
 <p>When it comes to the outputs of a component, those can exposed as <code>EventStreams</code> and <code>Properties</code> in the component's public interface. In some cases it also makes sense to publish a <code>Bus</code> to allow plugging in event sources after component creation.</p>
 <p>For example, a ShoppingCart model component might look like this.</p>
 <pre><code class="language-javascript"><textarea class="code">function ShoppingCart(initialContents) {
