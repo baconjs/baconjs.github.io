@@ -17,7 +17,7 @@
 <link href='//fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
 
 <script src="//codeorigin.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.91/Bacon.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.95/Bacon.min.js"></script>
 
 
 <script src="codemirror/codemirror.js"></script>
@@ -38,9 +38,9 @@
       </div>
 
       <div class="download">
-        <a class="button big-button" href="http://cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.91/Bacon.js" download>
+        <a class="button big-button" href="http://cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.95/Bacon.js" download>
           Download Bacon.js
-          <small>v0.7.91</small>
+          <small>v0.7.95</small>
           <a class="github" href="https://github.com/baconjs/bacon.js#install">[More install options]</a>
         </a>
       </div>
@@ -104,6 +104,7 @@
 <li><a href="#observable-first">observable.first</a></li>
 <li><a href="#observable-last">observable.last</a></li>
 <li><a href="#observable-skip">observable.skip</a></li>
+<li><a href="#observable-concat">observable.concat</a></li>
 <li><a href="#observable-delay">observable.delay</a></li>
 <li><a href="#observable-throttle">observable.throttle</a></li>
 <li><a href="#observable-debounce">observable.debounce</a></li>
@@ -140,7 +141,6 @@
 <li><a href="#eventstream">EventStream</a>
 <ul>
 <li><a href="#bacon-eventstream">Bacon.EventStream</a></li>
-<li><a href="#stream-concat">stream.concat</a></li>
 <li><a href="#stream-merge">stream.merge</a></li>
 <li><a href="#stream-holdwhen">stream.holdWhen</a></li>
 <li><a href="#stream-startwith">stream.startWith</a></li>
@@ -179,6 +179,7 @@
 <li><a href="#bacon-combinewith-f-last">Bacon.combineWith</a></li>
 <li><a href="#bacon-combinetemplate">Bacon.combineTemplate</a></li>
 <li><a href="#bacon-mergeall">Bacon.mergeAll</a></li>
+<li><a href="#bacon-concatall">Bacon.concatAll</a></li>
 <li><a href="#bacon-zipasarray">Bacon.zipAsArray</a></li>
 <li><a href="#bacon-zipasarray-multiple-streams">Bacon.zipAsArray</a></li>
 <li><a href="#bacon-zipwith">Bacon.zipWith</a></li>
@@ -655,6 +656,21 @@ If other stream ends without value, it is ignored.</p>
 <a href="#observable-skip" title="observable.skip(n)"><code>observable.skip(n)</code></a> skips the first n elements from the stream</p>
 
 
+<p><a name="observable-concat"></a>
+<a href="#observable-concat" title="observable.concat(other)"><code>observable.concat(other)</code></a> concatenates two streams/properties into one stream/property so that
+it will deliver events from <code>observable</code> until it ends and then deliver
+events from <code>other</code>. This means too that events from <code>other</code>,
+occurring before the end of <code>observable</code> will not be included in the result
+stream/property.</p>
+
+
+<div class="bacon-marble">
+<div class="bacon-input" x-bacon-input="Bacon.sequentially(200, [9,0,2]).filter(function(x) { return x })"></div>
+<div class="bacon-input" x-bacon-input="Bacon.sequentially(200, [0,1,0,12,8,0]).filter(function(x) { return x })"></div>
+<div class="bacon-output" x-bacon-output="function(a,b) { return a.concat(b) }"></div>
+</div>
+
+
 <p><a name="observable-delay"></a>
 <a href="#observable-delay" title="observable.delay(delay)"><code>observable.delay(delay)</code></a> delays the stream/property by given amount of milliseconds. Does not delay the initial value of a <a href="#property"><code>Property</code></a>.</p>
 <pre><code class="language-js"><textarea class="code">var delayed = source.delay(2)
@@ -718,6 +734,9 @@ useful for debugging, but also for stuff like calling the
 <code>preventDefault()</code> method for events. In fact, you can
 also use a property-extractor string instead of a function, as in
 <code>&quot;.preventDefault&quot;</code>.</p>
+<p>Please note that for Properties, it's not guaranteed that the function will be called exactly once
+per event; when a Property loses all of its subscribers it will re-emit its current value when a
+new subscriber is added.</p>
 
 
 <p><a name="observable-doerror"></a>
@@ -1026,21 +1045,6 @@ Bacon.sequentially(2, events)
 <a href="#bacon-eventstream" title="Bacon.EventStream"><code>Bacon.EventStream</code></a> a stream of events. See methods below.</p>
 
 
-<p><a name="stream-concat"></a>
-<a href="#stream-concat" title="stream.concat(otherStream)"><code>stream.concat(otherStream)</code></a> concatenates two streams into one stream so that
-it will deliver events from <code>stream</code> until it ends and then deliver
-events from <code>otherStream</code>. This means too that events from <code>stream2</code>,
-occurring before the end of <code>stream</code> will not be included in the result
-stream.</p>
-
-
-<div class="bacon-marble">
-<div class="bacon-input" x-bacon-input="Bacon.sequentially(200, [9,0,2]).filter(function(x) { return x })"></div>
-<div class="bacon-input" x-bacon-input="Bacon.sequentially(200, [0,1,0,12,8,0]).filter(function(x) { return x })"></div>
-<div class="bacon-output" x-bacon-output="function(a,b) { return a.concat(b) }"></div>
-</div>
-
-
 <p><a name="stream-merge"></a>
 <a href="#stream-merge" title="stream.merge(otherStream)"><code>stream.merge(otherStream)</code></a> merges two streams into one stream that delivers events from both</p>
 
@@ -1282,6 +1286,11 @@ If you need the result as an <a href="#eventstream"><code>EventStream</code></a>
 <p><a name="bacon-mergeall"></a>
 <a href="#bacon-mergeall" title="Bacon.mergeAll(streams)"><code>Bacon.mergeAll(streams)</code></a> merges given array of EventStreams.
 <code>Bacon.mergeAll(stream1, stream2 ...)</code> merges given EventStreams.</p>
+
+
+<p><a name="bacon-concatall"></a>
+<a href="#bacon-concatall" title="Bacon.concatAll(streams)"><code>Bacon.concatAll(streams)</code></a> concatenates given array of EventStreams or Properties, returns an EventStream. See <a href="#observable-concat"><code>concat</code></a></p>
+<p><code>Bacon.concatAll(stream1, stream2 ...)</code> concatenates given EventStreams.</p>
 
 
 <p><a name="bacon-zipasarray"></a>

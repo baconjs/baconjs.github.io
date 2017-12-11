@@ -17,7 +17,7 @@
 <link href='//fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
 
 <script src="//codeorigin.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.91/Bacon.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.95/Bacon.min.js"></script>
 
 
 <script src="codemirror/codemirror.js"></script>
@@ -38,9 +38,9 @@
       </div>
 
       <div class="download">
-        <a class="button big-button" href="http://cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.91/Bacon.js" download>
+        <a class="button big-button" href="http://cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.95/Bacon.js" download>
           Download Bacon.js
-          <small>v0.7.91</small>
+          <small>v0.7.95</small>
           <a class="github" href="https://github.com/baconjs/bacon.js#install">[More install options]</a>
         </a>
       </div>
@@ -248,7 +248,7 @@ parameters. One of them is the above form, which can be translated as &quot;call
 button and use <code>disabled</code> as the first argument&quot;. The second argument for the <code>attr</code> method will be taken from the
 current property value.</p>
 <p>You could also do the same by</p>
-<pre><code class="language-javascript"><textarea class="code">buttonEnabled.not().assign(setEnabled, registerButton)
+<pre><code class="language-javascript"><textarea class="code">buttonEnabled.assign(setEnabled, registerButton)
 </textarea></code></pre>
 <p>Now we rely on the <code>setEnabled</code> function that's defined in our source code, as well as <code>registerButton</code>. The above
 can be translated to &quot;call the <code>setEnabled</code> function and use <code>registerButton</code> as the first argument&quot;.</p>
