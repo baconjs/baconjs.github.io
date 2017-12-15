@@ -456,7 +456,7 @@ stream.log()
 <li>A plain value, like <code>&quot;first value&quot;</code></li>
 <li>An <a href="#event"><code>Event</code></a> object including <a href="#bacon-error"><code>Bacon.Error</code></a> (wraps an error) and <a href="#bacon-end"><code>Bacon.End</code></a> (indicates
 stream end).</li>
-<li>An array of event objects at once</li>
+<li>An array of <a href="#event">event</a> objects at once</li>
 </ul>
 <p>Other examples can be found on <a href="http://jsfiddle.net/PG4c4/">JSFiddle</a> and the
 <a href="http://baconjs.blogspot.fi/2013/12/wrapping-things-in-bacon.html">Bacon.js blog</a>.</p>
@@ -504,7 +504,8 @@ Common methods are listed below.</p>
 
 
 <p><a name="observable-subscribe"></a>
-<a href="#observable-subscribe" title="observable.subscribe(f)"><code>observable.subscribe(f)</code></a> subscribes given handler function to event stream. Function will receive Event objects (see below).
+<a href="#observable-subscribe" title="observable.subscribe(f)"><code>observable.subscribe(f)</code></a> subscribes given handler function to event stream. Function will receive <a href="#event">event</a> objects
+for all new value, end and error events in the stream.
 The subscribe() call returns a <code>unsubscribe</code> function that you can call to unsubscribe.
 You can also unsubscribe by returning <a href="#bacon-nomore"><code>Bacon.noMore</code></a> from the handler function as a reply
 to an Event.
@@ -1284,8 +1285,8 @@ If you need the result as an <a href="#eventstream"><code>EventStream</code></a>
 
 
 <p><a name="bacon-mergeall"></a>
-<a href="#bacon-mergeall" title="Bacon.mergeAll(streams)"><code>Bacon.mergeAll(streams)</code></a> merges given array of EventStreams.
-<code>Bacon.mergeAll(stream1, stream2 ...)</code> merges given EventStreams.</p>
+<a href="#bacon-mergeall" title="Bacon.mergeAll(streams)"><code>Bacon.mergeAll(streams)</code></a> merges given array of EventStreams or Properties. Returns an EventStream. See <a href="#observable-merge"><code>merge</code></a></p>
+<p><code>Bacon.mergeAll(stream1, stream2 ...)</code> merges given EventStreams.</p>
 
 
 <p><a name="bacon-concatall"></a>

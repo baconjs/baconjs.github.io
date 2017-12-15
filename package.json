@@ -12,7 +12,7 @@
   },
   "scripts": {
     "postinstall": "generator/generate.coffee",
-		"server": "./server.coffee"
+    "server": "./server.coffee"
   },
   "repository": {
     "type": "git",
