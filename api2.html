@@ -2,7 +2,7 @@
 <!-- This file is generated. See package.json -->
 <html>
 <head>
-<title>Bacon.js 1.0 - API reference</title>
+<title>Bacon.js 2.0 - API reference</title>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width" />
 <meta name="keywords" content="bacon.js, FPR, functional reactive programming, javascript, reactive programming" />
@@ -49,6 +49,8 @@
         <div class="row">
           <div class="large-12 small-6 columns">
             <p> <a href="api.html"> API Reference <small>(1.0)</small> </a> </p>
+
+<p> <a href="api2.html"> API Reference <small>(2.0)</small> </a> </p>
 <ul>
 <li><a href="#creating-streams">Creating streams</a>
 <ul>
@@ -206,7 +208,7 @@
 <li><a href="#bacon-end">Bacon.End</a></li>
 <li><a href="#bacon-error">Bacon.Error</a></li>
 <li><a href="#bacon-initial">Bacon.Initial</a></li>
-<li><a href="#event-properties-and-methods">Event properties and methods</a></li>
+<li><a href="#event-properties">Event properties</a></li>
 <li><a href="#event-value">event.value</a></li>
 <li><a href="#event-hasvalue">event.hasValue</a></li>
 <li><a href="#event-isnext">event.isNext</a></li>
@@ -240,8 +242,6 @@
 <li><a href="#atomic-updates">Atomic updates</a></li>
 <li><a href="#for-rxjs-users">For RxJs Users</a></li>
 </ul>
-
-<p> <a href="api2.html"> API Reference <small>(2.0)</small> </a> </p>
 
             <p> <a href="tutorials.html"> Tutorials </a> </p>
             <p> <a href="https://github.com/baconjs/bacon.js#install">Install/Download</a> </p>
@@ -442,9 +442,6 @@ value.</p>
 <pre><code class="language-js"><textarea class="code">var stream = Bacon.fromBinder(function(sink) {
   sink("first value")
   sink([new Bacon.Next("2nd"), new Bacon.Next("3rd")])
-  sink(new Bacon.Next(function() {
-    return "This one will be evaluated lazily"
-  }))
   sink(new Bacon.Error("oops, an error"))
   sink(new Bacon.End())
   return function() {
@@ -475,17 +472,6 @@ only be called when the first stream listener is added, and the <code>unsubscrib
 function is called only after the last listener has been removed.
 The subscribe-unsubscribe cycle may of course be repeated indefinitely,
 so prepare for multiple calls to the subscribe function.</p>
-<p>A note about the <code>new Bacon.Next(..)</code> constructor: You can use it like</p>
-<pre><code class="language-js"><textarea class="code">new Bacon.Next("value")
-</textarea></code></pre>
-<p>But the canonical way would be</p>
-<pre><code class="language-js"><textarea class="code">new Bacon.Next(function() { return "value"; })
-</textarea></code></pre>
-<p>The former version is safe only when you know that the actual value in
-the stream is not a function.</p>
-<p>The idea in using a function instead of a plain value is that the internals on Bacon.js take
-advantage of <a href="#lazy-evaluation">lazy evaluation</a> by deferring the evaluations of values
-created by <a href="#observable-map"><code>map</code></a>, <a href="#combining-multiple-streams-and-properties"><code>combine</code></a>.</p>
 
 
 <p><a name="bacon-nomore"></a>
@@ -571,8 +557,7 @@ dot, the elements will be mapped to the corresponding field/function in the even
 value. For instance map(&quot;.keyCode&quot;) will pluck the keyCode field from
 the input values. If keyCode was a function, the result stream would
 contain the values returned by the function.
-The <a href="#function-construction-rules">Function Construction rules</a> below apply here.
-The <a href="#observable-map"><code>map</code></a> method, among many others, uses <a href="#lazy-evaluation">lazy evaluation</a>.</p>
+The <a href="#function-construction-rules">Function Construction rules</a> below apply here.</p>
 
 
 <p><a name="stream-map"></a>
@@ -921,9 +906,9 @@ events. Here's an example where we calculate the total sum of all
 numbers in the stream and output the value on stream end:</p>
 <pre><code class="language-js"><textarea class="code">Bacon.fromArray([1,2,3])
   .withStateMachine(0, function(sum, event) {
-    if (event.hasValue())
-      return [sum + event.value(), []]
-    else if (event.isEnd())
+    if (event.hasValue)
+      return [sum + event.value, []]
+    else if (event.isEnd)
       return [undefined, [new Bacon.Next(sum), event]]
     else
       return [sum, [event]]
@@ -971,7 +956,7 @@ you can do for example <code>.endOnError(&quot;.serious&quot;)</code>.</p>
 get all events to your function and you can output any number of events
 and end the stream if you choose. For example, to send an error and end
 the stream in case a value is below zero:</p>
-<pre><code class="language-js"><textarea class="code">if (event.hasValue() && event.value() < 0) {
+<pre><code class="language-js"><textarea class="code">if (event.hasValue && event.value < 0) {
   this.push(new Bacon.Error("Value below zero"));
   return this.push(end());
 } else {
@@ -1399,27 +1384,7 @@ at least <a href="#observable-onvalue"><code>onValue</code></a>, <a href="#obser
 <h2><a name="lazy-evaluation"></a>Lazy evaluation</h2>
 
 
-<p>Methods such as <a href="#observable-map"><code>map</code></a> and the <a href="#observable-combine"><code>combine</code></a> use lazy evaluation to avoid evaluating
-values that aren't actually needed. This can be generally considered a Good Thing,
-but it has it's pitfalls.</p>
-<p>If you pass a function that referentially transparent, you'll
-be fine. This means that your function should return the same value regardless of
-when it's called.</p>
-<p>On the other hand, if you pass a function that returns a value depending on time,
-you may have problems. Consider a property <code>contents</code> that's derived from events
-like below.</p>
-<pre><code class="language-javascript"><textarea class="code">var items = clicks.map(getCurrentValueFromUI).toProperty()
-var submittedItems = items.sampledBy(submitClick)
-</textarea></code></pre>
-<p>Now the <code>submittedItems</code> stream will produce the current value of the <code>items</code> property
-when an event occurs in the <code>submitClick</code> stream. Or so you'd think. In fact, the value
-of <code>submittedItems</code> is evaluated at the time of the event in the <code>submitClick</code> stream,
-which means that it will actually produce the value of <code>getCurrentValueFromUI</code> at that time,
-instead of at the time of the original <code>click</code> event.</p>
-<p>To force evaluation at the time of original event, you can just use <a href="#observable-flatmap"><code>flatMap</code></a> instead of <a href="#observable-map"><code>map</code></a>.
-As in here.</p>
-<pre><code class="language-javascript"><textarea class="code">var items = clicks.flatMap(getCurrentValueFromUI).toProperty()
-</textarea></code></pre>
+<p>Lazy evaluation of event values has been removed in version 2.0</p>
 
 
 
@@ -1481,52 +1446,52 @@ mechanism in the
 
 
 <p><a name="bacon-next"></a>
-<a href="#bacon-next" title="Bacon.Next"><code>Bacon.Next</code></a> next value in an EventStream or a Property. Call isNext() to
+<a href="#bacon-next" title="Bacon.Next"><code>Bacon.Next</code></a> next value in an EventStream or a Property. Check <a href="#event-isnext"><code>event.isNext</code></a> to
 distinguish a Next event from other events.</p>
 
 
 <p><a name="bacon-end"></a>
-<a href="#bacon-end" title="Bacon.End"><code>Bacon.End</code></a> an end-of-stream event of EventStream or Property. Call isEnd() to
+<a href="#bacon-end" title="Bacon.End"><code>Bacon.End</code></a> an end-of-stream event of EventStream or Property. Check <a href="#event-isend"><code>event.isEnd</code></a> to
 distinguish an End from other events.</p>
 
 
 <p><a name="bacon-error"></a>
-<a href="#bacon-error" title="Bacon.Error"><code>Bacon.Error</code></a> an error event. Call isError() to distinguish these events
+<a href="#bacon-error" title="Bacon.Error"><code>Bacon.Error</code></a> an error event. Check <a href="#event-iserror"><code>event.isError</code></a> to distinguish these events
 in your subscriber, or use <a href="#observable-onerror"><code>onError</code></a> to react to error events only.
 <code>errorEvent.error</code> returns the associated error object (usually string).</p>
 
 
 <p><a name="bacon-initial"></a>
-<a href="#bacon-initial" title="Bacon.Initial"><code>Bacon.Initial</code></a> the initial (current) value of a Property. Call isInitial() to
+<a href="#bacon-initial" title="Bacon.Initial"><code>Bacon.Initial</code></a> the initial (current) value of a Property. Check <a href="#event-isinitial"><code>event.isInitial</code></a> to
 distinguish from other events. Only sent immediately after subscription
 to a Property.</p>
 
 
-<h3><a name="event-properties-and-methods"></a>Event properties and methods</h3>
+<h3><a name="event-properties"></a>Event properties</h3>
 
 
 <p><a name="event-value"></a>
-<a href="#event-value" title="event.value(@ : Event[A]) : A"><code>event.value()</code></a> returns the value associated with a Next or Initial event</p>
+<a href="#event-value" title="event.value"><code>event.value</code></a> the value associated with a Next or Initial event</p>
 
 
 <p><a name="event-hasvalue"></a>
-<a href="#event-hasvalue" title="event.hasValue(@ : Event[A]) : Bool"><code>event.hasValue()</code></a> returns true for events of type Initial and Next</p>
+<a href="#event-hasvalue" title="event.hasValue"><code>event.hasValue</code></a> true for events of type Initial and Next</p>
 
 
 <p><a name="event-isnext"></a>
-<a href="#event-isnext" title="event.isNext(@ : Event[A]) : Bool"><code>event.isNext()</code></a> true for Next events</p>
+<a href="#event-isnext" title="event.isNext"><code>event.isNext</code></a> true for Next events</p>
 
 
 <p><a name="event-isinitial"></a>
-<a href="#event-isinitial" title="event.isInitial(@ : Event[A]) : Bool"><code>event.isInitial()</code></a> true for Initial events</p>
+<a href="#event-isinitial" title="event.isInitial"><code>event.isInitial</code></a> true for Initial events</p>
 
 
 <p><a name="event-iserror"></a>
-<a href="#event-iserror" title="event.isError()"><code>event.isError()</code></a> true for Error events</p>
+<a href="#event-iserror" title="event.isError"><code>event.isError</code></a> true for Error events</p>
 
 
 <p><a name="event-isend"></a>
-<a href="#event-isend" title="event.isEnd()"><code>event.isEnd()</code></a> true for End events</p>
+<a href="#event-isend" title="event.isEnd"><code>event.isEnd</code></a> true for End events</p>
 
 
 <p><a name="event-error"></a>
