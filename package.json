@@ -11,7 +11,7 @@
     "cheerio": "^0.18"
   },
   "scripts": {
-    "postinstall": "generator/generate.coffee",
+    "postinstall": "generator/downloadbacons && generator/generate.coffee",
     "server": "./server.coffee"
   },
   "repository": {
