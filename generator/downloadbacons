@@ -1,6 +1,6 @@
 #!/bin/bash -e
-tag_for_v1=master
-tag_for_v2=2.0
+tag_for_v1=1.0
+tag_for_v2=master
 if [ -e bacon.js ]; then
   cd bacon.js
   git fetch
