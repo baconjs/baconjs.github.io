@@ -17,7 +17,7 @@
 <link href='//fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
 
 <script src="//codeorigin.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/bacon.js/1.0.1/Bacon.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bacon.js/2.0.7/Bacon.min.js"></script>
 
 
 <script src="codemirror/codemirror.js"></script>
@@ -38,9 +38,9 @@
       </div>
 
       <div class="download">
-        <a class="button big-button" href="http://cdnjs.cloudflare.com/ajax/libs/bacon.js/1.0.1/Bacon.js" download>
+        <a class="button big-button" href="http://cdnjs.cloudflare.com/ajax/libs/bacon.js/2.0.7/Bacon.js" download>
           Download Bacon.js
-          <small>v1.0.1</small>
+          <small>v2.0.7</small>
           <a class="github" href="https://github.com/baconjs/bacon.js#install">[More install options]</a>
         </a>
       </div>
@@ -285,11 +285,19 @@ Check out this <a href="https://github.com/raimohanska/baconjs-examples/blob/mas
 
 
 <p><a name="bacon-fromevent"></a>
-<a href="#bacon-fromevent" title="Bacon.fromEvent(target : EventTarget | EventEmitter, eventName : String [, eventTransformer]) : EventStream"><code>Bacon.fromEvent(target, eventName [, eventTransformer])</code></a> creates an EventStream from events
+<a href="#bacon-fromevent" title="Bacon.fromEvent(target : EventTarget | EventEmitter, eventSource : String | Function [, eventTransformer]) : EventStream"><code>Bacon.fromEvent(target, eventSource [, eventTransformer])</code></a> creates an EventStream from events
 on a DOM EventTarget or Node.JS EventEmitter object, or an object that supports event listeners using <code>on</code>/<code>off</code> methods.
 You can also pass an optional function that transforms the emitted
 events' parameters.</p>
 <pre><code class="language-js"><textarea class="code">Bacon.fromEvent(document.body, "click").onValue(function() { alert("Bacon!") })
+Bacon.fromEvent(
+  window,
+  function(binder, listener) {
+    binder("scroll", listener, {passive: true})
+  }
+).onValue(function() {
+  console.log(window.scrollY)
+})
 </textarea></code></pre>
 
 
@@ -704,7 +712,7 @@ source.debounceImmediate(2): a-d-----a-d-----
 
 
 <p><a name="observable-bufferingthrottle"></a>
-<a href="#observable-bufferingthrottle" title="observable.bufferingThrottle(@ : Observable[A], minimumInterval) : EventStream[A]"><code>observable.bufferingThrottle(minimumInterval)</code></a> throttles the observable using a buffer so that at most one value event in minimumInteval is issued.
+<a href="#observable-bufferingthrottle" title="observable.bufferingThrottle(@ : Observable[A], minimumInterval) : EventStream[A]"><code>observable.bufferingThrottle(minimumInterval)</code></a> throttles the observable using a buffer so that at most one value event in minimumInterval is issued.
 Unlike <a href="#observable-throttle"><code>throttle</code></a>, it doesn't discard the excessive events but buffers them instead, outputting
 them with a rate of at most one value per minimumInterval.</p>
 <p>Example:</p>
@@ -734,16 +742,16 @@ That is, same as <a href="#observable-doaction"><code>doAction</code></a> but fo
 
 
 <p><a name="observable-not"></a>
-<a href="#observable-not" title="observable.not(@ : Obserable[A]) : Observable[Bool]"><code>observable.not()</code></a> returns a stream/property that inverts boolean values</p>
+<a href="#observable-not" title="observable.not(@ : Observable[A]) : Observable[Bool]"><code>observable.not()</code></a> returns a stream/property that inverts boolean values</p>
 
 
 <p><a name="observable-flatmap"></a>
-<a href="#observable-flatmap" title="observable.flatMap(@ : Observable[A], f : A -&gt; Observable[B] | Event[B] | B) : EventStream[B]"><code>observable.flatMap(f)</code></a> for each element in the source stream, spawn a new
+<a href="#observable-flatmap" title="observable.flatMap(@ : Observable[A], f : A -&gt; Observable[B] | Event[B] | B) : Observable[B]"><code>observable.flatMap(f)</code></a> for each element in the source stream, spawn a new
 stream using the function <code>f</code>. Collect events from each of the spawned
-streams into the result <a href="#eventstream"><code>EventStream</code></a>. Note that instead of a function, you can provide a
+streams into the result <a href="#eventstream"><code>EventStream</code></a> / <a href="#property"><code>Property</code></a>. Note that instead of a function, you can provide a
 stream/property too. Also, the return value of function <code>f</code> can be either an
 <code>Observable</code> (stream/property) or a constant value. The result of
-<a href="#observable-flatmap"><code>flatMap</code></a> is always an <a href="#eventstream"><code>EventStream</code></a>.</p>
+<a href="#observable-flatmap"><code>flatMap</code></a> is of the same type as the source stream.</p>
 <p>The <a href="#function-construction-rules">Function Construction rules</a> below apply here.</p>
 <p><code>stream.flatMap()</code> can be used conveniently with <a href="#bacon-once"><code>Bacon.once()</code></a> and <a href="#bacon-never"><code>Bacon.never()</code></a> for converting and filtering at the same time, including only some of the results.</p>
 <p>Example - converting strings to integers, skipping empty values:</p>
@@ -1272,7 +1280,7 @@ If you need the result as an <a href="#eventstream"><code>EventStream</code></a>
 
 
 <p><a name="bacon-mergeall"></a>
-<a href="#bacon-mergeall" title="Bacon.mergeAll(streams)"><code>Bacon.mergeAll(streams)</code></a> merges given array of EventStreams or Properties. Returns an EventStream. See <a href="#observable-merge"><code>merge</code></a></p>
+<a href="#bacon-mergeall" title="Bacon.mergeAll(streams)"><code>Bacon.mergeAll(streams)</code></a> merges given array of EventStreams or Properties. Returns an EventStream. See <a href="#stream-merge"><code>merge</code></a></p>
 <p><code>Bacon.mergeAll(stream1, stream2 ...)</code> merges given EventStreams.</p>
 
 
