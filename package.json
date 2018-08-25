@@ -4,14 +4,15 @@
   "description": "bacon.js website",
   "devDependencies": {
     "bluebird": "^2.3.6",
-    "lodash": "~2.4.1",
+    "lodash": "^4.0.0",
     "remarkable": "^1.6.0",
     "mustache": "~0.8.1",
     "request": "^2.45.0",
     "cheerio": "^0.18"
   },
   "scripts": {
-    "postinstall": "generator/downloadbacons && generator/generate.coffee",
+    "postinstall": "generator/downloadbacons && generator/generate.coffee && npm run docs3",
+    "docs3": "cd bacon.js/3.0 && npx typedoc --out docs --ignoreCompilerErrors src --mode file --excludeNotExported --theme ../../typedoc-bacon-theme",
     "server": "./server.coffee"
   },
   "repository": {

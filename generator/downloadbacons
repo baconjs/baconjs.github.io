@@ -1,14 +1,18 @@
 #!/bin/bash -e
 tag_for_v1=1.0
 tag_for_v2=master
+tag_for_v3=typescript
+
 if [ -e bacon.js ]; then
   cd bacon.js
   git fetch
   (cd 1.0 && git pull origin $tag_for_v1)
   (cd 2.0 && git pull origin $tag_for_v2)
+  (cd 3.0 && git pull origin $tag_for_v3)
 else
   git clone git@github.com:baconjs/bacon.js.git
   cd bacon.js
   git worktree add ./1.0 remotes/origin/$tag_for_v1
   git worktree add ./2.0 remotes/origin/$tag_for_v2
+  git worktree add ./3.0 remotes/origin/$tag_for_v3
 fi

@@ -31,7 +31,7 @@ firstExists = (list, idx) ->
 
 lastVersionInCDN = request(tagsRequest).spread (response, body) ->
   json = JSON.parse(response.body)
-  tags = _.pluck json, "name"
+  tags = _.map json, "name"
 
   urls = _.map tags, (tag) ->
     "http://cdnjs.cloudflare.com/ajax/libs/bacon.js/" + tag + "/Bacon.js"

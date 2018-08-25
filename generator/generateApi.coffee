@@ -1,4 +1,4 @@
-common = require "../../bacon.js/readme/common.coffee"
+common = require "../bacon.js/2.0/readme/common.coffee"
 marked = require "./renderMarkdown.coffee"
 _ = require "lodash"
 

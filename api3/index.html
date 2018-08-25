@@ -1,0 +1,782 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>baconjs</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+	<link rel="stylesheet" href="assets/css/bacon.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">baconjs</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="globals.html">Globals</a>
+				</li>
+			</ul>
+			<h1> baconjs</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<h1 id="bacon-js">Bacon.js</h1>
+				<img src="https://raw.github.com/baconjs/bacon.js/master/logo.png" align="right" width="300px" />
+				<p>A small functional reactive programming lib for JavaScript.</p>
+				<p>Turns your event spaghetti into clean and declarative feng shui bacon, by switching
+					from imperative to functional. It&#39;s like replacing nested for-loops with functional programming
+					concepts like <a href="classes/observable.html#map"><code>map</code></a> and <a href="classes/observable.html#filter"><code>filter</code></a>. Stop working on individual events and work with event streams instead.
+					Combine your data with <a href="classes/eventstream.html#merge"><code>merge</code></a> and <a href="classes/observable.html#combine"><code>combine</code></a>.
+				Then switch to the heavier weapons and wield <a href="classes/observable.html#flatmap"><code>flatMap</code></a> and <a href="globals.html#combinetemplate"><code>combineTemplate</code></a> like a boss.</p>
+				<p>It&#39;s the <code>_</code> of Events. Too bad the symbol <code>~</code> is not allowed in JavaScript.</p>
+				<p>Here&#39;s the stuff.</p>
+				<ul>
+					<li><a href="http://baconjs.github.io/">Homepage</a></li>
+					<li><a href="https://github.com/baconjs/bacon.js/tree/master/src">Source files</a></li>
+					<li><a href="https://github.com/baconjs/bacon.js/blob/master/dist/">Generated javascript</a></li>
+					<li><a href="https://github.com/baconjs/bacon.js/blob/master/spec/specs/main.coffee">Specs</a></li>
+					<li><a href="https://github.com/baconjs/bacon.js/blob/master/examples/examples.html">Examples</a></li>
+					<li><a href="https://github.com/baconjs/bacon.js/wiki/">Wiki</a> with more docs, related projects and more</li>
+					<li><a href="http://www.cheatography.com/proloser/cheat-sheets/bacon-js/">Cheat Sheet</a></li>
+					<li><a href="http://nullzzz.blogspot.com">My Blog</a> with some baconful and reactive postings along with a Bacon.js tutorial</li>
+					<li><a href="http://baconjs.blogspot.com">Bacon.js Blog</a></li>
+					<li><a href="https://groups.google.com/forum/#!forum/baconjs">Bacon.js Google Group</a> for discussion and questions</li>
+					<li><a href="https://github.com/raimohanska/todomvc/blob/bacon-jquery/labs/architecture-examples/baconjs/js/app.js">TodoMVC with Bacon.js and jQuery</a></li>
+					<li><a href="http://stackoverflow.com/questions/tagged/bacon.js">Stack Overflow</a> for well-formed questions. Use the &quot;bacon.js&quot; tag.</li>
+					<li><a href="https://gitter.im/baconjs/bacon.js">Gitter</a> chat for developers of Bacon.</li>
+					<li><a href="https://github.com/baconjs/bacon.js/wiki/Migration-from-version-1.0-to-2.0">Migrating to 2.0</a></li>
+				</ul>
+				<p>And remember to give me feedback on the bacon! Let me know if you&#39;ve
+					used it. Tell me how it worked for you. What&#39;s missing? What&#39;s wrong?
+				Please contribute!</p>
+				<p><a href="https://travis-ci.org/baconjs/bacon.js"><img src="https://travis-ci.org/baconjs/bacon.js.svg?branch=master" alt="Build Status"></a>
+					<a href="https://www.browserstack.com/automate/public-build/RDRnTElXMlRsK2pWdXhYQXVOMkQvdz09LS1mbmgyL0l2NlVBUFZQNWEzYlIvWit3PT0=--779bf4c07cb76abcbee64b15f00e1998f7880ff2%"><img src="https://www.browserstack.com/automate/badge.svg?badge_key=RDRnTElXMlRsK2pWdXhYQXVOMkQvdz09LS1mbmgyL0l2NlVBUFZQNWEzYlIvWit3PT0=--779bf4c07cb76abcbee64b15f00e1998f7880ff2%" alt="BrowserStack Status"></a>
+					<a href="https://www.npmjs.org/package/baconjs"><img src="http://img.shields.io/npm/v/baconjs.svg" alt="NPM version"></a>
+					<a href="https://david-dm.org/baconjs/bacon.js"><img src="https://david-dm.org/baconjs/bacon.js.svg" alt="Dependency Status"></a>
+				<a href="https://david-dm.org/baconjs/bacon.js#info=devDependencies"><img src="https://david-dm.org/baconjs/bacon.js/dev-status.svg" alt="devDependency Status"></a></p>
+				<h2 id="install-and-usage">Install and Usage</h2>
+				<h3 id="npm-commonjs-node-js">NPM, CommonJS, Node.js</h3>
+				<p>If you&#39;re on to CommonJS (<a href="http://nodejs.org/">node.js</a>, <a href="https://webpack.js.org/">webpack</a> or similar) you can install Bacon using npm.</p>
+				<pre><code>npm <span class="hljs-keyword">install</span> baconjs</code></pre><p>Try it like this:    </p>
+				<pre><code class="language-js">node
+Bacon=<span class="hljs-built_in">require</span>(<span class="hljs-string">"baconjs"</span>)
+Bacon.once(<span class="hljs-string">"hello"</span>).log()</code></pre>
+				<p>The global methods, such as <a href="globals.html#once"><code>once</code></a> are available in the <code>Bacon</code> object.</p>
+				<h3 id="typescript">Typescript</h3>
+				<p>Bacon.js starting from version 3.0 is a Typescript library so you won&#39;t need any external types. Just
+				Install using <code>npm</code>.</p>
+				<pre><code>npm <span class="hljs-keyword">install</span> baconjs</code></pre><p>Then you can</p>
+				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { EventStream, once } <span class="hljs-keyword">from</span> <span class="hljs-string">"baconjs"</span>
+
+<span class="hljs-keyword">let</span> s: EventStream&lt;<span class="hljs-built_in">string</span>&gt; = once(<span class="hljs-string">"hello"</span>)
+s.log()</code></pre>
+				<p>As you can see, the global methods, such as <a href="globals.html#once"><code>once</code></a> are imported separately.</p>
+				<h3 id="bower">Bower</h3>
+				<p>For <a href="https://github.com/twitter/bower">bower</a> users:</p>
+				<pre><code><span class="hljs-keyword">bower </span><span class="hljs-keyword">install </span><span class="hljs-keyword">bacon</span></code></pre><h3 id="cdn-script-tags">CDN / Script Tags</h3>
+				<p>Both minified and unminified versions available on <a href="https://cdnjs.com/libraries/bacon.js">cdnjs</a>.</p>
+				<p>So you can also include Bacon.js using</p>
+				<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdnjs.cloudflare.com/ajax/libs/bacon.js/2.0.9/Bacon.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="actionscript">
+Bacon.once(<span class="hljs-string">"hello"</span>).log()
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+				<h3 id="amd-require-js">AMD / require.js</h3>
+				<p>Bacon.js is an UMD module so it should work with AMD/require.js too. Not tested lately though.</p>
+				<h3 id="github">Github</h3>
+				<p>Prefer to drink from the firehose? Download from Github <a href="https://raw.github.com/baconjs/bacon.js/master/dist/Bacon.js">master</a>.</p>
+				<h1 id="intro">Intro</h1>
+				<p>The idea of Functional Reactive Programming is quite well described by Conal Elliot at <a href="http://stackoverflow.com/questions/1028250/what-is-functional-reactive-programming/1030631#1030631">Stack Overflow</a>.</p>
+				<p>Bacon.js is a library for functional reactive programming. Or let&#39;s say it&#39;s a library for
+				working with <a href="globals.html#event">events</a> in <a href="classes/eventstream.html">EventStreams</a> and dynamic values (which are called <a href="classes/property.html">Properties</a> in Bacon.js).</p>
+				<p>You can wrap an event source, say &quot;mouse clicks on a DOM element&quot; into an <a href="classes/eventstream.html">EventStream</a> by saying</p>
+				<pre><code class="language-js"><span class="hljs-keyword">let</span> $ = <span class="hljs-function">(<span class="hljs-params">selector</span>) =&gt;</span> <span class="hljs-built_in">document</span>.querySelector(selector)
+<span class="hljs-keyword">var</span> clickE = Bacon.fromEvent($(<span class="hljs-string">"h1"</span>), <span class="hljs-string">"click"</span>)</code></pre>
+				<p>The <code>$</code> helper function above could be replaced with, for instance, jQuery or Zepto.</p>
+				<p>Each EventStream represents a stream of events. It is an <a href="classes/observable.html">Observable</a>, meaning
+					that you can listen to events in the stream using, for instance, the <a href="classes/observable.html#onvalue"><code>onValue</code></a> method
+				with a callback. Like this:</p>
+				<pre><code class="language-js">clickE.onValue(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> alert(<span class="hljs-string">"you clicked the h1 element"</span>) )</code></pre>
+				<p>But you can do neater stuff too. The Bacon of Bacon.js is that you can transform,
+					filter and combine these streams in a multitude of ways (see <a href="classes/eventstream.html">EventStream API</a>). The methods <a href="classes/eventstream.html#map"><code>map</code></a>,
+					<a href="classes/eventstream.html#filter"><code>filter</code></a>, for example, are similar to same functions in functional list programming
+				(like <a href="http://underscorejs.org/">Underscore</a>). So, if you say</p>
+				<pre><code class="language-js"><span class="hljs-keyword">let</span> plusE = Bacon.fromEvent($(<span class="hljs-string">"#plus"</span>), <span class="hljs-string">"click"</span>).map(<span class="hljs-number">1</span>)
+<span class="hljs-keyword">let</span> minusE = Bacon.fromEvent($(<span class="hljs-string">"#minus"</span>), <span class="hljs-string">"click"</span>).map(<span class="hljs-number">-1</span>)
+<span class="hljs-keyword">let</span> bothE = plusE.merge(minusE)</code></pre>
+				<p>.. you&#39;ll have a stream that will output the number 1 when the &quot;plus&quot; button is clicked
+					and another stream outputting -1 when the &quot;minus&quot; button is clicked. The <code>bothE</code> stream will
+					be a merged stream containing events from both the plus and minus streams. This allows
+				you to subscribe to both streams with one handler:</p>
+				<pre><code class="language-js">bothE.onValue(<span class="hljs-function"><span class="hljs-params">val</span> =&gt;</span> { <span class="hljs-comment">/* val will be 1 or -1 */</span> <span class="hljs-built_in">console</span>.log(val) })</code></pre>
+				<p>Note that you can also use the <a href="classes/observable.html#log"><code>log</code></a> method to log stream values to <code>console</code>:</p>
+				<pre><code class="language-js">bothE.log()</code></pre>
+				<p>In addition to EventStreams, bacon.js has a thing called <a href="classes/property.html"><code>Property</code></a>, that is almost like an
+					EventStream, but has a &quot;current value&quot;. So things that change and have a current state are
+					Properties, while things that consist of discrete events are EventStreams. You could think
+					mouse clicks as an EventStream and mouse cursor position as a Property. You can create Properties from
+				an EventStream with <a href="classes/observable.html#scan"><code>scan</code></a> or <a href="classes/eventstream.html#toproperty"><code>toProperty</code></a> methods. So, let&#39;s say</p>
+				<pre><code class="language-js"><span class="hljs-keyword">let</span> add = <span class="hljs-function">(<span class="hljs-params">x, y</span>) =&gt;</span> x + y
+<span class="hljs-keyword">let</span> counterP = bothE.scan(<span class="hljs-number">0</span>, add)
+counterP.onValue(<span class="hljs-function"><span class="hljs-params">sum</span> =&gt;</span> $(<span class="hljs-string">"#sum"</span>).textContent = sum )</code></pre>
+				<p>The <code>counterP</code> property will contain the sum of the values in the <code>bothE</code> stream, so it&#39;s practically
+					a counter that can be increased and decreased using the plus and minus buttons. The <a href="classes/observable.html#scan"><code>scan</code></a> method
+					was used here to calculate the &quot;current sum&quot; of events in the <code>bothE</code> stream, by giving a &quot;seed value&quot;
+					<code>0</code> and an &quot;accumulator function&quot; <code>add</code>. The scan method creates a property that starts with the given
+					seed value and on each event in the source stream applies the accumulator function to the current
+				property value and the new value from the stream.</p>
+				<p>Hiding and showing the result div depending on the content of the property value is equally straightforward</p>
+				<pre><code class="language-js"><span class="hljs-keyword">let</span> hiddenIfZero = <span class="hljs-function"><span class="hljs-params">value</span> =&gt;</span> value == <span class="hljs-number">0</span> ? <span class="hljs-string">"hidden"</span> : <span class="hljs-string">"visible"</span>
+counterP.map(hiddenIfZero)
+  .onValue(<span class="hljs-function"><span class="hljs-params">visibility</span> =&gt;</span> { $(<span class="hljs-string">"#sum"</span>).style.visibility = visibility })</code></pre>
+				<p>For an actual (though a bit outdated) tutorial, please check out my <a href="http://nullzzz.blogspot.fi/2012/11/baconjs-tutorial-part-i-hacking-with.html">blog posts</a></p>
+				<h1 id="api">API</h1>
+				<h2 id="creating-eventstreams-and-properties">Creating EventStreams and Properties</h2>
+				<p>There&#39;s a multitude of methods for creating an <a href="classes/eventstream.html">EventStream</a> from different sources.</p>
+				<ul>
+					<li>From DOM EventTarget or Node.JS EventEmitter objects using <a href="globals.html#fromevent">fromEvent</a></li>
+					<li>From a Promise using <a href="globals.html#frompromise">fromPromise</a></li>
+					<li>From an unary callback using <a href="globals.html#fromcallback">fromCallback</a></li>
+					<li>From a Node.js style callback using <a href="globals.html#fromnodecallback">fromNodeCallback</a></li>
+					<li>From RxJs or Kefir observables using <a href="globals.html#fromesobservable">fromESObservable</a></li>
+					<li>By polling a synchronous function using <a href="globals.html#fromPoll">fromPoll</a></li>
+					<li>Emit a single event instantly using <a href="globals.html#once">once</a></li>
+					<li>Emit a single event with a delay <a href="globals.html#later">later</a></li>
+					<li>Emit the same event indefinitely using <a href="globals.html#interval">interval</a></li>
+					<li>Emit an array of events instantly <a href="globals.html#fromarray">fromArray</a></li>
+					<li>Emit an array of events with a delay <a href="globals.html#sequentially">sequentially</a></li>
+					<li>Emit an array of events repeatedly with a delay <a href="globals.html#repeatedly">repeatedly</a></li>
+					<li>Use a generator function to be called repeatedly <a href="globals.html#repeat">repeat</a></li>
+					<li>Create a stream that never emits an event, ending immediately <a href="globals.html#never">never</a></li>
+					<li>Create a stream that never emits an event, ending with a delay <a href="globals.html#silence">silence</a></li>
+					<li>Create stream using a custom binder function <a href="globals.html#frombinder">fromBinder</a></li>
+					<li>Wrap jQuery events using <a href="globals.html#_">asEventStream</a></li>
+				</ul>
+				<p>Properties are usually created based on EventStreams. Here are some ways.</p>
+				<ul>
+					<li>Create a constant property with <a href="globals.html#constant">constant</a></li>
+					<li>Create a property based on an EventStream with <a href="classes/eventstream.html#toproperty">toProperty</a></li>
+					<li>Scan an EventStream with an accumulator function with <a href="classes/eventstream.html#scan">scan</a></li>
+					<li>Create a state property based on multiple sources using <a href="globals.html#update">update</a></li>
+				</ul>
+				<h2 id="combining-multiple-streams-and-properties">Combining multiple streams and properties</h2>
+				<p>You can combine the latest value from multple sources using <a href="classes/observable.html#combine">combine</a>, <a href="globals.html#combineasarray">combineAsArray</a>,
+				<a href="globals.html#combinewith">combineWith</a> or <a href="globals.html#combinetemplate">combineTemplate</a>.</p>
+				<p>You can merge multiple streams into one using <a href="classes/eventstream.html#merge">merge</a> or <a href="globals.html#mergeall">mergeAll</a>.</p>
+				<p>You can concat streams using <a href="classes/observable.html#concat">concat</a> or <a href="globals.html#concatall">concatAll</a>.</p>
+				<p>If you want to get the value of an observable but emit only when another stream emits an event, you might want to use <a href="classes/observable.html#sampledby">sampledBy</a>
+				or its cousin <a href="classes/observable.html#withlatestfrom">withLatestFrom</a>.</p>
+				<h2 id="latest-value-of-property-or-eventstream">Latest value of Property or EventStream</h2>
+				<p>One of the common first questions people ask is &quot;how do I get the
+					latest value of a stream or a property&quot;. There is no getLatestValue
+					method available and will not be either. You get the value by
+					subscribing to the stream/property and handling the values in your
+					callback. If you need the value of more than one source, use one of the
+				combine methods.</p>
+				<h2 id="bus">Bus</h2>
+				<p><a href="classes/bus.html"><code>Bus</code></a> is an <a href="classes/eventstream.html"><code>EventStream</code></a> that allows you to <a href="classes/bus.html#push"><code>push</code></a> values into the stream.
+				It also allows plugging other streams into the Bus. </p>
+				<h2 id="event">Event</h2>
+				<p>There are essentially three kinds of <a href="classes/event.html">Events</a> that are emitted by EventStreams and Properties:</p>
+				<ul>
+					<li><a href="classes/value.html">Value</a> events that convey a value. If you subscribe using <a href="classes/observable.html#onvalue">onValue</a>,
+						you&#39;ll only deal with values. Also <a href="classes/observable.html#map"><code>map</code></a>, <a href="classes/observable.html#filter"><code>filter</code></a> and most of the other operators
+					also deal with values only.</li>
+					<li><a href="classes/error.html">Error</a> events indicate that an error has occurred. More on errors below!</li>
+					<li><a href="classes/end.html">End</a> event is emitted at most once, and is always the last event emitted by an Observable.</li>
+				</ul>
+				<p>If you want to subscribe to all events from an Observable, you can use the <a href="classes/observable.html#subscribe">subscribe</a> method.</p>
+				<h2 id="errors">Errors</h2>
+				<p><a href="classes/error.html"><code>Error</code></a> events are always passed through all stream operators. So, even
+					if you filter all values out, the error events will pass through. If you
+					use flatMap, the result stream will contain Error events from the source
+				as well as all the spawned stream.</p>
+				<p>You can take action on errors by using <a href="classes/observable.html#onerror"><code>onError</code></a>.</p>
+				<p>See also <a href="classes/observable.html#maperror"><code>mapError</code></a>, <a href="classes/observable.html#errors"><code>errors</code></a>, <a href="classes/observable.html#skiperrors"><code>skipErrors</code></a>,
+				<a href="globals.html#retry"><code>Bacon.retry</code></a> and <a href="classes/observable.html#flatmaperror"><code>flatMapError</code></a>.</p>
+				<p>In case you want to convert (some) value events into <a href="classes/error.html"><code>Error</code></a> events, you may use <a href="classes/observable.html#flatmap"><code>flatMap</code></a> like this:</p>
+				<pre><code class="language-js">stream = Bacon.fromArray([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>]).flatMap(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">x</span>) </span>{
+  <span class="hljs-keyword">if</span> (x &gt; <span class="hljs-number">2</span>)
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Bacon.Error(<span class="hljs-string">"too big"</span>)
+  <span class="hljs-keyword">else</span>
+    <span class="hljs-keyword">return</span> x
+})</code></pre>
+				<p>Conversely, if you want to convert some <a href="classes/error.html"><code>Error</code></a> events into value events, you may use <a href="classes/observable.html#flatmaperror"><code>flatMapError</code></a>:</p>
+				<pre><code class="language-js">myStream.flatMapError(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error</span>) </span>{
+  <span class="hljs-keyword">return</span> isNonCriticalError(error) ? handleNonCriticalError(error) : <span class="hljs-keyword">new</span> Bacon.Error(error)
+})</code></pre>
+				<p>Note also that Bacon.js operators do not catch errors that are thrown.
+					Especially <a href="classes/observable.html#map"><code>map</code></a> doesn&#39;t do so. If you want to map things
+				and wrap caught errors into Error events, you can do the following:</p>
+				<pre><code class="language-js">wrapped = source.flatMap(Bacon.try(dangerousOperation))</code></pre>
+				<p>For example, you can use <a href="globals.html#try"><code>Bacon.try</code></a> to handle JSON parse errors:</p>
+				<pre><code class="language-js"><span class="hljs-keyword">var</span> jsonStream = Bacon
+  .once(<span class="hljs-string">'{"this is invalid json"'</span>)
+  .flatMap(Bacon.try(<span class="hljs-built_in">JSON</span>.parse))
+
+jsonStream.onError(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>{
+  <span class="hljs-built_in">console</span>.error(<span class="hljs-string">"Failed to parse JSON"</span>, err)
+})</code></pre>
+				<p>An Error does not terminate the stream. The method <a href="classes/observable.html#endonerror"><code>endOnError</code></a>
+				returns a stream/property that ends immediately after the first error.</p>
+				<p>Bacon.js doesn&#39;t currently generate any <a href="classes/error.html"><code>Error</code></a> events itself (except when
+					converting errors using <a href="globals.html#frompromise"><code>fromPromise</code></a>). Error
+					events definitely would be generated by streams derived from IO sources
+				such as AJAX calls.</p>
+				<p>See <a href="globals.html#retry">retry</a> for retrying on error.</p>
+				<h2 id="introspection-and-metadata">Introspection and metadata</h2>
+				<p>Bacon.js provides ways to get some descriptive metadata about all Observables.</p>
+				<p>See <a href="classes/observable.html#tostring"><code>toString</code></a>, <a href="classes/observable.html#deps"><code>deps</code></a>, <a href="classes/observable.html#desc"><code>desc</code></a>,
+				<a href="globals.html#spy"><code>spy</code></a>.</p>
+				<h2 id="changes-to-earlier-versions">Changes to earlier versions</h2>
+				<h3 id="function-construction-rules-removed-in-3-0">Function Construction rules removed in 3.0</h3>
+				<p>Function construction rules, which allowed you to use string shorthands for properties and methods,
+					were removed in version 3.0, as they are not as useful as they used to be, due to the moderd, short
+				lambda syntax in ES6 and Typescript, as well as libraries like Ramda and partial.lenses.</p>
+				<h3 id="lazy-evaluation-removed-in-2-0">Lazy evaluation removed in 2.0</h3>
+				<p>Lazy evaluation of event values has been removed in version 2.0</p>
+				<h2 id="cleaning-up">Cleaning up</h2>
+				<p>As described above, a subscriber can signal the loss of interest in new events
+				in any of these two ways:</p>
+				<ol>
+					<li>Return <a href="globals.html#nomore"><code>noMore</code></a> from the handler function</li>
+					<li>Call the <code>dispose()</code> function that was returned by the <a href="classes/observable.html#subscribe"><code>subscribe</code></a> or <a href="classes/observable.html#onvalue"><code>onValue</code></a>
+					call.</li>
+				</ol>
+				<p>Based on my experience, an actual side-effect subscriber
+					in application-code almost never does this. Instead you&#39;ll use methods like <a href="classes/observable.html#takeuntil">takeUntil</a>
+				to stop listening to a source when something happens. </p>
+				<h2 id="eventstream-and-property-semantics">EventStream and Property semantics</h2>
+				<p>The state of an EventStream can be defined as (t, os) where <code>t</code> is time
+					and <code>os</code> the list of current subscribers. This state should define the
+				behavior of the stream in the sense that</p>
+				<ol>
+					<li>When a Next event is emitted, the same event is emitted to all subscribers</li>
+					<li>After an event has been emitted, it will never be emitted again, even
+						if a new subscriber is registered. A new event with the same value may
+					of course be emitted later.</li>
+					<li>When a new subscriber is registered, it will get exactly the same
+						events as the other subscriber, after registration. This means that the
+						stream cannot emit any &quot;initial&quot; events to the new subscriber, unless it
+					emits them to all of its subscribers.</li>
+					<li>A stream must never emit any other events after End (not even another End)</li>
+				</ol>
+				<p>The rules are deliberately redundant, explaining the constraints from
+					different perspectives. The contract between an EventStream and its
+				subscriber is as follows:</p>
+				<ol>
+					<li>For each new value, the subscriber function is called. The new
+					value is wrapped into a <a href="classes/next.html"><code>Next</code></a> event.</li>
+					<li>The subscriber function returns a result which is either <a href="globals.html#nomore"><code>noMore</code></a> or
+					<a href="globals.html#more"><code>more</code></a>. The <code>undefined</code> value is handled like <a href="globals.html#more"><code>more</code></a>.</li>
+					<li>In case of <a href="globals.html#nomore"><code>noMore</code></a> the source must never call the subscriber again.</li>
+					<li>When the stream ends, the subscriber function will be called with
+						and <a href="classes/end.html"><code>End</code></a> event. The return value of the subscribe function is
+					ignored in this case.</li>
+				</ol>
+				<p>A <a href="classes/property.html"><code>Property</code></a> behaves similarly to an <a href="classes/eventstream.html"><code>EventStream</code></a> except that</p>
+				<ol>
+					<li>On a call to <code>subscribe</code>, it will deliver its current value
+						(if any) to the provided subscriber function wrapped into an <a href="classes/initial.html"><code>Initial</code></a>
+					event.</li>
+					<li>This means that if the Property has previously emitted the value <code>x</code>
+						to its subscribers and that is the latest value emitted, it will deliver
+					this value to the new subscriber.</li>
+					<li>Property may or may not have a current value to start with. Depends
+					on how the Property was created.</li>
+				</ol>
+				<h2 id="atomic-updates">Atomic updates</h2>
+				<p>Bacon.js supports atomic updates to properties.</p>
+				<p>Assume you have properties A and B and property C = A + B. Assume that
+					both A and B depend on D, so that when D changes, both A and B will
+				change too.</p>
+				<p>When D changes <code>d1 -&gt; d2</code>, the value of A <code>a1 -&gt; a2</code> and B changes <code>b1
+-&gt; b2</code> simultaneously, you&#39;d like C to update atomically so that it
+					would go directly <code>a1+b1 -&gt; a2+b2</code>. And, in fact, it does exactly that.
+					Prior to version 0.4.0, C would have an additional transitional
+				state like <code>a1+b1 -&gt; a2+b1 -&gt; a2+b2</code></p>
+				<h2 id="for-rxjs-users">For RxJs Users</h2>
+				<p>Bacon.js is quite similar to RxJs, so it should be pretty easy to pick up. The
+					major difference is that in bacon, there are two distinct kinds of Observables:
+					the EventStream and the Property. The former is for discrete events while the
+				latter is for observable properties that have the concept of &quot;current value&quot;.</p>
+				<p>Also, there are no &quot;cold observables&quot;, which
+					means also that all EventStreams and Properties are consistent among subscribers:
+					when as event occurs, all subscribers will observe the same event. If you&#39;re
+					experienced with RxJs, you&#39;ve probably bumped into some wtf&#39;s related to cold
+					observables and inconsistent output from streams constructed using scan and startWith.
+				None of that will happen with bacon.js.</p>
+				<p>Error handling is also a bit different: the Error event does not
+					terminate a stream. So, a stream may contain multiple errors. To me,
+					this makes more sense than always terminating the stream on error; this
+					way the application developer has more direct control over error
+					handling. You can always use <a href="classes/observable.html#endonerror"><code>endOnError</code></a> to get a stream
+				that ends on the first error!</p>
+				<h1 id="examples">Examples</h1>
+				<p>See <a href="https://github.com/baconjs/bacon.js/blob/master/examples/examples.html">Examples</a></p>
+				<p>See <a href="https://github.com/baconjs/bacon.js/blob/master/spec/specs/main.coffee">Specs</a></p>
+				<p>See Worzone <a href="http://juhajasatu.com/worzone/">demo</a> and <a href="http://github.com/raimohanska/worzone">source</a></p>
+				<h1 id="build">Build</h1>
+				<p>First check out the Bacon.js repository and run <code>npm install</code>.</p>
+				<p>Then build the Typescript sources into a javascript bundle (plus typescript type definitions):</p>
+				<pre><code>npm <span class="hljs-keyword">run</span><span class="bash"> dist</span></code></pre><p>Result javascript files will be generated in <code>dist</code> directory. If your planning
+				to develop Bacon.js yourself, you&#39;ll want to run [tests] too using <code>npm test</code>.</p>
+				<p>You can also build a bundle with selected features only. For instance</p>
+				<pre><code>scripts/dist flatmap <span class="hljs-built_in">combine</span> takeuntil</code></pre><p>The build system will do its best to determine the dependencies of the selected
+					features and include those into the bundle too. You can also test the integrity
+				of the bundle with your selected features using</p>
+				<pre><code>scripts/runtests flatmap <span class="hljs-built_in">combine</span> takeuntil</code></pre><p>TODO: partial testing currently broken.</p>
+				<h1 id="test">Test</h1>
+				<p>Run all unit tests:</p>
+				<pre><code>npm <span class="hljs-built_in">test</span></code></pre><p>The tests are run against the javascript bundle in the <code>dist</code> directory. You can build the bundle using <code>npm run dist</code>.</p>
+				<p>This will loop thru all files under <code>spec/specs</code> and build the library with the
+				single feature and run the test.</p>
+				<p>Run browser tests locally:</p>
+				<pre><code>npm install
+browsertest/browserify
+open browsertest/mocha<span class="hljs-selector-class">.runner</span><span class="hljs-selector-class">.html</span></code></pre><p>Run performance tests:</p>
+				<pre><code>performance/PerformanceTest<span class="hljs-selector-class">.coffee</span>
+performance/PerformanceTest<span class="hljs-selector-class">.coffee</span> flatmap</code></pre><p>Run memory usage tests:</p>
+				<pre><code><span class="hljs-comment">coffee</span> <span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">nodejs</span> <span class="hljs-comment">'</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">expose</span><span class="hljs-literal">-</span><span class="hljs-comment">gc'</span> <span class="hljs-comment">performance/MemoryTest</span><span class="hljs-string">.</span><span class="hljs-comment">coffee</span></code></pre><h1 id="dependencies">Dependencies</h1>
+				<p>Runtime: jQuery or Zepto.js (optional; just for jQ/Zepto bindings)
+				Build/test: see [package.json].</p>
+				<h1 id="compatibility-with-other-libs">Compatibility with other libs</h1>
+				<p>Bacon.js doesn&#39;t mess with prototypes or the global object. Only exceptions below.</p>
+				<ul>
+					<li>It exports the Bacon object, except in Node.js. In a browser, this is added to the window object.</li>
+					<li>If jQuery is defined, it adds the asEventStream method to jQuery (similarly to Zepto)</li>
+				</ul>
+				<p>So, it should be pretty much compatible and a nice citizen.</p>
+				<p>I&#39;m not sure how it works in case some other lib adds stuff to, say, Array prototype, though. Maybe add test for this later?</p>
+				<h1 id="compatibility-with-browsers">Compatibility with browsers</h1>
+				<p>TLDR: good.</p>
+				<p>Bacon.js is not browser dependent, because it is not a UI library. It should work on all ES5-ish runtimes.</p>
+				<p>Automatically tested on each commit on modern browsers in Browserstack.</p>
+				<h1 id="why-bacon-">Why Bacon?</h1>
+				<p>Bacon.js exists largely because I got frustrated with RxJs, which is a good library, but at that time
+					didn&#39;t have very good documentation and wasn&#39;t open-source. Things have improved a lot in the Rx
+				world since that. Yet, there are still compelling reasons to use Bacon.js instead. Like, for instance,</p>
+				<ul>
+					<li>more consistent stream/property behavior </li>
+					<li>simplicity of use</li>
+					<li>atomic updates</li>
+				</ul>
+				<p>If you&#39;re more into performance and less into atomic updates, you might want to check out <a href="https://kefirjs.github.io/kefir/">Kefir.js</a>!</p>
+				<h1 id="contribute">Contribute</h1>
+				<p>Use <a href="https://github.com/baconjs/bacon.js/issues">GitHub issues</a> and <a href="https://github.com/baconjs/bacon.js/pulls">Pull Requests</a>.</p>
+				<p>Note: this readme is generated from <code>readme-src.coffee</code>. After updating the src file, run <code>npm run readme</code>.</p>
+				<h1 id="sponsors">Sponsors</h1>
+				<p>Thanks to <a href="http://www.browserstack.com">BrowserStack</a> for kindly providing me with free of charge automatic testing time.</p>
+				<p>Thanks also to <a href="https://reaktor.com/">Reaktor</a> for supporting Bacon.js development and letting me use some of my working hours on open-source development.</p>
+				<p><a href="https://reaktor.com/"><img src="https://baconjs.github.io/supported-by-reaktor.png" /></a></p>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="globals.html"><em>Globals</em></a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-enum">
+						<a href="enums/reply.html" class="tsd-kind-icon">Reply</a>
+					</li>
+					<li class=" tsd-kind-class tsd-has-type-parameter">
+						<a href="classes/bus.html" class="tsd-kind-icon">Bus</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/desc.html" class="tsd-kind-icon">Desc</a>
+					</li>
+					<li class=" tsd-kind-class tsd-has-type-parameter">
+						<a href="classes/end.html" class="tsd-kind-icon">End</a>
+					</li>
+					<li class=" tsd-kind-class tsd-has-type-parameter">
+						<a href="classes/error.html" class="tsd-kind-icon">Error</a>
+					</li>
+					<li class=" tsd-kind-class tsd-has-type-parameter">
+						<a href="classes/event.html" class="tsd-kind-icon">Event</a>
+					</li>
+					<li class=" tsd-kind-class tsd-has-type-parameter">
+						<a href="classes/eventstream.html" class="tsd-kind-icon">Event<wbr>Stream</a>
+					</li>
+					<li class=" tsd-kind-class tsd-has-type-parameter">
+						<a href="classes/initial.html" class="tsd-kind-icon">Initial</a>
+					</li>
+					<li class=" tsd-kind-class tsd-has-type-parameter">
+						<a href="classes/next.html" class="tsd-kind-icon">Next</a>
+					</li>
+					<li class=" tsd-kind-class tsd-has-type-parameter">
+						<a href="classes/observable.html" class="tsd-kind-icon">Observable</a>
+					</li>
+					<li class=" tsd-kind-class tsd-has-type-parameter">
+						<a href="classes/property.html" class="tsd-kind-icon">Property</a>
+					</li>
+					<li class=" tsd-kind-class tsd-has-type-parameter">
+						<a href="classes/value.html" class="tsd-kind-icon">Value</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="interfaces/accumulator.html" class="tsd-kind-icon">Accumulator</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="interfaces/binder.html" class="tsd-kind-icon">Binder</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="interfaces/equals.html" class="tsd-kind-icon">Equals</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="interfaces/eventspawner.html" class="tsd-kind-icon">Event<wbr>Spawner</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="interfaces/eventtransformer.html" class="tsd-kind-icon">Event<wbr>Transformer</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="interfaces/grouplimiter.html" class="tsd-kind-icon">Group<wbr>Limiter</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="interfaces/pollfunction.html" class="tsd-kind-icon">Poll<wbr>Function</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/retrycontext.html" class="tsd-kind-icon">Retry<wbr>Context</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="interfaces/retryoptions.html" class="tsd-kind-icon">Retry<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/scheduler.html" class="tsd-kind-icon">Scheduler</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/spy.html" class="tsd-kind-icon">Spy</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="interfaces/statef.html" class="tsd-kind-icon">StateF</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="interfaces/subscribe.html" class="tsd-kind-icon">Subscribe</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="interfaces/transformer.html" class="tsd-kind-icon">Transformer</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#delayfunction" class="tsd-kind-icon">Delay<wbr>Function</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#differ" class="tsd-kind-icon">Differ</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#eventlike" class="tsd-kind-icon">Event<wbr>Like</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#eventsink" class="tsd-kind-icon">Event<wbr>Sink</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#flexiblesink" class="tsd-kind-icon">Flexible<wbr>Sink</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#observableorsource" class="tsd-kind-icon">Observable<wbr>OrSource</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#pattern" class="tsd-kind-icon">Pattern</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#pattern1" class="tsd-kind-icon">Pattern1</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#pattern2" class="tsd-kind-icon">Pattern2</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#pattern3" class="tsd-kind-icon">Pattern3</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#pattern4" class="tsd-kind-icon">Pattern4</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#pattern5" class="tsd-kind-icon">Pattern5</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#pattern6" class="tsd-kind-icon">Pattern6</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#predicate" class="tsd-kind-icon">Predicate</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#predicateorproperty" class="tsd-kind-icon">Predicate<wbr>OrProperty</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#sink" class="tsd-kind-icon">Sink</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#spawner" class="tsd-kind-icon">Spawner</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#spawnerorobservable" class="tsd-kind-icon">Spawner<wbr>OrObservable</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#unsub" class="tsd-kind-icon">Unsub</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#updatepattern" class="tsd-kind-icon">Update<wbr>Pattern</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#updatepattern1" class="tsd-kind-icon">Update<wbr>Pattern1</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#updatepattern2" class="tsd-kind-icon">Update<wbr>Pattern2</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#updatepattern3" class="tsd-kind-icon">Update<wbr>Pattern3</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#updatepattern4" class="tsd-kind-icon">Update<wbr>Pattern4</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#updatepattern5" class="tsd-kind-icon">Update<wbr>Pattern5</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#updatepattern6" class="tsd-kind-icon">Update<wbr>Pattern6</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#voidfunction" class="tsd-kind-icon">Void<wbr>Function</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#voidsink" class="tsd-kind-icon">Void<wbr>Sink</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#more" class="tsd-kind-icon">more</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#nomore" class="tsd-kind-icon">no<wbr>More</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#version" class="tsd-kind-icon">version</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#combineasarray" class="tsd-kind-icon">combine<wbr>AsArray</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#combinetemplate" class="tsd-kind-icon">combine<wbr>Template</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#combinewith" class="tsd-kind-icon">combine<wbr>With</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#concatall" class="tsd-kind-icon">concat<wbr>All</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#constant" class="tsd-kind-icon">constant</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#fromarray" class="tsd-kind-icon">from<wbr>Array</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#frombinder" class="tsd-kind-icon">from<wbr>Binder</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#fromcallback" class="tsd-kind-icon">from<wbr>Callback</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#fromesobservable" class="tsd-kind-icon">fromESObservable</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#fromevent" class="tsd-kind-icon">from<wbr>Event</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#fromnodecallback" class="tsd-kind-icon">from<wbr>Node<wbr>Callback</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#frompoll" class="tsd-kind-icon">from<wbr>Poll</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#frompromise" class="tsd-kind-icon">from<wbr>Promise</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#getscheduler" class="tsd-kind-icon">get<wbr>Scheduler</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#hasvalue" class="tsd-kind-icon">has<wbr>Value</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#interval" class="tsd-kind-icon">interval</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#isend" class="tsd-kind-icon">is<wbr>End</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#iserror" class="tsd-kind-icon">is<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#isevent" class="tsd-kind-icon">is<wbr>Event</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#isinitial" class="tsd-kind-icon">is<wbr>Initial</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#isnext" class="tsd-kind-icon">is<wbr>Next</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#later" class="tsd-kind-icon">later</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#mergeall" class="tsd-kind-icon">merge<wbr>All</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#never" class="tsd-kind-icon">never</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#onvalues" class="tsd-kind-icon">on<wbr>Values</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#once" class="tsd-kind-icon">once</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#repeat" class="tsd-kind-icon">repeat</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#repeatedly" class="tsd-kind-icon">repeatedly</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#retry" class="tsd-kind-icon">retry</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#sequentially" class="tsd-kind-icon">sequentially</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#setscheduler" class="tsd-kind-icon">set<wbr>Scheduler</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#silence" class="tsd-kind-icon">silence</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#spy" class="tsd-kind-icon">spy</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#update" class="tsd-kind-icon">update</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#when" class="tsd-kind-icon">when</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#zipasarray" class="tsd-kind-icon">zip<wbr>AsArray</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#zipwith" class="tsd-kind-icon">zip<wbr>With</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#_" class="tsd-kind-icon">$</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>

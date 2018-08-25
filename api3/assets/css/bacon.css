@@ -1,0 +1,26 @@
+header {
+    background-image: url(../images/bacon-logo.png);
+    background-repeat: no-repeat;
+    background-size: 120px;
+    min-height: 100px;
+}
+
+.tsd-page-toolbar {
+    background: transparent;
+    border-bottom: none;
+}
+
+.tsd-page-toolbar #tsd-search.has-focus {
+    background-color: transparent;
+}
+.tsd-page-toolbar #tsd-search {
+    padding-left: 108px;
+}
+.tsd-page-title {
+    padding-left: 108px;
+    background-color: transparent;
+}
+
+#tsd-search .field {
+    left: 108px;
+}
