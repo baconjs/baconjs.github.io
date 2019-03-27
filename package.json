@@ -12,7 +12,7 @@
   },
   "scripts": {
     "postinstall": "generator/downloadbacons && generator/generate.coffee && npm run docs3",
-    "docs3": "cd bacon.js/3.0 && npx typedoc --out docs --ignoreCompilerErrors src --mode file --excludeNotExported --theme ../../typedoc-bacon-theme",
+    "docs3": "cd bacon.js/3.0 && npx typedoc --out ../../api3 --ignoreCompilerErrors src --mode file --excludeNotExported --theme ../../typedoc-bacon-theme",
     "server": "./server.coffee"
   },
   "repository": {
