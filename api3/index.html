@@ -65,7 +65,7 @@
 			<div class="tsd-panel tsd-typography">
 				<h1 id="bacon-js">Bacon.js</h1>
 				<img src="https://raw.github.com/baconjs/bacon.js/master/logo.png" align="right" width="300px" />
-				<p>A small functional reactive programming lib for JavaScript.</p>
+				<p>A functional reactive programming lib for TypeScript JavaScript, written in TypeScript.</p>
 				<p>Turns your event spaghetti into clean and declarative feng shui bacon, by switching
 					from imperative to functional. It&#39;s like replacing nested for-loops with functional programming
 					concepts like <a href="classes/observable.html#map"><code>map</code></a> and <a href="classes/observable.html#filter"><code>filter</code></a>. Stop working on individual events and work with event streams instead.
@@ -77,34 +77,18 @@
 					<li><a href="http://baconjs.github.io/">Homepage</a></li>
 					<li><a href="https://github.com/baconjs/bacon.js/tree/master/src">Source files</a></li>
 					<li><a href="https://github.com/baconjs/bacon.js/blob/master/dist/">Generated javascript</a></li>
-					<li><a href="https://github.com/baconjs/bacon.js/blob/master/spec/specs/main.coffee">Specs</a></li>
+					<li><a href="https://github.com/baconjs/bacon.js/blob/master/spec/">Specs</a></li>
 					<li><a href="https://github.com/baconjs/bacon.js/blob/master/examples/examples.html">Examples</a></li>
 					<li><a href="https://github.com/baconjs/bacon.js/wiki/">Wiki</a> with more docs, related projects and more</li>
-					<li><a href="http://www.cheatography.com/proloser/cheat-sheets/bacon-js/">Cheat Sheet</a></li>
-					<li><a href="http://nullzzz.blogspot.com">My Blog</a> with some baconful and reactive postings along with a Bacon.js tutorial</li>
-					<li><a href="http://baconjs.blogspot.com">Bacon.js Blog</a></li>
-					<li><a href="https://groups.google.com/forum/#!forum/baconjs">Bacon.js Google Group</a> for discussion and questions</li>
-					<li><a href="https://github.com/raimohanska/todomvc/blob/bacon-jquery/labs/architecture-examples/baconjs/js/app.js">TodoMVC with Bacon.js and jQuery</a></li>
-					<li><a href="http://stackoverflow.com/questions/tagged/bacon.js">Stack Overflow</a> for well-formed questions. Use the &quot;bacon.js&quot; tag.</li>
 					<li><a href="https://gitter.im/baconjs/bacon.js">Gitter</a> chat for developers of Bacon.</li>
 					<li><a href="https://github.com/baconjs/bacon.js/wiki/Migration-from-version-1.0-to-2.0">Migrating to 2.0</a></li>
 				</ul>
-				<p>And remember to give me feedback on the bacon! Let me know if you&#39;ve
-					used it. Tell me how it worked for you. What&#39;s missing? What&#39;s wrong?
-				Please contribute!</p>
 				<p><a href="https://travis-ci.org/baconjs/bacon.js"><img src="https://travis-ci.org/baconjs/bacon.js.svg?branch=master" alt="Build Status"></a>
 					<a href="https://www.browserstack.com/automate/public-build/RDRnTElXMlRsK2pWdXhYQXVOMkQvdz09LS1mbmgyL0l2NlVBUFZQNWEzYlIvWit3PT0=--779bf4c07cb76abcbee64b15f00e1998f7880ff2%"><img src="https://www.browserstack.com/automate/badge.svg?badge_key=RDRnTElXMlRsK2pWdXhYQXVOMkQvdz09LS1mbmgyL0l2NlVBUFZQNWEzYlIvWit3PT0=--779bf4c07cb76abcbee64b15f00e1998f7880ff2%" alt="BrowserStack Status"></a>
 					<a href="https://www.npmjs.org/package/baconjs"><img src="http://img.shields.io/npm/v/baconjs.svg" alt="NPM version"></a>
 					<a href="https://david-dm.org/baconjs/bacon.js"><img src="https://david-dm.org/baconjs/bacon.js.svg" alt="Dependency Status"></a>
 				<a href="https://david-dm.org/baconjs/bacon.js#info=devDependencies"><img src="https://david-dm.org/baconjs/bacon.js/dev-status.svg" alt="devDependency Status"></a></p>
 				<h2 id="install-and-usage">Install and Usage</h2>
-				<h3 id="npm-commonjs-node-js">NPM, CommonJS, Node.js</h3>
-				<p>If you&#39;re on to CommonJS (<a href="http://nodejs.org/">node.js</a>, <a href="https://webpack.js.org/">webpack</a> or similar) you can install Bacon using npm.</p>
-				<pre><code>npm <span class="hljs-keyword">install</span> baconjs</code></pre><p>Try it like this:    </p>
-				<pre><code class="language-js">node
-Bacon=<span class="hljs-built_in">require</span>(<span class="hljs-string">"baconjs"</span>)
-Bacon.once(<span class="hljs-string">"hello"</span>).log()</code></pre>
-				<p>The global methods, such as <a href="globals.html#once"><code>once</code></a> are available in the <code>Bacon</code> object.</p>
 				<h3 id="typescript">Typescript</h3>
 				<p>Bacon.js starting from version 3.0 is a Typescript library so you won&#39;t need any external types. Just
 				Install using <code>npm</code>.</p>
@@ -114,6 +98,13 @@ Bacon.once(<span class="hljs-string">"hello"</span>).log()</code></pre>
 <span class="hljs-keyword">let</span> s: EventStream&lt;<span class="hljs-built_in">string</span>&gt; = once(<span class="hljs-string">"hello"</span>)
 s.log()</code></pre>
 				<p>As you can see, the global methods, such as <a href="globals.html#once"><code>once</code></a> are imported separately.</p>
+				<h3 id="npm-commonjs-node-js">NPM, CommonJS, Node.js</h3>
+				<p>If you&#39;re on to CommonJS (<a href="http://nodejs.org/">node.js</a>, <a href="https://webpack.js.org/">webpack</a> or similar) you can install Bacon using npm.</p>
+				<pre><code>npm <span class="hljs-keyword">install</span> baconjs</code></pre><p>Try it like this:    </p>
+				<pre><code class="language-js">node
+Bacon=<span class="hljs-built_in">require</span>(<span class="hljs-string">"baconjs"</span>)
+Bacon.once(<span class="hljs-string">"hello"</span>).log()</code></pre>
+				<p>The global methods, such as <a href="globals.html#once"><code>once</code></a> are available in the <code>Bacon</code> object.</p>
 				<h3 id="bower">Bower</h3>
 				<p>For <a href="https://github.com/twitter/bower">bower</a> users:</p>
 				<pre><code><span class="hljs-keyword">bower </span><span class="hljs-keyword">install </span><span class="hljs-keyword">bacon</span></code></pre><h3 id="cdn-script-tags">CDN / Script Tags</h3>
@@ -174,33 +165,9 @@ counterP.map(hiddenIfZero)
 				<p>For an actual (though a bit outdated) tutorial, please check out my <a href="http://nullzzz.blogspot.fi/2012/11/baconjs-tutorial-part-i-hacking-with.html">blog posts</a></p>
 				<h1 id="api">API</h1>
 				<h2 id="creating-eventstreams-and-properties">Creating EventStreams and Properties</h2>
-				<p>There&#39;s a multitude of methods for creating an <a href="classes/eventstream.html">EventStream</a> from different sources.</p>
-				<ul>
-					<li>From DOM EventTarget or Node.JS EventEmitter objects using <a href="globals.html#fromevent">fromEvent</a></li>
-					<li>From a Promise using <a href="globals.html#frompromise">fromPromise</a></li>
-					<li>From an unary callback using <a href="globals.html#fromcallback">fromCallback</a></li>
-					<li>From a Node.js style callback using <a href="globals.html#fromnodecallback">fromNodeCallback</a></li>
-					<li>From RxJs or Kefir observables using <a href="globals.html#fromesobservable">fromESObservable</a></li>
-					<li>By polling a synchronous function using <a href="globals.html#fromPoll">fromPoll</a></li>
-					<li>Emit a single event instantly using <a href="globals.html#once">once</a></li>
-					<li>Emit a single event with a delay <a href="globals.html#later">later</a></li>
-					<li>Emit the same event indefinitely using <a href="globals.html#interval">interval</a></li>
-					<li>Emit an array of events instantly <a href="globals.html#fromarray">fromArray</a></li>
-					<li>Emit an array of events with a delay <a href="globals.html#sequentially">sequentially</a></li>
-					<li>Emit an array of events repeatedly with a delay <a href="globals.html#repeatedly">repeatedly</a></li>
-					<li>Use a generator function to be called repeatedly <a href="globals.html#repeat">repeat</a></li>
-					<li>Create a stream that never emits an event, ending immediately <a href="globals.html#never">never</a></li>
-					<li>Create a stream that never emits an event, ending with a delay <a href="globals.html#silence">silence</a></li>
-					<li>Create stream using a custom binder function <a href="globals.html#frombinder">fromBinder</a></li>
-					<li>Wrap jQuery events using <a href="globals.html#_">asEventStream</a></li>
-				</ul>
-				<p>Properties are usually created based on EventStreams. Here are some ways.</p>
-				<ul>
-					<li>Create a constant property with <a href="globals.html#constant">constant</a></li>
-					<li>Create a property based on an EventStream with <a href="classes/eventstream.html#toproperty">toProperty</a></li>
-					<li>Scan an EventStream with an accumulator function with <a href="classes/eventstream.html#scan">scan</a></li>
-					<li>Create a state property based on multiple sources using <a href="globals.html#update">update</a></li>
-				</ul>
+				<p>There&#39;s a multitude of methods for creating an EventStream from different sources, including the DOM, node callbacks and promises for example.
+				See <a href="classes/eventstream.html">EventStream</a> documentation.</p>
+				<p>Properties are usually created based on EventStreams. Some common ways are intruduced in <a href="classes/property.html">Property</a> documentation.</p>
 				<h2 id="combining-multiple-streams-and-properties">Combining multiple streams and properties</h2>
 				<p>You can combine the latest value from multple sources using <a href="classes/observable.html#combine">combine</a>, <a href="globals.html#combineasarray">combineAsArray</a>,
 				<a href="globals.html#combinewith">combineWith</a> or <a href="globals.html#combinetemplate">combineTemplate</a>.</p>
@@ -344,7 +311,7 @@ jsonStream.onError(<span class="hljs-function"><span class="hljs-keyword">functi
 				latter is for observable properties that have the concept of &quot;current value&quot;.</p>
 				<p>Also, there are no &quot;cold observables&quot;, which
 					means also that all EventStreams and Properties are consistent among subscribers:
-					when as event occurs, all subscribers will observe the same event. If you&#39;re
+					when an event occurs, all subscribers will observe the same event. If you&#39;re
 					experienced with RxJs, you&#39;ve probably bumped into some wtf&#39;s related to cold
 					observables and inconsistent output from streams constructed using scan and startWith.
 				None of that will happen with bacon.js.</p>
@@ -356,7 +323,7 @@ jsonStream.onError(<span class="hljs-function"><span class="hljs-keyword">functi
 				that ends on the first error!</p>
 				<h1 id="examples">Examples</h1>
 				<p>See <a href="https://github.com/baconjs/bacon.js/blob/master/examples/examples.html">Examples</a></p>
-				<p>See <a href="https://github.com/baconjs/bacon.js/blob/master/spec/specs/main.coffee">Specs</a></p>
+				<p>See <a href="https://github.com/baconjs/bacon.js/blob/master/spec/">Specs</a></p>
 				<p>See Worzone <a href="http://juhajasatu.com/worzone/">demo</a> and <a href="http://github.com/raimohanska/worzone">source</a></p>
 				<h1 id="build">Build</h1>
 				<p>First check out the Bacon.js repository and run <code>npm install</code>.</p>
@@ -364,21 +331,21 @@ jsonStream.onError(<span class="hljs-function"><span class="hljs-keyword">functi
 				<pre><code>npm <span class="hljs-keyword">run</span><span class="bash"> dist</span></code></pre><p>Result javascript files will be generated in <code>dist</code> directory. If your planning
 				to develop Bacon.js yourself, you&#39;ll want to run [tests] too using <code>npm test</code>.</p>
 				<p>You can also build a bundle with selected features only. For instance</p>
-				<pre><code>scripts/dist flatmap <span class="hljs-built_in">combine</span> takeuntil</code></pre><p>The build system will do its best to determine the dependencies of the selected
+				<pre><code><span class="hljs-variable"><span class="hljs-class">scripts</span></span>/<span class="hljs-variable">dist</span> <span class="hljs-variable">flatmap</span> <span class="hljs-variable">combine</span> <span class="hljs-variable">takeuntil</span></code></pre><p>The build system will do its best to determine the dependencies of the selected
 					features and include those into the bundle too. You can also test the integrity
 				of the bundle with your selected features using</p>
-				<pre><code>scripts/runtests flatmap <span class="hljs-built_in">combine</span> takeuntil</code></pre><p>TODO: partial testing currently broken.</p>
+				<pre><code><span class="hljs-variable"><span class="hljs-class">scripts</span></span>/<span class="hljs-variable">runtests</span> <span class="hljs-variable">flatmap</span> <span class="hljs-variable">combine</span> <span class="hljs-variable">takeuntil</span></code></pre><p>TODO: partial testing currently broken.</p>
 				<h1 id="test">Test</h1>
 				<p>Run all unit tests:</p>
 				<pre><code>npm <span class="hljs-built_in">test</span></code></pre><p>The tests are run against the javascript bundle in the <code>dist</code> directory. You can build the bundle using <code>npm run dist</code>.</p>
-				<p>This will loop thru all files under <code>spec/specs</code> and build the library with the
+				<p>This will loop thru all files under <code>spec</code> and build the library with the
 				single feature and run the test.</p>
 				<p>Run browser tests locally:</p>
 				<pre><code>npm install
 browsertest/browserify
 open browsertest/mocha<span class="hljs-selector-class">.runner</span><span class="hljs-selector-class">.html</span></code></pre><p>Run performance tests:</p>
-				<pre><code>performance/PerformanceTest<span class="hljs-selector-class">.coffee</span>
-performance/PerformanceTest<span class="hljs-selector-class">.coffee</span> flatmap</code></pre><p>Run memory usage tests:</p>
+				<pre><code>performance/<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">PerformanceTest</span>.</span></span>coffee
+performance/<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">PerformanceTest</span>.</span></span>coffee flatmap</code></pre><p>Run memory usage tests:</p>
 				<pre><code><span class="hljs-comment">coffee</span> <span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">nodejs</span> <span class="hljs-comment">'</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">expose</span><span class="hljs-literal">-</span><span class="hljs-comment">gc'</span> <span class="hljs-comment">performance/MemoryTest</span><span class="hljs-string">.</span><span class="hljs-comment">coffee</span></code></pre><h1 id="dependencies">Dependencies</h1>
 				<p>Runtime: jQuery or Zepto.js (optional; just for jQ/Zepto bindings)
 				Build/test: see [package.json].</p>
@@ -423,19 +390,16 @@ performance/PerformanceTest<span class="hljs-selector-class">.coffee</span> flat
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-enum">
-						<a href="enums/reply.html" class="tsd-kind-icon">Reply</a>
-					</li>
 					<li class=" tsd-kind-class tsd-has-type-parameter">
 						<a href="classes/bus.html" class="tsd-kind-icon">Bus</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/desc.html" class="tsd-kind-icon">Desc</a>
 					</li>
-					<li class=" tsd-kind-class tsd-has-type-parameter">
+					<li class=" tsd-kind-class">
 						<a href="classes/end.html" class="tsd-kind-icon">End</a>
 					</li>
-					<li class=" tsd-kind-class tsd-has-type-parameter">
+					<li class=" tsd-kind-class">
 						<a href="classes/error.html" class="tsd-kind-icon">Error</a>
 					</li>
 					<li class=" tsd-kind-class tsd-has-type-parameter">
@@ -450,6 +414,9 @@ performance/PerformanceTest<span class="hljs-selector-class">.coffee</span> flat
 					<li class=" tsd-kind-class tsd-has-type-parameter">
 						<a href="classes/next.html" class="tsd-kind-icon">Next</a>
 					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/novalue.html" class="tsd-kind-icon">No<wbr>Value</a>
+					</li>
 					<li class=" tsd-kind-class tsd-has-type-parameter">
 						<a href="classes/observable.html" class="tsd-kind-icon">Observable</a>
 					</li>
@@ -458,27 +425,6 @@ performance/PerformanceTest<span class="hljs-selector-class">.coffee</span> flat
 					</li>
 					<li class=" tsd-kind-class tsd-has-type-parameter">
 						<a href="classes/value.html" class="tsd-kind-icon">Value</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-has-type-parameter">
-						<a href="interfaces/accumulator.html" class="tsd-kind-icon">Accumulator</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-has-type-parameter">
-						<a href="interfaces/binder.html" class="tsd-kind-icon">Binder</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-has-type-parameter">
-						<a href="interfaces/equals.html" class="tsd-kind-icon">Equals</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-has-type-parameter">
-						<a href="interfaces/eventspawner.html" class="tsd-kind-icon">Event<wbr>Spawner</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-has-type-parameter">
-						<a href="interfaces/eventtransformer.html" class="tsd-kind-icon">Event<wbr>Transformer</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-has-type-parameter">
-						<a href="interfaces/grouplimiter.html" class="tsd-kind-icon">Group<wbr>Limiter</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-has-type-parameter">
-						<a href="interfaces/pollfunction.html" class="tsd-kind-icon">Poll<wbr>Function</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/retrycontext.html" class="tsd-kind-icon">Retry<wbr>Context</a>
@@ -489,17 +435,14 @@ performance/PerformanceTest<span class="hljs-selector-class">.coffee</span> flat
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/scheduler.html" class="tsd-kind-icon">Scheduler</a>
 					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/spy.html" class="tsd-kind-icon">Spy</a>
-					</li>
 					<li class=" tsd-kind-interface tsd-has-type-parameter">
 						<a href="interfaces/statef.html" class="tsd-kind-icon">StateF</a>
 					</li>
-					<li class=" tsd-kind-interface tsd-has-type-parameter">
-						<a href="interfaces/subscribe.html" class="tsd-kind-icon">Subscribe</a>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#accumulator" class="tsd-kind-icon">Accumulator</a>
 					</li>
-					<li class=" tsd-kind-interface tsd-has-type-parameter">
-						<a href="interfaces/transformer.html" class="tsd-kind-icon">Transformer</a>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#binder" class="tsd-kind-icon">Binder</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="globals.html#delayfunction" class="tsd-kind-icon">Delay<wbr>Function</a>
@@ -508,13 +451,40 @@ performance/PerformanceTest<span class="hljs-selector-class">.coffee</span> flat
 						<a href="globals.html#differ" class="tsd-kind-icon">Differ</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#equals" class="tsd-kind-icon">Equals</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
 						<a href="globals.html#eventlike" class="tsd-kind-icon">Event<wbr>Like</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#eventorvalue" class="tsd-kind-icon">Event<wbr>OrValue</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
 						<a href="globals.html#eventsink" class="tsd-kind-icon">Event<wbr>Sink</a>
 					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#eventsourcefn" class="tsd-kind-icon">Event<wbr>Source<wbr>Fn</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#eventspawner" class="tsd-kind-icon">Event<wbr>Spawner</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#eventtransformer" class="tsd-kind-icon">Event<wbr>Transformer</a>
+					</li>
 					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
 						<a href="globals.html#flexiblesink" class="tsd-kind-icon">Flexible<wbr>Sink</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#function0" class="tsd-kind-icon">Function0</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#function1" class="tsd-kind-icon">Function1</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#function2" class="tsd-kind-icon">Function2</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#grouptransformer" class="tsd-kind-icon">Group<wbr>Transformer</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
 						<a href="globals.html#observableorsource" class="tsd-kind-icon">Observable<wbr>OrSource</a>
@@ -541,19 +511,31 @@ performance/PerformanceTest<span class="hljs-selector-class">.coffee</span> flat
 						<a href="globals.html#pattern6" class="tsd-kind-icon">Pattern6</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#pollfunction" class="tsd-kind-icon">Poll<wbr>Function</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
 						<a href="globals.html#predicate" class="tsd-kind-icon">Predicate</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
 						<a href="globals.html#predicateorproperty" class="tsd-kind-icon">Predicate<wbr>OrProperty</a>
 					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#reply" class="tsd-kind-icon">Reply</a>
+					</li>
 					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
 						<a href="globals.html#sink" class="tsd-kind-icon">Sink</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
-						<a href="globals.html#spawner" class="tsd-kind-icon">Spawner</a>
+						<a href="globals.html#spawnerorobservable" class="tsd-kind-icon">Spawner<wbr>OrObservable</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#spy" class="tsd-kind-icon">Spy</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
-						<a href="globals.html#spawnerorobservable" class="tsd-kind-icon">Spawner<wbr>OrObservable</a>
+						<a href="globals.html#subscribe" class="tsd-kind-icon">Subscribe</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#transformer" class="tsd-kind-icon">Transformer</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="globals.html#unsub" class="tsd-kind-icon">Unsub</a>
@@ -579,6 +561,9 @@ performance/PerformanceTest<span class="hljs-selector-class">.coffee</span> flat
 					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
 						<a href="globals.html#updatepattern6" class="tsd-kind-icon">Update<wbr>Pattern6</a>
 					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#valuespawner" class="tsd-kind-icon">Value<wbr>Spawner</a>
+					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="globals.html#voidfunction" class="tsd-kind-icon">Void<wbr>Function</a>
 					</li>
@@ -597,7 +582,7 @@ performance/PerformanceTest<span class="hljs-selector-class">.coffee</span> flat
 					<li class=" tsd-kind-function tsd-has-type-parameter">
 						<a href="globals.html#combineasarray" class="tsd-kind-icon">combine<wbr>AsArray</a>
 					</li>
-					<li class=" tsd-kind-function">
+					<li class=" tsd-kind-function tsd-has-type-parameter">
 						<a href="globals.html#combinetemplate" class="tsd-kind-icon">combine<wbr>Template</a>
 					</li>
 					<li class=" tsd-kind-function tsd-has-type-parameter">
@@ -693,11 +678,17 @@ performance/PerformanceTest<span class="hljs-selector-class">.coffee</span> flat
 					<li class=" tsd-kind-function">
 						<a href="globals.html#spy" class="tsd-kind-icon">spy</a>
 					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#symbol" class="tsd-kind-icon">symbol</a>
+					</li>
 					<li class=" tsd-kind-function tsd-has-type-parameter">
 						<a href="globals.html#update" class="tsd-kind-icon">update</a>
 					</li>
 					<li class=" tsd-kind-function tsd-has-type-parameter">
 						<a href="globals.html#when" class="tsd-kind-icon">when</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#withstatemachinet" class="tsd-kind-icon">with<wbr>State<wbr>MachineT</a>
 					</li>
 					<li class=" tsd-kind-function tsd-has-type-parameter">
 						<a href="globals.html#zipasarray" class="tsd-kind-icon">zip<wbr>AsArray</a>

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Spy | baconjs</title>
+	<title>NoValue | baconjs</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -55,45 +55,130 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="spy.html">Spy</a>
+					<a href="novalue.html">NoValue</a>
 				</li>
 			</ul>
-			<h1>Interface Spy</h1>
+			<h1>Class NoValue</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Base class for events not carrying a value.</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">Spy</span>
+						<a href="event.html" class="tsd-signature-type">Event</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span>
+						<ul class="tsd-hierarchy">
+							<li>
+								<span class="target">NoValue</span>
+								<ul class="tsd-hierarchy">
+									<li>
+										<a href="end.html" class="tsd-signature-type">End</a>
+									</li>
+									<li>
+										<a href="error.html" class="tsd-signature-type">Error</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
 					</li>
 				</ul>
 			</section>
-			<section class="tsd-panel">
-				<h3 class="tsd-before-signature">Callable</h3>
-				<ul class="tsd-signatures tsd-kind-interface">
-					<li class="tsd-signature tsd-kind-icon">__call<span class="tsd-signature-symbol">(</span>obs<span class="tsd-signature-symbol">: </span><a href="../classes/observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
-				</ul>
-				<ul class="tsd-descriptions">
-					<li class="tsd-description">
-						<aside class="tsd-sources">
-							<ul>
-								<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/a8c19da/src/spy.ts#L6">spy.ts:6</a></li>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-overwrite"><a href="novalue.html#hasvalue" class="tsd-kind-icon">has<wbr>Value</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="novalue.html#id" class="tsd-kind-icon">id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="novalue.html#isend" class="tsd-kind-icon">is<wbr>End</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="novalue.html#iserror" class="tsd-kind-icon">is<wbr>Error</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="novalue.html#isinitial" class="tsd-kind-icon">is<wbr>Initial</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="novalue.html#isnext" class="tsd-kind-icon">is<wbr>Next</a></li>
 							</ul>
-						</aside>
-						<h4 class="tsd-parameters-title">Parameters</h4>
-						<ul class="tsd-parameters">
-							<li>
-								<h5>obs: <a href="../classes/observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
-							</li>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-overwrite">
+					<a name="hasvalue" class="tsd-anchor"></a>
+					<h3>has<wbr>Value</h3>
+					<div class="tsd-signature tsd-kind-icon">has<wbr>Value<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;false</span></div>
+					<aside class="tsd-sources">
+						<p>Overrides <a href="event.html">Event</a>.<a href="event.html#hasvalue">hasValue</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/1d420f8/src/event.ts#L105">event.ts:105</a></li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
-					</li>
-				</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a name="id" class="tsd-anchor"></a>
+					<h3>id</h3>
+					<div class="tsd-signature tsd-kind-icon">id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;++eventIdCounter</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="event.html">Event</a>.<a href="event.html#id">id</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/1d420f8/src/event.ts#L10">event.ts:10</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a name="isend" class="tsd-anchor"></a>
+					<h3>is<wbr>End</h3>
+					<div class="tsd-signature tsd-kind-icon">is<wbr>End<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;false</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="event.html">Event</a>.<a href="event.html#isend">isEnd</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/1d420f8/src/event.ts#L15">event.ts:15</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a name="iserror" class="tsd-anchor"></a>
+					<h3>is<wbr>Error</h3>
+					<div class="tsd-signature tsd-kind-icon">is<wbr>Error<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;false</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="event.html">Event</a>.<a href="event.html#iserror">isError</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/1d420f8/src/event.ts#L18">event.ts:18</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a name="isinitial" class="tsd-anchor"></a>
+					<h3>is<wbr>Initial</h3>
+					<div class="tsd-signature tsd-kind-icon">is<wbr>Initial<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;false</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="event.html">Event</a>.<a href="event.html#isinitial">isInitial</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/1d420f8/src/event.ts#L16">event.ts:16</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a name="isnext" class="tsd-anchor"></a>
+					<h3>is<wbr>Next</h3>
+					<div class="tsd-signature tsd-kind-icon">is<wbr>Next<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;false</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="event.html">Event</a>.<a href="event.html#isnext">isNext</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/1d420f8/src/event.ts#L17">event.ts:17</a></li>
+						</ul>
+					</aside>
+				</section>
 			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -108,8 +193,28 @@
 				<ul class="before-current">
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-interface">
-						<a href="spy.html" class="tsd-kind-icon">Spy</a>
+					<li class="current tsd-kind-class">
+						<a href="novalue.html" class="tsd-kind-icon">No<wbr>Value</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-overwrite">
+								<a href="novalue.html#hasvalue" class="tsd-kind-icon">has<wbr>Value</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="novalue.html#id" class="tsd-kind-icon">id</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="novalue.html#isend" class="tsd-kind-icon">is<wbr>End</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="novalue.html#iserror" class="tsd-kind-icon">is<wbr>Error</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="novalue.html#isinitial" class="tsd-kind-icon">is<wbr>Initial</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="novalue.html#isnext" class="tsd-kind-icon">is<wbr>Next</a>
+							</li>
+						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
