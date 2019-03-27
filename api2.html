@@ -17,7 +17,7 @@
 <link href='//fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
 
 <script src="//codeorigin.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/bacon.js/2.0.9/Bacon.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bacon.js/2.0.11/Bacon.min.js"></script>
 
 
 <script src="codemirror/codemirror.js"></script>
@@ -38,9 +38,9 @@
       </div>
 
       <div class="download">
-        <a class="button big-button" href="http://cdnjs.cloudflare.com/ajax/libs/bacon.js/2.0.9/Bacon.js" download>
+        <a class="button big-button" href="http://cdnjs.cloudflare.com/ajax/libs/bacon.js/2.0.11/Bacon.js" download>
           Download Bacon.js
-          <small>v2.0.9</small>
+          <small>v2.0.11</small>
           <a class="github" href="https://github.com/baconjs/bacon.js#install">[More install options]</a>
         </a>
       </div>
@@ -1870,7 +1870,7 @@ the EventStream and the Property. The former is for discrete events while the
 latter is for observable properties that have the concept of &quot;current value&quot;.</p>
 <p>Also, there are no &quot;cold observables&quot;, which
 means also that all EventStreams and Properties are consistent among subscribers:
-when as event occurs, all subscribers will observe the same event. If you're
+when an event occurs, all subscribers will observe the same event. If you're
 experienced with RxJs, you've probably bumped into some wtf's related to cold
 observables and inconsistent output from streams constructed using scan and startWith.
 None of that will happen with bacon.js.</p>
