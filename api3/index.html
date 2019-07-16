@@ -68,12 +68,12 @@
 				<p>A functional reactive programming lib for TypeScript JavaScript, written in TypeScript.</p>
 				<p>Turns your event spaghetti into clean and declarative feng shui bacon, by switching
 					from imperative to functional. It&#39;s like replacing nested for-loops with functional programming
-					concepts like <a href="classes/observable.html#map"><code>map</code></a> and <a href="classes/observable.html#filter"><code>filter</code></a>. Stop working on individual events and work with event streams instead.
-					Combine your data with <a href="classes/eventstream.html#merge"><code>merge</code></a> and <a href="classes/observable.html#combine"><code>combine</code></a>.
-				Then switch to the heavier weapons and wield <a href="classes/observable.html#flatmap"><code>flatMap</code></a> and <a href="globals.html#combinetemplate"><code>combineTemplate</code></a> like a boss.</p>
-				<p>It&#39;s the <code>_</code> of Events. Too bad the symbol <code>~</code> is not allowed in JavaScript.</p>
+					concepts like <a href="http://baconjs.github.io/api3/classes/observable.html#map"><code>map</code></a> and <a href="http://baconjs.github.io/api3/classes/observable.html#filter"><code>filter</code></a>. Stop working on individual events and work with event streams instead.
+					Combine your data with <a href="http://baconjs.github.io/api3/classes/eventstream.html#merge"><code>merge</code></a> and <a href="http://baconjs.github.io/api3/classes/observable.html#combine"><code>combine</code></a>.
+				Then switch to the heavier weapons and wield <a href="http://baconjs.github.io/api3/classes/observable.html#flatmap"><code>flatMap</code></a> and <a href="http://baconjs.github.io/api3/globals.html#combinetemplate"><code>combineTemplate</code></a> like a boss.</p>
 				<p>Here&#39;s the stuff.</p>
 				<ul>
+					<li><a href="http://baconjs.github.io/api3/index.html">API docs</a></li>
 					<li><a href="http://baconjs.github.io/">Homepage</a></li>
 					<li><a href="https://github.com/baconjs/bacon.js/tree/master/src">Source files</a></li>
 					<li><a href="https://github.com/baconjs/bacon.js/blob/master/dist/">Generated javascript</a></li>
@@ -97,20 +97,21 @@
 
 <span class="hljs-keyword">let</span> s: EventStream&lt;<span class="hljs-built_in">string</span>&gt; = once(<span class="hljs-string">"hello"</span>)
 s.log()</code></pre>
-				<p>As you can see, the global methods, such as <a href="globals.html#once"><code>once</code></a> are imported separately.</p>
+				<p>As you can see, the global methods, such as <a href="http://baconjs.github.io/api3/globals.html#once"><code>once</code></a> are imported separately.</p>
+				<p>Check out the new <a href="http://baconjs.github.io/api3/index.html">API Documentation</a>, that&#39;s now generated using Typedoc from the Typescript source code.</p>
 				<h3 id="npm-commonjs-node-js">NPM, CommonJS, Node.js</h3>
 				<p>If you&#39;re on to CommonJS (<a href="http://nodejs.org/">node.js</a>, <a href="https://webpack.js.org/">webpack</a> or similar) you can install Bacon using npm.</p>
 				<pre><code>npm <span class="hljs-keyword">install</span> baconjs</code></pre><p>Try it like this:    </p>
 				<pre><code class="language-js">node
 Bacon=<span class="hljs-built_in">require</span>(<span class="hljs-string">"baconjs"</span>)
 Bacon.once(<span class="hljs-string">"hello"</span>).log()</code></pre>
-				<p>The global methods, such as <a href="globals.html#once"><code>once</code></a> are available in the <code>Bacon</code> object.</p>
+				<p>The global methods, such as <a href="http://baconjs.github.io/api3/globals.html#once"><code>once</code></a> are available in the <code>Bacon</code> object.</p>
 				<h3 id="bower">Bower</h3>
 				<p>For <a href="https://github.com/twitter/bower">bower</a> users:</p>
 				<pre><code><span class="hljs-keyword">bower </span><span class="hljs-keyword">install </span><span class="hljs-keyword">bacon</span></code></pre><h3 id="cdn-script-tags">CDN / Script Tags</h3>
 				<p>Both minified and unminified versions available on <a href="https://cdnjs.com/libraries/bacon.js">cdnjs</a>.</p>
 				<p>So you can also include Bacon.js using</p>
-				<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdnjs.cloudflare.com/ajax/libs/bacon.js/2.0.9/Bacon.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+				<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdnjs.cloudflare.com/ajax/libs/bacon.js/2.0.9/Bacon.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="actionscript">
 Bacon.once(<span class="hljs-string">"hello"</span>).log()
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
@@ -121,18 +122,18 @@ Bacon.once(<span class="hljs-string">"hello"</span>).log()
 				<h1 id="intro">Intro</h1>
 				<p>The idea of Functional Reactive Programming is quite well described by Conal Elliot at <a href="http://stackoverflow.com/questions/1028250/what-is-functional-reactive-programming/1030631#1030631">Stack Overflow</a>.</p>
 				<p>Bacon.js is a library for functional reactive programming. Or let&#39;s say it&#39;s a library for
-				working with <a href="globals.html#event">events</a> in <a href="classes/eventstream.html">EventStreams</a> and dynamic values (which are called <a href="classes/property.html">Properties</a> in Bacon.js).</p>
-				<p>You can wrap an event source, say &quot;mouse clicks on a DOM element&quot; into an <a href="classes/eventstream.html">EventStream</a> by saying</p>
+				working with <a href="http://baconjs.github.io/api3/globals.html#event">events</a> in <a href="http://baconjs.github.io/api3/classes/eventstream.html">EventStreams</a> and dynamic values (which are called <a href="http://baconjs.github.io/api3/classes/property.html">Properties</a> in Bacon.js).</p>
+				<p>You can wrap an event source, say &quot;mouse clicks on a DOM element&quot; into an <a href="http://baconjs.github.io/api3/classes/eventstream.html">EventStream</a> by saying</p>
 				<pre><code class="language-js"><span class="hljs-keyword">let</span> $ = <span class="hljs-function">(<span class="hljs-params">selector</span>) =&gt;</span> <span class="hljs-built_in">document</span>.querySelector(selector)
 <span class="hljs-keyword">var</span> clickE = Bacon.fromEvent($(<span class="hljs-string">"h1"</span>), <span class="hljs-string">"click"</span>)</code></pre>
 				<p>The <code>$</code> helper function above could be replaced with, for instance, jQuery or Zepto.</p>
-				<p>Each EventStream represents a stream of events. It is an <a href="classes/observable.html">Observable</a>, meaning
-					that you can listen to events in the stream using, for instance, the <a href="classes/observable.html#onvalue"><code>onValue</code></a> method
+				<p>Each EventStream represents a stream of events. It is an <a href="http://baconjs.github.io/api3/classes/observable.html">Observable</a>, meaning
+					that you can listen to events in the stream using, for instance, the <a href="http://baconjs.github.io/api3/classes/observable.html#onvalue"><code>onValue</code></a> method
 				with a callback. Like this:</p>
 				<pre><code class="language-js">clickE.onValue(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> alert(<span class="hljs-string">"you clicked the h1 element"</span>) )</code></pre>
 				<p>But you can do neater stuff too. The Bacon of Bacon.js is that you can transform,
-					filter and combine these streams in a multitude of ways (see <a href="classes/eventstream.html">EventStream API</a>). The methods <a href="classes/eventstream.html#map"><code>map</code></a>,
-					<a href="classes/eventstream.html#filter"><code>filter</code></a>, for example, are similar to same functions in functional list programming
+					filter and combine these streams in a multitude of ways (see <a href="http://baconjs.github.io/api3/classes/eventstream.html">EventStream API</a>). The methods <a href="http://baconjs.github.io/api3/classes/eventstream.html#map"><code>map</code></a>,
+					<a href="http://baconjs.github.io/api3/classes/eventstream.html#filter"><code>filter</code></a>, for example, are similar to same functions in functional list programming
 				(like <a href="http://underscorejs.org/">Underscore</a>). So, if you say</p>
 				<pre><code class="language-js"><span class="hljs-keyword">let</span> plusE = Bacon.fromEvent($(<span class="hljs-string">"#plus"</span>), <span class="hljs-string">"click"</span>).map(<span class="hljs-number">1</span>)
 <span class="hljs-keyword">let</span> minusE = Bacon.fromEvent($(<span class="hljs-string">"#minus"</span>), <span class="hljs-string">"click"</span>).map(<span class="hljs-number">-1</span>)
@@ -142,18 +143,18 @@ Bacon.once(<span class="hljs-string">"hello"</span>).log()
 					be a merged stream containing events from both the plus and minus streams. This allows
 				you to subscribe to both streams with one handler:</p>
 				<pre><code class="language-js">bothE.onValue(<span class="hljs-function"><span class="hljs-params">val</span> =&gt;</span> { <span class="hljs-comment">/* val will be 1 or -1 */</span> <span class="hljs-built_in">console</span>.log(val) })</code></pre>
-				<p>Note that you can also use the <a href="classes/observable.html#log"><code>log</code></a> method to log stream values to <code>console</code>:</p>
+				<p>Note that you can also use the <a href="http://baconjs.github.io/api3/classes/observable.html#log"><code>log</code></a> method to log stream values to <code>console</code>:</p>
 				<pre><code class="language-js">bothE.log()</code></pre>
-				<p>In addition to EventStreams, bacon.js has a thing called <a href="classes/property.html"><code>Property</code></a>, that is almost like an
+				<p>In addition to EventStreams, bacon.js has a thing called <a href="http://baconjs.github.io/api3/classes/property.html"><code>Property</code></a>, that is almost like an
 					EventStream, but has a &quot;current value&quot;. So things that change and have a current state are
 					Properties, while things that consist of discrete events are EventStreams. You could think
 					mouse clicks as an EventStream and mouse cursor position as a Property. You can create Properties from
-				an EventStream with <a href="classes/observable.html#scan"><code>scan</code></a> or <a href="classes/eventstream.html#toproperty"><code>toProperty</code></a> methods. So, let&#39;s say</p>
+				an EventStream with <a href="http://baconjs.github.io/api3/classes/observable.html#scan"><code>scan</code></a> or <a href="http://baconjs.github.io/api3/classes/eventstream.html#toproperty"><code>toProperty</code></a> methods. So, let&#39;s say</p>
 				<pre><code class="language-js"><span class="hljs-keyword">let</span> add = <span class="hljs-function">(<span class="hljs-params">x, y</span>) =&gt;</span> x + y
 <span class="hljs-keyword">let</span> counterP = bothE.scan(<span class="hljs-number">0</span>, add)
 counterP.onValue(<span class="hljs-function"><span class="hljs-params">sum</span> =&gt;</span> $(<span class="hljs-string">"#sum"</span>).textContent = sum )</code></pre>
 				<p>The <code>counterP</code> property will contain the sum of the values in the <code>bothE</code> stream, so it&#39;s practically
-					a counter that can be increased and decreased using the plus and minus buttons. The <a href="classes/observable.html#scan"><code>scan</code></a> method
+					a counter that can be increased and decreased using the plus and minus buttons. The <a href="http://baconjs.github.io/api3/classes/observable.html#scan"><code>scan</code></a> method
 					was used here to calculate the &quot;current sum&quot; of events in the <code>bothE</code> stream, by giving a &quot;seed value&quot;
 					<code>0</code> and an &quot;accumulator function&quot; <code>add</code>. The scan method creates a property that starts with the given
 					seed value and on each event in the source stream applies the accumulator function to the current
@@ -166,15 +167,15 @@ counterP.map(hiddenIfZero)
 				<h1 id="api">API</h1>
 				<h2 id="creating-eventstreams-and-properties">Creating EventStreams and Properties</h2>
 				<p>There&#39;s a multitude of methods for creating an EventStream from different sources, including the DOM, node callbacks and promises for example.
-				See <a href="classes/eventstream.html">EventStream</a> documentation.</p>
-				<p>Properties are usually created based on EventStreams. Some common ways are intruduced in <a href="classes/property.html">Property</a> documentation.</p>
+				See <a href="http://baconjs.github.io/api3/classes/eventstream.html">EventStream</a> documentation.</p>
+				<p>Properties are usually created based on EventStreams. Some common ways are intruduced in <a href="http://baconjs.github.io/api3/classes/property.html">Property</a> documentation.</p>
 				<h2 id="combining-multiple-streams-and-properties">Combining multiple streams and properties</h2>
-				<p>You can combine the latest value from multple sources using <a href="classes/observable.html#combine">combine</a>, <a href="globals.html#combineasarray">combineAsArray</a>,
-				<a href="globals.html#combinewith">combineWith</a> or <a href="globals.html#combinetemplate">combineTemplate</a>.</p>
-				<p>You can merge multiple streams into one using <a href="classes/eventstream.html#merge">merge</a> or <a href="globals.html#mergeall">mergeAll</a>.</p>
-				<p>You can concat streams using <a href="classes/observable.html#concat">concat</a> or <a href="globals.html#concatall">concatAll</a>.</p>
-				<p>If you want to get the value of an observable but emit only when another stream emits an event, you might want to use <a href="classes/observable.html#sampledby">sampledBy</a>
-				or its cousin <a href="classes/observable.html#withlatestfrom">withLatestFrom</a>.</p>
+				<p>You can combine the latest value from multple sources using <a href="http://baconjs.github.io/api3/classes/observable.html#combine">combine</a>, <a href="http://baconjs.github.io/api3/globals.html#combineasarray">combineAsArray</a>,
+				<a href="http://baconjs.github.io/api3/globals.html#combinewith">combineWith</a> or <a href="http://baconjs.github.io/api3/globals.html#combinetemplate">combineTemplate</a>.</p>
+				<p>You can merge multiple streams into one using <a href="http://baconjs.github.io/api3/classes/eventstream.html#merge">merge</a> or <a href="http://baconjs.github.io/api3/globals.html#mergeall">mergeAll</a>.</p>
+				<p>You can concat streams using <a href="http://baconjs.github.io/api3/classes/observable.html#concat">concat</a> or <a href="http://baconjs.github.io/api3/globals.html#concatall">concatAll</a>.</p>
+				<p>If you want to get the value of an observable but emit only when another stream emits an event, you might want to use <a href="http://baconjs.github.io/api3/classes/observable.html#sampledby">sampledBy</a>
+				or its cousin <a href="http://baconjs.github.io/api3/classes/observable.html#withlatestfrom">withLatestFrom</a>.</p>
 				<h2 id="latest-value-of-property-or-eventstream">Latest value of Property or EventStream</h2>
 				<p>One of the common first questions people ask is &quot;how do I get the
 					latest value of a stream or a property&quot;. There is no getLatestValue
@@ -183,42 +184,42 @@ counterP.map(hiddenIfZero)
 					callback. If you need the value of more than one source, use one of the
 				combine methods.</p>
 				<h2 id="bus">Bus</h2>
-				<p><a href="classes/bus.html"><code>Bus</code></a> is an <a href="classes/eventstream.html"><code>EventStream</code></a> that allows you to <a href="classes/bus.html#push"><code>push</code></a> values into the stream.
+				<p><a href="http://baconjs.github.io/api3/classes/bus.html"><code>Bus</code></a> is an <a href="http://baconjs.github.io/api3/classes/eventstream.html"><code>EventStream</code></a> that allows you to <a href="http://baconjs.github.io/api3/classes/bus.html#push"><code>push</code></a> values into the stream.
 				It also allows plugging other streams into the Bus. </p>
 				<h2 id="event">Event</h2>
-				<p>There are essentially three kinds of <a href="classes/event.html">Events</a> that are emitted by EventStreams and Properties:</p>
+				<p>There are essentially three kinds of <a href="http://baconjs.github.io/api3/classes/event.html">Events</a> that are emitted by EventStreams and Properties:</p>
 				<ul>
-					<li><a href="classes/value.html">Value</a> events that convey a value. If you subscribe using <a href="classes/observable.html#onvalue">onValue</a>,
-						you&#39;ll only deal with values. Also <a href="classes/observable.html#map"><code>map</code></a>, <a href="classes/observable.html#filter"><code>filter</code></a> and most of the other operators
+					<li><a href="http://baconjs.github.io/api3/classes/value.html">Value</a> events that convey a value. If you subscribe using <a href="http://baconjs.github.io/api3/classes/observable.html#onvalue">onValue</a>,
+						you&#39;ll only deal with values. Also <a href="http://baconjs.github.io/api3/classes/observable.html#map"><code>map</code></a>, <a href="http://baconjs.github.io/api3/classes/observable.html#filter"><code>filter</code></a> and most of the other operators
 					also deal with values only.</li>
-					<li><a href="classes/error.html">Error</a> events indicate that an error has occurred. More on errors below!</li>
-					<li><a href="classes/end.html">End</a> event is emitted at most once, and is always the last event emitted by an Observable.</li>
+					<li><a href="http://baconjs.github.io/api3/classes/error.html">Error</a> events indicate that an error has occurred. More on errors below!</li>
+					<li><a href="http://baconjs.github.io/api3/classes/end.html">End</a> event is emitted at most once, and is always the last event emitted by an Observable.</li>
 				</ul>
-				<p>If you want to subscribe to all events from an Observable, you can use the <a href="classes/observable.html#subscribe">subscribe</a> method.</p>
+				<p>If you want to subscribe to all events from an Observable, you can use the <a href="http://baconjs.github.io/api3/classes/observable.html#subscribe">subscribe</a> method.</p>
 				<h2 id="errors">Errors</h2>
-				<p><a href="classes/error.html"><code>Error</code></a> events are always passed through all stream operators. So, even
+				<p><a href="http://baconjs.github.io/api3/classes/error.html"><code>Error</code></a> events are always passed through all stream operators. So, even
 					if you filter all values out, the error events will pass through. If you
 					use flatMap, the result stream will contain Error events from the source
 				as well as all the spawned stream.</p>
-				<p>You can take action on errors by using <a href="classes/observable.html#onerror"><code>onError</code></a>.</p>
-				<p>See also <a href="classes/observable.html#maperror"><code>mapError</code></a>, <a href="classes/observable.html#errors"><code>errors</code></a>, <a href="classes/observable.html#skiperrors"><code>skipErrors</code></a>,
-				<a href="globals.html#retry"><code>Bacon.retry</code></a> and <a href="classes/observable.html#flatmaperror"><code>flatMapError</code></a>.</p>
-				<p>In case you want to convert (some) value events into <a href="classes/error.html"><code>Error</code></a> events, you may use <a href="classes/observable.html#flatmap"><code>flatMap</code></a> like this:</p>
+				<p>You can take action on errors by using <a href="http://baconjs.github.io/api3/classes/observable.html#onerror"><code>onError</code></a>.</p>
+				<p>See also <a href="http://baconjs.github.io/api3/classes/observable.html#maperror"><code>mapError</code></a>, <a href="http://baconjs.github.io/api3/classes/observable.html#errors"><code>errors</code></a>, <a href="http://baconjs.github.io/api3/classes/observable.html#skiperrors"><code>skipErrors</code></a>,
+				<a href="http://baconjs.github.io/api3/globals.html#retry"><code>Bacon.retry</code></a> and <a href="http://baconjs.github.io/api3/classes/observable.html#flatmaperror"><code>flatMapError</code></a>.</p>
+				<p>In case you want to convert (some) value events into <a href="http://baconjs.github.io/api3/classes/error.html"><code>Error</code></a> events, you may use <a href="http://baconjs.github.io/api3/classes/observable.html#flatmap"><code>flatMap</code></a> like this:</p>
 				<pre><code class="language-js">stream = Bacon.fromArray([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>]).flatMap(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">x</span>) </span>{
   <span class="hljs-keyword">if</span> (x &gt; <span class="hljs-number">2</span>)
     <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Bacon.Error(<span class="hljs-string">"too big"</span>)
   <span class="hljs-keyword">else</span>
     <span class="hljs-keyword">return</span> x
 })</code></pre>
-				<p>Conversely, if you want to convert some <a href="classes/error.html"><code>Error</code></a> events into value events, you may use <a href="classes/observable.html#flatmaperror"><code>flatMapError</code></a>:</p>
+				<p>Conversely, if you want to convert some <a href="http://baconjs.github.io/api3/classes/error.html"><code>Error</code></a> events into value events, you may use <a href="http://baconjs.github.io/api3/classes/observable.html#flatmaperror"><code>flatMapError</code></a>:</p>
 				<pre><code class="language-js">myStream.flatMapError(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error</span>) </span>{
   <span class="hljs-keyword">return</span> isNonCriticalError(error) ? handleNonCriticalError(error) : <span class="hljs-keyword">new</span> Bacon.Error(error)
 })</code></pre>
 				<p>Note also that Bacon.js operators do not catch errors that are thrown.
-					Especially <a href="classes/observable.html#map"><code>map</code></a> doesn&#39;t do so. If you want to map things
+					Especially <a href="http://baconjs.github.io/api3/classes/observable.html#map"><code>map</code></a> doesn&#39;t do so. If you want to map things
 				and wrap caught errors into Error events, you can do the following:</p>
 				<pre><code class="language-js">wrapped = source.flatMap(Bacon.try(dangerousOperation))</code></pre>
-				<p>For example, you can use <a href="globals.html#try"><code>Bacon.try</code></a> to handle JSON parse errors:</p>
+				<p>For example, you can use <a href="http://baconjs.github.io/api3/globals.html#try"><code>Bacon.try</code></a> to handle JSON parse errors:</p>
 				<pre><code class="language-js"><span class="hljs-keyword">var</span> jsonStream = Bacon
   .once(<span class="hljs-string">'{"this is invalid json"'</span>)
   .flatMap(Bacon.try(<span class="hljs-built_in">JSON</span>.parse))
@@ -226,17 +227,17 @@ counterP.map(hiddenIfZero)
 jsonStream.onError(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>{
   <span class="hljs-built_in">console</span>.error(<span class="hljs-string">"Failed to parse JSON"</span>, err)
 })</code></pre>
-				<p>An Error does not terminate the stream. The method <a href="classes/observable.html#endonerror"><code>endOnError</code></a>
+				<p>An Error does not terminate the stream. The method <a href="http://baconjs.github.io/api3/classes/observable.html#endonerror"><code>endOnError</code></a>
 				returns a stream/property that ends immediately after the first error.</p>
-				<p>Bacon.js doesn&#39;t currently generate any <a href="classes/error.html"><code>Error</code></a> events itself (except when
-					converting errors using <a href="globals.html#frompromise"><code>fromPromise</code></a>). Error
+				<p>Bacon.js doesn&#39;t currently generate any <a href="http://baconjs.github.io/api3/classes/error.html"><code>Error</code></a> events itself (except when
+					converting errors using <a href="http://baconjs.github.io/api3/globals.html#frompromise"><code>fromPromise</code></a>). Error
 					events definitely would be generated by streams derived from IO sources
 				such as AJAX calls.</p>
-				<p>See <a href="globals.html#retry">retry</a> for retrying on error.</p>
+				<p>See <a href="http://baconjs.github.io/api3/globals.html#retry">retry</a> for retrying on error.</p>
 				<h2 id="introspection-and-metadata">Introspection and metadata</h2>
 				<p>Bacon.js provides ways to get some descriptive metadata about all Observables.</p>
-				<p>See <a href="classes/observable.html#tostring"><code>toString</code></a>, <a href="classes/observable.html#deps"><code>deps</code></a>, <a href="classes/observable.html#desc"><code>desc</code></a>,
-				<a href="globals.html#spy"><code>spy</code></a>.</p>
+				<p>See <a href="http://baconjs.github.io/api3/classes/observable.html#tostring"><code>toString</code></a>, <a href="http://baconjs.github.io/api3/classes/observable.html#deps"><code>deps</code></a>, <a href="http://baconjs.github.io/api3/classes/observable.html#desc"><code>desc</code></a>,
+				<a href="http://baconjs.github.io/api3/globals.html#spy"><code>spy</code></a>.</p>
 				<h2 id="changes-to-earlier-versions">Changes to earlier versions</h2>
 				<h3 id="function-construction-rules-removed-in-3-0">Function Construction rules removed in 3.0</h3>
 				<p>Function construction rules, which allowed you to use string shorthands for properties and methods,
@@ -248,12 +249,12 @@ jsonStream.onError(<span class="hljs-function"><span class="hljs-keyword">functi
 				<p>As described above, a subscriber can signal the loss of interest in new events
 				in any of these two ways:</p>
 				<ol>
-					<li>Return <a href="globals.html#nomore"><code>noMore</code></a> from the handler function</li>
-					<li>Call the <code>dispose()</code> function that was returned by the <a href="classes/observable.html#subscribe"><code>subscribe</code></a> or <a href="classes/observable.html#onvalue"><code>onValue</code></a>
+					<li>Return <a href="http://baconjs.github.io/api3/globals.html#nomore"><code>noMore</code></a> from the handler function</li>
+					<li>Call the <code>dispose()</code> function that was returned by the <a href="http://baconjs.github.io/api3/classes/observable.html#subscribe"><code>subscribe</code></a> or <a href="http://baconjs.github.io/api3/classes/observable.html#onvalue"><code>onValue</code></a>
 					call.</li>
 				</ol>
 				<p>Based on my experience, an actual side-effect subscriber
-					in application-code almost never does this. Instead you&#39;ll use methods like <a href="classes/observable.html#takeuntil">takeUntil</a>
+					in application-code almost never does this. Instead you&#39;ll use methods like <a href="http://baconjs.github.io/api3/classes/observable.html#takeuntil">takeUntil</a>
 				to stop listening to a source when something happens. </p>
 				<h2 id="eventstream-and-property-semantics">EventStream and Property semantics</h2>
 				<p>The state of an EventStream can be defined as (t, os) where <code>t</code> is time
@@ -275,18 +276,18 @@ jsonStream.onError(<span class="hljs-function"><span class="hljs-keyword">functi
 				subscriber is as follows:</p>
 				<ol>
 					<li>For each new value, the subscriber function is called. The new
-					value is wrapped into a <a href="classes/next.html"><code>Next</code></a> event.</li>
-					<li>The subscriber function returns a result which is either <a href="globals.html#nomore"><code>noMore</code></a> or
-					<a href="globals.html#more"><code>more</code></a>. The <code>undefined</code> value is handled like <a href="globals.html#more"><code>more</code></a>.</li>
-					<li>In case of <a href="globals.html#nomore"><code>noMore</code></a> the source must never call the subscriber again.</li>
+					value is wrapped into a <a href="http://baconjs.github.io/api3/classes/next.html"><code>Next</code></a> event.</li>
+					<li>The subscriber function returns a result which is either <a href="http://baconjs.github.io/api3/globals.html#nomore"><code>noMore</code></a> or
+					<a href="http://baconjs.github.io/api3/globals.html#more"><code>more</code></a>. The <code>undefined</code> value is handled like <a href="http://baconjs.github.io/api3/globals.html#more"><code>more</code></a>.</li>
+					<li>In case of <a href="http://baconjs.github.io/api3/globals.html#nomore"><code>noMore</code></a> the source must never call the subscriber again.</li>
 					<li>When the stream ends, the subscriber function will be called with
-						and <a href="classes/end.html"><code>End</code></a> event. The return value of the subscribe function is
+						and <a href="http://baconjs.github.io/api3/classes/end.html"><code>End</code></a> event. The return value of the subscribe function is
 					ignored in this case.</li>
 				</ol>
-				<p>A <a href="classes/property.html"><code>Property</code></a> behaves similarly to an <a href="classes/eventstream.html"><code>EventStream</code></a> except that</p>
+				<p>A <a href="http://baconjs.github.io/api3/classes/property.html"><code>Property</code></a> behaves similarly to an <a href="http://baconjs.github.io/api3/classes/eventstream.html"><code>EventStream</code></a> except that</p>
 				<ol>
 					<li>On a call to <code>subscribe</code>, it will deliver its current value
-						(if any) to the provided subscriber function wrapped into an <a href="classes/initial.html"><code>Initial</code></a>
+						(if any) to the provided subscriber function wrapped into an <a href="http://baconjs.github.io/api3/classes/initial.html"><code>Initial</code></a>
 					event.</li>
 					<li>This means that if the Property has previously emitted the value <code>x</code>
 						to its subscribers and that is the latest value emitted, it will deliver
@@ -319,7 +320,7 @@ jsonStream.onError(<span class="hljs-function"><span class="hljs-keyword">functi
 					terminate a stream. So, a stream may contain multiple errors. To me,
 					this makes more sense than always terminating the stream on error; this
 					way the application developer has more direct control over error
-					handling. You can always use <a href="classes/observable.html#endonerror"><code>endOnError</code></a> to get a stream
+					handling. You can always use <a href="http://baconjs.github.io/api3/classes/observable.html#endonerror"><code>endOnError</code></a> to get a stream
 				that ends on the first error!</p>
 				<h1 id="examples">Examples</h1>
 				<p>See <a href="https://github.com/baconjs/bacon.js/blob/master/examples/examples.html">Examples</a></p>
@@ -330,11 +331,6 @@ jsonStream.onError(<span class="hljs-function"><span class="hljs-keyword">functi
 				<p>Then build the Typescript sources into a javascript bundle (plus typescript type definitions):</p>
 				<pre><code>npm <span class="hljs-keyword">run</span><span class="bash"> dist</span></code></pre><p>Result javascript files will be generated in <code>dist</code> directory. If your planning
 				to develop Bacon.js yourself, you&#39;ll want to run [tests] too using <code>npm test</code>.</p>
-				<p>You can also build a bundle with selected features only. For instance</p>
-				<pre><code><span class="hljs-variable"><span class="hljs-class">scripts</span></span>/<span class="hljs-variable">dist</span> <span class="hljs-variable">flatmap</span> <span class="hljs-variable">combine</span> <span class="hljs-variable">takeuntil</span></code></pre><p>The build system will do its best to determine the dependencies of the selected
-					features and include those into the bundle too. You can also test the integrity
-				of the bundle with your selected features using</p>
-				<pre><code><span class="hljs-variable"><span class="hljs-class">scripts</span></span>/<span class="hljs-variable">runtests</span> <span class="hljs-variable">flatmap</span> <span class="hljs-variable">combine</span> <span class="hljs-variable">takeuntil</span></code></pre><p>TODO: partial testing currently broken.</p>
 				<h1 id="test">Test</h1>
 				<p>Run all unit tests:</p>
 				<pre><code>npm <span class="hljs-built_in">test</span></code></pre><p>The tests are run against the javascript bundle in the <code>dist</code> directory. You can build the bundle using <code>npm run dist</code>.</p>
@@ -442,7 +438,16 @@ performance/<span class="hljs-module-access"><span class="hljs-module"><span cla
 						<a href="globals.html#accumulator" class="tsd-kind-icon">Accumulator</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#arraytemplate" class="tsd-kind-icon">Array<wbr>Template</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
 						<a href="globals.html#binder" class="tsd-kind-icon">Binder</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#combinedtemplate" class="tsd-kind-icon">Combined<wbr>Template</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#decodedvalueof" class="tsd-kind-icon">Decoded<wbr>Value<wbr>Of</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="globals.html#delayfunction" class="tsd-kind-icon">Delay<wbr>Function</a>
@@ -472,6 +477,9 @@ performance/<span class="hljs-module-access"><span class="hljs-module"><span cla
 						<a href="globals.html#eventtransformer" class="tsd-kind-icon">Event<wbr>Transformer</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#flattenedobservable" class="tsd-kind-icon">Flattened<wbr>Observable</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
 						<a href="globals.html#flexiblesink" class="tsd-kind-icon">Flexible<wbr>Sink</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
@@ -485,6 +493,9 @@ performance/<span class="hljs-module-access"><span class="hljs-module"><span cla
 					</li>
 					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
 						<a href="globals.html#grouptransformer" class="tsd-kind-icon">Group<wbr>Transformer</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#objecttemplate" class="tsd-kind-icon">Object<wbr>Template</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
 						<a href="globals.html#observableorsource" class="tsd-kind-icon">Observable<wbr>OrSource</a>
