@@ -43,13 +43,13 @@ envPromise = if process.argv[2] == "dev"
   lastVersionInCDN.then (tag) ->
     fonts: "http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz"
     jquery: "http://codeorigin.jquery.com/jquery-2.1.1.min.js"
-    baconjs: "http://cdnjs.cloudflare.com/ajax/libs/bacon.js/" + tag + "/Bacon.js"
+    baconjs: "http://cdnjs.cloudflare.com/ajax/libs/bacon.js/" + tag + "/Bacon.min.js"
     version: tag
 else
   lastVersionInCDN.then (tag) ->
     fonts: "//fonts.googleapis.com/css?family=Yanone+Kaffeesatz"
     jquery: "//codeorigin.jquery.com/jquery-2.1.1.min.js"
-    baconjs: "//cdnjs.cloudflare.com/ajax/libs/bacon.js/" + tag + "/Bacon.js"
+    baconjs: "//cdnjs.cloudflare.com/ajax/libs/bacon.js/" + tag + "/Bacon.min.js"
     version: tag
 
 lastVersionInCDN.then (tag) ->
