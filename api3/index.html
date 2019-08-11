@@ -352,6 +352,13 @@ jsonStream.onError(<span class="hljs-function"><span class="hljs-keyword">functi
 					would go directly <code>a1+b1 -&gt; a2+b2</code>. And, in fact, it does exactly that.
 					Prior to version 0.4.0, C would have an additional transitional
 				state like <code>a1+b1 -&gt; a2+b1 -&gt; a2+b2</code></p>
+				<a href="#for-jquery-users" id="for-jquery-users" style="color: inherit; text-decoration: none;">
+					<h2>For jQuery users</h2>
+				</a>
+				<p>Earlier versions of Bacon.js automatically installed the <a href="http://baconjs.github.io/api3/globals.html#_"><code>asEventStream</code></a>
+					method into jQuery.
+					Now, if you still want to use that method, initialize this integration by calling <a href="http://baconjs.github.io/api3/globals.html#_"><code>Bacon.$.init($)</code></a>
+				.</p>
 				<a href="#for-rxjs-users" id="for-rxjs-users" style="color: inherit; text-decoration: none;">
 					<h2>For RxJs Users</h2>
 				</a>
@@ -401,16 +408,12 @@ performance/<span class="hljs-module-access"><span class="hljs-module"><span cla
 				<a href="#dependencies" id="dependencies" style="color: inherit; text-decoration: none;">
 					<h1>Dependencies</h1>
 				</a>
-				<p>Runtime: jQuery or Zepto.js (optional; just for jQ/Zepto bindings)
+				<p>Runtime: none
 				Build/test: see [package.json].</p>
 				<a href="#compatibility-with-other-libs" id="compatibility-with-other-libs" style="color: inherit; text-decoration: none;">
 					<h1>Compatibility with other libs</h1>
 				</a>
-				<p>Bacon.js doesn&#39;t mess with prototypes or the global object. Only exceptions below.</p>
-				<ul>
-					<li>It exports the Bacon object, except in Node.js. In a browser, this is added to the window object.</li>
-					<li>If jQuery is defined, it adds the asEventStream method to jQuery (similarly to Zepto)</li>
-				</ul>
+				<p>Bacon.js doesn&#39;t mess with prototypes or the global object, except that it exports the Bacon object as <code>window.Bacon</code> when installed using the <code>&lt;script&gt;</code> tag.</p>
 				<p>So, it should be pretty much compatible and a nice citizen.</p>
 				<p>I&#39;m not sure how it works in case some other lib adds stuff to, say, Array prototype, though. Maybe add test for this later?</p>
 				<a href="#compatibility-with-browsers" id="compatibility-with-browsers" style="color: inherit; text-decoration: none;">

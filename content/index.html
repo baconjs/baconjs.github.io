@@ -6,12 +6,12 @@
         Turns your event spaghetti into clean and declarative feng
         shui bacon, by switching from imperative to functional. It's
         like replacing nested for-loops with functional programming
-        concepts like <code>map</code> and <code>filter</code>. Stop
+        concepts like <a href="api3/classes/observable.html#map"><code>map</code></a> and <a href="api3/classes/observable.html#filter"><code>filter</code></a>. Stop
         working on individual events and work with event-streams
-        instead. Transform your data with <code>map</code>
-        and <code>filter</code>. Combine your data with <code>merge</code> and
-        <code>combine</code>. Then switch to the heavier weapons and
-        wield <code>flatMap</code> and <code>combineTemplate</code>
+        instead. Transform your data with <a href="api3/classes/observable.html#map"><code>map</code></a> and <a href="api3/classes/observable.html#filter"><code>filter</code></a>. 
+        Combine your data with <a href="api3/globals.html#mergeall"><code>merge</code></a> and
+        <a href="api3/globals.html#combinewith"><code>combine</code></a>. Then switch to the heavier weapons and
+        wield <a href="api3/classes/observable.html#flatmap"><code>flatMap</code></a> and <a href="api3/globals.html#combinetemplate"><code>combineTemplate</code></a>
         like a boss.
 
         It's the <code>_</code> of Events. Too bad the
@@ -50,10 +50,10 @@ var counter =
   // map up to 1, down to -1
   up.map(1).merge(down.map(-1))
   // accumulate sum
-    .scan(0, function(x,y) { return x + y });
+    .scan(0, (x,y) => x + y);
 
 // assign observable value to jQuery property text
-counter.assign($('#counter'), 'text');</textarea>
+counter.onValue(text => $('#counter').text(text));</textarea>
           <button class="run">Reload</button>
         </div>
 
@@ -66,7 +66,7 @@ Type a word with at least three characters into the box.
     function queryMovie(query) {
       return jQuery.get(
           '//api.themoviedb.org/3/search/movie?api_key=9eae05e667b4d5d9fbb75d27622347fe&query=' + query
-      ).then(function(r) { return r.results; });
+      ).then(r => r.results);
     }
 
     function showMovie(result) {
@@ -95,9 +95,7 @@ var text = $('#input')
   // limit the rate of queries
   .debounce(300)
   // get input text value from each event
-  .map(function(event) {
-    return event.target.value;
-  })
+  .map(event => event.target.value)
   // Ignore duplicate events with same text
   .skipDuplicates();
 
@@ -114,13 +112,13 @@ var suggestions =
 
 // Display "Searching..." when waiting for the results
 
-text.awaiting(suggestions).onValue(function(x) {
+text.awaiting(suggestions).onValue(x => {
   if (x) $('#results').html('Searching...');
 });
 
 // Render suggestion results to DOM
 
-suggestions.onValue(function(results) {
+suggestions.onValue(results => {
   $('#results').html($.map(results, showMovie));
 });</textarea>
 <button class="run">Reload</button>

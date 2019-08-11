@@ -240,7 +240,7 @@ current property value.
 You could also do the same by
 
 ```javascript
-buttonEnabled.assign(setEnabled, registerButton)
+buttonEnabled.onValue(setEnabled, registerButton)
 ```
 
 Now we rely on the `setEnabled` function that's defined in our source code, as well as `registerButton`. The above
