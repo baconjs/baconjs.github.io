@@ -4,7 +4,7 @@
   "description": "bacon.js website",
   "devDependencies": {
     "bluebird": "^2.3.6",
-    "lodash": "^4.0.0",
+    "lodash": "^4.17.13",
     "remarkable": "^1.6.0",
     "mustache": "~0.8.1",
     "request": "^2.45.0",
