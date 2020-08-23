@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Desc | baconjs</title>
+	<title>ESObservable | baconjs</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -55,21 +55,29 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="desc.html">Desc</a>
+					<a href="esobservable.html">ESObservable</a>
 				</li>
 			</ul>
-			<h1>Class Desc</h1>
+			<h1>Class ESObservable&lt;V&gt;</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-type-parameters">
+				<h3>Type parameters</h3>
+				<ul class="tsd-type-parameters">
+					<li>
+						<h4>V</h4>
+					</li>
+				</ul>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">Desc</span>
+						<span class="target">ESObservable</span>
 					</li>
 				</ul>
 			</section>
@@ -80,22 +88,19 @@
 						<section class="tsd-index-section ">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="desc.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="esobservable.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="desc.html#args" class="tsd-kind-icon">args</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="desc.html#context" class="tsd-kind-icon">context</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="desc.html#method" class="tsd-kind-icon">method</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="esobservable.html#observable" class="tsd-kind-icon">observable</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="desc.html#deps" class="tsd-kind-icon">deps</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="desc.html#tostring" class="tsd-kind-icon">to<wbr>String</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="esobservable.html#subscribe" class="tsd-kind-icon">subscribe</a></li>
 							</ul>
 						</section>
 					</div>
@@ -107,28 +112,22 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Desc<span class="tsd-signature-symbol">(</span>context<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, method<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, args<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="desc.html" class="tsd-signature-type">Desc</a></li>
+						<li class="tsd-signature tsd-kind-icon">new ESObservable<span class="tsd-signature-symbol">(</span>observable<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="esobservable.html" class="tsd-signature-type">ESObservable</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/describe.ts#L12">describe.ts:12</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/esobservable.ts#L6">esobservable.ts:6</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>context: <span class="tsd-signature-type">any</span></h5>
-								</li>
-								<li>
-									<h5>method: <span class="tsd-signature-type">string</span></h5>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> args: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = []</span></h5>
+									<h5>observable: <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="desc.html" class="tsd-signature-type">Desc</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="esobservable.html" class="tsd-signature-type">ESObservable</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -136,32 +135,12 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="args" class="tsd-anchor"></a>
-					<h3>args</h3>
-					<div class="tsd-signature tsd-kind-icon">args<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></div>
+					<a name="observable" class="tsd-anchor"></a>
+					<h3>observable</h3>
+					<div class="tsd-signature tsd-kind-icon">observable<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/describe.ts#L8">describe.ts:8</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="context" class="tsd-anchor"></a>
-					<h3>context</h3>
-					<div class="tsd-signature tsd-kind-icon">context<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/describe.ts#L6">describe.ts:6</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="method" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> method</h3>
-					<div class="tsd-signature tsd-kind-icon">method<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/describe.ts#L7">describe.ts:7</a></li>
+							<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/esobservable.ts#L6">esobservable.ts:6</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -169,36 +148,52 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="deps" class="tsd-anchor"></a>
-					<h3>deps</h3>
+					<a name="subscribe" class="tsd-anchor"></a>
+					<h3>subscribe</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">deps<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></li>
+						<li class="tsd-signature tsd-kind-icon">subscribe<span class="tsd-signature-symbol">(</span>observerOrOnNext<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, onError<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, onComplete<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>closed<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>unsubscribe<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> }</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/describe.ts#L21">describe.ts:21</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/esobservable.ts#L10">esobservable.ts:10</a></li>
 								</ul>
 							</aside>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="tostring" class="tsd-anchor"></a>
-					<h3>to<wbr>String</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">to<wbr>String<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/describe.ts#L27">describe.ts:27</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>observerOrOnNext: <span class="tsd-signature-type">any</span></h5>
+								</li>
+								<li>
+									<h5>onError: <span class="tsd-signature-type">any</span></h5>
+								</li>
+								<li>
+									<h5>onComplete: <span class="tsd-signature-type">any</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">{ </span>closed<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>unsubscribe<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> }</span></h4>
+							<ul class="tsd-parameters">
+								<li class="tsd-parameter">
+									<h5>closed<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></h5>
+								</li>
+								<li class="tsd-parameter">
+									<h5>unsubscribe<span class="tsd-signature-symbol">: </span>function</h5>
+									<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-type-literal">
+										<li class="tsd-signature tsd-kind-icon">unsubscribe<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+									</ul>
+									<ul class="tsd-descriptions">
+										<li class="tsd-description">
+											<aside class="tsd-sources">
+												<ul>
+													<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/esobservable.ts#L16">esobservable.ts:16</a></li>
+												</ul>
+											</aside>
+											<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+										</li>
+									</ul>
+								</li>
+							</ul>
 						</li>
 					</ul>
 				</section>
@@ -216,26 +211,17 @@
 				<ul class="before-current">
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-class">
-						<a href="desc.html" class="tsd-kind-icon">Desc</a>
+					<li class="current tsd-kind-class tsd-has-type-parameter">
+						<a href="esobservable.html" class="tsd-kind-icon">ESObservable</a>
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class">
-								<a href="desc.html#constructor" class="tsd-kind-icon">constructor</a>
+								<a href="esobservable.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="desc.html#args" class="tsd-kind-icon">args</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="desc.html#context" class="tsd-kind-icon">context</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="desc.html#method" class="tsd-kind-icon">method</a>
+								<a href="esobservable.html#observable" class="tsd-kind-icon">observable</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="desc.html#deps" class="tsd-kind-icon">deps</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="desc.html#tostring" class="tsd-kind-icon">to<wbr>String</a>
+								<a href="esobservable.html#subscribe" class="tsd-kind-icon">subscribe</a>
 							</li>
 						</ul>
 					</li>

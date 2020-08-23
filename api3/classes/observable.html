@@ -14,7 +14,7 @@
 	<div class="tsd-page-toolbar">
 		<div class="container">
 			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.js" data-base="..">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
 					<div class="field">
 						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
 						<input id="tsd-search-field" type="text" />
@@ -90,14 +90,6 @@
 				<ul class="tsd-hierarchy">
 					<li>
 						<span class="target">Observable</span>
-						<ul class="tsd-hierarchy">
-							<li>
-								<a href="property.html" class="tsd-signature-type">Property</a>
-							</li>
-							<li>
-								<a href="eventstream.html" class="tsd-signature-type">EventStream</a>
-							</li>
-						</ul>
 					</li>
 				</ul>
 			</section>
@@ -208,7 +200,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L105">observable.ts:105</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L105">observable.ts:105</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -230,7 +222,7 @@
 					<div class="tsd-signature tsd-kind-icon">desc<span class="tsd-signature-symbol">:</span> <a href="desc.html" class="tsd-signature-type">Desc</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L95">observable.ts:95</a></li>
+							<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L95">observable.ts:95</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -245,10 +237,11 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="id" class="tsd-anchor"></a>
 					<h3>id</h3>
-					<div class="tsd-signature tsd-kind-icon">id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;++idCounter</span></div>
+					<div class="tsd-signature tsd-kind-icon">id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = ++idCounter</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L99">observable.ts:99</a></li>
+							<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/internal/updatebarrier.ts#L9">internal/updatebarrier.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L99">observable.ts:99</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -264,13 +257,13 @@
 					<a name="awaiting" class="tsd-anchor"></a>
 					<h3>awaiting</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">awaiting<span class="tsd-signature-symbol">(</span>other<span class="tsd-signature-symbol">: </span><a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="property.html" class="tsd-signature-type">Property</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">awaiting<span class="tsd-signature-symbol">(</span>other<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="property.html" class="tsd-signature-type">Property</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L123">observable.ts:123</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L123">observable.ts:123</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -285,7 +278,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>other: <a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>other: <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="property.html" class="tsd-signature-type">Property</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -302,7 +295,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L142">observable.ts:142</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L142">observable.ts:142</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -336,7 +329,7 @@ throttled: a<span class="hljs-_">-s</span><span class="hljs-_">-d</span><span cl
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L150">observable.ts:150</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L150">observable.ts:150</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -354,13 +347,13 @@ throttled: a<span class="hljs-_">-s</span><span class="hljs-_">-d</span><span cl
 					<a name="combine" class="tsd-anchor"></a>
 					<h3>combine</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">combine&lt;V2, R&gt;<span class="tsd-signature-symbol">(</span>right<span class="tsd-signature-symbol">: </span><a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span>, f<span class="tsd-signature-symbol">: </span><a href="../globals.html#function2" class="tsd-signature-type">Function2</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="property.html" class="tsd-signature-type">Property</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">combine&lt;V2, R&gt;<span class="tsd-signature-symbol">(</span>right<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span>, f<span class="tsd-signature-symbol">: </span><a href="../globals.html#function2" class="tsd-signature-type">Function2</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="property.html" class="tsd-signature-type">Property</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L157">observable.ts:157</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L157">observable.ts:157</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -383,7 +376,7 @@ throttled: a<span class="hljs-_">-s</span><span class="hljs-_">-d</span><span cl
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>right: <a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>right: <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 								<li>
 									<h5>f: <a href="../globals.html#function2" class="tsd-signature-type">Function2</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol">&gt;</span></h5>
@@ -397,14 +390,14 @@ throttled: a<span class="hljs-_">-s</span><span class="hljs-_">-d</span><span cl
 					<a name="concat" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagAbstract">Abstract</span> concat</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">concat<span class="tsd-signature-symbol">(</span>other<span class="tsd-signature-symbol">: </span><a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span></li>
-						<li class="tsd-signature tsd-kind-icon">concat&lt;V2&gt;<span class="tsd-signature-symbol">(</span>other<span class="tsd-signature-symbol">: </span><a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">concat<span class="tsd-signature-symbol">(</span>other<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">concat&lt;V2&gt;<span class="tsd-signature-symbol">(</span>other<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L167">observable.ts:167</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L167">observable.ts:167</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -419,15 +412,15 @@ throttled: a<span class="hljs-_">-s</span><span class="hljs-_">-d</span><span cl
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>other: <a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>other: <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L168">observable.ts:168</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L168">observable.ts:168</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -439,10 +432,10 @@ throttled: a<span class="hljs-_">-s</span><span class="hljs-_">-d</span><span cl
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>other: <a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>other: <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -456,7 +449,7 @@ throttled: a<span class="hljs-_">-s</span><span class="hljs-_">-d</span><span cl
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L184">observable.ts:184</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L184">observable.ts:184</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -468,8 +461,8 @@ throttled: a<span class="hljs-_">-s</span><span class="hljs-_">-d</span><span cl
 									same methods in jQuery.</p>
 								</div>
 								<p>Example:</p>
-								<pre><code><span class="hljs-comment">source:</span>             <span class="hljs-comment">asdf</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">asdf</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span>
-<span class="hljs-comment">source</span><span class="hljs-string">.</span><span class="hljs-comment">debounce(2):</span> <span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">f</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">f</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span></code></pre>
+								<pre><code><span class="hljs-comment">source:</span>             <span class="hljs-comment">asdf</span>--<span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">asdf</span>--<span class="hljs-literal">-</span><span class="hljs-literal">-</span>
+<span class="hljs-comment">source</span><span class="hljs-string">.</span><span class="hljs-comment">debounce(2):</span> --<span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">f</span>--<span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">f</span>--</code></pre>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -491,7 +484,7 @@ throttled: a<span class="hljs-_">-s</span><span class="hljs-_">-d</span><span cl
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L199">observable.ts:199</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L199">observable.ts:199</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -501,8 +494,8 @@ throttled: a<span class="hljs-_">-s</span><span class="hljs-_">-d</span><span cl
 									of milliseconds have passed since previous output.</p>
 								</div>
 								<p>Example:</p>
-								<pre><code><span class="hljs-comment">source:</span>                      <span class="hljs-comment">asdf</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">asdf</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span>
-<span class="hljs-comment">source</span><span class="hljs-string">.</span><span class="hljs-comment">debounceImmediate(2):</span> <span class="hljs-comment">a</span><span class="hljs-literal">-</span><span class="hljs-comment">d</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">a</span><span class="hljs-literal">-</span><span class="hljs-comment">d</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span></code></pre>
+								<pre><code><span class="hljs-comment">source:</span>                      <span class="hljs-comment">asdf</span>--<span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">asdf</span>--<span class="hljs-literal">-</span><span class="hljs-literal">-</span>
+<span class="hljs-comment">source</span><span class="hljs-string">.</span><span class="hljs-comment">debounceImmediate(2):</span> <span class="hljs-comment">a</span><span class="hljs-literal">-</span><span class="hljs-comment">d</span>--<span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">a</span><span class="hljs-literal">-</span><span class="hljs-comment">d</span>--<span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span></code></pre>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -524,7 +517,7 @@ throttled: a<span class="hljs-_">-s</span><span class="hljs-_">-d</span><span cl
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L225">observable.ts:225</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L225">observable.ts:225</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -534,10 +527,10 @@ throttled: a<span class="hljs-_">-s</span><span class="hljs-_">-d</span><span cl
 										example, the following would map the value 1 into the string &quot;mike&quot;
 									and the value 2 into the value of the <code>who</code> property.</p>
 								</div>
-								<pre><code class="language-js">property.decode({<span class="hljs-number">1</span> : <span class="hljs-string">"mike"</span>, <span class="hljs-number">2</span> : who})</code></pre>
+								<pre><code class="language-js">property.decode({<span class="hljs-number">1</span> : <span class="hljs-string">&quot;mike&quot;</span>, <span class="hljs-number">2</span> : who})</code></pre>
 								<p>This is actually based on <a href="#combinetemplate"><code>combineTemplate</code></a> so you can compose static
 								and dynamic data quite freely, as in</p>
-								<pre><code class="language-js">property.decode({<span class="hljs-number">1</span> : { <span class="hljs-attr">type</span>: <span class="hljs-string">"mike"</span> }, <span class="hljs-number">2</span> : { <span class="hljs-attr">type</span>: <span class="hljs-string">"other"</span>, <span class="hljs-attr">whoThen</span> : who }})</code></pre>
+								<pre><code class="language-js">property.decode({<span class="hljs-number">1</span> : { <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;mike&quot;</span> }, <span class="hljs-number">2</span> : { <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;other&quot;</span>, <span class="hljs-attr">whoThen</span> : who }})</code></pre>
 								<p>The return value of <a href="#decode"><code>decode</code></a> is always a <a href="property.html"><code>Property</code></a>.</p>
 							</div>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -566,7 +559,7 @@ throttled: a<span class="hljs-_">-s</span><span class="hljs-_">-d</span><span cl
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L241">observable.ts:241</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L241">observable.ts:241</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -574,8 +567,8 @@ throttled: a<span class="hljs-_">-s</span><span class="hljs-_">-d</span><span cl
 									<p>Delays the stream/property by given amount of milliseconds. Does not delay the initial value of a <a href="property.html"><code>Property</code></a>.</p>
 								</div>
 								<pre><code class="language-js"><span class="hljs-keyword">var</span> delayed = source.delay(<span class="hljs-number">2</span>)</code></pre>
-								<pre><code><span class="hljs-comment">source:</span>    <span class="hljs-comment">asdf</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">asdf</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span>
-<span class="hljs-comment">delayed:</span>   <span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">asdf</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">asdf</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span></code></pre>
+								<pre><code><span class="hljs-comment">source:</span>    <span class="hljs-comment">asdf</span>--<span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">asdf</span>--<span class="hljs-literal">-</span><span class="hljs-literal">-</span>
+<span class="hljs-comment">delayed:</span>   --<span class="hljs-comment">asdf</span>--<span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">asdf</span>--</code></pre>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -591,13 +584,13 @@ throttled: a<span class="hljs-_">-s</span><span class="hljs-_">-d</span><span cl
 					<a name="deps" class="tsd-anchor"></a>
 					<h3>deps</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">deps<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></li>
+						<li class="tsd-signature tsd-kind-icon">deps<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L254">observable.ts:254</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L254">observable.ts:254</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -608,7 +601,7 @@ throttled: a<span class="hljs-_">-s</span><span class="hljs-_">-d</span><span cl
 									The <code>deps</code> method will skip these internal dependencies. See also: <a href="#internaldeps">internalDeps</a></p>
 								</div>
 							</div>
-							<h4 class="tsd-returns-title">Returns <a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -622,7 +615,7 @@ throttled: a<span class="hljs-_">-s</span><span class="hljs-_">-d</span><span cl
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L276">observable.ts:276</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L276">observable.ts:276</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -668,7 +661,7 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L291">observable.ts:291</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L291">observable.ts:291</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -704,7 +697,7 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L294">observable.ts:294</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L294">observable.ts:294</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -727,7 +720,7 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L302">observable.ts:302</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L302">observable.ts:302</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -757,7 +750,7 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L312">observable.ts:312</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L312">observable.ts:312</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -783,16 +776,16 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 					<a name="endasvalue" class="tsd-anchor"></a>
 					<h3>end<wbr>AsValue</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">end<wbr>AsValue<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">__type</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">end<wbr>AsValue<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L315">observable.ts:315</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L315">observable.ts:315</a></li>
 								</ul>
 							</aside>
-							<h4 class="tsd-returns-title">Returns <a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">__type</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -806,7 +799,7 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L324">observable.ts:324</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L324">observable.ts:324</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -818,7 +811,7 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> predicate: <a href="../globals.html#predicate" class="tsd-signature-type">Predicate</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;x &#x3D;&gt; true</span></h5>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> predicate: <a href="../globals.html#predicate" class="tsd-signature-type">Predicate</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = x &#x3D;&gt; true</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>optional predicate function to determine whether to end on a given error</p>
 									</div>
@@ -838,7 +831,7 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L331">observable.ts:331</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L331">observable.ts:331</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -861,7 +854,7 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L342">observable.ts:342</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L342">observable.ts:342</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -893,7 +886,7 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L348">observable.ts:348</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L348">observable.ts:348</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -909,13 +902,13 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 					<a name="firsttopromise" class="tsd-anchor"></a>
 					<h3>first<wbr>ToPromise</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">first<wbr>ToPromise<span class="tsd-signature-symbol">(</span>PromiseCtr<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">first<wbr>ToPromise<span class="tsd-signature-symbol">(</span>PromiseCtr<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../globals.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L356">observable.ts:356</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L356">observable.ts:356</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -931,7 +924,7 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> PromiseCtr: <span class="tsd-signature-type">Function</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="../globals.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -939,13 +932,13 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 					<a name="flatmap" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagAbstract">Abstract</span> flat<wbr>Map</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">flat<wbr>Map&lt;V2&gt;<span class="tsd-signature-symbol">(</span>f<span class="tsd-signature-symbol">: </span><a href="../globals.html#spawnerorobservable" class="tsd-signature-type">SpawnerOrObservable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">flat<wbr>Map&lt;V2&gt;<span class="tsd-signature-symbol">(</span>f<span class="tsd-signature-symbol">: </span><a href="../globals.html#spawnerorobservable" class="tsd-signature-type">SpawnerOrObservable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L377">observable.ts:377</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L377">observable.ts:377</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -960,7 +953,7 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 								for converting and filtering at the same time, including only some of the results.</p>
 								<p>Example - converting strings to integers, skipping empty values:</p>
 								<pre><code class="language-js">stream.flatMap(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">text</span>) </span>{
-<span class="hljs-keyword">return</span> (text != <span class="hljs-string">""</span>) ? <span class="hljs-built_in">parseInt</span>(text) : Bacon.never()
+<span class="hljs-keyword">return</span> (text != <span class="hljs-string">&quot;&quot;</span>) ? <span class="hljs-built_in">parseInt</span>(text) : Bacon.never()
 })</code></pre>
 							</div>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -975,7 +968,7 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 									<h5>f: <a href="../globals.html#spawnerorobservable" class="tsd-signature-type">SpawnerOrObservable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -983,13 +976,13 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 					<a name="flatmapconcat" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagAbstract">Abstract</span> flat<wbr>Map<wbr>Concat</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">flat<wbr>Map<wbr>Concat&lt;V2&gt;<span class="tsd-signature-symbol">(</span>f<span class="tsd-signature-symbol">: </span><a href="../globals.html#spawnerorobservable" class="tsd-signature-type">SpawnerOrObservable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">flat<wbr>Map<wbr>Concat&lt;V2&gt;<span class="tsd-signature-symbol">(</span>f<span class="tsd-signature-symbol">: </span><a href="../globals.html#spawnerorobservable" class="tsd-signature-type">SpawnerOrObservable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L381">observable.ts:381</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L381">observable.ts:381</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1009,7 +1002,7 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 									<h5>f: <a href="../globals.html#spawnerorobservable" class="tsd-signature-type">SpawnerOrObservable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -1017,13 +1010,13 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 					<a name="flatmaperror" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagAbstract">Abstract</span> flat<wbr>Map<wbr>Error</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">flat<wbr>Map<wbr>Error&lt;V2&gt;<span class="tsd-signature-symbol">(</span>f<span class="tsd-signature-symbol">: </span><a href="../globals.html#function1" class="tsd-signature-type">Function1</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">, </span><a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><a href="../globals.html#eventorvalue" class="tsd-signature-type">EventOrValue</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">flat<wbr>Map<wbr>Error&lt;V2&gt;<span class="tsd-signature-symbol">(</span>f<span class="tsd-signature-symbol">: </span><a href="../globals.html#function1" class="tsd-signature-type">Function1</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><a href="../globals.html#eventorvalue" class="tsd-signature-type">EventOrValue</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L387">observable.ts:387</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L387">observable.ts:387</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1042,10 +1035,10 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>f: <a href="../globals.html#function1" class="tsd-signature-type">Function1</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">, </span><a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><a href="../globals.html#eventorvalue" class="tsd-signature-type">EventOrValue</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>f: <a href="../globals.html#function1" class="tsd-signature-type">Function1</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><a href="../globals.html#eventorvalue" class="tsd-signature-type">EventOrValue</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -1053,13 +1046,13 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 					<a name="flatmapevent" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagAbstract">Abstract</span> flat<wbr>Map<wbr>Event</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">flat<wbr>Map<wbr>Event&lt;V2&gt;<span class="tsd-signature-symbol">(</span>f<span class="tsd-signature-symbol">: </span><a href="../globals.html#eventspawner" class="tsd-signature-type">EventSpawner</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">flat<wbr>Map<wbr>Event&lt;V2&gt;<span class="tsd-signature-symbol">(</span>f<span class="tsd-signature-symbol">: </span><a href="../globals.html#eventspawner" class="tsd-signature-type">EventSpawner</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L388">observable.ts:388</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L388">observable.ts:388</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -1074,7 +1067,7 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 									<h5>f: <a href="../globals.html#eventspawner" class="tsd-signature-type">EventSpawner</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -1082,13 +1075,13 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 					<a name="flatmapfirst" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagAbstract">Abstract</span> flat<wbr>Map<wbr>First</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">flat<wbr>Map<wbr>First&lt;V2&gt;<span class="tsd-signature-symbol">(</span>f<span class="tsd-signature-symbol">: </span><a href="../globals.html#spawnerorobservable" class="tsd-signature-type">SpawnerOrObservable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">flat<wbr>Map<wbr>First&lt;V2&gt;<span class="tsd-signature-symbol">(</span>f<span class="tsd-signature-symbol">: </span><a href="../globals.html#spawnerorobservable" class="tsd-signature-type">SpawnerOrObservable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L393">observable.ts:393</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L393">observable.ts:393</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1109,7 +1102,7 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 									<h5>f: <a href="../globals.html#spawnerorobservable" class="tsd-signature-type">SpawnerOrObservable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -1117,13 +1110,13 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 					<a name="flatmaplatest" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagAbstract">Abstract</span> flat<wbr>Map<wbr>Latest</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">flat<wbr>Map<wbr>Latest&lt;V2&gt;<span class="tsd-signature-symbol">(</span>f<span class="tsd-signature-symbol">: </span><a href="../globals.html#spawnerorobservable" class="tsd-signature-type">SpawnerOrObservable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">flat<wbr>Map<wbr>Latest&lt;V2&gt;<span class="tsd-signature-symbol">(</span>f<span class="tsd-signature-symbol">: </span><a href="../globals.html#spawnerorobservable" class="tsd-signature-type">SpawnerOrObservable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L400">observable.ts:400</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L400">observable.ts:400</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1146,7 +1139,7 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 									<h5>f: <a href="../globals.html#spawnerorobservable" class="tsd-signature-type">SpawnerOrObservable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -1154,13 +1147,13 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 					<a name="flatmapwithconcurrencylimit" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagAbstract">Abstract</span> flat<wbr>Map<wbr>With<wbr>Concurrency<wbr>Limit</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">flat<wbr>Map<wbr>With<wbr>Concurrency<wbr>Limit&lt;V2&gt;<span class="tsd-signature-symbol">(</span>limit<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, f<span class="tsd-signature-symbol">: </span><a href="../globals.html#spawnerorobservable" class="tsd-signature-type">SpawnerOrObservable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">flat<wbr>Map<wbr>With<wbr>Concurrency<wbr>Limit&lt;V2&gt;<span class="tsd-signature-symbol">(</span>limit<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, f<span class="tsd-signature-symbol">: </span><a href="../globals.html#spawnerorobservable" class="tsd-signature-type">SpawnerOrObservable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L406">observable.ts:406</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L406">observable.ts:406</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1185,7 +1178,7 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 									<h5>f: <a href="../globals.html#spawnerorobservable" class="tsd-signature-type">SpawnerOrObservable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -1199,7 +1192,7 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L413">observable.ts:413</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L413">observable.ts:413</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1238,7 +1231,7 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L422">observable.ts:422</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L422">observable.ts:422</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1250,7 +1243,7 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> f: <a href="../globals.html#sink" class="tsd-signature-type">Sink</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;nullSink</span></h5>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> f: <a href="../globals.html#sink" class="tsd-signature-type">Sink</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = nullSink</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="../globals.html#unsub" class="tsd-signature-type">Unsub</a></h4>
@@ -1261,13 +1254,13 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 					<a name="groupby" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagAbstract">Abstract</span> group<wbr>By</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">group<wbr>By&lt;V2&gt;<span class="tsd-signature-symbol">(</span>keyF<span class="tsd-signature-symbol">: </span><a href="../globals.html#function1" class="tsd-signature-type">Function1</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span>, limitF<span class="tsd-signature-symbol">?: </span><a href="../globals.html#grouptransformer" class="tsd-signature-type">GroupTransformer</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><a href="eventstream.html" class="tsd-signature-type">EventStream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">group<wbr>By&lt;V2&gt;<span class="tsd-signature-symbol">(</span>keyF<span class="tsd-signature-symbol">: </span><a href="../globals.html#function1" class="tsd-signature-type">Function1</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span>, limitF<span class="tsd-signature-symbol">?: </span><a href="../globals.html#grouptransformer" class="tsd-signature-type">GroupTransformer</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><a href="eventstream.html" class="tsd-signature-type">EventStream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L468">observable.ts:468</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L468">observable.ts:468</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1278,15 +1271,15 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 								</div>
 								<p>Calculator for grouped consecutive values until group is cancelled:</p>
 								<pre><code><span class="hljs-keyword">var</span> events = [
-{<span class="hljs-attribute">id:</span><span class="hljs-string"> 1, type</span>: <span class="hljs-string">"add"</span>, <span class="hljs-attribute">val</span>: <span class="hljs-number">3</span> },
-{<span class="hljs-attribute">id:</span><span class="hljs-string"> 2, type</span>: <span class="hljs-string">"add"</span>, <span class="hljs-attribute">val</span>: <span class="hljs-number">-1</span> },
-{<span class="hljs-attribute">id:</span><span class="hljs-string"> 1, type</span>: <span class="hljs-string">"add"</span>, <span class="hljs-attribute">val</span>: <span class="hljs-number">2</span> },
-{<span class="hljs-attribute">id:</span><span class="hljs-string"> 2, type</span>: <span class="hljs-string">"cancel"</span>},
-{<span class="hljs-attribute">id:</span><span class="hljs-string"> 3, type</span>: <span class="hljs-string">"add"</span>, <span class="hljs-attribute">val</span>: <span class="hljs-number">2</span> },
-{<span class="hljs-attribute">id:</span><span class="hljs-string"> 3, type</span>: <span class="hljs-string">"cancel"</span>},
-{<span class="hljs-attribute">id:</span><span class="hljs-string"> 1, type</span>: <span class="hljs-string">"add"</span>, <span class="hljs-attribute">val</span>: <span class="hljs-number">1</span> },
-{<span class="hljs-attribute">id:</span><span class="hljs-string"> 1, type</span>: <span class="hljs-string">"add"</span>, <span class="hljs-attribute">val</span>: <span class="hljs-number">2</span> },
-{<span class="hljs-attribute">id:</span><span class="hljs-string"> 1, type</span>: <span class="hljs-string">"cancel"</span>}
+{<span class="hljs-attribute">id:</span><span class="hljs-string"> 1, type</span>: <span class="hljs-string">&quot;add&quot;</span>, <span class="hljs-attribute">val</span>: <span class="hljs-number">3</span> },
+{<span class="hljs-attribute">id:</span><span class="hljs-string"> 2, type</span>: <span class="hljs-string">&quot;add&quot;</span>, <span class="hljs-attribute">val</span>: <span class="hljs-number">-1</span> },
+{<span class="hljs-attribute">id:</span><span class="hljs-string"> 1, type</span>: <span class="hljs-string">&quot;add&quot;</span>, <span class="hljs-attribute">val</span>: <span class="hljs-number">2</span> },
+{<span class="hljs-attribute">id:</span><span class="hljs-string"> 2, type</span>: <span class="hljs-string">&quot;cancel&quot;</span>},
+{<span class="hljs-attribute">id:</span><span class="hljs-string"> 3, type</span>: <span class="hljs-string">&quot;add&quot;</span>, <span class="hljs-attribute">val</span>: <span class="hljs-number">2</span> },
+{<span class="hljs-attribute">id:</span><span class="hljs-string"> 3, type</span>: <span class="hljs-string">&quot;cancel&quot;</span>},
+{<span class="hljs-attribute">id:</span><span class="hljs-string"> 1, type</span>: <span class="hljs-string">&quot;add&quot;</span>, <span class="hljs-attribute">val</span>: <span class="hljs-number">1</span> },
+{<span class="hljs-attribute">id:</span><span class="hljs-string"> 1, type</span>: <span class="hljs-string">&quot;add&quot;</span>, <span class="hljs-attribute">val</span>: <span class="hljs-number">2</span> },
+{<span class="hljs-attribute">id:</span><span class="hljs-string"> 1, type</span>: <span class="hljs-string">&quot;cancel&quot;</span>}
 ]
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">keyF</span>(<span class="hljs-params">event</span>) </span>{
@@ -1294,9 +1287,9 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 }
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">limitF</span>(<span class="hljs-params">groupedStream, groupStartingEvent</span>) </span>{
-<span class="hljs-keyword">var</span> cancel = groupedStream.filter(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">x</span>) </span>{ <span class="hljs-keyword">return</span> x.type === <span class="hljs-string">"cancel"</span>}).take(<span class="hljs-number">1</span>)
-<span class="hljs-keyword">var</span> adds = groupedStream.filter(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">x</span>) </span>{ <span class="hljs-keyword">return</span> x.type === <span class="hljs-string">"add"</span> })
-<span class="hljs-keyword">return</span> adds.takeUntil(cancel).map(<span class="hljs-string">".val"</span>)
+<span class="hljs-keyword">var</span> cancel = groupedStream.filter(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">x</span>) </span>{ <span class="hljs-keyword">return</span> x.type === <span class="hljs-string">&quot;cancel&quot;</span>}).take(<span class="hljs-number">1</span>)
+<span class="hljs-keyword">var</span> adds = groupedStream.filter(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">x</span>) </span>{ <span class="hljs-keyword">return</span> x.type === <span class="hljs-string">&quot;add&quot;</span> })
+<span class="hljs-keyword">return</span> adds.takeUntil(cancel).map(<span class="hljs-string">&quot;.val&quot;</span>)
 }
 
 Bacon.sequentially(<span class="hljs-number">2</span>, events)
@@ -1324,7 +1317,7 @@ Bacon.sequentially(<span class="hljs-number">2</span>, events)
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> limitF: <a href="../globals.html#grouptransformer" class="tsd-signature-type">GroupTransformer</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><a href="eventstream.html" class="tsd-signature-type">EventStream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><a href="eventstream.html" class="tsd-signature-type">EventStream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -1338,7 +1331,7 @@ Bacon.sequentially(<span class="hljs-number">2</span>, events)
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L474">observable.ts:474</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L474">observable.ts:474</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1367,7 +1360,7 @@ Bacon.sequentially(<span class="hljs-number">2</span>, events)
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L477">observable.ts:477</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L477">observable.ts:477</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
@@ -1378,13 +1371,13 @@ Bacon.sequentially(<span class="hljs-number">2</span>, events)
 					<a name="internaldeps" class="tsd-anchor"></a>
 					<h3>internal<wbr>Deps</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">internal<wbr>Deps<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></li>
+						<li class="tsd-signature tsd-kind-icon">internal<wbr>Deps<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">[]</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L484">observable.ts:484</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/internal/updatebarrier.ts#L10">internal/updatebarrier.ts:10</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1394,7 +1387,7 @@ Bacon.sequentially(<span class="hljs-number">2</span>, events)
 									See also: <a href="#deps">deps</a></p>
 								</div>
 							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">[]</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -1408,7 +1401,7 @@ Bacon.sequentially(<span class="hljs-number">2</span>, events)
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L493">observable.ts:493</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L493">observable.ts:493</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1431,7 +1424,7 @@ Bacon.sequentially(<span class="hljs-number">2</span>, events)
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L515">observable.ts:515</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L515">observable.ts:515</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1443,7 +1436,7 @@ Bacon.sequentially(<span class="hljs-number">2</span>, events)
 										will not be garbage-collected. So, use this for debugging only and
 									remove from production code. For example:</p>
 								</div>
-								<pre><code class="language-js">myStream.log(<span class="hljs-string">"New event in myStream"</span>)</code></pre>
+								<pre><code class="language-js">myStream.log(<span class="hljs-string">&quot;New event in myStream&quot;</span>)</code></pre>
 								<p>or just</p>
 								<pre><code class="language-js">myStream.log()</code></pre>
 							</div>
@@ -1461,13 +1454,13 @@ Bacon.sequentially(<span class="hljs-number">2</span>, events)
 					<a name="map" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagAbstract">Abstract</span> map</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">map&lt;V2&gt;<span class="tsd-signature-symbol">(</span>f<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> | </span><a href="property.html" class="tsd-signature-type">Property</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">map&lt;V2&gt;<span class="tsd-signature-symbol">(</span>f<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol"> | </span><a href="../globals.html#function1" class="tsd-signature-type">Function1</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><a href="property.html" class="tsd-signature-type">Property</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L525">observable.ts:525</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L525">observable.ts:525</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1487,10 +1480,10 @@ Bacon.sequentially(<span class="hljs-number">2</span>, events)
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>f: <span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> | </span><a href="property.html" class="tsd-signature-type">Property</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>f: <span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol"> | </span><a href="../globals.html#function1" class="tsd-signature-type">Function1</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><a href="property.html" class="tsd-signature-type">Property</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -1504,7 +1497,7 @@ Bacon.sequentially(<span class="hljs-number">2</span>, events)
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L532">observable.ts:532</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L532">observable.ts:532</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1534,7 +1527,7 @@ Bacon.sequentially(<span class="hljs-number">2</span>, events)
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L540">observable.ts:540</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L540">observable.ts:540</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1564,7 +1557,7 @@ Bacon.sequentially(<span class="hljs-number">2</span>, events)
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L548">observable.ts:548</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L548">observable.ts:548</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1588,13 +1581,13 @@ Bacon.sequentially(<span class="hljs-number">2</span>, events)
 					<a name="not" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagAbstract">Abstract</span> not</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">not<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">not<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L555">observable.ts:555</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L555">observable.ts:555</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1602,7 +1595,7 @@ Bacon.sequentially(<span class="hljs-number">2</span>, events)
 									<p>Returns a stream/property that inverts boolean values (using <code>!</code>)</p>
 								</div>
 							</div>
-							<h4 class="tsd-returns-title">Returns <a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -1616,7 +1609,7 @@ Bacon.sequentially(<span class="hljs-number">2</span>, events)
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L560">observable.ts:560</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L560">observable.ts:560</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1628,7 +1621,7 @@ Bacon.sequentially(<span class="hljs-number">2</span>, events)
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> f: <a href="../globals.html#voidsink" class="tsd-signature-type">VoidSink</a><span class="tsd-signature-symbol"> =&nbsp;nullVoidSink</span></h5>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> f: <a href="../globals.html#voidsink" class="tsd-signature-type">VoidSink</a><span class="tsd-signature-symbol"> = nullVoidSink</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="../globals.html#unsub" class="tsd-signature-type">Unsub</a></h4>
@@ -1645,7 +1638,7 @@ Bacon.sequentially(<span class="hljs-number">2</span>, events)
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L570">observable.ts:570</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L570">observable.ts:570</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1657,7 +1650,7 @@ Bacon.sequentially(<span class="hljs-number">2</span>, events)
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> f: <a href="../globals.html#sink" class="tsd-signature-type">Sink</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;nullSink</span></h5>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> f: <a href="../globals.html#sink" class="tsd-signature-type">Sink</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = nullSink</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="../globals.html#unsub" class="tsd-signature-type">Unsub</a></h4>
@@ -1674,7 +1667,7 @@ Bacon.sequentially(<span class="hljs-number">2</span>, events)
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L585">observable.ts:585</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L585">observable.ts:585</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1691,7 +1684,7 @@ Bacon.sequentially(<span class="hljs-number">2</span>, events)
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> f: <a href="../globals.html#sink" class="tsd-signature-type">Sink</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;nullSink</span></h5>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> f: <a href="../globals.html#sink" class="tsd-signature-type">Sink</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = nullSink</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="../globals.html#unsub" class="tsd-signature-type">Unsub</a></h4>
@@ -1708,7 +1701,7 @@ Bacon.sequentially(<span class="hljs-number">2</span>, events)
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L595">observable.ts:595</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L595">observable.ts:595</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1737,7 +1730,7 @@ Bacon.sequentially(<span class="hljs-number">2</span>, events)
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L600">observable.ts:600</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L600">observable.ts:600</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1770,13 +1763,13 @@ Bacon.sequentially(<span class="hljs-number">2</span>, events)
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
 						<li class="tsd-signature tsd-kind-icon">sampled<wbr>By<span class="tsd-signature-symbol">(</span>sampler<span class="tsd-signature-symbol">: </span><a href="eventstream.html" class="tsd-signature-type">EventStream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="eventstream.html" class="tsd-signature-type">EventStream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span></li>
 						<li class="tsd-signature tsd-kind-icon">sampled<wbr>By<span class="tsd-signature-symbol">(</span>sampler<span class="tsd-signature-symbol">: </span><a href="property.html" class="tsd-signature-type">Property</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="property.html" class="tsd-signature-type">Property</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span></li>
-						<li class="tsd-signature tsd-kind-icon">sampled<wbr>By<span class="tsd-signature-symbol">(</span>sampler<span class="tsd-signature-symbol">: </span><a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">sampled<wbr>By<span class="tsd-signature-symbol">(</span>sampler<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L620">observable.ts:620</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L620">observable.ts:620</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1799,7 +1792,7 @@ Bacon.sequentially(<span class="hljs-number">2</span>, events)
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L621">observable.ts:621</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L621">observable.ts:621</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1813,16 +1806,16 @@ Bacon.sequentially(<span class="hljs-number">2</span>, events)
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L622">observable.ts:622</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L622">observable.ts:622</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>sampler: <a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>sampler: <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -1836,7 +1829,7 @@ Bacon.sequentially(<span class="hljs-number">2</span>, events)
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L657">observable.ts:657</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L657">observable.ts:657</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1893,7 +1886,7 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L663">observable.ts:663</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L663">observable.ts:663</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1921,7 +1914,7 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L674">observable.ts:674</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L674">observable.ts:674</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1954,7 +1947,7 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L680">observable.ts:680</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L680">observable.ts:680</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1970,13 +1963,13 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 					<a name="skipuntil" class="tsd-anchor"></a>
 					<h3>skip<wbr>Until</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">skip<wbr>Until<span class="tsd-signature-symbol">(</span>starter<span class="tsd-signature-symbol">: </span><a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+						<li class="tsd-signature tsd-kind-icon">skip<wbr>Until<span class="tsd-signature-symbol">(</span>starter<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L689">observable.ts:689</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L689">observable.ts:689</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1989,7 +1982,7 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>starter: <a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>starter: <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
@@ -2006,7 +1999,7 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L698">observable.ts:698</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L698">observable.ts:698</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2036,7 +2029,7 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L715">observable.ts:715</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L715">observable.ts:715</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2059,7 +2052,7 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 									<h5>maxValues: <span class="tsd-signature-type">number</span></h5>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> minValues: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;0</span></h5>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> minValues: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 0</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="property.html" class="tsd-signature-type">Property</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -2070,13 +2063,13 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 					<a name="startwith" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagAbstract">Abstract</span> start<wbr>With</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">start<wbr>With<span class="tsd-signature-symbol">(</span>seed<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">start<wbr>With<span class="tsd-signature-symbol">(</span>seed<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L722">observable.ts:722</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L722">observable.ts:722</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2091,7 +2084,7 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 									<h5>seed: <span class="tsd-signature-type">V</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -2105,7 +2098,7 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L736">observable.ts:736</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L736">observable.ts:736</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2122,7 +2115,7 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> sink: <a href="../globals.html#eventsink" class="tsd-signature-type">EventSink</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;nullSink</span></h5>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> sink: <a href="../globals.html#eventsink" class="tsd-signature-type">EventSink</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = nullSink</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>the handler function</p>
 									</div>
@@ -2142,7 +2135,7 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L746">observable.ts:746</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L746">observable.ts:746</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2166,13 +2159,13 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 					<a name="takeuntil" class="tsd-anchor"></a>
 					<h3>take<wbr>Until</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">take<wbr>Until<span class="tsd-signature-symbol">(</span>stopper<span class="tsd-signature-symbol">: </span><a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+						<li class="tsd-signature tsd-kind-icon">take<wbr>Until<span class="tsd-signature-symbol">(</span>stopper<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L753">observable.ts:753</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L753">observable.ts:753</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2184,7 +2177,7 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>stopper: <a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>stopper: <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
@@ -2201,7 +2194,7 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L759">observable.ts:759</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L759">observable.ts:759</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2229,7 +2222,7 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L779">observable.ts:779</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L779">observable.ts:779</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2241,8 +2234,8 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 								</div>
 								<p>Example:</p>
 								<pre><code class="language-js"><span class="hljs-keyword">var</span> throttled = source.throttle(<span class="hljs-number">2</span>)</code></pre>
-								<pre><code><span class="hljs-comment">source:</span>    <span class="hljs-comment">asdf</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">asdf</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span>
-<span class="hljs-comment">throttled:</span> <span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">s</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">f</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">s</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">f</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span></code></pre>
+								<pre><code><span class="hljs-comment">source:</span>    <span class="hljs-comment">asdf</span>--<span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">asdf</span>--<span class="hljs-literal">-</span><span class="hljs-literal">-</span>
+<span class="hljs-comment">throttled:</span> --<span class="hljs-comment">s</span>--<span class="hljs-comment">f</span>--<span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">s</span>--<span class="hljs-comment">f</span>--</code></pre>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -2264,7 +2257,7 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L782">observable.ts:782</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L782">observable.ts:782</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <a href="eventstream.html" class="tsd-signature-type">EventStream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -2275,13 +2268,13 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 					<a name="topromise" class="tsd-anchor"></a>
 					<h3>to<wbr>Promise</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">to<wbr>Promise<span class="tsd-signature-symbol">(</span>PromiseCtr<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">to<wbr>Promise<span class="tsd-signature-symbol">(</span>PromiseCtr<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../globals.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L791">observable.ts:791</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L791">observable.ts:791</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2299,7 +2292,7 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> PromiseCtr: <span class="tsd-signature-type">Function</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="../globals.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -2313,7 +2306,7 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L800">observable.ts:800</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L800">observable.ts:800</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2336,7 +2329,7 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L805">observable.ts:805</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L805">observable.ts:805</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2352,13 +2345,13 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 					<a name="transform" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagAbstract">Abstract</span> transform</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">transform&lt;V2&gt;<span class="tsd-signature-symbol">(</span>transformer<span class="tsd-signature-symbol">: </span><a href="../globals.html#transformer" class="tsd-signature-type">Transformer</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span>, desc<span class="tsd-signature-symbol">?: </span><a href="desc.html" class="tsd-signature-type">Desc</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">transform&lt;V2&gt;<span class="tsd-signature-symbol">(</span>transformer<span class="tsd-signature-symbol">: </span><a href="../globals.html#transformer" class="tsd-signature-type">Transformer</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span>, desc<span class="tsd-signature-symbol">?: </span><a href="desc.html" class="tsd-signature-type">Desc</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L833">observable.ts:833</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L833">observable.ts:833</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2370,7 +2363,7 @@ Bacon.sequentially(<span class="hljs-number">1</span>, [<span class="hljs-number
 									the stream in case a value is below zero:</p>
 								</div>
 								<pre><code class="language-js"><span class="hljs-keyword">if</span> (Bacon.hasValue(event) &amp;&amp; event.value &lt; <span class="hljs-number">0</span>) {
-sink(<span class="hljs-keyword">new</span> Bacon.Error(<span class="hljs-string">"Value below zero"</span>));
+sink(<span class="hljs-keyword">new</span> Bacon.Error(<span class="hljs-string">&quot;Value below zero&quot;</span>));
 <span class="hljs-keyword">return</span> sink(end());
 } <span class="hljs-keyword">else</span> {
 <span class="hljs-keyword">return</span> sink(event);
@@ -2394,7 +2387,7 @@ sink(<span class="hljs-keyword">new</span> Bacon.Error(<span class="hljs-string"
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> desc: <a href="desc.html" class="tsd-signature-type">Desc</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -2408,7 +2401,7 @@ sink(<span class="hljs-keyword">new</span> Bacon.Error(<span class="hljs-string"
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L835">observable.ts:835</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L835">observable.ts:835</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -2431,7 +2424,7 @@ sink(<span class="hljs-keyword">new</span> Bacon.Error(<span class="hljs-string"
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L857">observable.ts:857</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L857">observable.ts:857</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2470,13 +2463,13 @@ sink(<span class="hljs-keyword">new</span> Bacon.Error(<span class="hljs-string"
 					<a name="withlatestfrom" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagAbstract">Abstract</span> with<wbr>Latest<wbr>From</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">with<wbr>Latest<wbr>From&lt;V2, R&gt;<span class="tsd-signature-symbol">(</span>samplee<span class="tsd-signature-symbol">: </span><a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span>, f<span class="tsd-signature-symbol">: </span><a href="../globals.html#function2" class="tsd-signature-type">Function2</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">with<wbr>Latest<wbr>From&lt;V2, R&gt;<span class="tsd-signature-symbol">(</span>samplee<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span>, f<span class="tsd-signature-symbol">: </span><a href="../globals.html#function2" class="tsd-signature-type">Function2</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L872">observable.ts:872</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L872">observable.ts:872</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2503,7 +2496,7 @@ sink(<span class="hljs-keyword">new</span> Bacon.Error(<span class="hljs-string"
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>samplee: <a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>samplee: <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 								<li>
 									<h5>f: <a href="../globals.html#function2" class="tsd-signature-type">Function2</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol">&gt;</span></h5>
@@ -2512,7 +2505,7 @@ sink(<span class="hljs-keyword">new</span> Bacon.Error(<span class="hljs-string"
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -2520,13 +2513,13 @@ sink(<span class="hljs-keyword">new</span> Bacon.Error(<span class="hljs-string"
 					<a name="withstatemachine" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagAbstract">Abstract</span> with<wbr>State<wbr>Machine</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">with<wbr>State<wbr>Machine&lt;State, Out&gt;<span class="tsd-signature-symbol">(</span>initState<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">State</span>, f<span class="tsd-signature-symbol">: </span><a href="../interfaces/statef.html" class="tsd-signature-type">StateF</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">State</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Out</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Out</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">with<wbr>State<wbr>Machine&lt;State, Out&gt;<span class="tsd-signature-symbol">(</span>initState<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">State</span>, f<span class="tsd-signature-symbol">: </span><a href="../interfaces/statef.html" class="tsd-signature-type">StateF</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">State</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Out</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Out</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L897">observable.ts:897</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L897">observable.ts:897</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2578,7 +2571,7 @@ sink(<span class="hljs-keyword">new</span> Bacon.Error(<span class="hljs-string"
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Out</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Out</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -2586,13 +2579,13 @@ sink(<span class="hljs-keyword">new</span> Bacon.Error(<span class="hljs-string"
 					<a name="zip" class="tsd-anchor"></a>
 					<h3>zip</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">zip&lt;V2, R&gt;<span class="tsd-signature-symbol">(</span>other<span class="tsd-signature-symbol">: </span><a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span>, f<span class="tsd-signature-symbol">: </span><a href="../globals.html#function2" class="tsd-signature-type">Function2</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="eventstream.html" class="tsd-signature-type">EventStream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">zip&lt;V2, R&gt;<span class="tsd-signature-symbol">(</span>other<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span>, f<span class="tsd-signature-symbol">: </span><a href="../globals.html#function2" class="tsd-signature-type">Function2</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="eventstream.html" class="tsd-signature-type">EventStream</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5a768ff/src/observable.ts#L924">observable.ts:924</a></li>
+									<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/7ad2f2f2/src/observable.ts#L924">observable.ts:924</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2627,7 +2620,7 @@ x.zip(y, function(x, y) { return x + y })
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>other: <a href="observable.html" class="tsd-signature-type">Observable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>other: <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 								<li>
 									<h5>f: <a href="../globals.html#function2" class="tsd-signature-type">Function2</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol">&gt;</span></h5>
@@ -2887,57 +2880,17 @@ x.zip(y, function(x, y) { return x + y })
 		<h2>Legend</h2>
 		<div class="tsd-legend-group">
 			<ul class="tsd-legend">
-				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
-				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
-				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
-				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
-				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
-				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
-				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
-				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
-				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
-				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
-				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
-				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
-				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
 				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
 				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
 				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
-				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
 				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
 				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
-				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
 			</ul>
 		</div>
 	</div>
