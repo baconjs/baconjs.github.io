@@ -180,7 +180,7 @@ to the developer console, you'll see username changes in the console log.
 
 To get our app to actually do something visible besides writing to the console, we'll define a couple of new
 `Properties`, and assign our first side-effect. Which is enabling/disabling the Register button based on whether
-the user has entered something to both the username and fullname fields.
+the user has entered something in both the username and fullname fields.
 
 I'll start by defining the `buttonEnabled` Property:
 
@@ -189,7 +189,7 @@ function and(a,b) { return a && b }
 buttonEnabled = usernameEntered.combine(fullnameEntered, and)
 ```
 
-So I defined the Property by combining to props together, with the `and` function.
+So I defined the Property by combining the two props together, with the `and` function.
 The `combine` method works so that when either `usernameEntered` and `fullnameEntered`
 changes, the result Property will get a new value. The new value is constructed by applying
 the `and` function to the values of both props. Easy! And can be even easier:
@@ -221,7 +221,7 @@ buttonEnabled.onValue(function(enabled) {
 })
 ```
 
-Try it! Now the button gets immediately disabled and will enabled once you type something to both the text fields. 
+Try it! Now the button gets immediately disabled and will be enabled once you type something in both of the text fields.
 Mission accomplished!
 
 But we can do better.
@@ -232,7 +232,7 @@ For example,
 buttonEnabled.not().onValue($("#register button"), "attr", "disabled")
 ```
 
-This relies on te fact that the `onValue` method, like many other Bacon.js methods, supports different sets of
+This relies on the fact that the `onValue` method, like many other Bacon.js methods, supports different sets of
 parameters. One of them is the above form, which can be translated as "call the `attr` method of the register 
 button and use `disabled` as the first argument". The second argument for the `attr` method will be taken from the
 current property value.

@@ -1,6 +1,6 @@
 ## Wrapping Things in Bacon
 
-I've got a lot of question along the lines of "can I integrate Bacon with X". And the answer is, of course, Yes You Can. Assuming X is something with a Javascript API that is. In fact, for many values of X, there are ready-made solutions.
+I've got a lot of questions along the lines of "can I integrate Bacon with X". And the answer is, of course, Yes You Can. Assuming X is something with a Javascript API that is. In fact, for many values of X, there are ready-made solutions.
 
 - JQuery events is supported out-of-the box 
 - With [Bacon.JQuery](https://github.com/baconjs/bacon.jquery), you get more, including AJAX, two-way bindings
