@@ -8,7 +8,7 @@
     "lodash": "^4.17.19",
     "mustache": "~0.8.1",
     "remarkable": "^1.6.0",
-    "request": "^2.45.0"
+    "request": "^2.88.2"
   },
   "scripts": {
     "postinstall": "generator/downloadbacons && generator/generate.coffee && npm run docs3",
