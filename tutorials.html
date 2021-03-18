@@ -17,7 +17,7 @@
 <link href='//fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
 
 <script src="//codeorigin.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/bacon.js/3.0.13/Bacon.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bacon.js/3.0.17/Bacon.min.js"></script>
 <script>
   Bacon.$.init($)
 </script>
@@ -41,9 +41,9 @@
       </div>
 
       <div class="download">
-        <a class="button big-button" href="http://cdnjs.cloudflare.com/ajax/libs/bacon.js/3.0.13/Bacon.js" download>
+        <a class="button big-button" href="http://cdnjs.cloudflare.com/ajax/libs/bacon.js/3.0.17/Bacon.js" download>
           Download Bacon.js
-          <small>v3.0.13</small>
+          <small>v3.0.17</small>
           <a class="github" href="https://github.com/baconjs/bacon.js#install-and-usage">[More install options]</a>
         </a>
       </div>
@@ -217,12 +217,12 @@ Feel free to contribute!</p>
 <h3>Mapping Properties and Adding Side-Effects</h3>
 <p>To get our app to actually do something visible besides writing to the console, we'll define a couple of new
 <code>Properties</code>, and assign our first side-effect. Which is enabling/disabling the Register button based on whether
-the user has entered something to both the username and fullname fields.</p>
+the user has entered something in both the username and fullname fields.</p>
 <p>I'll start by defining the <code>buttonEnabled</code> Property:</p>
 <pre><code class="language-javascript"><textarea class="code">function and(a,b) { return a && b }
 buttonEnabled = usernameEntered.combine(fullnameEntered, and)
 </textarea></code></pre>
-<p>So I defined the Property by combining to props together, with the <code>and</code> function.
+<p>So I defined the Property by combining the two props together, with the <code>and</code> function.
 The <code>combine</code> method works so that when either <code>usernameEntered</code> and <code>fullnameEntered</code>
 changes, the result Property will get a new value. The new value is constructed by applying
 the <code>and</code> function to the values of both props. Easy! And can be even easier:</p>
@@ -243,13 +243,13 @@ And the <code>nonEmpty</code> function is actually already defined in the source
     $("#register button").attr("disabled", !enabled)
 })
 </textarea></code></pre>
-<p>Try it! Now the button gets immediately disabled and will enabled once you type something to both the text fields.
+<p>Try it! Now the button gets immediately disabled and will be enabled once you type something in both of the text fields.
 Mission accomplished!</p>
 <p>But we can do better.</p>
 <p>For example,</p>
 <pre><code class="language-javascript"><textarea class="code">buttonEnabled.not().onValue($("#register button"), "attr", "disabled")
 </textarea></code></pre>
-<p>This relies on te fact that the <code>onValue</code> method, like many other Bacon.js methods, supports different sets of
+<p>This relies on the fact that the <code>onValue</code> method, like many other Bacon.js methods, supports different sets of
 parameters. One of them is the above form, which can be translated as &quot;call the <code>attr</code> method of the register
 button and use <code>disabled</code> as the first argument&quot;. The second argument for the <code>attr</code> method will be taken from the
 current property value.</p>
@@ -400,7 +400,7 @@ The second argument to the function will be the value from the <code>usernameAva
 
 <a id="content/tutorials/3_Wrapping_Things_In_Bacon"></a>
 <h2>Wrapping Things in Bacon</h2>
-<p>I've got a lot of question along the lines of &quot;can I integrate Bacon with X&quot;. And the answer is, of course, Yes You Can. Assuming X is something with a Javascript API that is. In fact, for many values of X, there are ready-made solutions.</p>
+<p>I've got a lot of questions along the lines of &quot;can I integrate Bacon with X&quot;. And the answer is, of course, Yes You Can. Assuming X is something with a Javascript API that is. In fact, for many values of X, there are ready-made solutions.</p>
 <ul>
 <li>JQuery events is supported out-of-the box</li>
 <li>With <a href="https://github.com/baconjs/bacon.jquery">Bacon.JQuery</a>, you get more, including AJAX, two-way bindings</li>
