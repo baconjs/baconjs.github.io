@@ -7,7 +7,7 @@
     "cheerio": "^0.18",
     "lodash": "^4.17.19",
     "mustache": "~0.8.1",
-    "remarkable": "^1.6.0",
+    "remarkable": "^1.7.2",
     "request": "^2.45.0"
   },
   "scripts": {
