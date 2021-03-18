@@ -5,7 +5,7 @@
   "devDependencies": {
     "bluebird": "^2.3.6",
     "cheerio": "^0.18",
-    "lodash": "^4.0.0",
+    "lodash": "^4.17.19",
     "mustache": "~0.8.1",
     "remarkable": "^1.6.0",
     "request": "^2.45.0"
