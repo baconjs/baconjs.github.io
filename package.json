@@ -29,6 +29,6 @@
   },
   "homepage": "https://github.com/baconjs/baconjs.github.io",
   "dependencies": {
-    "express": "^4.14.0"
+    "express": "^4.17.3"
   }
 }
