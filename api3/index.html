@@ -199,7 +199,7 @@ counterP.map(hiddenIfZero)
 				</a>
 				<p>There&#39;s a multitude of methods for creating an EventStream from different sources, including the DOM, node callbacks and promises for example.
 				See <a href="http://baconjs.github.io/api3/classes/eventstream.html">EventStream</a> documentation.</p>
-				<p>Properties are usually created based on EventStreams. Some common ways are intruduced in <a href="http://baconjs.github.io/api3/classes/property.html">Property</a> documentation.</p>
+				<p>Properties are usually created based on EventStreams. Some common ways are introduced in <a href="http://baconjs.github.io/api3/classes/property.html">Property</a> documentation.</p>
 				<a href="#combining-multiple-streams-and-properties" id="combining-multiple-streams-and-properties" style="color: inherit; text-decoration: none;">
 					<h2>Combining multiple streams and properties</h2>
 				</a>
@@ -260,7 +260,7 @@ counterP.map(hiddenIfZero)
 					Especially <a href="http://baconjs.github.io/api3/classes/observable.html#map"><code>map</code></a> doesn&#39;t do so. If you want to map things
 				and wrap caught errors into Error events, you can do the following:</p>
 				<pre><code class="language-js">wrapped = source.flatMap(Bacon.try(dangerousOperation))</code></pre>
-				<p>For example, you can use <a href="http://baconjs.github.io/api3/globals.html#try"><code>Bacon.try</code></a> to handle JSON parse errors:</p>
+				<p>For example, you can use <a href="http://baconjs.github.io/api3/globals.html#tryf"><code>Bacon.try</code></a> to handle JSON parse errors:</p>
 				<pre><code class="language-js"><span class="hljs-keyword">var</span> jsonStream = Bacon
   .once(<span class="hljs-string">&#x27;{&quot;this is invalid json&quot;&#x27;</span>)
   .flatMap(Bacon.try(<span class="hljs-built_in">JSON</span>.parse))
@@ -963,6 +963,9 @@ performance/<span class="hljs-module-access"><span class="hljs-module"><span cla
 					</li>
 					<li class=" tsd-kind-function tsd-has-type-parameter">
 						<a href="globals.html#toproperty" class="tsd-kind-icon">to<wbr>Property</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#tryf" class="tsd-kind-icon">tryF</a>
 					</li>
 					<li class=" tsd-kind-function tsd-has-type-parameter">
 						<a href="globals.html#update" class="tsd-kind-icon">update</a>
