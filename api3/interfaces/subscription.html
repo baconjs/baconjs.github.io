@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Trigger | baconjs</title>
+	<title>Subscription | baconjs</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -55,21 +55,32 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="trigger.html">Trigger</a>
+					<a href="subscription.html">Subscription</a>
 				</li>
 			</ul>
-			<h1>Interface Trigger</h1>
+			<h1>Interface Subscription&lt;V, V&gt;</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-type-parameters">
+				<h3>Type parameters</h3>
+				<ul class="tsd-type-parameters">
+					<li>
+						<h4>V</h4>
+					</li>
+					<li>
+						<h4>V</h4>
+					</li>
+				</ul>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">Trigger</span>
+						<span class="target">Subscription</span>
 					</li>
 				</ul>
 			</section>
@@ -80,8 +91,9 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="trigger.html#e" class="tsd-kind-icon">e</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="trigger.html#source" class="tsd-kind-icon">source</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="subscription.html#input" class="tsd-kind-icon">input</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="subscription.html#sink" class="tsd-kind-icon">sink</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="subscription.html#unsub" class="tsd-kind-icon">unsub</a></li>
 							</ul>
 						</section>
 					</div>
@@ -90,22 +102,32 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="e" class="tsd-anchor"></a>
-					<h3>e</h3>
-					<div class="tsd-signature tsd-kind-icon">e<span class="tsd-signature-symbol">:</span> <a href="../classes/value.html" class="tsd-signature-type">Value</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<a name="input" class="tsd-anchor"></a>
+					<h3>input</h3>
+					<div class="tsd-signature tsd-kind-icon">input<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5f398545/src/when.ts#L309">when.ts:309</a></li>
+							<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5f398545/src/bus.ts#L11">bus.ts:11</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="source" class="tsd-anchor"></a>
-					<h3>source</h3>
-					<div class="tsd-signature tsd-kind-icon">source<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">AnySource</span></div>
+					<a name="sink" class="tsd-anchor"></a>
+					<h3>sink</h3>
+					<div class="tsd-signature tsd-kind-icon">sink<span class="tsd-signature-symbol">:</span> <a href="../globals.html#eventsink" class="tsd-signature-type">EventSink</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5f398545/src/when.ts#L310">when.ts:310</a></li>
+							<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5f398545/src/internal/dispatcher.ts#L10">internal/dispatcher.ts:10</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="unsub" class="tsd-anchor"></a>
+					<h3>unsub</h3>
+					<div class="tsd-signature tsd-kind-icon">unsub<span class="tsd-signature-symbol">:</span> <a href="../globals.html#unsub" class="tsd-signature-type">Unsub</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/baconjs/bacon.js/blob/5f398545/src/bus.ts#L12">bus.ts:12</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -123,14 +145,17 @@
 				<ul class="before-current">
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-interface">
-						<a href="trigger.html" class="tsd-kind-icon">Trigger</a>
+					<li class="current tsd-kind-interface tsd-has-type-parameter">
+						<a href="subscription.html" class="tsd-kind-icon">Subscription</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="trigger.html#e" class="tsd-kind-icon">e</a>
+								<a href="subscription.html#input" class="tsd-kind-icon">input</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="trigger.html#source" class="tsd-kind-icon">source</a>
+								<a href="subscription.html#sink" class="tsd-kind-icon">sink</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="subscription.html#unsub" class="tsd-kind-icon">unsub</a>
 							</li>
 						</ul>
 					</li>
