@@ -8,7 +8,7 @@
     "lodash": "^4.17.19",
     "mustache": "~0.8.1",
     "remarkable": "^1.7.2",
-    "request": "^2.45.0"
+    "request": "^2.88.2"
   },
   "scripts": {
     "postinstall": "generator/downloadbacons && generator/generate.coffee && npm run docs3",
@@ -29,6 +29,6 @@
   },
   "homepage": "https://github.com/baconjs/baconjs.github.io",
   "dependencies": {
-    "express": "^4.14.0"
+    "express": "^4.18.2"
   }
 }
